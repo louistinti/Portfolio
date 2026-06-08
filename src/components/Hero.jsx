@@ -3,19 +3,6 @@ import { profile, heroChips, projects } from '../data/content.js'
 export default function Hero() {
   return (
     <section className="hero" data-screen-label="Hero">
-      <div className="hero__media">
-        <div className="ph">
-          <span className="ph-label">[ Architectural image ] — drag a photo here later</span>
-        </div>
-        <div className="corner-cap">
-          <p>
-            // Design backed by systems,
-            <br />
-            shipped with AI.
-          </p>
-        </div>
-      </div>
-
       <div className="hero__body">
         <div className="hero__idx">
           <span className="mono">Portfolio — 2026</span>
