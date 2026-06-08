@@ -25,7 +25,7 @@ export default function Contact() {
           <a className="btn" href={`mailto:${profile.email}`}>
             Start a project{' '}
             <span className="arrow" aria-hidden="true">
-              ↗
+              →
             </span>
           </a>
           <a className="btn-ghost btn" href="#" download>

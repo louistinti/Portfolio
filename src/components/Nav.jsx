@@ -19,7 +19,7 @@ export default function Nav() {
         <a href="#contact">Contact</a>
       </nav>
       <a className="nav-cta" href="#contact">
-        Get in touch <span aria-hidden="true">↗</span>
+        Get in touch <span className="arrow" aria-hidden="true">→</span>
       </a>
       <button className="nav-burger" aria-label="Menu" onClick={jumpToWork}>
         <span></span>

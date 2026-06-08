@@ -13,8 +13,7 @@ export default function Hero() {
           <h1>
             Product&nbsp;design <span className="serif-it accent">built</span>
             <br />
-            to ship &amp;<br />
-            scale <span className="accent">B2B</span>
+            to ship &amp; scale <span className="accent">B2B</span>
           </h1>
           <div className="hero__sub">
             <p>
@@ -22,10 +21,10 @@ export default function Hero() {
               end — from research and UX to shipped interface. Freelance · full‑remote or hybrid.
             </p>
           </div>
-          <a className="btn" href="#work" style={{ maxWidth: '280px' }}>
-            See selected work{' '}
+          <a className="btn" href="#work">
+            See my work{' '}
             <span className="arrow" aria-hidden="true">
-              ↘
+              →
             </span>
           </a>
         </div>

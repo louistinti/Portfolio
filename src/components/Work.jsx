@@ -32,7 +32,7 @@ export default function Work() {
               <h3>{p.name}</h3>
               <span className="yr">{p.year}</span>
               <span className="go" aria-hidden="true">
-                ↗
+                →
               </span>
             </div>
           </article>

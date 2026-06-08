@@ -104,12 +104,14 @@ a { color: inherit; text-decoration: none; }
 /* ============================================================
    LAYOUT PRIMITIVES
    ============================================================ */
-.section { padding: var(--section-py) var(--pad); position: relative; }
+/* padding-top 0 : l'espace entre sections (48px) est porté par le padding-bottom
+   de la section précédente. #about surcharge le top pour l'écart sous le marquee. */
+.section { padding: 0 var(--pad) var(--space-12); position: relative; }
 .section-head {
   display: flex; align-items: baseline; justify-content: space-between;
   gap: var(--space-6); flex-wrap: wrap;
   border-top: 1px solid var(--line);
-  padding-top: var(--space-6); margin-bottom: clamp(48px, 7vw, 100px);
+  padding-top: var(--space-12); margin-bottom: var(--space-12);
 }
 .section-head h2 {
   font-weight: 800; text-transform: uppercase;
@@ -147,13 +149,19 @@ a { color: inherit; text-decoration: none; }
 }
 .btn .arrow { transition: transform 0.4s var(--ease); }
 .btn:hover { transform: translateY(-2px); }
-.btn:hover .arrow { transform: translate(4px, -4px); }
+.btn:hover .arrow { transform: translateX(4px); }
+
+/* Flèches des CTA : trait droit (→) + un peu plus bold — même glyphe que le "Scroll ↓" */
+.arrow,
+.card__bar .go,
+.to-top span { -webkit-text-stroke: 0.5px currentColor; }
 
 .btn-ghost {
   background: transparent; color: var(--fg);
   border: 1px solid var(--line); border-radius: 100px;
 }
 .btn-ghost:hover { border-color: var(--fg); }
+.btn-ghost:hover .arrow { transform: translateY(4px); } /* Download CV : flèche vers le bas */
 
 /* reveal animation */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
@@ -189,6 +197,8 @@ a { color: inherit; text-decoration: none; }
 }
 .hero h1 .serif-it { font-weight: 400; }
 .hero__lead { display: flex; flex-direction: column; gap: var(--space-8); }
+/* bouton du hero : flèche droite, à 16px du texte (le bouton se dimensionne au contenu) */
+.hero__lead .btn { gap: var(--space-4); align-self: flex-start; justify-content: flex-start; }
 .hero__sub { max-width: 46ch; color: var(--muted); font-size: 1.05rem; }
 .hero__sub strong { color: var(--fg); font-weight: 600; }
 
@@ -205,9 +215,9 @@ a { color: inherit; text-decoration: none; }
 /* ============================================================
    MARQUEE
    ============================================================ */
-/* About n'a pas de divider : son titre s'aligne à 24px sous le marquee (l'élément au-dessus) */
-#about { padding-top: var(--space-6); }
-#about .section-head { border-top: none; padding-top: 0; }
+/* About n'a pas de divider : son titre s'aligne à 48px sous le marquee (l'élément au-dessus) */
+#about { padding-top: var(--space-12); }
+#about .section-head { border-top: none; padding-top: 0; margin-bottom: var(--space-6); }
 .marquee {
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   overflow: hidden; padding: var(--space-3) 0; white-space: nowrap;
@@ -232,7 +242,7 @@ a { color: inherit; text-decoration: none; }
 }
 .about-statement .serif-it { color: var(--fg); }
 .about-statement em { color: var(--accent); font-style: normal; }
-.about-cols { display: grid; gap: clamp(28px, 4vw, 56px); margin-top: clamp(48px, 7vw, 90px); grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); padding-top: var(--space-8); }
+.about-cols { display: grid; gap: clamp(28px, 4vw, 56px); margin-top: var(--space-6); grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); padding-top: var(--space-8); }
 .about-cols p { color: var(--muted); font-size: 0.98rem; }
 .about-cols h4 { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: var(--space-3); color: var(--fg); }
 .about-meta { display: flex; flex-direction: column; gap: var(--space-2); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted) !important; }
