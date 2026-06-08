@@ -1,0 +1,178 @@
+/* ============================================================
+   DESIGN SYSTEM — Portfolio
+   ------------------------------------------------------------
+   Source de vérité de tous les tokens du site (couleurs, typo,
+   espacements, rayons, ombres, motion, z-index, layout).
+   Tout le reste du CSS s'appuie sur ces variables : pour reskiner
+   le site, modifie SEULEMENT ce fichier.
+
+   Convention : --<catégorie>-<nom>
+   Importé en premier (avant index.css) dans src/main.jsx.
+   ============================================================ */
+
+:root {
+  /* ==========================================================
+     1. COULEURS
+     ========================================================== */
+
+  /* — Fonds (du plus sombre au plus clair) — */
+  --color-bg:        #0c0c0d;  /* fond principal de la page */
+  --color-bg-1:      #111113;  /* surfaces (cartes…) */
+  --color-bg-2:      #161618;  /* surfaces surélevées / hover */
+
+  /* — Texte — */
+  --color-fg:        #f3f1ec;  /* texte principal (off-white) */
+  --color-muted:     #8c8c89;  /* texte secondaire */
+  --color-muted-2:   #5d5d5b;  /* texte tertiaire / placeholders */
+
+  /* — Accent — */
+  --color-accent:     #5b8cff;  /* bleu d'accent */
+  --color-accent-ink: #0a0c14;  /* texte posé SUR l'accent */
+
+  /* — Lignes / bordures — */
+  --color-line:   rgba(243, 241, 236, 0.12); /* séparateurs visibles */
+  --color-line-2: rgba(243, 241, 236, 0.06); /* séparateurs discrets */
+
+  /* — Alias rétro-compatibles (noms historiques utilisés dans index.css) — */
+  --bg:        var(--color-bg);
+  --bg-1:      var(--color-bg-1);
+  --bg-2:      var(--color-bg-2);
+  --fg:        var(--color-fg);
+  --muted:     var(--color-muted);
+  --muted-2:   var(--color-muted-2);
+  --line:      var(--color-line);
+  --line-2:    var(--color-line-2);
+  --accent:    var(--color-accent);
+  --accent-ink:var(--color-accent-ink);
+
+  /* ==========================================================
+     2. TYPOGRAPHIE
+     ========================================================== */
+
+  /* — Familles — */
+  --font-serif: "Instrument Serif", Georgia, serif;       /* accents italiques élégants */
+  --font-sans:  "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif; /* titres & corps */
+  --font-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace; /* labels, index */
+
+  /* Alias historiques */
+  --serif: var(--font-serif);
+  --sans:  var(--font-sans);
+  --mono:  var(--font-mono);
+
+  /* — Graisses — */
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-black:    800;
+  --fw-heavy:    900;
+
+  /* — Taille de base — */
+  --text-base: 17px;   /* taille du <body> */
+
+  /* — Échelle statique (petits textes) — */
+  --text-xs:  0.68rem; /* chips, mini-labels */
+  --text-sm:  0.72rem; /* labels mono, nav */
+  --text-md:  0.95rem; /* boutons, liens secondaires */
+  --text-lg:  1.05rem; /* sous-titres, liens */
+
+  /* — Échelle fluide (grands titres, responsive via clamp) — */
+  --text-hero:      clamp(2.6rem, 6vw, 6.4rem);   /* H1 du hero */
+  --text-display:   clamp(2.6rem, 9vw, 9rem);     /* gros titre contact */
+  --text-h2:        clamp(2rem, 5.2vw, 4.6rem);   /* titres de section */
+  --text-statement: clamp(1.6rem, 3.2vw, 2.9rem); /* phrase About */
+  --text-title:     clamp(1.3rem, 2.4vw, 2rem);   /* titres de carte / skills */
+  --text-marquee:   clamp(0.8rem, 1.75vw, 1.5rem);/* bandeau défilant */
+
+  /* — Hauteurs de ligne — */
+  --leading-tight:   0.9;   /* gros titres serrés */
+  --leading-snug:    1.18;  /* phrase About */
+  --leading-normal:  1.5;   /* corps de texte */
+  --leading-relaxed: 1.7;   /* caption mono */
+
+  /* — Interlettrage (letter-spacing) — */
+  --tracking-tighter: -0.025em; /* hero / display */
+  --tracking-tight:   -0.02em;  /* titres H2 */
+  --tracking-normal:  0;
+  --tracking-wide:    0.1em;    /* labels mono */
+  --tracking-wider:   0.14em;   /* nav, titres mono */
+  --tracking-widest:  0.18em;   /* logo, sur-titres */
+
+  /* ==========================================================
+     3. ESPACEMENTS  (échelle base 4px)
+     ========================================================== */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* — Espacements de mise en page (fluides) — */
+  --pad:        clamp(20px, 4.5vw, 84px);   /* gouttière horizontale globale */
+  --section-py: clamp(80px, 11vw, 180px);   /* padding vertical des sections */
+  --gap-grid:   clamp(18px, 2.4vw, 40px);   /* écart des grilles de cartes */
+
+  /* ==========================================================
+     4. RAYONS (border-radius)
+     ========================================================== */
+  --radius-none: 0;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   14px;
+  --radius-pill: 100px;   /* chips, boutons arrondis, puces */
+  --radius-full: 9999px;
+
+  /* ==========================================================
+     5. BORDURES
+     ========================================================== */
+  --border-width: 1px;
+  --border:        var(--border-width) solid var(--color-line);
+  --border-subtle: var(--border-width) solid var(--color-line-2);
+  --border-strong: var(--border-width) solid var(--color-fg);
+
+  /* ==========================================================
+     6. OMBRES
+     ========================================================== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.45);
+
+  /* ==========================================================
+     7. MOTION (durées & courbes)
+     ========================================================== */
+  --ease:      cubic-bezier(0.22, 1, 0.36, 1); /* easing signature (sortie douce) */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --dur-fast: 0.2s;
+  --dur:      0.4s;
+  --dur-slow: 0.7s;
+  --dur-reveal: 0.9s;  /* animations d'apparition au scroll */
+
+  /* ==========================================================
+     8. Z-INDEX
+     ========================================================== */
+  --z-base:    1;
+  --z-card:    3;   /* éléments en superposition dans une carte */
+  --z-nav:     8000;
+  --z-grain:   9000; /* overlay de grain au-dessus de tout */
+
+  /* ==========================================================
+     9. LAYOUT
+     ========================================================== */
+  --maxw: 1600px;   /* largeur max du contenu */
+
+  /* Points de rupture — POUR RÉFÉRENCE (les @media ne peuvent pas
+     utiliser de var()). Garde ces valeurs en phase avec le CSS :
+       --bp-sm:  820px   (cartes en 1 colonne)
+       --bp-md:  900px   (grilles à colonnes -> 1 colonne)
+       --bp-lg:  1040px  (nav -> menu burger, hero empilé) */
+}
