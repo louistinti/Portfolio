@@ -3,11 +3,23 @@
 Single-page **dark editorial** portfolio (DEPTH × Instrument-Serif elegance), built with
 **React + Vite**. Implemented from a Claude Design handoff bundle.
 
-## Démarrer en local
+## Voir les changements en local (avant de push)
+
+Le moyen le plus simple : **double-clique sur `start-dev.bat`**.
+Il installe les dépendances la première fois, démarre le serveur local et ouvre
+le site dans ton navigateur sur **http://localhost:5173**. Dès que tu modifies un
+fichier et que tu l'enregistres, la page se met à jour toute seule (hot reload).
+Ferme la fenêtre noire (ou Ctrl+C) pour arrêter le serveur.
+
+> Pour une vérification finale du rendu réel déployé, double-clique sur
+> `preview-build.bat` (construit puis sert la version de production).
+
+En ligne de commande, l'équivalent est :
 
 ```bash
 npm install      # installe les dépendances (une seule fois)
-npm run dev      # lance le site → http://localhost:5173
+npm run dev      # serveur local avec rechargement à chaud → http://localhost:5173
+npm run preview  # aperçu de la version de production (après npm run build)
 ```
 
 ## Modifier le contenu
