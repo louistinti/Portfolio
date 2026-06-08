@@ -1,0 +1,17 @@
+# Normalise les fins de ligne : LF dans le dépôt ET à l'extraction.
+# Supprime les avertissements "LF will be replaced by CRLF" sous Windows.
+* text=auto eol=lf
+
+# Scripts Windows : doivent garder des fins de ligne CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Fichiers binaires : ne jamais modifier les fins de ligne
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.woff binary
+*.woff2 binary
