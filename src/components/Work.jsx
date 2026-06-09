@@ -5,7 +5,7 @@ export default function Work() {
     <section className="section" id="work" data-screen-label="Work">
       <div className="section-head">
         <h2>Selected work</h2>
-        <span className="section-idx">(03) — Six</span>
+        <span className="section-idx">(03)</span>
       </div>
 
       <div className="work-grid">
@@ -16,7 +16,7 @@ export default function Work() {
                 {p.cover ? (
                   <img src={p.cover} alt={p.name} />
                 ) : (
-                  <span className="ph-label">[ Project image — replace ]</span>
+                  <span className="ph-label">[ Project image, replace ]</span>
                 )}
               </div>
               <div className="card__top">

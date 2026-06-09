@@ -11,15 +11,15 @@ export default function About() {
       <div className="about-grid">
         <p className="about-statement reveal">
           I'm a <span className="serif-it">product designer</span> who now <em>builds</em> what I
-          design. I turn fuzzy B2B problems into clear, scalable products — pairing UX craft with AI
+          design. I turn fuzzy B2B problems into clear, scalable products, pairing UX craft with AI
           to move from <span className="serif-it">idea</span> to shipped interface, faster.
         </p>
         <div className="about-cols">
           <div className="reveal" data-d="1">
             <h4>// Approach</h4>
             <p>
-              Research first, systems always. I design the structure behind a product — flows,
-              hierarchy, components — so it holds up as it grows.
+              Research first, systems always. I design the structure behind a product, its flows,
+              hierarchy and components, so it holds up as it grows.
             </p>
           </div>
           <div className="reveal" data-d="2">

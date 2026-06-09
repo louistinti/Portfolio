@@ -10,9 +10,9 @@ const COLORS = [
 ]
 
 const FONTS = [
-  { token: '--font-sans', label: 'Sans — Archivo (titres & corps)' },
-  { token: '--font-serif', label: 'Serif — Instrument Serif (accents)' },
-  { token: '--font-mono', label: 'Mono — JetBrains Mono (labels)' },
+  { token: '--font-display', label: 'Display, Space Grotesk (titres)' },
+  { token: '--font-sans', label: 'Sans, Inter (corps & UI)' },
+  { token: '--font-mono', label: 'Mono, JetBrains Mono (labels)' },
 ]
 
 const WEIGHTS = [
@@ -25,8 +25,9 @@ const WEIGHTS = [
 ]
 
 const TYPE_SCALE = [
-  '--text-display', '--text-hero', '--text-h2', '--text-statement',
-  '--text-marquee', '--text-title', '--text-lg', '--text-md', '--text-sm', '--text-xs',
+  '--text-hero', '--text-display', '--text-h2', '--text-statement', '--text-title', '--text-marquee',
+  '--text-96', '--text-80', '--text-72', '--text-64', '--text-56', '--text-48',
+  '--text-40', '--text-32', '--text-24', '--text-16', '--text-14', '--text-12',
 ]
 
 const TRACKING = [
@@ -94,7 +95,7 @@ export default function DesignSystemPreview() {
   return (
     <div className="ds">
       <header className="ds-header">
-        <p className="ds-eyebrow">Design System — référence vivante</p>
+        <p className="ds-eyebrow">Design System, référence vivante</p>
         <h1 className="ds-title">Tokens</h1>
         <p className="ds-lead">
           Aperçu en direct des variables de <code>src/styles/design-system.css</code>. Modifie ce
@@ -122,7 +123,7 @@ export default function DesignSystemPreview() {
           {FONTS.map((f) => (
             <div className="ds-font-row" key={f.token}>
               <span className="ds-font-sample" style={{ fontFamily: `var(${f.token})` }}>
-                Ag — Design that ships. 0123
+                Ag, Design that ships. 0123
               </span>
               <div className="ds-font-meta">
                 <code className="ds-token">{f.token}</code>

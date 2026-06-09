@@ -10,7 +10,7 @@ export const profile = {
   brand: 'Portfolio', // texte du logo en haut à gauche
   mark: 'PD', // initiales dans le losange du logo
   role: 'Product Designer & AI Project Builder',
-  location: 'Based anywhere — remote',
+  location: 'Based anywhere, remote',
   email: 'hello@example.com',
 }
 
@@ -44,7 +44,7 @@ export const tools = [
 export const projects = [
   {
     idx: '01', name: 'Nexus', year: '2025', cat: 'SaaS · Dashboard',
-    tldr: 'Rebuilt a multi‑tenant analytics dashboard — cut time‑to‑insight by ~40% with a clearer data hierarchy.',
+    tldr: 'Rebuilt a multi‑tenant analytics dashboard, cut time‑to‑insight by ~40% with a clearer data hierarchy.',
     cover: '', href: '#',
   },
   {
@@ -59,17 +59,17 @@ export const projects = [
   },
   {
     idx: '04', name: 'Cipher', year: '2024', cat: 'Enterprise · Security',
-    tldr: 'A security console for enterprise admins — made role‑based access feel simple, not scary.',
+    tldr: 'A security console for enterprise admins, made role‑based access feel simple, not scary.',
     cover: '', href: '#',
   },
   {
     idx: '05', name: 'Atlas', year: '2023', cat: 'B2B · Marketplace',
-    tldr: 'Redesigned a B2B marketplace — rebuilt search, filtering and checkout around real buyer intent.',
+    tldr: 'Redesigned a B2B marketplace, rebuilt search, filtering and checkout around real buyer intent.',
     cover: '', href: '#',
   },
   {
     idx: '06', name: 'Pulse', year: '2023', cat: 'SaaS · Ops',
-    tldr: 'A real‑time ops monitoring app — designed alerting and incident triage for on‑call teams.',
+    tldr: 'A real‑time ops monitoring app, designed alerting and incident triage for on‑call teams.',
     cover: '', href: '#',
   },
 ]

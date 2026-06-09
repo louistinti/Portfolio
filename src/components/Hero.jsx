@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="hero" data-screen-label="Hero">
       <div className="hero__body">
         <div className="hero__idx">
-          <span className="mono">Portfolio — 2026</span>
+          <span className="mono">Portfolio, 2026</span>
           <span className="mono">(01)</span>
         </div>
 
@@ -18,7 +18,7 @@ export default function Hero() {
           <div className="hero__sub">
             <p>
               <strong>{profile.role}.</strong> I design and ship B2B &amp; SaaS products end to
-              end — from research and UX to shipped interface. Freelance · full‑remote or hybrid.
+              end, from research and UX to shipped interface. Freelance · full‑remote or hybrid.
             </p>
           </div>
           <a className="btn" href="#work">

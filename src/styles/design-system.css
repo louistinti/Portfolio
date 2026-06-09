@@ -50,11 +50,13 @@
      ========================================================== */
 
   /* — Familles — */
-  --font-serif: "Instrument Serif", Georgia, serif;       /* accents italiques élégants */
-  --font-sans:  "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif; /* titres & corps */
+  --font-display: "Space Grotesk", "Archivo", sans-serif; /* TITRES (display) */
+  --font-sans:  "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif; /* corps & UI */
   --font-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace; /* labels, index */
+  --font-serif: "Instrument Serif", Georgia, serif;       /* RÉSERVE — accent serif désactivé pour le moment */
 
   /* Alias historiques */
+  --display: var(--font-display);
   --serif: var(--font-serif);
   --sans:  var(--font-sans);
   --mono:  var(--font-mono);
@@ -67,22 +69,30 @@
   --fw-black:    800;
   --fw-heavy:    900;
 
-  /* — Taille de base — */
-  --text-base: 17px;   /* taille du <body> */
+  /* Échelle typographique (paliers discrets, même logique que les espacements) */
+  --text-12: 12px;   /* minimum : labels mono, chips, captions */
+  --text-14: 14px;
+  --text-16: 16px;   /* corps / body */
+  --text-24: 24px;
+  --text-32: 32px;
+  --text-40: 40px;
+  --text-48: 48px;
+  --text-56: 56px;
+  --text-64: 64px;
+  --text-72: 72px;
+  --text-80: 80px;
+  --text-96: 96px;
 
-  /* — Échelle statique (petits textes) — */
-  --text-xs:  0.68rem; /* chips, mini-labels */
-  --text-sm:  0.72rem; /* labels mono, nav */
-  --text-md:  0.95rem; /* boutons, liens secondaires */
-  --text-lg:  1.05rem; /* sous-titres, liens */
+  /* Taille de base */
+  --text-base: var(--text-16);   /* taille du <body> */
 
-  /* — Échelle fluide (grands titres, responsive via clamp) — */
-  --text-hero:      clamp(2.6rem, 6vw, 6.4rem);   /* H1 du hero */
-  --text-display:   clamp(2.6rem, 9vw, 9rem);     /* gros titre contact */
-  --text-h2:        clamp(2rem, 5.2vw, 4.6rem);   /* titres de section */
-  --text-statement: clamp(1.6rem, 3.2vw, 2.9rem); /* phrase About */
-  --text-title:     clamp(1.3rem, 2.4vw, 2rem);   /* titres de carte / skills */
-  --text-marquee:   clamp(0.7rem, 1.2vw, 1.05rem);/* bandeau défilant */
+  /* Rôles fluides (grands titres responsives ; bornes prises dans l'échelle) */
+  --text-hero:      clamp(var(--text-40), 6vw, var(--text-96));   /* H1 du hero */
+  --text-display:   clamp(var(--text-24), 4.5vw, var(--text-64)); /* gros titre contact */
+  --text-h2:        clamp(var(--text-32), 5.2vw, var(--text-72)); /* titres de section */
+  --text-statement: clamp(var(--text-24), 3.2vw, var(--text-48)); /* phrase About */
+  --text-title:     clamp(var(--text-24), 2.4vw, var(--text-32)); /* titres de carte / skills */
+  --text-marquee:   clamp(var(--text-12), 1.2vw, var(--text-16)); /* bandeau défilant */
 
   /* — Hauteurs de ligne — */
   --leading-tight:   0.9;   /* gros titres serrés */
