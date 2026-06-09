@@ -1,0 +1,449 @@
+/* ============================================================
+   ÉTUDE DE CAS — Paris-Saclay app redesign
+   ------------------------------------------------------------
+   Étend index.css / design-system.css. Accent bleu Saclay +
+   échelle topographique, le tout SCOPÉ sous .cs-page pour ne
+   pas affecter le portfolio. Adapté aux conventions du site :
+   police display (Space Grotesk, graisses ≤ 700), pas de serif,
+   placeholders .ph (au lieu de <image-slot>).
+
+   Tailles de texte = échelle --text-* ; espacements
+   (padding/margin/gap) = échelle --space-* (valeur la plus
+   proche). letter-spacing/line-height/radius restent bruts,
+   comme dans index.css.
+   ============================================================ */
+
+.cs-page {
+  /* Magenta primaire Paris-Saclay (style guide réel) décliné en échelle de relief.
+     --accent = primaire de marque pour les FONDS (boutons, logo, sélection) ;
+     --accent-line = magenta clair lisible pour les TEXTES/TRAITS sur fond sombre
+     (le primaire #840051 est trop foncé pour du petit texte sur le fond #0c0c0d). */
+  --accent: #840051;       /* primaire de marque — fonds */
+  --accent-ink: #fbeaf3;   /* texte clair posé sur l'accent */
+  --accent-line: #d8589f;  /* magenta clair — textes, traits, accents (AA sur fond sombre) */
+  /* Échelle de relief : du foncé de marque (deck) au clair dérivé */
+  --topo-1: #2e0028;  /* deck */
+  --topo-2: #4a0c33;  /* deck */
+  --topo-3: #63003c;  /* deck */
+  --topo-4: #840051;  /* deck — primaire */
+  --topo-5: #c85a95;  /* dérivé clair */
+  --topo-6: #f0a9ce;  /* dérivé très clair */
+  --topo-line: rgba(216, 88, 159, 0.16);
+}
+
+.cs-page ::selection { background: var(--accent); color: var(--accent-ink); }
+
+/* Texture de contours topographiques, réutilisée en fond des panneaux sombres */
+.cs-page .topo-bg {
+  position: relative;
+  background-image:
+    repeating-radial-gradient(circle at 22% 18%, transparent 0 46px, var(--topo-line) 46px 47px),
+    repeating-radial-gradient(circle at 84% 96%, transparent 0 60px, var(--topo-line) 60px 61px);
+}
+.cs-page .topo-bg > * { position: relative; z-index: 1; }
+
+/* ============================================================
+   NAV (variante étude de cas — pleine, sans blend)
+   ============================================================ */
+.cs-page .cs-nav { mix-blend-mode: normal; }
+.cs-page .cs-nav.scrolled { mix-blend-mode: normal; }
+.cs-page .cs-nav .brand .mark { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+/* CTA "All work" : même pilule que "Get in touch" + remplissage blanc au survol */
+.cs-back {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.14em; text-transform: uppercase;
+  padding: var(--space-2) var(--space-4); border-radius: 100px;
+  color: var(--fg); box-shadow: inset 0 0 0 1px var(--fg);
+  background-image: linear-gradient(var(--fg), var(--fg));
+  background-repeat: no-repeat; background-position: left center; background-size: 0% 100%;
+  transition: background-size 0.45s var(--ease), color 0.4s var(--ease);
+}
+.cs-back:hover { color: var(--bg); background-size: 100% 100%; }
+.cs-back .ar { transition: transform 0.4s var(--ease); -webkit-text-stroke: 0.5px currentColor; }
+.cs-back:hover .ar { transform: translateX(-4px); }
+
+/* ============================================================
+   TITLE BAR (compacte : kicker + H1 + méta, sans grande image)
+   ============================================================ */
+.cs-title {
+  padding: calc(var(--nav-h) + clamp(var(--space-8), 6vw, var(--space-14))) var(--pad) clamp(var(--space-8), 4vw, var(--space-12));
+  border-bottom: 1px solid var(--line);
+}
+.cs-title__kicker {
+  display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+.cs-title__kicker .tag {
+  font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-line);
+}
+.cs-title__kicker .sep { width: 26px; height: 1px; background: var(--line); }
+.cs-title__row {
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: clamp(var(--space-6), 3vw, var(--space-10));
+}
+.cs-title h1 {
+  font-family: var(--display);
+  font-weight: 700; text-transform: uppercase; letter-spacing: -0.025em;
+  font-size: clamp(var(--text-32), 4.5vw, var(--text-56)); line-height: 0.95;
+  max-width: 24ch; text-wrap: balance;
+}
+.cs-title h1 .serif-it { font-weight: 500; text-transform: none; color: var(--accent-line); }
+
+/* méta slim en ligne (Role / Device / Client / Year) */
+.cs-meta { display: grid; grid-auto-flow: column; justify-content: start; gap: clamp(var(--space-8), 3vw, var(--space-12)); }
+.cs-meta div { display: flex; flex-direction: column; gap: var(--space-1); }
+.cs-meta dt {
+  font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted-2);
+}
+.cs-meta dd { font-size: var(--text-14); color: var(--fg); font-weight: 500; }
+@media (max-width: 640px) {
+  .cs-meta { grid-auto-flow: row; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+}
+
+/* ============================================================
+   LEAD PARAGRAPH (intro de section — réutilisé sous Wireframes)
+   ============================================================ */
+.cs-hero__sub {
+  margin-top: clamp(var(--space-6), 3vw, var(--space-10)); max-width: 60ch;
+  color: var(--muted); font-size: clamp(var(--text-16), 1.5vw, var(--text-24)); line-height: 1.55;
+}
+.cs-hero__sub strong { color: var(--fg); font-weight: 600; }
+
+/* premier bloc de contenu (Context) : rythme au-dessus du sur-titre */
+.cs-page #overview { padding-top: clamp(var(--space-10), 6vw, var(--space-20)); }
+
+/* ============================================================
+   PLACEHOLDERS .ph (étude de cas) — fits & object-fit
+   ============================================================ */
+.cs-page .ph[data-fit="contain"] img { object-fit: contain; }
+
+/* ============================================================
+   ÉTIQUETTES D'ÉTAPE
+   ============================================================ */
+.step-eyebrow {
+  display: inline-flex; align-items: baseline; gap: var(--space-3);
+  font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-line); margin-bottom: var(--space-4);
+}
+.step-eyebrow .num { font-size: var(--text-12); color: var(--muted-2); }
+
+/* bloc éditorial deux colonnes */
+.cs-lede {
+  display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(var(--space-8), 6vw, var(--space-24));
+  align-items: start;
+}
+.cs-lede h3 {
+  font-family: var(--display);
+  font-size: var(--text-statement); line-height: 1.06; letter-spacing: -0.02em; font-weight: 700;
+  text-wrap: pretty;
+}
+.cs-lede h3 .serif-it { font-weight: 500; }
+.cs-lede .body { display: flex; flex-direction: column; gap: var(--space-6); }
+.cs-lede .body p { color: var(--muted); font-size: var(--text-16); line-height: 1.62; }
+.cs-lede .body p strong { color: var(--fg); font-weight: 600; }
+
+@media (max-width: 880px) { .cs-lede { grid-template-columns: 1fr; gap: var(--space-6); } }
+
+/* encadrés statistiques */
+.cs-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+  margin-top: clamp(var(--space-12), 6vw, var(--space-20));
+}
+.cs-stats .stat { background: var(--bg); padding: clamp(var(--space-8), 4vw, var(--space-12)); }
+.cs-stats .stat .v {
+  font-family: var(--display);
+  font-weight: 700; letter-spacing: -0.02em; line-height: 0.95;
+  font-size: clamp(var(--text-40), 5vw, var(--text-64)); color: var(--fg);
+}
+.cs-stats .stat .v .u { font-size: 0.4em; color: var(--accent-line); margin-left: var(--space-1); }
+.cs-stats .stat .k {
+  margin-top: var(--space-4); color: var(--muted); font-size: var(--text-16); line-height: 1.5; max-width: 26ch;
+}
+@media (max-width: 760px) { .cs-stats { grid-template-columns: 1fr; } }
+
+/* citation / défi */
+.cs-quote {
+  border-top: 1px solid var(--line);
+  padding: clamp(var(--space-14), 9vw, var(--space-32)) 0;
+  text-align: center;
+}
+.cs-quote p {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(var(--text-32), 4.4vw, var(--text-56)); line-height: 1.18; letter-spacing: -0.01em;
+  max-width: 22ch; margin: 0 auto; color: var(--fg); text-wrap: balance;
+}
+.cs-quote p .serif-it { color: var(--accent-line); }
+.cs-quote .who {
+  margin-top: var(--space-8); font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ============================================================
+   PERSONAS
+   ============================================================ */
+.persona-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(var(--space-4), 2vw, var(--space-8));
+  margin-top: clamp(var(--space-10), 5vw, var(--space-16));
+}
+.persona {
+  border: 1px solid var(--line); background: var(--bg-1);
+  display: flex; flex-direction: column;
+}
+.persona__media { aspect-ratio: 4 / 3; }
+.persona__media .ph { width: 100%; height: 100%; }
+.cs-page .persona__media .ph {
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 12px),
+    linear-gradient(160deg, var(--topo-2), var(--bg));
+}
+.persona__body { padding: clamp(var(--space-6), 2.4vw, var(--space-8)); display: flex; flex-direction: column; gap: var(--space-4); }
+.persona__name { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); }
+.persona__name h4 { font-family: var(--display); font-size: var(--text-24); font-weight: 700; letter-spacing: -0.01em; }
+.persona__name .id { font-family: var(--mono); font-size: var(--text-12); color: var(--accent-line); letter-spacing: 0.14em; }
+.persona__goal { color: var(--fg); font-size: var(--text-16); line-height: 1.5; }
+.persona__pain {
+  color: var(--muted); font-size: var(--text-14); line-height: 1.55;
+  padding-top: var(--space-4); border-top: 1px solid var(--line);
+}
+.persona__pain b {
+  display: block; font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.16em;
+  text-transform: uppercase; margin-bottom: var(--space-2); color: var(--topo-5); font-weight: 600;
+}
+@media (max-width: 900px) { .persona-grid { grid-template-columns: 1fr; } }
+
+/* bannière insight */
+.cs-insight {
+  margin-top: clamp(var(--space-10), 5vw, var(--space-16));
+  display: grid; grid-template-columns: auto 1fr; gap: clamp(var(--space-6), 3vw, var(--space-10));
+  align-items: start;
+  padding: clamp(var(--space-8), 4vw, var(--space-12));
+  border: 1px solid var(--accent-line);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%);
+}
+.cs-insight .mk {
+  font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-line); writing-mode: vertical-rl; transform: rotate(180deg);
+}
+.cs-insight p { font-size: clamp(var(--text-16), 2vw, var(--text-24)); line-height: 1.4; color: var(--fg); text-wrap: pretty; }
+.cs-insight p .serif-it { color: var(--topo-5); }
+@media (max-width: 700px) {
+  .cs-insight { grid-template-columns: 1fr; }
+  .cs-insight .mk { writing-mode: horizontal-tb; transform: none; }
+}
+
+/* ============================================================
+   GRILLE DE FEATURES (idéation)
+   ============================================================ */
+.feature-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+  margin-top: clamp(var(--space-10), 4vw, var(--space-14));
+}
+.feature {
+  background: var(--bg); padding: clamp(var(--space-6), 3vw, var(--space-10));
+  display: flex; flex-direction: column; gap: var(--space-3); min-height: 160px;
+  transition: background 0.4s var(--ease);
+}
+.feature:hover { background: var(--bg-2); }
+.feature .fi { font-family: var(--mono); font-size: var(--text-12); color: var(--accent-line); letter-spacing: 0.16em; }
+.feature h4 { font-family: var(--display); font-size: var(--text-24); font-weight: 700; letter-spacing: -0.01em; margin-top: auto; }
+.feature p { color: var(--muted); font-size: var(--text-14); line-height: 1.5; }
+@media (max-width: 820px) { .feature-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .feature-grid { grid-template-columns: 1fr; } }
+
+/* bloc média large (flow, 6-to-1, tests) */
+.cs-media { margin-top: clamp(var(--space-10), 4vw, var(--space-14)); }
+.cs-media__cap {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+.cs-media__cap h4 { font-family: var(--display); font-size: var(--text-16); font-weight: 600; }
+.cs-media__cap span { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.cs-media .ph { width: 100%; height: auto; }
+.cs-page .cs-media .ph {
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 13px),
+    linear-gradient(160deg, var(--bg-2), var(--bg));
+}
+
+/* ============================================================
+   PROGRESSION WIREFRAMES
+   ============================================================ */
+.wire-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(var(--space-4), 1.6vw, var(--space-6));
+  margin-top: clamp(var(--space-10), 4vw, var(--space-14));
+}
+.wire { display: flex; flex-direction: column; gap: var(--space-4); }
+.wire .ph { width: 100%; height: auto; aspect-ratio: 9 / 16; }
+.cs-page .wire .ph {
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 22px),
+    linear-gradient(160deg, var(--bg-2), var(--bg));
+}
+.wire .lab { display: flex; align-items: center; gap: var(--space-3); }
+.wire .v { font-family: var(--mono); font-weight: 500; font-size: var(--text-12); letter-spacing: 0.1em; color: var(--accent-line); }
+.wire .t { font-size: var(--text-14); color: var(--muted); }
+.cs-page .wire.is-final .ph { outline: 1px solid var(--accent-line); outline-offset: -1px; }
+.wire.is-final .v { color: var(--topo-6); }
+@media (max-width: 820px) { .wire-row { grid-template-columns: 1fr 1fr; } }
+
+/* ============================================================
+   APERÇUS DE PAGES WEB (vignettes recadrées sur le haut)
+   captures de pages — wireframes & UI — 4 vignettes en grille 2×2
+   ============================================================ */
+.cs-pages {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-4), 2vw, var(--space-8));
+  margin-top: clamp(var(--space-10), 5vw, var(--space-16));
+}
+.cs-pages figure { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.cs-pagecard {
+  border: 1px solid var(--line); background: var(--bg-1);
+  aspect-ratio: 4 / 3; overflow: hidden;
+}
+/* recadrage sur le HAUT de la capture (pas de défilement) */
+.cs-pagecard img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.cs-pagecard .ph-label {
+  display: grid; place-items: center; height: 100%; padding: var(--space-6);
+  font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted); text-align: center;
+}
+.cs-pages figcaption { display: flex; align-items: baseline; gap: var(--space-3); }
+.cs-pages figcaption .v { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.1em; color: var(--accent-line); }
+.cs-pages figcaption .t { font-size: var(--text-14); color: var(--muted); }
+@media (max-width: 720px) { .cs-pages { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   CONCEPT TOPOGRAPHIE (panneau sombre pleine largeur)
+   ============================================================ */
+.cs-topo {
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--topo-1), var(--bg));
+  padding: var(--section-py) var(--pad);
+  overflow: hidden;
+}
+.cs-topo__inner { max-width: var(--maxw); margin: 0 auto; }
+.cs-topo .step-eyebrow { color: var(--topo-5); }
+.cs-topo h3 {
+  font-family: var(--display);
+  font-size: clamp(var(--text-32), 4vw, var(--text-56)); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700;
+  max-width: 20ch; text-wrap: balance;
+}
+.cs-topo h3 .serif-it { font-weight: 500; color: var(--topo-5); }
+.cs-topo p { margin-top: var(--space-6); max-width: 56ch; color: var(--muted); font-size: var(--text-16); line-height: 1.62; }
+.cs-topo p strong { color: var(--fg); font-weight: 600; }
+.cs-topo__media { margin-top: clamp(var(--space-12), 6vw, var(--space-18)); }
+.cs-topo__media .ph { width: 100%; height: auto; aspect-ratio: 16 / 8; }
+.cs-page .cs-topo__media .ph { background: rgba(255,255,255,0.015); }
+
+/* ============================================================
+   UI / STYLE GUIDE
+   ============================================================ */
+.ui-guide {
+  display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(var(--space-8), 4vw, var(--space-14));
+  margin-top: clamp(var(--space-10), 5vw, var(--space-16)); align-items: start;
+}
+@media (max-width: 920px) { .ui-guide { grid-template-columns: 1fr; } }
+
+.guide-card { border: 1px solid var(--line); padding: clamp(var(--space-6), 3vw, var(--space-10)); }
+.guide-card h4 {
+  font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: var(--space-6);
+}
+/* rampe de teintes (relief) */
+.relief { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--line); }
+.relief span { aspect-ratio: 1 / 2.4; display: block; position: relative; }
+/* Étiquette hex verticale : la plus petite taille du DS (--text-12) ne tient pas
+   à l'horizontale dans une case étroite, mais court sans souci sur l'axe haut. */
+.relief span::after {
+  content: attr(data-h); position: absolute; left: 50%; bottom: var(--space-2);
+  transform: translateX(-50%); writing-mode: vertical-rl; text-orientation: mixed;
+  font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.55);
+}
+.relief .lite::after { color: rgba(7,10,24,0.65); }
+.guide-card .note { margin-top: var(--space-4); color: var(--muted); font-size: var(--text-14); line-height: 1.55; }
+
+/* spec typographique de l'app (police réelle du style guide Paris-Saclay) */
+.guide-type {
+  margin-top: var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--line);
+  display: grid; gap: var(--space-3);
+}
+.guide-type div { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); }
+.guide-type dt { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.guide-type dd { font-family: var(--display); font-size: var(--text-16); color: var(--fg); }
+
+/* mini-board de composants */
+.guide-comp { display: flex; flex-direction: column; gap: var(--space-6); }
+.guide-comp .row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.comp-pill {
+  font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1px solid var(--line); border-radius: 100px; padding: var(--space-2) var(--space-4); color: var(--muted);
+}
+.comp-btn {
+  background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: var(--text-14);
+  padding: var(--space-3) var(--space-6); border-radius: 12px;
+}
+.comp-btn.alt { background: transparent; color: var(--fg); border: 1px solid var(--line); }
+.comp-chip {
+  background: var(--topo-2); color: var(--topo-6); border-radius: 8px; padding: var(--space-2) var(--space-4);
+  font-size: var(--text-14); font-weight: 500;
+}
+.comp-tab { display: flex; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.comp-tab span { padding: var(--space-3) var(--space-4); font-size: var(--text-14); color: var(--muted); }
+.comp-tab span.on { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+
+/* grille des écrans UI finaux */
+.screens-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(var(--space-4), 1.6vw, var(--space-6));
+  margin-top: clamp(var(--space-10), 5vw, var(--space-16));
+}
+.screens-grid .ph { width: 100%; height: auto; aspect-ratio: 9 / 19; }
+.cs-page .screens-grid .ph {
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 26px),
+    linear-gradient(160deg, var(--topo-2), var(--bg));
+}
+@media (max-width: 820px) { .screens-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ============================================================
+   EMBED PROTOTYPE
+   ============================================================ */
+.proto-note {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--space-4); align-items: start;
+  border: 1px solid var(--line); padding: clamp(var(--space-6), 3vw, var(--space-8));
+  margin-top: clamp(var(--space-10), 4vw, var(--space-14)); margin-bottom: var(--space-8);
+  background: var(--bg-1);
+}
+.proto-note .mk { font-family: var(--mono); color: var(--accent-line); font-size: var(--text-14); letter-spacing: 0.1em; }
+.proto-note p { color: var(--muted); font-size: var(--text-16); line-height: 1.6; }
+.proto-note p kbd {
+  font-family: var(--mono); font-size: var(--text-12); background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 6px; padding: var(--space-1) var(--space-2); color: var(--fg);
+}
+.proto-frame {
+  position: relative; width: 100%; aspect-ratio: 16 / 10;
+  border: 1px solid var(--line); background: var(--bg-1);
+}
+.proto-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ============================================================
+   NEXT / FOOTER
+   ============================================================ */
+.cs-next {
+  border-top: 1px solid var(--line);
+  padding: clamp(var(--space-16), 9vw, var(--space-32)) var(--pad);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); flex-wrap: wrap;
+}
+.cs-next .lab { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.cs-next a.big {
+  display: inline-flex; align-items: center; gap: var(--space-6);
+  font-family: var(--display);
+  font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em;
+  font-size: var(--text-display); line-height: 1;
+}
+.cs-next a.big .ar { color: var(--accent-line); transition: transform 0.4s var(--ease); -webkit-text-stroke: 0.5px currentColor; }
+.cs-next a.big:hover .ar { transform: translate(8px, -8px); }

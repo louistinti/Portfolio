@@ -1,28 +1,18 @@
-import { useInteractions } from './hooks/useInteractions.js'
-import Nav from './components/Nav.jsx'
-import Hero from './components/Hero.jsx'
-import Marquee from './components/Marquee.jsx'
-import About from './components/About.jsx'
-import Work from './components/Work.jsx'
-import Skills from './components/Skills.jsx'
-import Contact from './components/Contact.jsx'
-import Footer from './components/Footer.jsx'
+import { useEffect } from 'react'
+import { useRoute } from './hooks/useRoute.js'
+import { caseStudies } from './data/content.js'
+import Portfolio from './components/Portfolio.jsx'
+import CaseStudy from './components/CaseStudy.jsx'
 
 export default function App() {
-  useInteractions()
+  const route = useRoute()
+  const study = route !== 'home' ? caseStudies[route] : null
 
-  return (
-    <>
-      <Nav />
-      <main id="top">
-        <Hero />
-        <Marquee />
-        <About />
-        <Work />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  )
+  // En entrant dans une étude de cas, on repart du haut (le navigateur
+  // conserve sinon la position de défilement du portfolio).
+  useEffect(() => {
+    if (study) window.scrollTo(0, 0)
+  }, [route, study])
+
+  return study ? <CaseStudy data={study} /> : <Portfolio />
 }
