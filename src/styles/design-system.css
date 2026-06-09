@@ -82,7 +82,7 @@
   --text-h2:        clamp(2rem, 5.2vw, 4.6rem);   /* titres de section */
   --text-statement: clamp(1.6rem, 3.2vw, 2.9rem); /* phrase About */
   --text-title:     clamp(1.3rem, 2.4vw, 2rem);   /* titres de carte / skills */
-  --text-marquee:   clamp(0.8rem, 1.75vw, 1.5rem);/* bandeau défilant */
+  --text-marquee:   clamp(0.7rem, 1.2vw, 1.05rem);/* bandeau défilant */
 
   /* — Hauteurs de ligne — */
   --leading-tight:   0.9;   /* gros titres serrés */
@@ -170,6 +170,7 @@
      9. LAYOUT
      ========================================================== */
   --maxw: 1600px;   /* largeur max du contenu */
+  --nav-h: 74px;    /* hauteur de la nav non-scrollée (2×--space-6 + ligne de texte) */
 
   /* Points de rupture — POUR RÉFÉRENCE (les @media ne peuvent pas
      utiliser de var()). Garde ces valeurs en phase avec le CSS :

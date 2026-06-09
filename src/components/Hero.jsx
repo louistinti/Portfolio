@@ -1,4 +1,4 @@
-import { profile, heroChips, projects } from '../data/content.js'
+import { profile, heroChips } from '../data/content.js'
 
 export default function Hero() {
   return (
@@ -31,7 +31,7 @@ export default function Hero() {
 
         <div className="hero__foot">
           <div className="chip-group">
-            <span className="chip star">✳ {projects.length} selected projects</span>
+            <span className="chip">Freelance</span>
             {heroChips.map((c) => (
               <span className="chip" key={c}>
                 {c}
