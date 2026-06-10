@@ -49,7 +49,7 @@ export const tools = [
 export const projects = [
   {
     idx: '01', name: 'Paris-Saclay', year: '2025', cat: 'UX/UI · Mobile App', slug: 'paris-saclay',
-    tldr: 'Turned an unused campus app into an everyday tool, field research, a clear IA and a topographic visual language for a 77 km² campus.',
+    tldr: 'Turned an unused campus app into an everyday tool, field research, a clear information architecture and a topographic visual language for a 77 km² campus.',
     cover: '/assets/ps/cover.jpg',
   },
   {
