@@ -250,9 +250,9 @@ export default function CaseStudy({ data }) {
               </div>
             )}
             {ideation.media?.map((m, i) => (
-              <div className="cs-media reveal" key={i}>
+              <div className={`cs-media reveal${m.framed ? ' is-framed' : ''}`} key={i}>
                 <div className="cs-media__cap"><h4>{m.cap}</h4>{m.sub && <span>{m.sub}</span>}</div>
-                <Shot id={m.shot} fit="contain" label={`[ ${m.cap} ]`} style={m.aspect ? { aspectRatio: m.aspect } : undefined} />
+                <Shot id={m.shot} fit="contain" label={`[ ${m.cap} ]`} style={!m.framed && m.aspect ? { aspectRatio: m.aspect } : undefined} />
               </div>
             ))}
           </section>

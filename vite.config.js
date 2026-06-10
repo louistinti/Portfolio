@@ -8,6 +8,6 @@ export default defineConfig({
   base: './',
   server: {
     port: 5173,
-    open: true, // ouvre automatiquement le navigateur au démarrage
+    open: false, // pas d'ouverture auto d'onglet (le serveur/onglet est déjà ouvert)
   },
 })

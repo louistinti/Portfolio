@@ -13,6 +13,9 @@ export const profile = {
   location: 'Nantes, France',
   email: 'louistdesign@gmail.com',
   cv: '/Louis-Tintillier-CV.pdf', // fichier dans public/
+  // Lien Calendly (modale "Let's talk"). Lien profil = montre tous les events.
+  // Pour ouvrir direct le créneau 30 min, ajoute le slug : '.../louistdesign/30min'
+  calendly: 'https://calendly.com/louistdesign',
 }
 
 // Liens de contact (la partie avant le " /" est le préfixe mono ; "Em" et "In"
@@ -35,10 +38,9 @@ export const skills = [
 
 // Toolbox tags
 export const tools = [
-  'Figma', 'Framer', 'Webflow',
-  'Claude', 'Cursor', 'v0',
-  'HTML / CSS', 'React', 'Notion',
-  'Linear', 'Maze', 'Mixpanel',
+  'Figma', 'Claude', 'Make',
+  'Notion', 'v0', 'n8n',
+  'Cursor',
 ]
 
 // Projets (6). 'cover' optionnel : mets '/assets/nexus.jpg' pour une vraie image.
@@ -53,7 +55,7 @@ export const projects = [
   {
     idx: '02', name: 'La Vraie Charentaise', year: '2022', cat: 'Branding · E-commerce', slug: 'charentaise',
     tldr: 'Rebranded the traditional French slipper into a playful, made‑in‑France e‑commerce concept, with on‑site personalization and a quiz that matches you to your pair.',
-    cover: '/assets/lvc/ui-quiz.png',
+    cover: '/assets/lvc/cover.png',
   },
   {
     idx: '03', name: 'Forge', year: '2024', cat: 'SaaS · Onboarding', slug: 'forge',
@@ -177,7 +179,7 @@ export const caseStudies = {
         { id: 'F-06', name: 'Events', desc: 'Cross-school activities to connect students.' },
       ],
       media: [
-        { shot: '6to1', cap: '6-to-1 · home page', sub: 'Ergonomics & hierarchy', aspect: '16 / 7' },
+        { shot: '6to1', cap: '6-to-1 · home page', sub: 'Ergonomics & hierarchy', framed: true },
       ],
     },
 
@@ -238,11 +240,11 @@ export const caseStudies = {
       'persona-1': '',
       'persona-2': '',
       'persona-3': '',
-      '6to1': '',
-      'wire-1': '',
-      'wire-2': '',
-      'wire-3': '',
-      'wire-4': '',
+      '6to1': '/assets/ps/6to1.png',
+      'wire-1': '/assets/ps/wire-1.png',
+      'wire-2': '/assets/ps/wire-2.png',
+      'wire-3': '/assets/ps/wire-3.png',
+      'wire-4': '/assets/ps/wire-4.png',
       midfi: '',
       'ui-1': '',
       'ui-2': '',
@@ -261,18 +263,20 @@ export const caseStudies = {
       { k: 'Platform', v: 'Web & mobile' },
     ],
 
-    // Thème pop magenta/rose (dérivé de l'identité de marque)
+    // Vraies couleurs de marque (charte graphique, p.23/27) :
+    // base ivoire / noir, primaires pop. Vert en accent, rampe de deck
+    // déclinée en vert foncé. Contrastes vérifiés AA/AAA sur le fond sombre.
     theme: {
-      '--accent': '#ef5e92',
-      '--accent-ink': '#2a0a18',
-      '--accent-line': '#f386ae',
-      '--topo-1': '#2a0a18',
-      '--topo-2': '#5e1a38',
-      '--topo-3': '#9c2f5e',
-      '--topo-4': '#ef5e92',
-      '--topo-5': '#f48fb5',
-      '--topo-6': '#fbcfe0',
-      '--topo-line': 'rgba(239, 94, 146, 0.16)',
+      '--accent': '#A3DCB3',       // Vert — accent (fonds, boutons, sélection)
+      '--accent-ink': '#14211b',   // vert très foncé — texte sur l'accent (~11:1)
+      '--accent-line': '#A3DCB3',  // Vert clair — petits textes/traits (~12:1 sur fond sombre)
+      '--topo-1': '#101713',       // deck
+      '--topo-2': '#16241b',       // deck
+      '--topo-3': '#1f3528',       // deck
+      '--topo-4': '#2f5740',       // vert profond (deck)
+      '--topo-5': '#8FCFA6',       // vert clair — accent texte secondaire (~9:1)
+      '--topo-6': '#C8E8D4',       // vert très clair
+      '--topo-line': 'rgba(163, 220, 179, 0.16)',
     },
 
     context: {
@@ -352,12 +356,12 @@ export const caseStudies = {
         { k: 'Body', v: 'Clash Display' },
       ],
       palette: [
-        { hex: '#F4EEE1', name: 'Cream' },
-        { hex: '#111111', name: 'Ink' },
-        { hex: '#EF5E92', name: 'Pink' },
-        { hex: '#FCE54B', name: 'Yellow' },
-        { hex: '#BFE6CF', name: 'Mint' },
-        { hex: '#BAD9EC', name: 'Sky' },
+        { hex: '#FFFCF6', name: 'Ivoire' },
+        { hex: '#191919', name: 'Noir' },
+        { hex: '#DB2C38', name: 'Rouge' },
+        { hex: '#A3DCB3', name: 'Vert' },
+        { hex: '#6BA9DD', name: 'Bleu' },
+        { hex: '#FFF300', name: 'Jaune' },
       ],
       components: {
         buttons: [{ label: 'Ajouter au panier' }, { label: 'Personnaliser', alt: true }],

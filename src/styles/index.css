@@ -99,6 +99,8 @@ a { color: inherit; text-decoration: none; }
   background-repeat: no-repeat; background-position: left center; background-size: 0% 100%;
   transition: background-size 0.45s var(--ease), color 0.4s var(--ease);
 }
+/* Flèche remontée de 2px pour l'alignement optique avec le texte du CTA */
+.nav-cta .arrow { position: relative; top: -1px; }
 .nav-cta:hover { color: var(--bg); background-size: 100% 100%; }
 .nav-burger { display: none; background: none; border: none; }
 
@@ -152,24 +154,30 @@ a { color: inherit; text-decoration: none; }
 
 /* buttons */
 .btn {
-  display: inline-flex; align-items: center; justify-content: space-between; gap: var(--space-8);
-  background: var(--accent); color: var(--accent-ink);
-  font-family: var(--sans); font-weight: 700; font-size: var(--text-16);
-  padding: var(--space-4) var(--space-6); border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: flex-start; gap: var(--space-4);
+  background: var(--accent); color: var(--accent-ink); white-space: nowrap;
+  font-family: var(--sans); font-weight: 700; font-size: var(--text-16); line-height: 24px;
+  height: 56px; box-sizing: border-box;          /* hauteur fixe : 56px quoi qu'il arrive (padding/bordure inclus) */
+  padding: var(--space-4) var(--space-6); border: 1px solid transparent; border-radius: 32px; cursor: pointer;
   transition: transform 0.4s var(--ease), background 0.3s var(--ease);
 }
+/* Icône-flèche FontAwesome (SVG inline) : taille fixe, hérite de currentColor.
+   Le SVG (14px) reste sous la ligne de texte (24px), donc tous les boutons
+   gardent la même hauteur quel que soit le glyphe. */
+.arrow { width: 14px; height: 14px; flex: none; }
 .btn .arrow { transition: transform 0.4s var(--ease); }
+/* Flèche → des CTA pleins (See my work, Start a project) : remontée d'1px pour l'alignement optique */
+.btn:not(.btn-ghost) .arrow { position: relative; top: -1px; }
 .btn:hover { transform: translateY(-2px); }
 .btn:hover .arrow { transform: translateX(4px); }
 
-/* Flèches des CTA : trait droit (→) + un peu plus bold — même glyphe que le "Scroll ↓" */
-.arrow,
+/* Glyphes texte des CTA restants (chevron des cartes, retour haut de page) */
 .card__bar .go,
 .to-top span { -webkit-text-stroke: 0.5px currentColor; }
 
 .btn-ghost {
   background: transparent; color: var(--fg);
-  border: 1px solid var(--line); border-radius: 100px;
+  border: 1px solid var(--line); border-radius: 32px;
 }
 .btn-ghost:hover { border-color: var(--fg); }
 .btn-ghost:hover .arrow { transform: translateY(4px); } /* Download CV : flèche vers le bas */
@@ -208,8 +216,8 @@ a { color: inherit; text-decoration: none; }
   font-size: var(--text-hero); line-height: 0.9; letter-spacing: -0.025em;
 }
 .hero__lead { display: flex; flex-direction: column; gap: var(--space-8); }
-/* bouton du hero : flèche droite, à 16px du texte (le bouton se dimensionne au contenu) */
-.hero__lead .btn { gap: var(--space-4); align-self: flex-start; justify-content: flex-start; }
+/* bouton du hero : aligné à gauche dans la colonne (taille/gap hérités de .btn) */
+.hero__lead .btn { align-self: flex-start; }
 .hero__sub { max-width: 46ch; color: var(--muted); font-size: var(--text-16); }
 .hero__sub strong { color: var(--fg); font-weight: 600; }
 
@@ -286,8 +294,8 @@ a { color: inherit; text-decoration: none; }
   padding: var(--space-4) var(--space-6);
 }
 .card__top .idx { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.1em; color: var(--muted); }
-.card__top .cat { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
-  border: 1px solid var(--line); border-radius: 100px; padding: var(--space-1) var(--space-3); background: rgba(12,12,13,0.4); backdrop-filter: blur(6px); }
+.card__top .cat { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg);
+  border: 1px solid rgba(243,241,236,0.22); border-radius: 100px; padding: var(--space-1) var(--space-3); background: rgba(12,12,13,0.66); backdrop-filter: blur(6px); }
 
 /* TLDR panel slides up */
 .card__tldr {
@@ -364,6 +372,60 @@ a { color: inherit; text-decoration: none; }
 .contact__links a .mono { color: var(--muted); }
 .contact__links a:hover .lbl { color: var(--accent); }
 .contact__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+/* ============================================================
+   MODALE "LET'S TALK"
+   ============================================================ */
+.modal {
+  position: fixed; inset: 0; z-index: 8500; /* au-dessus de la nav, sous le grain */
+  display: flex; align-items: center; justify-content: center; padding: var(--space-6);
+  background: rgba(8, 8, 9, 0.66); backdrop-filter: blur(6px);
+  animation: modal-fade var(--dur) var(--ease);
+}
+.modal__card {
+  position: relative; width: 100%; max-width: 480px;
+  background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: var(--space-10) var(--space-8) var(--space-8);
+  animation: modal-rise var(--dur) var(--ease);
+}
+.modal__close {
+  position: absolute; top: var(--space-4); right: var(--space-4);
+  width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: var(--radius-full); background: transparent;
+  color: var(--muted); cursor: pointer; transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.modal__close svg { width: 13px; height: 13px; }
+.modal__close:hover { color: var(--fg); border-color: var(--fg); }
+.modal__eyebrow { display: block; font-size: var(--text-12); color: var(--muted); letter-spacing: 0.08em; }
+.modal__title {
+  font-family: var(--display); font-weight: 700; letter-spacing: -0.02em;
+  font-size: var(--text-32); line-height: 1.04; margin: var(--space-3) 0 var(--space-8);
+}
+.modal__options { display: grid; gap: var(--space-4); }
+.modal__opt {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-4) var(--space-6); border: 1px solid var(--line); border-radius: var(--radius-md);
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.modal__opt:hover { border-color: var(--fg); transform: translateY(-2px); }
+.modal__opt-ic {
+  width: 44px; height: 44px; flex: none; display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-full); background: var(--bg-2); color: var(--accent);
+}
+.modal__opt-ic svg { width: 18px; height: 18px; }
+.modal__opt-txt { display: grid; gap: 2px; margin-right: auto; }
+.modal__opt-txt b { font-size: var(--text-16); font-weight: 700; }
+.modal__opt-sub { font-size: var(--text-14); color: var(--muted); }
+.modal__opt .arrow { color: var(--muted); transition: transform var(--dur) var(--ease), color var(--dur) var(--ease); }
+.modal__opt:hover .arrow { color: var(--fg); transform: translate(3px, -3px); }
+.modal__opt:hover .arrow[viewBox="0 0 448 512"] { transform: translateX(3px); } /* arrow-right reste horizontale */
+
+@keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .modal, .modal__card { animation: none; }
+}
 
 /* ============================================================
    FOOTER

@@ -1,4 +1,5 @@
 import { profile, heroChips } from '../data/content.js'
+import Icon from './Icon.jsx'
 
 export default function Hero() {
   return (
@@ -22,10 +23,7 @@ export default function Hero() {
             </p>
           </div>
           <a className="btn" href="#work">
-            See my work{' '}
-            <span className="arrow" aria-hidden="true">
-              →
-            </span>
+            See my work <Icon name="arrow-right" className="arrow" />
           </a>
         </div>
 

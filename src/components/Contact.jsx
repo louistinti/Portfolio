@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import { contactLinks, profile } from '../data/content.js'
+import Icon from './Icon.jsx'
+import ContactModal from './ContactModal.jsx'
 
 export default function Contact() {
+  const [open, setOpen] = useState(false)
   return (
     <section className="section contact" id="contact" data-screen-label="Contact">
       <div className="section-head">
@@ -25,20 +29,16 @@ export default function Contact() {
           })}
         </div>
         <div className="contact__actions reveal" data-d="2">
-          <a className="btn" href={`mailto:${profile.email}`}>
-            Start a project{' '}
-            <span className="arrow" aria-hidden="true">
-              →
-            </span>
-          </a>
+          <button type="button" className="btn" onClick={() => setOpen(true)}>
+            Let's talk <Icon name="arrow-right" className="arrow" />
+          </button>
           <a className="btn-ghost btn" href={profile.cv} download>
-            Download CV{' '}
-            <span className="arrow" aria-hidden="true">
-              ↓
-            </span>
+            Download CV <Icon name="arrow-down" className="arrow" />
           </a>
         </div>
       </div>
+
+      <ContactModal open={open} onClose={() => setOpen(false)} />
     </section>
   )
 }

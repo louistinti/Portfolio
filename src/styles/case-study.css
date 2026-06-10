@@ -59,7 +59,7 @@
   transition: background-size 0.45s var(--ease), color 0.4s var(--ease);
 }
 .cs-back:hover { color: var(--bg); background-size: 100% 100%; }
-.cs-back .ar { transition: transform 0.4s var(--ease); -webkit-text-stroke: 0.5px currentColor; }
+.cs-back .ar { position: relative; top: -1px; transition: transform 0.4s var(--ease); -webkit-text-stroke: 0.5px currentColor; }
 .cs-back:hover .ar { transform: translateX(-4px); }
 
 /* ============================================================
@@ -268,6 +268,17 @@
     repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 13px),
     linear-gradient(160deg, var(--bg-2), var(--bg));
 }
+/* média encadré (ex. 6-to-1) : même rendu que les wireframes — coins flottants à
+   8px, image avec 16px de padding (→ 8px de marge avec les coins), sans rognage. */
+.cs-media.is-framed .ph {
+  display: block; aspect-ratio: auto; padding: 16px;
+}
+.cs-media.is-framed .ph img {
+  position: static; display: block; width: 100%; height: auto; object-fit: contain;
+}
+.cs-media.is-framed .ph::before { top: 8px; left: 8px; }
+.cs-media.is-framed .ph::after { bottom: 8px; right: 8px; }
+.cs-media.is-framed .ph::before, .cs-media.is-framed .ph::after { z-index: 1; }
 
 /* ============================================================
    PROGRESSION WIREFRAMES
@@ -277,7 +288,15 @@
   margin-top: clamp(var(--space-10), 4vw, var(--space-14));
 }
 .wire { display: flex; flex-direction: column; gap: var(--space-4); }
-.wire .ph { width: 100%; height: auto; aspect-ratio: 9 / 16; }
+.wire .ph { width: 100%; height: auto; aspect-ratio: 375 / 812; }
+/* Coins flottants à 8px ; image rentrée à 16px → 8px de marge entre les coins et
+   l'image (et image un peu plus petite). object-fit cover = remplit, coins nets. */
+.wire .ph img {
+  inset: 16px; width: calc(100% - 32px); height: calc(100% - 32px); object-fit: cover;
+}
+.wire .ph::before { top: 8px; left: 8px; }
+.wire .ph::after { bottom: 8px; right: 8px; }
+.wire .ph::before, .wire .ph::after { z-index: 1; }
 .cs-page .wire .ph {
   background:
     repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 22px),

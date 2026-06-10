@@ -1,4 +1,5 @@
 import { profile } from '../data/content.js'
+import Icon from './Icon.jsx'
 
 export default function Nav() {
   const jumpToWork = () =>
@@ -19,7 +20,7 @@ export default function Nav() {
         <a href="#contact">Contact</a>
       </nav>
       <a className="nav-cta" href="#contact">
-        Get in touch <span className="arrow" aria-hidden="true">→</span>
+        Get in touch <Icon name="arrow-right" className="arrow" />
       </a>
       <button className="nav-burger" aria-label="Menu" onClick={jumpToWork}>
         <span></span>
