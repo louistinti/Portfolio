@@ -408,6 +408,16 @@ a { color: inherit; text-decoration: none; }
   transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 .modal__opt:hover { border-color: var(--fg); transform: translateY(-2px); }
+/* Option mail : zone cliquable (mailto) + bouton Copy côte à côte */
+.modal__opt--split:hover { transform: none; } /* pas de lift : 2 cibles distinctes */
+.modal__opt-hit { display: flex; align-items: center; gap: var(--space-4); flex: 1; min-width: 0; }
+.modal__copy {
+  flex: none; font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.06em;
+  color: var(--muted); background: var(--bg-2); border: 1px solid var(--line);
+  border-radius: var(--radius-pill); padding: var(--space-2) var(--space-4); cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.modal__copy:hover { color: var(--fg); border-color: var(--fg); }
 .modal__opt-ic {
   width: 44px; height: 44px; flex: none; display: inline-flex; align-items: center; justify-content: center;
   border-radius: var(--radius-full); background: var(--bg-2); color: var(--accent);

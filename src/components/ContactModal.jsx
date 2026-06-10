@@ -1,14 +1,17 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { profile } from '../data/content.js'
 import Icon from './Icon.jsx'
 
-// Modale "Let's talk" — deux chemins de contact : un mail direct, ou un
-// créneau de 30 min via Calendly. Le lien Calendly se règle dans content.js
+// Modale "Let's talk" — deux chemins de contact : un mail (mailto, avec un
+// bouton "Copy" en fallback si aucun client mail n'est configuré), ou un
+// rendez-vous via Calendly. Le lien Calendly se règle dans content.js
 // (profile.calendly). Accessible : Échap pour fermer, clic sur le fond,
 // focus posé à l'ouverture et scroll du body bloqué.
 export default function ContactModal({ open, onClose }) {
   const closeRef = useRef(null)
+  const resetRef = useRef(null)
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     if (!open) return
@@ -22,6 +25,28 @@ export default function ContactModal({ open, onClose }) {
       document.body.style.overflow = prev
     }
   }, [open, onClose])
+
+  // Nettoyage du timer de feedback "Copied" si la modale se démonte.
+  useEffect(() => () => clearTimeout(resetRef.current), [])
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email)
+    } catch {
+      // Fallback si l'API Clipboard est indisponible (vieux navigateurs / http).
+      const ta = document.createElement('textarea')
+      ta.value = profile.email
+      ta.style.position = 'fixed'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.select()
+      try { document.execCommand('copy') } catch { /* noop */ }
+      ta.remove()
+    }
+    setCopied(true)
+    clearTimeout(resetRef.current)
+    resetRef.current = setTimeout(() => setCopied(false), 2000)
+  }
 
   if (!open) return null
 
@@ -44,14 +69,25 @@ export default function ContactModal({ open, onClose }) {
         </h3>
 
         <div className="modal__options">
-          <a className="modal__opt" href={`mailto:${profile.email}`}>
-            <span className="modal__opt-ic"><Icon name="mail" /></span>
-            <span className="modal__opt-txt">
-              <b>Send a message</b>
-              <span className="modal__opt-sub">{profile.email}</span>
-            </span>
-            <Icon name="arrow-right" className="arrow" />
-          </a>
+          {/* Mail : le clic sur la zone de gauche ouvre mailto ; le bouton
+              "Copy" copie l'adresse sans déclencher la navigation. */}
+          <div className="modal__opt modal__opt--split">
+            <a className="modal__opt-hit" href={`mailto:${profile.email}`}>
+              <span className="modal__opt-ic"><Icon name="mail" /></span>
+              <span className="modal__opt-txt">
+                <b>Send a message</b>
+                <span className="modal__opt-sub">{profile.email}</span>
+              </span>
+            </a>
+            <button
+              type="button"
+              className="modal__copy"
+              onClick={copyEmail}
+              aria-label={copied ? 'Email address copied' : 'Copy email address'}
+            >
+              {copied ? 'Copied ✓' : 'Copy'}
+            </button>
+          </div>
 
           <a
             className="modal__opt"
