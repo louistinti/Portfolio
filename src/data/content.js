@@ -54,12 +54,12 @@ export const projects = [
   },
   {
     idx: '02', name: 'La Vraie Charentaise', year: '2022', cat: 'Branding · E-commerce', slug: 'charentaise',
-    tldr: 'Rebranded the traditional French slipper into a playful, made‑in‑France e‑commerce concept, with on‑site personalization and a quiz that matches you to your pair.',
+    tldr: 'Reframed the humble made-in-France slipper as an icon of slow life, a full rebrand and e-commerce concept with a matchmaking quiz and made-to-order personalization.',
     cover: '/assets/lvc/cover.png',
   },
   {
-    idx: '03', name: 'Forge', year: '2024', cat: 'SaaS · Onboarding', slug: 'forge',
-    tldr: 'An AI‑assisted onboarding flow that lifted new‑user activation by 28%.',
+    idx: '03', name: 'Garence', year: '2025', cat: 'B2B SaaS · Enterprise', slug: 'garence',
+    tldr: 'Led end to end the warranty-management tool for Actual Group, three user types, millions of euros at stake; automated 90.5% of decisions and cut decision time by 83%.',
     cover: '',
   },
   {
@@ -168,7 +168,8 @@ export const caseStudies = {
       lede: 'From pain points to a focused *feature set*.',
       body: [
         "I benchmarked tools and features against the research, and narrowed down to the six that most directly answered the students' needs, communication and navigation first.",
-        'I then ran **6-to-1** exercises to arrange the home page as ergonomically as possible.',
+        'I mapped a simple **user flow** to see how the sections connect, then ran focused benchmarks on the trickiest ones, the map, agenda, chat and the news & events feed.',
+        'I then ran **6-to-1** exercises, mainly on the home page, to arrange everything as ergonomically as possible.',
       ],
       features: [
         { id: 'F-01', name: 'Agenda', desc: 'Personal schedule with rooms & changes.' },
@@ -255,11 +256,11 @@ export const caseStudies = {
 
   'charentaise': {
     name: 'La Vraie Charentaise',
-    title: 'Making the French *Charentaise* cool again',
+    title: 'Turning the *charentaise* into an icon of slow life',
     kicker: ['Case Study', 'Branding · UX/UI · E-commerce'],
     meta: [
       { k: 'Role', v: 'Branding, UX/UI' },
-      { k: 'Scope', v: 'Brand + e-commerce' },
+      { k: 'Type', v: 'Self-directed' },
       { k: 'Platform', v: 'Web & mobile' },
     ],
 
@@ -281,38 +282,50 @@ export const caseStudies = {
 
     context: {
       eyebrow: 'Context',
-      lede: 'A heritage slipper with an *image problem*, and a young crowd to win over.',
+      lede: 'A free brief, and one slippery word to defend: *la flemme*.',
       body: [
-        'The **charentaise** is a 150-year-old French slipper, 100% made in France, but stuck with a dusty, grandpa-ish reputation. The brief: turn it into a desirable everyday object for a younger audience, without losing the savoir-faire that makes it authentic.',
-        'I built **La Vraie Charentaise** end to end, on my own: brand identity, art direction and the full e-commerce experience, from the first sketch to a clickable prototype.',
-        "The bet: keep the product 100% French and genuine, then wrap it in a bold, playful pop world that speaks to people who'd never have looked at a pair before.",
+        'This was a **self-directed project**, no brief and no client. After a short round of ideation I locked onto a single, slippery theme: **"la flemme"**, the very French art of doing nothing.',
+        'The word carries a heavy negative charge, it usually means doing nothing **productive**, and idleness is a feeling: intimate, and almost impossible to define the same way for everyone.',
+        'It also landed in a **post-COVID** moment where remote work had erased the line between home and office, with people grinding 10-12h days and no real pause. The goal: **de-dramatize idleness** and give people permission to slow down.',
       ],
       stats: [
-        { v: '150', u: 'yrs', k: 'of French charentaise savoir-faire, reframed for today.' },
-        { v: '100', u: '%', k: 'made in France, the authenticity kept fully intact.' },
-        { v: '4', k: 'ways to personalize a pair: colour, size, pattern, material.' },
+        { v: '85', k: 'people surveyed on how they perceive "la flemme".' },
+        { v: '63', u: '%', k: 'feel idleness is judged negatively today, confirming the problem.' },
+        { v: '1', u: '/day', k: 'most respondents feel "la flemme" at least once a day.' },
       ],
     },
 
     challenge: {
-      quote: 'How do you make a *grandpa slipper* something a 20-year-old actually wants to wear?',
+      quote: 'How do you give shape to something as abstract as *idleness*, and make people actually want it?',
       who: '// The core challenge',
     },
 
-    ideation: {
-      eyebrow: 'Features',
-      idx: 'The experience',
-      lede: 'A storefront that feels more like a *playground* than a catalogue.',
+    research: {
+      eyebrow: 'Research',
+      idx: 'Step 01',
+      lede: 'Listening first: a *survey* on how people really feel about doing nothing.',
       body: [
-        'I turned the positioning into a set of features that make buying a slipper fun: a personalization tool, a matchmaking quiz, an editorial lookbook and a clean shop, all tied together by the same pop language.',
-        'Everything pushes one idea, the charentaise is **yours**, expressive and a little tongue-in-cheek.',
+        'To get past my own assumptions, I sent out a **questionnaire** on "la flemme", how people define it, how they perceive it, how they picture it.',
+        'On **85 respondents** the verdict was already clear: **63%** felt idleness is badly seen today (26% no, 11% in between), and most admitted to feeling it **at least once a day**. The topic was validated, and worth defending.',
+      ],
+      insight: "Idleness is universal but quietly judged. The way in wasn't to defend *laziness*, it was to reframe it as *slow life*: choosing, on purpose, to slow down and come back to the essentials.",
+    },
+
+    ideation: {
+      eyebrow: 'Ideation',
+      idx: 'Step 02',
+      lede: 'From an abstract feeling to a *concrete icon*.',
+      body: [
+        '"La flemme" was too abstract and too negative to attack head-on. The unlock was the idea of **slow life**, the same calm, unbothered energy as the "chill" Instagram accounts posting celebrities out in crocs and loungewear.',
+        'And what better icon for slowing down than a near-top pick of the 60+ crowd: **the charentaise**. I found the real *lavraiecharentaise.com*, dusty and dated, and made it the base for a full redesign, a second life for the product.',
+        'The pitch: tie the **authenticity** of a genuine French slipper to its future as *an icon of slow life*. From there, two features came first, a **quiz** and a **personalization** tool, then grew into the full storefront.',
       ],
       features: [
-        { id: '01', name: 'Personalization', desc: 'Build your own pair: colour, size, pattern and material.' },
-        { id: '02', name: 'Match quiz', desc: 'A playful quiz that pairs you with your ideal model.' },
+        { id: '01', name: 'Match quiz', desc: 'On arrival, a playful quiz hands you your ideal personalized pair.' },
+        { id: '02', name: 'Personalization', desc: 'Build your own pair: colour, size, pattern and material.' },
         { id: '03', name: 'Collection', desc: 'Browse the models, La Gilbert, La Soupette and friends.' },
         { id: '04', name: 'Product pages', desc: 'Sizes, details and add-to-cart, with a personalize shortcut.' },
-        { id: '05', name: 'Lookbook', desc: 'Editorial lifestyle shots of the slippers out in the wild.' },
+        { id: '05', name: 'Lookbook', desc: 'Self-shot editorial photography of the slippers out in the wild.' },
         { id: '06', name: 'Community', desc: 'A newsletter, "Tiens-toi au jus", and social to keep the crowd close.' },
       ],
       media: [
@@ -322,8 +335,8 @@ export const caseStudies = {
 
     wireframes: {
       eyebrow: 'Wireframes',
-      idx: 'Low-fi structure',
-      intro: 'I mapped the key screens in low fidelity first, home, collection, product and the quiz result, to lock the structure before any styling.',
+      idx: 'V1 → V3',
+      intro: 'I iterated the home page from V1 to a final V3 to lock its structure, then declined the layout across the key screens, collection, product and the quiz result, before any styling.',
       pages: [
         { shot: 'wire-home', cap: 'Home' },
         { shot: 'wire-collection', cap: 'Collection' },
@@ -335,8 +348,8 @@ export const caseStudies = {
     topography: {
       eyebrow: 'Visual identity',
       mark: '◆',
-      title: 'A *pop* world built on heritage.',
-      body: 'The identity mixes two opposites on purpose: the authentic, hand-made charentaise and a loud, Y2K-flavoured pop universe. Cream display type with a thick black outline, candy-coloured grids, stickers, sparkles and a hand-drawn logo, all signalling that this old object just got a lot more fun.',
+      title: 'A *retro-modern* world for the slow life.',
+      body: 'The identity blends two things on purpose: the authentic, made-in-France charentaise and a warm, retro-modern pop language that quietly says "slow down". I art-directed and **shot all of the product photography and visuals myself**, so every image carried the same calm, lived-in feeling.',
       shot: 'logo',
       fit: 'contain',
     },
@@ -346,11 +359,11 @@ export const caseStudies = {
       idx: 'Design',
       lede: 'One *system*, applied across every screen.',
       body: [
-        'I built a compact design system, colour, type, components and a sticker kit, so every page felt part of the same playful world while staying easy to shop.',
-        'A cream-and-ink base carries candy pop accents on grid backgrounds; a chunky display face holds the brand, a clean grotesque keeps the shopping UI readable.',
+        'In parallel I built a compact design system, colours, grids, typography and shadows, so every page felt part of the same world while staying easy to shop.',
+        "I chose **four colours** echoing the tones most often seen on real charentaises, then mapped one to each of the site's four sections, so navigation feels intuitive on top of looking good.",
       ],
-      paletteLabel: '// Palette · pop & 100% French',
-      paletteNote: 'A cream and ink base, with candy pop accents dropped on grid backgrounds.',
+      paletteLabel: '// Palette · drawn from the charentaise',
+      paletteNote: 'A cream and ink base, plus four section colours, one per part of the site, to keep it intuitive to navigate.',
       fonts: [
         { k: 'Titles', v: 'MADE Soulmaze' },
         { k: 'Body', v: 'Clash Display' },
@@ -400,6 +413,111 @@ export const caseStudies = {
     },
   },
 
-  // ── Pour ajouter Forge / Cipher / Atlas / Pulse : copie un bloc ci-dessus,
-  //    renomme la clé (ex. 'forge'), adapte le contenu + le `theme`.
+  'garence': {
+    name: 'Garence',
+    title: 'Designing *Garence*, warranty management at scale',
+    kicker: ['Case Study', 'Product · UX/UI · B2B SaaS'],
+    meta: [
+      { k: 'Role', v: 'Lead Product Designer' },
+      { k: 'Team', v: '1 PM · 1 designer · 4 devs' },
+      { k: 'Duration', v: '1 year' },
+    ],
+
+    // Thème bleu "confiance" (placeholder : pas de couleurs de marque Garence
+    // dans le Notion). --topo-1..6 = rampe foncé→clair pour le fond topo subtil.
+    theme: {
+      '--accent': '#2f6df0',
+      '--accent-ink': '#eaf1ff',
+      '--accent-line': '#7ea8ff',
+      '--topo-1': '#0b1730',
+      '--topo-2': '#102243',
+      '--topo-3': '#173461',
+      '--topo-4': '#2f6df0',
+      '--topo-5': '#6f9eff',
+      '--topo-6': '#b9d2ff',
+      '--topo-line': 'rgba(126, 168, 255, 0.16)',
+    },
+
+    context: {
+      eyebrow: 'Context',
+      lede: 'One tool, *three very different users*, and millions of euros on the line.',
+      body: [
+        "Garence is the tool I **led end to end** as the sole designer. It manages Actual Group's **warranty requests** and **non-guaranteed exposure (ENG)**, the cover that secures the placement of temporary workers, with **millions of euros** riding on each decision.",
+        'Actual issues warranties to secure a temp placement, and tracks **non-guaranteed exposure** whenever the insurer steps back, an amount too high, a fast-rising exposure, a client at risk.',
+        'It serves three populations with radically different needs: **agencies** initiate and track requests, **Customer Service** investigates and decides, and **management** supervises activity and steers budget envelopes by scope and agency.',
+        'It all kicked off mid-**convergence**, as Leader, Ergalis, Up Skills and Ergos folded into shared tools, every entity wanting to keep its own features, with *three Business Owners* to align at once.',
+      ],
+      stats: [
+        { v: '90.5', u: '%', k: 'of Customer Service decisions now fully automated.' },
+        { v: '-83', u: '%', k: 'on automated decision time, from 125 s down to 21 s.' },
+        { v: '3', k: 'user types unified around one shared standard.' },
+      ],
+    },
+
+    challenge: {
+      quote: 'How do you design *one coherent experience* for three users who want completely different things, while four companies merge into one?',
+      who: '// The core challenge',
+    },
+
+    research: {
+      eyebrow: 'Research',
+      idx: 'Step 01',
+      lede: 'Inheriting the research, then *seeing it for myself* on the floor.',
+      body: [
+        'I joined after my lead had run the first interviews. My first job: **make that research my own**, surface the real irritants and **prioritize** them across three populations that shared neither expectations nor constraints.',
+        'To pressure-test my hypotheses I spent a day **shadowing and testing** with the Customer Service team at HQ. Watching users in real conditions is still the surest way to confirm, or kill, a design assumption, before we ran a **pilot** with a handful of agencies.',
+      ],
+      personas: [
+        { name: 'Agencies', id: 'U-01', shot: 'persona-1', goal: 'Initiate warranty and ENG requests, and track their status.', pain: 'Informal exchanges and implicit criteria, with almost no visibility on where a request stands.' },
+        { name: 'Customer Service', id: 'U-02', shot: 'persona-2', goal: 'Investigate files, run the checks and make the decision.', pain: 'No common standard between entities, long decision times, everything reviewed by hand.' },
+        { name: 'Management', id: 'U-03', shot: 'persona-3', goal: 'Supervise activity and steer budget envelopes by scope and agency.', pain: 'Near-zero visibility on non-guaranteed exposure across the network.' },
+      ],
+      insight: 'Every entity ran its own way, informal rules, implicit criteria, no shared view of exposure. Without a *common standard*, agencies, Customer Service and management could never see the same reality.',
+    },
+
+    ideation: {
+      eyebrow: 'Design & delivery',
+      idx: 'Step 02',
+      lede: 'From scattered habits to one *shared, progressive* system.',
+      body: [
+        'I designed the first **responsive mockups** while juggling the evolving demands of **three Business Owners** at once. The MVP gave every role a clear, structured path, with **explicit states**, inline checks and an **audit trail** so each decision stayed traceable.',
+        'Roll-out was step by step: a pilot in real conditions, field feedback, fast tweaks, labels, field order, thresholds, then a **national launch**. I also ran training and onboarding so the first agencies could get going on their own.',
+        'The framing targets were sharp: -75% on agency response time, -50% on Customer Service decision actions, -25% on ENG and -20% on total cover held with the insurer.',
+      ],
+      features: [
+        { id: 'F-01', name: 'Progressive request flows', desc: 'Create, cancel, increase, decrease, renew, with explicit states and a summary before sending.' },
+        { id: 'F-02', name: 'Real-time insurability test', desc: 'An instant first signal on whether a request is feasible.' },
+        { id: 'F-03', name: 'Customer Service workspace', desc: 'Structured criteria review, full history and an audit log.' },
+        { id: 'F-04', name: 'Role-based dashboards', desc: 'Tailored views for agencies, Customer Service and management, with extended search and filters.' },
+        { id: 'F-05', name: 'Envelope management', desc: 'Allocation, tracking and reallocation by scope and agency, with thresholds, alerts and exports for management.' },
+        { id: 'F-06', name: 'Actionable specs', desc: 'Business rules, edge cases and state transitions written to speed up delivery.' },
+      ],
+    },
+
+    topography: {
+      eyebrow: 'Automation',
+      mark: '◆',
+      title: 'Letting the system decide, *when it should*.',
+      body: "The signature move came after launch: when every parameter is green, thresholds, scoring, client history, data consistency, **the system decides on its own** and notifies everyone. It stays fully **auditable and explainable**, the rules are visible, the justification is shown, and a human **override** is always one click away. By September 2025, **9 decisions in 10** ran automatically, leaving human effort exactly where it earns its keep, on the hardest files. One honest miss: some agencies still confuse an ENG request with a guarantee increase, so exposure didn't fall as hoped, clearer flows and training are the next step.",
+    },
+
+    prototype: {
+      eyebrow: 'Outcome',
+      idx: 'In hindsight',
+      note: "This is the project that taught me the most about **holding a course through complexity**, multiple stakeholders, a tense context, users with very different needs, and millions of euros at stake, led end to end in full autonomy. With hindsight I'd revisit a few things, the ergonomics, the information hierarchy, the wording of some CTAs, and that gap is exactly the measure of how far the project moved.",
+    },
+
+    footer: 'Garence · Actual Group · Case study',
+
+    // Personas = les 3 types d'utilisateurs (placeholders rayés tant qu'aucune
+    // image n'est posée dans public/assets/).
+    shots: {
+      'persona-1': '',
+      'persona-2': '',
+      'persona-3': '',
+    },
+  },
+
+  // ── Pour ajouter Cipher / Atlas / Pulse : copie un bloc ci-dessus,
+  //    renomme la clé (ex. 'cipher'), adapte le contenu + le `theme`.
 }
