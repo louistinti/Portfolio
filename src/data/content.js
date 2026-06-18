@@ -63,8 +63,8 @@ export const projects = [
     cover: '',
   },
   {
-    idx: '04', name: 'Cipher', year: '2024', cat: 'Enterprise · Security', slug: 'cipher',
-    tldr: 'A security console for enterprise admins, made role‑based access feel simple, not scary.',
+    idx: '04', name: 'Actual — Candidate List', year: '2025', cat: 'B2B SaaS · UX/UI', slug: 'candidate-list',
+    tldr: 'Turned a heavy, fragmented recruiter list into a scannable, actionable view, key info and quick actions on the row; 2-3 min saved per candidate readiness check.',
     cover: '',
   },
   {
@@ -518,6 +518,100 @@ export const caseStudies = {
     },
   },
 
-  // ── Pour ajouter Cipher / Atlas / Pulse : copie un bloc ci-dessus,
-  //    renomme la clé (ex. 'cipher'), adapte le contenu + le `theme`.
+  'candidate-list': {
+    name: 'Actual — Candidate List',
+    title: 'Turning a heavy list into a *scannable* candidate view',
+    kicker: ['Case Study', 'UX Research · UX/UI · Desktop'],
+    meta: [
+      { k: 'Role', v: 'Product Designer' },
+      { k: 'Team', v: '1 PM · 1 designer · 3 devs' },
+      { k: 'Duration', v: '4 months' },
+    ],
+
+    // Même client qu'Actual/Garence : thème bleu partagé (placeholder, pas de
+    // couleurs de marque dans le Notion). À remplacer par les vraies si besoin.
+    theme: {
+      '--accent': '#2f6df0',
+      '--accent-ink': '#eaf1ff',
+      '--accent-line': '#7ea8ff',
+      '--topo-1': '#0b1730',
+      '--topo-2': '#102243',
+      '--topo-3': '#173461',
+      '--topo-4': '#2f6df0',
+      '--topo-5': '#6f9eff',
+      '--topo-6': '#b9d2ff',
+      '--topo-line': 'rgba(126, 168, 255, 0.16)',
+    },
+
+    context: {
+      eyebrow: 'Context',
+      lede: 'A heavy, fragmented list that *slowed every hire* down.',
+      body: [
+        "Actual's recruiters worked off a candidate list that fought them: **key info scattered**, so they had to open every profile to judge a candidate; clunky filtering and sorting; **no quick actions**, forcing constant screen-switching to contact, note or manage someone.",
+        'On top of that, the UI was **dated and barely responsive**, and the cognitive load was high, too much noise in some places, missing essentials in others.',
+        "And nothing helped **steer the talent pool**: no operational KPIs on the list itself, availability, last action, urgencies, so recruiters couldn't **prioritize** urgent files, follow-ups or replacements without opening each card.",
+      ],
+      stats: [
+        { v: '2-3', u: 'min', k: 'saved per candidate to judge "ready to work or not".' },
+        { v: '141', k: "recruiters surveyed on the row's must-see info and actions." },
+        { v: '8', k: 'agencies visited to observe real routines and workarounds.' },
+      ],
+    },
+
+    challenge: {
+      quote: 'How do you make a candidate *readable and actionable* from a single row, without opening a single profile?',
+      who: '// The core challenge',
+    },
+
+    research: {
+      eyebrow: 'Research',
+      idx: 'Step 01',
+      lede: 'Three lenses on one question: what do recruiters *actually* need to see?',
+      body: [
+        'I crossed **Hotjar and Google Analytics** to find which filters were genuinely used and which journeys came up most, then cut the noise.',
+        'A **141-response survey** pinned down the information recruiters want **at a glance**, availability, last action, status, documents, contact quality, and the actions worth firing **straight from the row**.',
+        'Finally, **visits and interviews across 8 agencies** surfaced the real routines and workarounds, info that took too long to find, documents quietly expiring.',
+      ],
+      insight: "Recruiters didn't need more data, they needed the *right* data on the row. The research was clear enough to cut **20+ filters** before the pilot even shipped.",
+    },
+
+    ideation: {
+      eyebrow: 'Solution',
+      idx: 'Step 02',
+      lede: 'One *clear, scannable row*, with the actions built in.',
+      body: [
+        'I reframed the listing around a **light but rich candidate row**: availability, last activity, qualification, city and agency, the essentials up front, the noise gone.',
+        "**Documents** show as **counters with tooltips** (what's missing, what's expiring) so a recruiter reads a candidate's readiness **without opening the file**, and **quick actions** (contact, documents, linked needs) live right on the row.",
+        "My role spanned UX framing, the **row's information architecture**, prototyping the compact filters, cards and doc badges, **testing in agencies**, then the **Figma specs**, behaviours, validations, edge cases and error states.",
+      ],
+      features: [
+        { id: 'F-01', name: 'Compact filter bar', desc: 'Filters as chips, kept close to the eye, with saveable presets.' },
+        { id: 'F-02', name: 'Enriched candidate row', desc: 'Availability, last activity, qualification and location, surfaced at a glance.' },
+        { id: 'F-03', name: 'Document badges', desc: 'Counters and tooltips flag what is missing or expiring, no file to open.' },
+        { id: 'F-04', name: 'Inline quick actions', desc: 'Contact, documents and linked needs, triggered straight from the row.' },
+        { id: 'F-05', name: 'Pool KPIs', desc: 'Operational indicators on top of the list for priority and follow-up.' },
+        { id: 'F-06', name: 'Customizable columns', desc: 'Show, hide and reorder columns (contract, licence, transport, clients) per agency.' },
+      ],
+    },
+
+    topography: {
+      eyebrow: 'Iteration',
+      mark: '◆',
+      title: 'Splitting the list into *sourcing* and *talent pools*.',
+      body: 'Adoption was good, but management wanted more, so I designed two new pages. A **sourcing list** that hides candidates already tied to your agency and adds **AI matching** (location, target jobs, prior experience) plus a live feed of new sign-ups in your area, fresh profiles you\'ve never worked with. And a **talent-pools** page where managers group related trades into pools, ranked by shortage, demand or urgency, each opening on a "next actions" shortlist (candidates to replace, documents to validate) and a per-candidate **matching** button, with personal favourite lists underneath.',
+    },
+
+    prototype: {
+      eyebrow: 'Outcome',
+      idx: 'Pilot · Nov 2025',
+      note: 'In pilot since **November 2025**, the new list won real adoption, recruiters **save 2-3 minutes** just judging whether a candidate is ready to work, with fewer dropped files and sharper prioritization. The second solution was **validated by management right before I left Actual**, so I never got to test it with users, the one honest gap in an otherwise solid run.',
+    },
+
+    footer: 'Candidate list · Actual Group · Case study',
+
+    shots: {},
+  },
+
+  // ── Pour ajouter Atlas / Pulse : copie un bloc ci-dessus,
+  //    renomme la clé (ex. 'atlas'), adapte le contenu + le `theme`.
 }
