@@ -344,19 +344,34 @@
   padding: var(--section-py) var(--pad);
   overflow: hidden;
 }
-.cs-topo__inner { max-width: var(--maxw); margin: 0 auto; }
-.cs-topo .step-eyebrow { color: var(--topo-5); }
-.cs-topo h3 {
-  font-family: var(--display);
-  font-size: clamp(var(--text-32), 4vw, var(--text-56)); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700;
-  max-width: 20ch; text-wrap: balance;
+/* Aligné sur les autres sections (.section = pleine largeur moins --pad), pas
+   de plafond --maxw. Même grille éditoriale 2 colonnes que .cs-lede :
+   sur-titre pleine largeur, puis titre à gauche / texte à droite. */
+.cs-topo__inner {
+  display: grid; grid-template-columns: 0.9fr 1.1fr;
+  column-gap: clamp(var(--space-8), 6vw, var(--space-24)); align-items: start;
+  max-width: none;
 }
-.cs-topo h3 .serif-it { font-weight: 500; color: var(--topo-5); }
-.cs-topo p { margin-top: var(--space-6); max-width: 56ch; color: var(--body); font-size: var(--text-16); line-height: 1.62; }
+.cs-topo .step-eyebrow { grid-column: 1 / -1; margin-bottom: var(--space-12); color: var(--topo-5); }
+.cs-topo h3 {
+  grid-column: 1;
+  font-family: var(--display);
+  font-size: var(--text-statement); line-height: 1.06; letter-spacing: -0.02em; font-weight: 700;
+  text-wrap: pretty;
+}
+.cs-topo h3 .serif-it { font-weight: 500; }
+.cs-topo p { grid-column: 2; margin-top: 0; max-width: none; color: var(--body); font-size: var(--text-16); line-height: 1.62; }
 .cs-topo p strong { color: var(--fg); font-weight: 600; }
-.cs-topo__media { margin-top: clamp(var(--space-12), 6vw, var(--space-18)); }
+.cs-topo__media { grid-column: 1 / -1; margin-top: clamp(var(--space-12), 6vw, var(--space-18)); }
 .cs-topo__media .ph { width: 100%; height: auto; aspect-ratio: 16 / 8; }
 .cs-page .cs-topo__media .ph { background: rgba(255,255,255,0.015); }
+
+/* Concept : 1 colonne sous 880px (comme .cs-lede) */
+@media (max-width: 880px) {
+  .cs-topo__inner { grid-template-columns: 1fr; }
+  .cs-topo .step-eyebrow, .cs-topo h3, .cs-topo p, .cs-topo__media { grid-column: auto; }
+  .cs-topo p { margin-top: var(--space-6); }
+}
 
 /* ============================================================
    UI / STYLE GUIDE
