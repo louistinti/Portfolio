@@ -242,7 +242,7 @@ a { color: inherit; text-decoration: none; }
 .hero__lead { display: flex; flex-direction: column; gap: var(--space-8); }
 /* bouton du hero : aligné à gauche dans la colonne (taille/gap hérités de .btn) */
 .hero__lead .btn { align-self: flex-start; }
-.hero__sub { max-width: 46ch; color: var(--muted); font-size: var(--text-16); }
+.hero__sub { max-width: 46ch; color: var(--body); font-size: var(--text-16); }
 .hero__sub strong { color: var(--fg); font-weight: 600; }
 
 .hero__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
@@ -286,7 +286,7 @@ a { color: inherit; text-decoration: none; }
 .about-statement .serif-it { color: var(--fg); }
 .about-statement em { color: var(--accent); font-style: normal; }
 .about-cols { display: grid; gap: clamp(28px, 4vw, 56px); margin-top: var(--space-6); grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); padding-top: var(--space-8); }
-.about-cols p { color: var(--muted); font-size: var(--text-16); }
+.about-cols p { color: var(--body); font-size: var(--text-16); }
 .about-cols h4 { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: var(--space-3); color: var(--fg); }
 .about-meta { display: flex; flex-direction: column; gap: var(--space-2); font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted) !important; }
 

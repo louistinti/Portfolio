@@ -22,6 +22,7 @@
 
   /* — Texte — */
   --color-fg:        #f3f1ec;  /* texte principal (off-white) */
+  --color-body:      #c2c0ba;  /* corps de texte long — plus clair que muted, lisible (~9:1 sur --bg) */
   --color-muted:     #8c8c89;  /* texte secondaire */
   --color-muted-2:   #7e7e7b;  /* texte tertiaire / placeholders — AA (>=4.5:1 sur --bg) */
 
@@ -38,6 +39,7 @@
   --bg-1:      var(--color-bg-1);
   --bg-2:      var(--color-bg-2);
   --fg:        var(--color-fg);
+  --body:      var(--color-body);
   --muted:     var(--color-muted);
   --muted-2:   var(--color-muted-2);
   --line:      var(--color-line);

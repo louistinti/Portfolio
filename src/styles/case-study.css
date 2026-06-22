@@ -141,7 +141,7 @@
 }
 .cs-lede h3 .serif-it { font-weight: 500; }
 .cs-lede .body { display: flex; flex-direction: column; gap: var(--space-6); }
-.cs-lede .body p { color: var(--muted); font-size: var(--text-16); line-height: 1.62; }
+.cs-lede .body p { color: var(--body); font-size: var(--text-16); line-height: 1.62; }
 .cs-lede .body p strong { color: var(--fg); font-weight: 600; }
 
 @media (max-width: 880px) { .cs-lede { grid-template-columns: 1fr; gap: var(--space-6); } }
@@ -352,7 +352,7 @@
   max-width: 20ch; text-wrap: balance;
 }
 .cs-topo h3 .serif-it { font-weight: 500; color: var(--topo-5); }
-.cs-topo p { margin-top: var(--space-6); max-width: 56ch; color: var(--muted); font-size: var(--text-16); line-height: 1.62; }
+.cs-topo p { margin-top: var(--space-6); max-width: 56ch; color: var(--body); font-size: var(--text-16); line-height: 1.62; }
 .cs-topo p strong { color: var(--fg); font-weight: 600; }
 .cs-topo__media { margin-top: clamp(var(--space-12), 6vw, var(--space-18)); }
 .cs-topo__media .ph { width: 100%; height: auto; aspect-ratio: 16 / 8; }
@@ -438,7 +438,7 @@
   background: var(--bg-1);
 }
 .proto-note .mk { font-family: var(--mono); color: var(--accent-line); font-size: var(--text-14); letter-spacing: 0.1em; }
-.proto-note p { color: var(--muted); font-size: var(--text-16); line-height: 1.6; }
+.proto-note p { color: var(--body); font-size: var(--text-16); line-height: 1.6; }
 .proto-note p kbd {
   font-family: var(--mono); font-size: var(--text-12); background: var(--bg-2);
   border: 1px solid var(--line); border-radius: 6px; padding: var(--space-1) var(--space-2); color: var(--fg);
