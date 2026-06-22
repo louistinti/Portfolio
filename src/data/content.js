@@ -423,19 +423,19 @@ export const caseStudies = {
       { k: 'Duration', v: '1 year' },
     ],
 
-    // Thème bleu "confiance" (placeholder : pas de couleurs de marque Garence
-    // dans le Notion). --topo-1..6 = rampe foncé→clair pour le fond topo subtil.
+    // Rouge de marque Actual Group (#e40521, relevé sur groupeactual.eu).
+    // --topo-1..6 = rampe foncé→clair pour le fond topo subtil.
     theme: {
-      '--accent': '#2f6df0',
-      '--accent-ink': '#eaf1ff',
-      '--accent-line': '#7ea8ff',
-      '--topo-1': '#0b1730',
-      '--topo-2': '#102243',
-      '--topo-3': '#173461',
-      '--topo-4': '#2f6df0',
-      '--topo-5': '#6f9eff',
-      '--topo-6': '#b9d2ff',
-      '--topo-line': 'rgba(126, 168, 255, 0.16)',
+      '--accent': '#e40521',
+      '--accent-ink': '#fff5f6',
+      '--accent-line': '#ff6b78',
+      '--topo-1': '#2a0509',
+      '--topo-2': '#48070f',
+      '--topo-3': '#7a0c19',
+      '--topo-4': '#e40521',
+      '--topo-5': '#ff6173',
+      '--topo-6': '#ffb3bd',
+      '--topo-line': 'rgba(255, 107, 120, 0.16)',
     },
 
     context: {
@@ -528,19 +528,18 @@ export const caseStudies = {
       { k: 'Duration', v: '4 months' },
     ],
 
-    // Même client qu'Actual/Garence : thème bleu partagé (placeholder, pas de
-    // couleurs de marque dans le Notion). À remplacer par les vraies si besoin.
+    // Même client : rouge de marque Actual Group (#e40521).
     theme: {
-      '--accent': '#2f6df0',
-      '--accent-ink': '#eaf1ff',
-      '--accent-line': '#7ea8ff',
-      '--topo-1': '#0b1730',
-      '--topo-2': '#102243',
-      '--topo-3': '#173461',
-      '--topo-4': '#2f6df0',
-      '--topo-5': '#6f9eff',
-      '--topo-6': '#b9d2ff',
-      '--topo-line': 'rgba(126, 168, 255, 0.16)',
+      '--accent': '#e40521',
+      '--accent-ink': '#fff5f6',
+      '--accent-line': '#ff6b78',
+      '--topo-1': '#2a0509',
+      '--topo-2': '#48070f',
+      '--topo-3': '#7a0c19',
+      '--topo-4': '#e40521',
+      '--topo-5': '#ff6173',
+      '--topo-6': '#ffb3bd',
+      '--topo-line': 'rgba(255, 107, 120, 0.16)',
     },
 
     context: {
