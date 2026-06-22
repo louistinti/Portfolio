@@ -396,7 +396,7 @@ export default function CaseStudy({ data }) {
               </div>
             )}
             {prototype.href && (
-              <a className="proto-link" href={prototype.href} target="_blank" rel="noopener noreferrer">
+              <a className="btn proto-link" href={prototype.href} target="_blank" rel="noopener noreferrer">
                 {prototype.linkLabel || 'Open'} <span className="ar" aria-hidden="true">↗</span>
               </a>
             )}
