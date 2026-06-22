@@ -68,8 +68,8 @@ export const projects = [
     cover: '',
   },
   {
-    idx: '05', name: 'Atlas', year: '2023', cat: 'B2B · Marketplace', slug: 'atlas',
-    tldr: 'Redesigned a B2B marketplace, rebuilt search, filtering and checkout around real buyer intent.',
+    idx: '05', name: 'Learning Leagues', year: '2025', cat: 'Personal · Product & Design System', slug: 'learning-leagues',
+    tldr: 'A personal site to learn League of Legends properly, structured by role, jargon-free, on a token-driven Hextech design system. Built solo in React, no build step, live on GitHub Pages.',
     cover: '',
   },
   {
@@ -613,6 +613,124 @@ export const caseStudies = {
     shots: {},
   },
 
-  // ── Pour ajouter Atlas / Pulse : copie un bloc ci-dessus,
-  //    renomme la clé (ex. 'atlas'), adapte le contenu + le `theme`.
+  'learning-leagues': {
+    name: 'Learning Leagues',
+    title: 'Everything you need to *learn League of Legends*',
+    kicker: ['Case Study', 'Personal · Product · Design System'],
+    meta: [
+      { k: 'Role', v: 'Solo, end to end' },
+      { k: 'Type', v: 'Personal project' },
+      { k: 'Stack', v: 'React · no build step' },
+    ],
+
+    // Identité Hextech (League of Legends) : or sur bleu profond. Couleurs
+    // relevées dans le design system du projet (styles.css).
+    theme: {
+      '--accent': '#e39a3c',
+      '--accent-ink': '#241803',
+      '--accent-line': '#e8b365',
+      '--topo-1': '#17130a',
+      '--topo-2': '#2a2010',
+      '--topo-3': '#5e4718',
+      '--topo-4': '#d4b468',
+      '--topo-5': '#e7c98f',
+      '--topo-6': '#f3e4c4',
+      '--topo-line': 'rgba(227, 154, 60, 0.16)',
+    },
+
+    context: {
+      eyebrow: 'Context',
+      lede: "League of Legends is *brutal* to learn, so I built the guide I wish I'd had.",
+      body: [
+        'League of Legends is a 15-year-old game that quietly assumes you already know how to play it. New players get dropped into a 5v5 with hundreds of champions, dense systems and a wall of community jargon, and most quit before it ever clicks.',
+        '**Learning Leagues** is my answer: a personal project, built solo end to end, laying out a **structured path by role**, from MOBA-savvy beginner to confident low-elo (Iron to Platinum).',
+        "Two rules kept it honest: **no jargon** without explaining it, and **no chasing the meta**, I teach the game's logic, not this patch's build.",
+      ],
+      stats: [
+        { v: '5', k: 'roles mapped to a structured path; Support shipped as the first full guide.' },
+        { v: '0', u: 'build', k: 'static site, React + Babel transpiled in the browser, deployed on GitHub Pages.' },
+        { v: '3', k: 'guides live so far: Fundamentals, the Support deep-dive and the Glossary.' },
+      ],
+    },
+
+    challenge: {
+      quote: 'How do you teach a game that *assumes you already know how to play it*?',
+      who: '// The core challenge',
+    },
+
+    research: {
+      eyebrow: 'Approach',
+      idx: 'Principles',
+      lede: 'Teach the *game*, not the meta.',
+      body: [
+        'I started from how people actually fail to learn League: they copy builds without understanding why, and drown in terms no one defines. So the whole site is built **fundamentals first**, map, items, runes, vision, wave management, objectives, before any champion.',
+        'Then it branches **by role**, because your position decides your job on the map. Each guide is **jargon-free by default**: a `Gloss` component explains every term on first mention, backed by a full **glossary**.',
+        'And it stays in its lane: for live builds and patch stats it **steps aside** for the tools that already do it best (Lolalytics, U.GG, OP.GG), and focuses on the thinking those tools never teach.',
+      ],
+      insight: 'Most guides chase *what to build this patch*. Learning Leagues teaches *why*, so the knowledge survives the next patch.',
+    },
+
+    ideation: {
+      eyebrow: 'What I built',
+      idx: 'The site',
+      lede: 'A *curriculum*, not a wiki.',
+      body: [
+        'The site is a guided path, not a search box: a landing that frames the journey, then layers that build on each other.',
+        'The **Support guide** went deep first, as the proof of the format: phases, map control, archetypes, common errors, champions, builds, matchups and a practice checklist.',
+      ],
+      features: [
+        { id: '01', name: 'Fundamentals', desc: 'The base layer: map, items, runes, vision, wave management and neutral objectives.' },
+        { id: '02', name: 'Role guides', desc: 'Five positions, five mindsets. Support shipped first, as a complete deep-dive.' },
+        { id: '03', name: 'Training drills', desc: 'Reps, not theory: last hits, vision and mechanics as short, measurable drills.' },
+        { id: '04', name: 'Glossary', desc: 'Every term defined, with inline first-mention glosses across the guides.' },
+        { id: '05', name: 'Resources', desc: 'Curated external tools for live builds and stats, where they beat rolling my own.' },
+      ],
+    },
+
+    ui: {
+      eyebrow: 'Design system',
+      idx: 'Hextech',
+      lede: 'A *token-driven* system, themed end to end.',
+      body: [
+        'Everything runs on one set of CSS variables, a single **Hextech palette**, gold on deep blue, with accent and density swapped from a `data-` attribute on the root, so the whole site re-themes from one source of truth.',
+        "It's documented on its own reference page, foundations, components and patterns, so the look stays consistent as the site grows. EB Garamond for headings, Inter for body, JetBrains Mono for labels.",
+      ],
+      paletteLabel: '// Hextech · gold on deep blue',
+      paletteNote: 'A single Hextech palette as the source of truth, with accent and density swapped by data-attr.',
+      fonts: [
+        { k: 'Display', v: 'EB Garamond' },
+        { k: 'Body', v: 'Inter' },
+        { k: 'Mono', v: 'JetBrains Mono' },
+      ],
+      palette: [
+        { hex: '#070a14', name: 'Bg' },
+        { hex: '#111a2e', name: 'Surface' },
+        { hex: '#d4b468', name: 'Or' },
+        { hex: '#e39a3c', name: 'Ambre' },
+        { hex: '#6fa8dc', name: 'Bleu' },
+      ],
+      components: {
+        buttons: [{ label: 'Explore' }, { label: 'Role quiz', alt: true }],
+        chips: ['Top', 'Jungle', 'Mid', 'ADC', 'Support'],
+        pills: ['Fundamentals', 'Glossary', 'Resources'],
+        tabs: [{ label: 'Foundations', on: true }, { label: 'Components' }, { label: 'Patterns' }],
+      },
+    },
+
+    prototype: {
+      eyebrow: 'Live',
+      idx: 'Try it',
+      note: 'The site is live on GitHub Pages. Explore the landing, the Fundamentals guide, the full Support role guide and the glossary, with the design-system reference one URL away.',
+      href: 'https://louistinti.github.io/LearningLeagues/',
+      linkLabel: 'Visit the live site',
+      src: 'https://louistinti.github.io/LearningLeagues/',
+    },
+
+    footer: 'Learning Leagues · Personal project',
+
+    shots: {},
+  },
+
+  // ── Pour ajouter Pulse : copie un bloc ci-dessus,
+  //    renomme la clé (ex. 'pulse'), adapte le contenu + le `theme`.
 }

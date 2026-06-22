@@ -395,9 +395,14 @@ export default function CaseStudy({ data }) {
                 <p><RichText text={prototype.note} /></p>
               </div>
             )}
+            {prototype.href && (
+              <a className="proto-link" href={prototype.href} target="_blank" rel="noopener noreferrer">
+                {prototype.linkLabel || 'Open'} <span className="ar" aria-hidden="true">↗</span>
+              </a>
+            )}
             {prototype.src && (
               <div className="proto-frame reveal">
-                <iframe title={`${data.name}, Figma prototype`} src={prototype.src} allowFullScreen></iframe>
+                <iframe title={`${data.name} preview`} src={prototype.src} allowFullScreen></iframe>
               </div>
             )}
           </section>
