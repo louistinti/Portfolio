@@ -58,13 +58,13 @@ export const projects = [
     cover: '/assets/lvc/cover.png',
   },
   {
-    idx: '03', name: 'Garence', year: '2025', cat: 'B2B SaaS · Enterprise', slug: 'garence',
-    tldr: 'Led end to end the warranty-management tool for Actual Group, three user types, millions of euros at stake; automated 90.5% of decisions and cut decision time by 83%.',
+    idx: '03', name: 'Actual - Guarantee management tool', year: '2025', cat: 'B2B SaaS · Enterprise', slug: 'garence',
+    tldr: 'Led end to end the guarantee-management tool for Actual Group, three user types, millions of euros at stake; automated 90.5% of decisions and cut decision time by 83%. Detailed mockups shared in interview.',
     cover: '',
   },
   {
     idx: '04', name: 'Actual — Candidate List', year: '2025', cat: 'B2B SaaS · UX/UI', slug: 'candidate-list',
-    tldr: 'Turned a heavy, fragmented recruiter list into a scannable, actionable view, key info and quick actions on the row; 2-3 min saved per candidate readiness check.',
+    tldr: 'Turned a heavy, fragmented recruiter list into a scannable, actionable view, key info and quick actions on the row; 2-3 min saved per candidate readiness check. Detailed mockups shared in interview.',
     cover: '',
   },
   {
@@ -414,13 +414,14 @@ export const caseStudies = {
   },
 
   'garence': {
-    name: 'Garence',
-    title: 'Designing *Garence*, warranty management at scale',
+    name: 'Actual - Guarantee management tool',
+    title: "Designing Actual's *guarantee management* tool",
     kicker: ['Case Study', 'Product · UX/UI · B2B SaaS'],
     meta: [
       { k: 'Role', v: 'Lead Product Designer' },
       { k: 'Team', v: '1 PM · 1 designer · 4 devs' },
       { k: 'Duration', v: '1 year' },
+      { k: 'Mockups', v: 'Shared in interview' },
     ],
 
     // Rouge de marque Actual Group (#e40521, relevé sur groupeactual.eu).
@@ -442,7 +443,7 @@ export const caseStudies = {
       eyebrow: 'Context',
       lede: 'One tool, *three very different users*, and millions of euros on the line.',
       body: [
-        "Garence is the tool I **led end to end** as the sole designer. It manages Actual Group's **warranty requests** and **non-guaranteed exposure (ENG)**, the cover that secures the placement of temporary workers, with **millions of euros** riding on each decision.",
+        "I **led end to end**, as the sole designer, Actual's **guarantee-management tool**. It manages **warranty requests** and **non-guaranteed exposure (ENG)**, the cover that secures the placement of temporary workers, with **millions of euros** riding on each decision.",
         'Actual issues warranties to secure a temp placement, and tracks **non-guaranteed exposure** whenever the insurer steps back, an amount too high, a fast-rising exposure, a client at risk.',
         'It serves three populations with radically different needs: **agencies** initiate and track requests, **Customer Service** investigates and decides, and **management** supervises activity and steers budget envelopes by scope and agency.',
         'It all kicked off mid-**convergence**, as Leader, Ergalis, Up Skills and Ergos folded into shared tools, every entity wanting to keep its own features, with *three Business Owners* to align at once.',
@@ -507,7 +508,7 @@ export const caseStudies = {
       note: "This is the project that taught me the most about **holding a course through complexity**, multiple stakeholders, a tense context, users with very different needs, and millions of euros at stake, led end to end in full autonomy. With hindsight I'd revisit a few things, the ergonomics, the information hierarchy, the wording of some CTAs, and that gap is exactly the measure of how far the project moved.",
     },
 
-    footer: 'Garence · Actual Group · Case study',
+    footer: 'Guarantee management tool · Actual Group · Case study',
 
     // Personas = les 3 types d'utilisateurs (placeholders rayés tant qu'aucune
     // image n'est posée dans public/assets/).
@@ -526,6 +527,7 @@ export const caseStudies = {
       { k: 'Role', v: 'Product Designer' },
       { k: 'Team', v: '1 PM · 1 designer · 3 devs' },
       { k: 'Duration', v: '4 months' },
+      { k: 'Mockups', v: 'Shared in interview' },
     ],
 
     // Même client : rouge de marque Actual Group (#e40521).
