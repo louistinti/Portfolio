@@ -190,3 +190,47 @@
        --bp-md:  900px   (grilles à colonnes -> 1 colonne)
        --bp-lg:  1040px  (nav -> menu burger, hero empilé) */
 }
+
+/* ==========================================================
+   10. GRANDS ÉCRANS — montée en taille par paliers
+   ----------------------------------------------------------
+   Tout le site étant piloté par les tokens ci-dessus, on les
+   redéfinit au-delà de 1920px : la typo, les gros titres (via
+   les bornes des clamp) et la largeur de contenu montent d'un
+   cran. Le 1920px reste la référence inchangée.
+   ========================================================== */
+@media (min-width: 2000px) {
+  :root {
+    --text-12: 13px;
+    --text-14: 15px;
+    --text-16: 17px;
+    --text-24: 26px;
+    --text-32: 34px;
+    --text-40: 44px;
+    --text-48: 52px;
+    --text-56: 60px;
+    --text-64: 68px;
+    --text-72: 76px;
+    --text-80: 84px;
+    --text-96: 100px;
+    --maxw: 1760px;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --text-12: 14px;
+    --text-14: 16px;
+    --text-16: 18px;
+    --text-24: 28px;
+    --text-32: 36px;
+    --text-40: 46px;
+    --text-48: 56px;
+    --text-56: 64px;
+    --text-64: 72px;
+    --text-72: 82px;
+    --text-80: 92px;
+    --text-96: 112px;
+    --maxw: 1920px;
+  }
+}
