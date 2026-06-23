@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1512 1000" width="1512" height="1000" role="img" aria-label="Abstract red geometric shapes on a cream background">
+  <rect width="1512" height="1000" fill="#f5f3ec"/>
+  <g fill="#d8463d">
+    <!-- filled shapes -->
+    <rect x="366" y="400" width="150" height="150"/>
+    <circle cx="872" cy="232" r="68"/>
+    <circle cx="1218" cy="502" r="50"/>
+    <path d="M782 688 A105 105 0 0 1 992 688 Z"/>
+  </g>
+  <g fill="none" stroke="#d8463d" stroke-width="4">
+    <!-- thin line + corner arcs -->
+    <line x1="80" y1="212" x2="398" y2="212"/>
+    <circle cx="1580" cy="30" r="340"/>
+    <circle cx="-40" cy="1010" r="300"/>
+  </g>
+</svg>

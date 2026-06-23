@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1512 1000" width="1512" height="1000" role="img" aria-label="Abstract red shapes and list rows on a white background">
+  <rect width="1512" height="1000" fill="#ffffff"/>
+  <circle cx="455" cy="268" r="74" fill="#fc3d21"/>
+  <g fill="none" stroke="#fc3d21" stroke-width="6" stroke-linecap="round">
+    <!-- list rows next to the circle -->
+    <line x1="600" y1="250" x2="948" y2="250"/>
+    <line x1="600" y1="298" x2="833" y2="298"/>
+    <!-- arc, dome up -->
+    <path d="M1120 332 A112 112 0 0 0 1344 332"/>
+    <!-- rounded squares -->
+    <rect x="905" y="405" width="156" height="156" rx="18"/>
+    <rect x="1016" y="628" width="226" height="226" rx="24"/>
+    <!-- list rows bottom-left -->
+    <line x1="240" y1="738" x2="437" y2="738"/>
+    <line x1="240" y1="792" x2="437" y2="792"/>
+    <line x1="240" y1="845" x2="437" y2="845"/>
+  </g>
+</svg>
