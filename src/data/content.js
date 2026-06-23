@@ -70,7 +70,7 @@ export const projects = [
   {
     idx: '05', name: 'Learning Leagues', year: '2025', cat: 'Personal · Product & Design System', slug: 'learning-leagues',
     tldr: 'A personal site to learn League of Legends properly, structured by role, jargon-free, on a token-driven Hextech design system. Built solo in React, no build step, live on GitHub Pages.',
-    cover: '',
+    cover: '/assets/cover_ll.png',
   },
   {
     idx: '06', name: 'Pulse', year: '2023', cat: 'SaaS · Ops', slug: 'pulse',
