@@ -87,7 +87,11 @@ export default function CaseStudy({ data }) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const { context, challenge, research, ideation, wireframes, topography, ui, prototype } = data
+  const { context, challenge, research, ideation, wireframes, topography, ui, prototype, roadmap } = data
+
+  // Badge de statut optionnel (ex. projet en cours) : string courte, ou
+  // { label, live } pour ajouter une pastille "vivante".
+  const status = typeof data.status === 'string' ? { label: data.status } : data.status
 
   // Liens de la nav : sections réellement présentes dans les données.
   const navLinks = [
@@ -96,6 +100,7 @@ export default function CaseStudy({ data }) {
     ideation && { id: 'ideation', label: 'Ideation' },
     ui && { id: 'design', label: 'Design' },
     prototype && { id: 'prototype', label: 'Prototype' },
+    roadmap && { id: 'roadmap', label: 'Roadmap' },
   ].filter(Boolean)
 
   // Rampe du style guide : palette explicite (ui.palette) si fournie, sinon
@@ -132,14 +137,20 @@ export default function CaseStudy({ data }) {
       <main id="top">
         {/* ============================ TITLE BAR ============================ */}
         <header className="cs-title">
-          {data.kicker?.length > 0 && (
+          {(data.kicker?.length > 0 || status) && (
             <div className="cs-title__kicker">
-              {data.kicker.map((tag, i) => (
+              {data.kicker?.map((tag, i) => (
                 <Fragment key={i}>
                   {i > 0 && <span className="sep"></span>}
                   <span className="tag">{tag}</span>
                 </Fragment>
               ))}
+              {status && (
+                <span className={`cs-status${status.live ? ' is-live' : ''}`}>
+                  {status.live && <span className="cs-status__dot" aria-hidden="true"></span>}
+                  {status.label}
+                </span>
+              )}
             </div>
           )}
           <div className="cs-title__row">
@@ -404,6 +415,45 @@ export default function CaseStudy({ data }) {
               <div className="proto-frame reveal">
                 <iframe title={`${data.name} preview`} src={prototype.src} allowFullScreen></iframe>
               </div>
+            )}
+          </section>
+        )}
+
+        {/* ============================ ROADMAP ============================ */}
+        {roadmap && (
+          <section className="section" id="roadmap">
+            <div className="section-head">
+              <h2>{roadmap.eyebrow}</h2>
+              {roadmap.idx && <span className="section-idx">{roadmap.idx}</span>}
+            </div>
+            {(roadmap.lede || roadmap.body) && (
+              <div className="cs-lede">
+                {roadmap.lede && <h3><RichText text={roadmap.lede} /></h3>}
+                {roadmap.body && (
+                  <div className="body">
+                    {roadmap.body.map((p, i) => <p key={i}><RichText text={p} /></p>)}
+                  </div>
+                )}
+              </div>
+            )}
+            {roadmap.items?.length > 0 && (
+              <ul className="roadmap-list">
+                {roadmap.items.map((it, i) => {
+                  const state = it.state || 'planned'
+                  const mark = state === 'done' ? '✓' : state === 'building' ? '◐' : '○'
+                  const lab = state === 'done' ? 'Shipped' : state === 'building' ? 'Building' : 'Planned'
+                  return (
+                    <li className={`roadmap-row reveal is-${state}`} data-d={i % 3 || undefined} key={i}>
+                      <span className="roadmap-mark" aria-hidden="true">{mark}</span>
+                      <div className="roadmap-text">
+                        <h4>{it.name}</h4>
+                        {it.desc && <p>{it.desc}</p>}
+                      </div>
+                      <span className="roadmap-state mono">{lab}</span>
+                    </li>
+                  )
+                })}
+              </ul>
             )}
           </section>
         )}

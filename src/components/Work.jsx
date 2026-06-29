@@ -34,7 +34,10 @@ export default function Work() {
                 </div>
                 <div className="card__top">
                   <span className="idx">{p.idx}</span>
-                  <span className="cat">{soon ? 'Coming soon' : p.cat}</span>
+                  <span className="card__tags">
+                    {!soon && p.status && <span className="card__status">{p.status}</span>}
+                    <span className="cat">{soon ? 'Coming soon' : p.cat}</span>
+                  </span>
                 </div>
                 {!soon && (
                   <div className="card__tldr">

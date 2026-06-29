@@ -68,8 +68,9 @@ export const projects = [
     cover: '/assets/candidate-list/cover.svg',
   },
   {
-    idx: '05', name: 'Learning Leagues', year: '2025', cat: 'Personal · Product & Design System', slug: 'learning-leagues',
-    tldr: 'A personal site to learn League of Legends properly, structured by role, jargon-free, on a token-driven Hextech design system. Built solo in React, no build step, live on GitHub Pages.',
+    idx: '05', name: 'Learning Leagues', year: '2025 — ongoing', cat: 'Personal · Product & Design System', slug: 'learning-leagues',
+    status: 'In progress',
+    tldr: 'A personal site to learn League of Legends properly, structured by role, jargon-free, on a token-driven Hextech design system. Designed and built solo with AI as my pair — a data-driven role engine, all five roles live. Still growing.',
     cover: '/assets/cover_ll.png',
   },
   {
@@ -616,10 +617,11 @@ export const caseStudies = {
   'learning-leagues': {
     name: 'Learning Leagues',
     title: 'Everything you need to *learn League of Legends*',
-    kicker: ['Case Study', 'Personal · Product · Design System'],
+    kicker: ['Case Study', 'Built solo with AI', 'Product · Design System'],
+    status: { label: 'In progress', live: true },
     meta: [
-      { k: 'Role', v: 'Solo, end to end' },
-      { k: 'Type', v: 'Personal project' },
+      { k: 'Role', v: 'Solo — design + build' },
+      { k: 'Built with', v: 'AI as my pair' },
       { k: 'Stack', v: 'React · no build step' },
     ],
 
@@ -643,13 +645,13 @@ export const caseStudies = {
       lede: "League of Legends is *brutal* to learn, so I built the guide I wish I'd had.",
       body: [
         'League of Legends is a 15-year-old game that quietly assumes you already know how to play it. New players get dropped into a 5v5 with hundreds of champions, dense systems and a wall of community jargon, and most quit before it ever clicks.',
-        '**Learning Leagues** is my answer: a personal project, built solo end to end, laying out a **structured path by role**, from MOBA-savvy beginner to confident low-elo (Iron to Platinum).',
-        "Two rules kept it honest: **no jargon** without explaining it, and **no chasing the meta**, I teach the game's logic, not this patch's build.",
+        '**Learning Leagues** is my answer: a personal project I design and build solo, **with AI as my pair**, laying out a **structured path by role** from MOBA-savvy beginner to confident low-elo (Iron → Platinum).',
+        "It's **live and still growing** — all five role guides are up, running on an engine I can keep extending. Two rules keep it honest: **no jargon** without explaining it, and **no chasing the meta**, I teach the game's logic, not this patch's build.",
       ],
       stats: [
-        { v: '5', k: 'roles mapped to a structured path; Support shipped as the first full guide.' },
-        { v: '0', u: 'build', k: 'static site, React + Babel transpiled in the browser, deployed on GitHub Pages.' },
-        { v: '3', k: 'guides live so far: Fundamentals, the Support deep-dive and the Glossary.' },
+        { v: '5', k: 'roles live, each a full guide; Support goes deepest as the reference build.' },
+        { v: '1', u: 'engine', k: "data-driven role engine: write a role's data, it renders the whole guide." },
+        { v: '0', u: 'build', k: 'static site, React + Babel transpiled in the browser, shipped on GitHub Pages.' },
       ],
     },
 
@@ -672,18 +674,20 @@ export const caseStudies = {
 
     ideation: {
       eyebrow: 'What I built',
-      idx: 'The site',
-      lede: 'A *curriculum*, not a wiki.',
+      idx: 'The build',
+      lede: 'A *curriculum*, on an engine I built with AI.',
       body: [
-        'The site is a guided path, not a search box: a landing that frames the journey, then layers that build on each other.',
-        'The **Support guide** went deep first, as the proof of the format: phases, map control, archetypes, common errors, champions, builds, matchups and a practice checklist.',
+        'The site is a guided path, not a search box: a landing that frames the journey, fundamentals first, then a full guide per role.',
+        'Rather than hand-build five near-identical guides, I designed a **data-driven role engine** with AI as my pair: each guide is pure data, phases, map control, archetypes, common errors, champions, builds, matchups, and one shared engine renders it, with a per-section error boundary and a single source of truth for the live patch.',
+        'The **Support guide** went deepest first to pressure-test the format; Top, Jungle, Mid and ADC followed as data, fast, once the engine held.',
       ],
       features: [
         { id: '01', name: 'Fundamentals', desc: 'The base layer: map, items, runes, vision, wave management and neutral objectives.' },
-        { id: '02', name: 'Role guides', desc: 'Five positions, five mindsets. Support shipped first, as a complete deep-dive.' },
-        { id: '03', name: 'Training drills', desc: 'Reps, not theory: last hits, vision and mechanics as short, measurable drills.' },
-        { id: '04', name: 'Glossary', desc: 'Every term defined, with inline first-mention glosses across the guides.' },
-        { id: '05', name: 'Resources', desc: 'Curated external tools for live builds and stats, where they beat rolling my own.' },
+        { id: '02', name: 'Role guides', desc: 'Five positions live, each a full guide. Support is the deep-dive that set the bar.' },
+        { id: '03', name: 'Role engine', desc: 'One engine renders every guide from its data, add a role by writing data, not pages.' },
+        { id: '04', name: 'Practice videos', desc: 'Curated drills and pro clips, last hits, vision, mechanics, as short watchable reps.' },
+        { id: '05', name: 'Glossary', desc: 'Every term defined, with inline first-mention glosses across the guides.' },
+        { id: '06', name: 'Resources', desc: 'Curated external tools for live builds and stats, where they beat rolling my own.' },
       ],
     },
 
@@ -720,13 +724,31 @@ export const caseStudies = {
     prototype: {
       eyebrow: 'Live',
       idx: 'Try it',
-      note: 'The site is live on GitHub Pages. Explore the landing, the Fundamentals guide, the full Support role guide and the glossary, with the design-system reference one URL away.',
+      note: 'The site is live on GitHub Pages and still evolving. Explore the landing, the Fundamentals guide, the five role guides (Support goes deepest) and the glossary, with the design-system reference one URL away.',
       href: 'https://louistinti.github.io/LearningLeagues/',
       linkLabel: 'Visit the live site',
       src: 'https://louistinti.github.io/LearningLeagues/',
     },
 
-    footer: 'Learning Leagues · Personal project',
+    roadmap: {
+      eyebrow: 'Roadmap',
+      idx: "What's next",
+      lede: "Shipping in the open, *here's where it's headed.*",
+      body: [
+        "The engine made breadth cheap, so the work now is depth and the interactive layer. A snapshot of what's shipped and what's coming.",
+      ],
+      items: [
+        { state: 'done', name: 'Five role guides', desc: 'Top, Jungle, Mid, ADC and Support, all live on the shared engine.' },
+        { state: 'done', name: 'Data-driven role engine', desc: 'Per-section error boundary and one source of truth for the live patch.' },
+        { state: 'done', name: 'Design-system reference', desc: 'Foundations, components and patterns on their own Hextech page.' },
+        { state: 'building', name: 'Champions layer', desc: 'Per-champion pages branching off each role guide.' },
+        { state: 'building', name: 'Role quiz', desc: 'A short quiz that points new players to the role that fits them.' },
+        { state: 'planned', name: 'Playable drills', desc: 'Turning the training vignette into measurable, trackable reps.' },
+        { state: 'planned', name: 'Bilingual site', desc: 'FR/EN parity across every guide, wired to the language switcher.' },
+      ],
+    },
+
+    footer: 'Learning Leagues · Personal project · In progress',
 
     shots: {},
   },
