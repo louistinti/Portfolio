@@ -1,4 +1,4 @@
-import { useEffect, Fragment } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 import { useInteractions } from '../hooks/useInteractions.js'
 import { goHome } from '../hooks/useRoute.js'
 import { profile } from '../data/content.js'
@@ -38,6 +38,9 @@ function luminance(hex) {
 export default function CaseStudy({ data }) {
   useInteractions()
 
+  // Lightbox galerie : preview plein écran, calée sur la hauteur de l'écran.
+  const [zoom, setZoom] = useState(null)
+
   useEffect(() => {
     if (!data) return
     const prev = document.title
@@ -46,6 +49,19 @@ export default function CaseStudy({ data }) {
       document.title = prev
     }
   }, [data])
+
+  // Échap pour fermer + verrou du scroll quand la lightbox est ouverte.
+  useEffect(() => {
+    if (!zoom) return
+    const onKey = (e) => { if (e.key === 'Escape') setZoom(null) }
+    document.addEventListener('keydown', onKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [zoom])
 
   if (!data) return null
 
@@ -464,7 +480,9 @@ export default function CaseStudy({ data }) {
             <div className="cs-gallery">
               {data.gallery.map((g, i) => (
                 <figure className="cs-gallery__item reveal" data-d={i % 2 || undefined} key={g.src || i}>
-                  <img src={g.src} alt={g.name} loading="lazy" />
+                  <button type="button" className="cs-gallery__open" onClick={() => setZoom(g)} aria-label={`Open ${g.name} preview`}>
+                    <img src={g.src} alt={g.name} loading="lazy" />
+                  </button>
                   <figcaption><span className="n">{g.name}</span>{g.sub && <span className="s">{g.sub}</span>}</figcaption>
                 </figure>
               ))}
@@ -489,6 +507,14 @@ export default function CaseStudy({ data }) {
           Back to top <span aria-hidden="true">↑</span>
         </a>
       </footer>
+
+      {/* ============================ LIGHTBOX (gallery preview) ============================ */}
+      {zoom && (
+        <div className="cs-lightbox" onClick={() => setZoom(null)} role="dialog" aria-modal="true" aria-label={`${zoom.name} preview`}>
+          <button className="cs-lightbox__close" onClick={() => setZoom(null)} aria-label="Close preview">✕</button>
+          <img src={zoom.src} alt={zoom.name} />
+        </div>
+      )}
     </div>
   )
 }

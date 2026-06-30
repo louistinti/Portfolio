@@ -532,6 +532,36 @@
   border: 1px solid var(--line); border-radius: var(--radius-lg);
 }
 .cs-gallery__item figcaption { display: flex; align-items: baseline; gap: var(--space-4); margin-top: var(--space-4); }
+/* frame cliquable -> lightbox */
+.cs-gallery__open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.cs-gallery__open img { transition: filter 0.3s var(--ease); }
+.cs-gallery__open:hover img { filter: brightness(1.05); }
+.cs-gallery__open:focus-visible { outline: 2px solid var(--accent-line); outline-offset: 4px; border-radius: var(--radius-lg); }
+
+/* ============================================================
+   LIGHTBOX — preview plein écran, calée sur la hauteur de l'écran
+   ============================================================ */
+.cs-lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(16px, 4vh, 48px);
+  background: rgba(8, 8, 9, 0.92); cursor: zoom-out;
+  animation: cs-lightbox-in 0.2s var(--ease);
+}
+.cs-lightbox img {
+  max-width: 94vw; max-height: 92vh; width: auto; height: auto;   /* la frame entière tient à l'écran */
+  border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+}
+.cs-lightbox__close {
+  position: fixed; top: clamp(12px, 2vw, 24px); right: clamp(12px, 2vw, 24px);
+  width: 44px; height: 44px; border-radius: 100px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--bg-1); color: var(--fg); border: 1px solid var(--line);
+  font-size: var(--text-16); cursor: pointer;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.cs-lightbox__close:hover { background: var(--bg-2); transform: scale(1.05); }
+@keyframes cs-lightbox-in { from { opacity: 0; } to { opacity: 1; } }
 .cs-gallery__item figcaption .n { font-family: var(--display); font-weight: 700; font-size: var(--text-24); letter-spacing: -0.01em; }
 .cs-gallery__item figcaption .s { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .proto-frame {
