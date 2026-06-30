@@ -74,9 +74,9 @@ export const projects = [
     cover: '/assets/cover_ll.png',
   },
   {
-    idx: '06', name: 'Pulse', year: '2023', cat: 'SaaS · Ops', slug: 'pulse',
-    tldr: 'A real‑time ops monitoring app, designed alerting and incident triage for on‑call teams.',
-    cover: '',
+    idx: '06', name: 'Concepts', year: '2026', cat: 'UI exploration · Self-initiated', slug: 'concepts',
+    tldr: 'Self-initiated UI explorations across product types, a project OS, an AI writing copilot, a product-analytics suite, where I push pure interface craft.',
+    cover: '/assets/UI/Atlas.png',
   },
 ]
 
@@ -753,6 +753,48 @@ export const caseStudies = {
     shots: {},
   },
 
-  // ── Pour ajouter Pulse : copie un bloc ci-dessus,
-  //    renomme la clé (ex. 'pulse'), adapte le contenu + le `theme`.
+  'concepts': {
+    name: 'Concepts',
+    title: 'Concept work, *pure UI*',
+    kicker: ['Concept work', 'UI exploration · Self-initiated'],
+    meta: [
+      { k: 'Type', v: 'Self-initiated' },
+      { k: 'Focus', v: 'Pure UI / craft' },
+      { k: 'Products', v: 'Fictional' },
+    ],
+
+    // Thème violet (clin d'œil aux fonds Atlas/Draft). Pas de palette projet
+    // réelle : ce sont des explorations, le violet sert juste d'accent de page.
+    theme: {
+      '--accent': '#7c6cff',
+      '--accent-ink': '#0c0a1e',
+      '--accent-line': '#a99bff',
+      '--topo-1': '#15122e',
+      '--topo-2': '#1d1840',
+      '--topo-3': '#2f2767',
+      '--topo-4': '#7c6cff',
+      '--topo-5': '#a99bff',
+      '--topo-6': '#d6cfff',
+      '--topo-line': 'rgba(124, 108, 255, 0.16)',
+    },
+
+    context: {
+      eyebrow: 'Concept work',
+      lede: 'Fictional products, *real interface craft*.',
+      body: [
+        'A set of self-initiated UI explorations, no client and no real metrics, just the part of the work I love most: hierarchy, density and restraint. Each one is a different product and a different visual language.',
+        'A **project OS** for software teams, an **AI writing copilot** and a **product-analytics** suite, designed to be looked at closely.',
+      ],
+    },
+
+    // Galerie : images pleine largeur, légendées. Pas de récit case-study.
+    gallery: [
+      { src: '/assets/UI/Atlas.png', name: 'Atlas', sub: 'Project OS for software teams' },
+      { src: '/assets/UI/Draft.png', name: 'Draft', sub: 'AI writing copilot' },
+      { src: '/assets/UI/Signal.png', name: 'Signal', sub: 'Product analytics' },
+      { src: '/assets/UI/Mobile.png', name: 'On mobile', sub: 'Native iOS across the set' },
+    ],
+
+    footer: 'Concepts · Self-initiated UI',
+  },
 }

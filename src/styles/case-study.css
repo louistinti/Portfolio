@@ -517,6 +517,23 @@
 .proto-link { margin: 0 0 var(--space-8); }
 .proto-link .ar { transition: transform 0.4s var(--ease); }
 .proto-link:hover .ar { transform: translate(2px, -2px); }
+
+/* ============================================================
+   GALERIE UI / CONCEPTS — images pleine largeur, légendées
+   (pas de récit case-study : juste le craft)
+   ============================================================ */
+.cs-gallery {
+  display: flex; flex-direction: column; gap: clamp(var(--space-12), 6vw, var(--space-24));
+  max-width: 1440px; margin-inline: auto;   /* colonne : toutes les frames à la même largeur */
+}
+.cs-gallery__item { margin: 0; }
+.cs-gallery__item img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+}
+.cs-gallery__item figcaption { display: flex; align-items: baseline; gap: var(--space-4); margin-top: var(--space-4); }
+.cs-gallery__item figcaption .n { font-family: var(--display); font-weight: 700; font-size: var(--text-24); letter-spacing: -0.01em; }
+.cs-gallery__item figcaption .s { font-family: var(--mono); font-size: var(--text-12); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .proto-frame {
   position: relative; width: 100%; aspect-ratio: 16 / 10;
   border: 1px solid var(--line); background: var(--bg-1);

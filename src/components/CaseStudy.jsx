@@ -457,6 +457,20 @@ export default function CaseStudy({ data }) {
             )}
           </section>
         )}
+
+        {/* ============================ GALLERY (concept UI) ============================ */}
+        {data.gallery?.length > 0 && (
+          <section className="section" id="gallery">
+            <div className="cs-gallery">
+              {data.gallery.map((g, i) => (
+                <figure className="cs-gallery__item reveal" data-d={i % 2 || undefined} key={g.src || i}>
+                  <img src={g.src} alt={g.name} loading="lazy" />
+                  <figcaption><span className="n">{g.name}</span>{g.sub && <span className="s">{g.sub}</span>}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
 
       {/* ============================ NEXT ============================ */}
