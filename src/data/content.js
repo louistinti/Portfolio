@@ -76,7 +76,7 @@ export const projects = [
   {
     idx: '06', name: 'Concepts', year: '2026', cat: 'UI exploration · Self-initiated', slug: 'concepts',
     tldr: 'Self-initiated UI explorations across product types, a project OS, an AI writing copilot, a product-analytics suite, where I push pure interface craft.',
-    cover: '/assets/UI/Atlas.png',
+    cover: '/assets/UI/Atlas.webp',
   },
 ]
 
@@ -789,10 +789,10 @@ export const caseStudies = {
 
     // Galerie : images pleine largeur, légendées. Pas de récit case-study.
     gallery: [
-      { src: '/assets/UI/Atlas.png', name: 'Atlas', sub: 'Project OS for software teams' },
-      { src: '/assets/UI/Draft.png', name: 'Draft', sub: 'AI writing copilot' },
-      { src: '/assets/UI/Signal.png', name: 'Signal', sub: 'Product analytics' },
-      { src: '/assets/UI/Mobile.png', name: 'On mobile', sub: 'Native iOS across the set' },
+      { src: '/assets/UI/Atlas.webp', name: 'Atlas', sub: 'Project OS for software teams' },
+      { src: '/assets/UI/Draft.webp', name: 'Draft', sub: 'AI writing copilot' },
+      { src: '/assets/UI/Signal.webp', name: 'Signal', sub: 'Product analytics' },
+      { src: '/assets/UI/Mobile.webp', name: 'On mobile', sub: 'Native iOS across the set' },
     ],
 
     footer: 'Concepts · Self-initiated UI',
