@@ -35,6 +35,62 @@ function luminance(hex) {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b
 }
 
+// Props pour rendre un conteneur d'image cliquable → ouvre la lightbox (utile
+// sur mobile). Renvoie {} si pas de source (placeholder non cliquable).
+function zoomable(src, name, onZoom) {
+  if (!src) return {}
+  const open = () => onZoom({ src, name })
+  return {
+    onClick: open,
+    role: 'button',
+    tabIndex: 0,
+    'aria-label': `Open ${name || 'image'} preview`,
+    onKeyDown: (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        open()
+      }
+    },
+  }
+}
+
+// Image-slot : placeholder rayé (.ph) + image réelle si fournie (shots[id]).
+// NB : défini au niveau module (pas dans CaseStudy) pour ne PAS remonter à
+// chaque re-render — sinon les images perdent leur classe `.in` (reveal) à
+// l'ouverture de la lightbox et disparaissent.
+function Shot({ shots, onZoom, id, label, className = '', fit = 'cover', style }) {
+  const src = shots?.[id]
+  const alt = (label || '').replace(/[[\]]/g, '').trim()
+  const z = zoomable(src, alt, onZoom)
+  const cls = `ph${className ? ' ' + className : ''}${src ? ' is-zoomable' : ''}`
+  return (
+    <div {...z} className={cls} data-fit={fit} style={style}>
+      {src ? <img src={src} alt={alt} loading="lazy" /> : <span className="ph-label">{label}</span>}
+    </div>
+  )
+}
+
+// Aperçu de page web : vignette recadrée sur le HAUT de la capture (pas de
+// défilement). 4 vignettes tiennent dans une grille 2×2. Module-level (cf. Shot).
+function PageGrid({ shots, onZoom, items }) {
+  return (
+    <div className="cs-pages">
+      {items.map((p, i) => {
+        const src = shots?.[p.shot]
+        const z = zoomable(src, p.cap, onZoom)
+        return (
+          <figure className="reveal" data-d={i % 2 || undefined} key={p.shot || i}>
+            <div {...z} className={`cs-pagecard${src ? ' is-zoomable' : ''}`}>
+              {src ? <img src={src} alt={p.cap} loading="lazy" /> : <span className="ph-label">[ {p.cap} ]</span>}
+            </div>
+            <figcaption><span className="v">{String(i + 1).padStart(2, '0')}</span><span className="t">{p.cap}</span></figcaption>
+          </figure>
+        )
+      })}
+    </div>
+  )
+}
+
 export default function CaseStudy({ data }) {
   useInteractions()
 
@@ -64,35 +120,6 @@ export default function CaseStudy({ data }) {
   }, [zoom])
 
   if (!data) return null
-
-  // Image-slot : placeholder rayé (.ph) + image réelle si fournie (data.shots).
-  const Shot = ({ id, label, className = '', fit = 'cover', style }) => {
-    const src = data.shots?.[id]
-    const alt = (label || '').replace(/[[\]]/g, '').trim()
-    return (
-      <div className={`ph${className ? ' ' + className : ''}`} data-fit={fit} style={style}>
-        {src ? <img src={src} alt={alt} loading="lazy" /> : <span className="ph-label">{label}</span>}
-      </div>
-    )
-  }
-
-  // Aperçu de page web : vignette recadrée sur le HAUT de la capture (pas de
-  // défilement). 4 vignettes tiennent dans une grille 2×2.
-  const PageGrid = ({ items }) => (
-    <div className="cs-pages">
-      {items.map((p, i) => {
-        const src = data.shots?.[p.shot]
-        return (
-          <figure className="reveal" data-d={i % 2 || undefined} key={p.shot || i}>
-            <div className="cs-pagecard">
-              {src ? <img src={src} alt={p.cap} loading="lazy" /> : <span className="ph-label">[ {p.cap} ]</span>}
-            </div>
-            <figcaption><span className="v">{String(i + 1).padStart(2, '0')}</span><span className="t">{p.cap}</span></figcaption>
-          </figure>
-        )
-      })}
-    </div>
-  )
 
   const scrollToId = (e, id) => {
     e.preventDefault()
@@ -232,7 +259,7 @@ export default function CaseStudy({ data }) {
                 {research.personas.map((p, i) => (
                   <article className="persona reveal" data-d={i || undefined} key={p.id || i}>
                     <div className="persona__media">
-                      <Shot id={p.shot} label={`[ ${p.name} ]`} />
+                      <Shot shots={data.shots} onZoom={setZoom} id={p.shot} label={`[ ${p.name} ]`} />
                     </div>
                     <div className="persona__body">
                       <div className="persona__name"><h4>{p.name}</h4><span className="id">{p.id}</span></div>
@@ -279,7 +306,7 @@ export default function CaseStudy({ data }) {
             {ideation.media?.map((m, i) => (
               <div className={`cs-media reveal${m.framed ? ' is-framed' : ''}`} key={i}>
                 <div className="cs-media__cap"><h4>{m.cap}</h4>{m.sub && <span>{m.sub}</span>}</div>
-                <Shot id={m.shot} fit="contain" label={`[ ${m.cap} ]`} style={!m.framed && m.aspect ? { aspectRatio: m.aspect } : undefined} />
+                <Shot shots={data.shots} onZoom={setZoom} id={m.shot} fit="contain" label={`[ ${m.cap} ]`} style={!m.framed && m.aspect ? { aspectRatio: m.aspect } : undefined} />
               </div>
             ))}
           </section>
@@ -298,12 +325,12 @@ export default function CaseStudy({ data }) {
               </p>
             )}
             {wireframes.pages?.length > 0 ? (
-              <PageGrid items={wireframes.pages} />
+              <PageGrid shots={data.shots} onZoom={setZoom} items={wireframes.pages} />
             ) : wireframes.items?.length > 0 ? (
               <div className="wire-row">
                 {wireframes.items.map((w, i) => (
                   <div className={`wire reveal${w.final ? ' is-final' : ''}`} data-d={i || undefined} key={w.shot || i}>
-                    <Shot id={w.shot} label={`[ Wireframe ${w.v} ]`} />
+                    <Shot shots={data.shots} onZoom={setZoom} id={w.shot} label={`[ Wireframe ${w.v} ]`} />
                     <div className="lab"><span className="v">{w.v}</span><span className="t">{w.t}</span></div>
                   </div>
                 ))}
@@ -321,7 +348,7 @@ export default function CaseStudy({ data }) {
               {topography.body && <p><RichText text={topography.body} /></p>}
               {topography.shot && (
                 <div className="cs-topo__media reveal">
-                  <Shot id={topography.shot} fit={topography.fit || 'cover'} label={`[ ${topography.eyebrow} ]`} />
+                  <Shot shots={data.shots} onZoom={setZoom} id={topography.shot} fit={topography.fit || 'cover'} label={`[ ${topography.eyebrow} ]`} />
                 </div>
               )}
             </div>
@@ -398,11 +425,11 @@ export default function CaseStudy({ data }) {
             )}
 
             {ui.pages?.length > 0 ? (
-              <PageGrid items={ui.pages} />
+              <PageGrid shots={data.shots} onZoom={setZoom} items={ui.pages} />
             ) : ui.screens?.length > 0 ? (
               <div className="screens-grid">
                 {ui.screens.map((id, i) => (
-                  <Shot id={id} label={`[ Screen ${i + 1} ]`} key={id} />
+                  <Shot shots={data.shots} onZoom={setZoom} id={id} label={`[ Screen ${i + 1} ]`} key={id} />
                 ))}
               </div>
             ) : null}

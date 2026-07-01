@@ -372,6 +372,12 @@
   border: 1px solid var(--line); background: var(--bg-1);
   aspect-ratio: 4 / 3; overflow: hidden;
 }
+
+/* Toute image de contenu est cliquable → ouvre la lightbox (utile sur mobile) */
+.is-zoomable { cursor: zoom-in; }
+.is-zoomable img { transition: filter 0.3s var(--ease); }
+.is-zoomable:hover img { filter: brightness(1.06); }
+.is-zoomable:focus-visible { outline: 2px solid var(--accent-line); outline-offset: 4px; }
 /* recadrage sur le HAUT de la capture (pas de défilement) */
 .cs-pagecard img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .cs-pagecard .ph-label {
