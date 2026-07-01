@@ -551,7 +551,23 @@
 }
 .cs-lightbox img {
   max-width: 94vw; max-height: 92vh; width: auto; height: auto;   /* la frame entière tient à l'écran */
+  cursor: zoom-in;                                                /* clic image = zoomer */
   border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+}
+/* Zoom : image nettement plus grande que l'écran (largeur ≈ écran, hauteur qui
+   déborde), la lightbox devient scrollable + drag-to-pan pour parcourir une
+   page longue en hauteur. Largeur ≤ 96vw ⇒ pas de scroll horizontal parasite. */
+.cs-lightbox.is-zoomed {
+  align-items: flex-start; justify-content: center;
+  overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain;
+  padding: 0; cursor: grab;
+}
+.cs-lightbox.is-zoomed:active { cursor: grabbing; }
+.cs-lightbox.is-zoomed img {
+  max-width: none; max-height: none;
+  width: min(96vw, 1200px); height: auto;   /* agrandi ⇒ déborde en hauteur */
+  margin: 0 auto; flex: none;
+  cursor: inherit; border-radius: 0; user-select: none;
 }
 .cs-lightbox__close {
   position: fixed; top: clamp(12px, 2vw, 24px); right: clamp(12px, 2vw, 24px);

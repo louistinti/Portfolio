@@ -384,10 +384,10 @@ export const caseStudies = {
         tabs: [{ label: 'Accueil', on: true }, { label: 'Boutique' }, { label: 'Perso' }, { label: 'Lookbook' }],
       },
       pages: [
-        { shot: 'ui-home', cap: 'Home' },
-        { shot: 'ui-product', cap: 'Product, La Gilbert' },
+        { shot: 'ui-home', preview: 'home-preview', cap: 'Home' },
+        { shot: 'ui-product', preview: 'product-preview', cap: 'Product, La Gilbert' },
         { shot: 'ui-quiz', cap: 'Match result, La Soupette' },
-        { shot: 'ui-lookbook', cap: 'Lookbook' },
+        { shot: 'ui-lookbook', preview: 'lookbook-preview', cap: 'Lookbook' },
       ],
     },
 
@@ -411,6 +411,9 @@ export const caseStudies = {
       'ui-product': '/assets/lvc/ui-product.png',
       'ui-quiz': '/assets/lvc/ui-quiz.png',
       'ui-lookbook': '/assets/lvc/ui-lookbook.png',
+      'home-preview': '/assets/lvc/home-preview.png',
+      'product-preview': '/assets/lvc/product-preview.png',
+      'lookbook-preview': '/assets/lvc/lookbook-preview.png',
     },
   },
 

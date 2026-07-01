@@ -1,4 +1,4 @@
-import { useEffect, useState, Fragment } from 'react'
+import { useEffect, useState, useRef, Fragment } from 'react'
 import { useInteractions } from '../hooks/useInteractions.js'
 import { goHome } from '../hooks/useRoute.js'
 import { profile } from '../data/content.js'
@@ -76,12 +76,13 @@ function PageGrid({ shots, onZoom, items }) {
   return (
     <div className="cs-pages">
       {items.map((p, i) => {
-        const src = shots?.[p.shot]
-        const z = zoomable(src, p.cap, onZoom)
+        const full = shots?.[p.shot]                 // image ouverte dans la lightbox
+        const thumb = shots?.[p.preview] || full     // vignette (clean si `preview` fourni)
+        const z = zoomable(full, p.cap, onZoom)       // clic → ouvre l'image complète
         return (
           <figure className="reveal" data-d={i % 2 || undefined} key={p.shot || i}>
-            <div {...z} className={`cs-pagecard${src ? ' is-zoomable' : ''}`}>
-              {src ? <img src={src} alt={p.cap} loading="lazy" /> : <span className="ph-label">[ {p.cap} ]</span>}
+            <div {...z} className={`cs-pagecard${full ? ' is-zoomable' : ''}`}>
+              {thumb ? <img src={thumb} alt={p.cap} loading="lazy" /> : <span className="ph-label">[ {p.cap} ]</span>}
             </div>
             <figcaption><span className="v">{String(i + 1).padStart(2, '0')}</span><span className="t">{p.cap}</span></figcaption>
           </figure>
@@ -96,6 +97,30 @@ export default function CaseStudy({ data }) {
 
   // Lightbox galerie : preview plein écran, calée sur la hauteur de l'écran.
   const [zoom, setZoom] = useState(null)
+  // Loupe interne : true = image agrandie (plus grande que l'écran), qu'on
+  // déplace verticalement au drag/scroll. Remise à zéro à chaque ouverture.
+  const [zoomed, setZoomed] = useState(false)
+  useEffect(() => { setZoomed(false) }, [zoom])
+
+  // Drag-to-pan sur l'image zoomée (souris). Le scroll natif (molette/tactile)
+  // fonctionne en parallèle. `moved` sert à ne PAS dézoomer si on a glissé.
+  const stageRef = useRef(null)
+  const pan = useRef(null)
+  const moved = useRef(false)
+  const onPanDown = (e) => {
+    if (!zoomed || e.pointerType === 'touch' || !stageRef.current) return
+    pan.current = { x: e.clientX, y: e.clientY, top: stageRef.current.scrollTop, left: stageRef.current.scrollLeft }
+    moved.current = false
+  }
+  const onPanMove = (e) => {
+    if (!pan.current || !stageRef.current) return
+    const dx = e.clientX - pan.current.x
+    const dy = e.clientY - pan.current.y
+    if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved.current = true
+    stageRef.current.scrollTop = pan.current.top - dy
+    stageRef.current.scrollLeft = pan.current.left - dx
+  }
+  const onPanEnd = () => { pan.current = null }
 
   useEffect(() => {
     if (!data) return
@@ -536,10 +561,33 @@ export default function CaseStudy({ data }) {
       </footer>
 
       {/* ============================ LIGHTBOX (gallery preview) ============================ */}
+      {/* Clic sur le fond = fermer. Clic sur l'image = zoom (taille réelle,
+          scrollable) pour lire une page en détail. Échap ferme. */}
       {zoom && (
-        <div className="cs-lightbox" onClick={() => setZoom(null)} role="dialog" aria-modal="true" aria-label={`${zoom.name} preview`}>
+        <div
+          ref={stageRef}
+          className={`cs-lightbox${zoomed ? ' is-zoomed' : ''}`}
+          onClick={() => setZoom(null)}
+          onPointerDown={onPanDown}
+          onPointerMove={onPanMove}
+          onPointerUp={onPanEnd}
+          onPointerLeave={onPanEnd}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${zoom.name} preview`}
+        >
           <button className="cs-lightbox__close" onClick={() => setZoom(null)} aria-label="Close preview">✕</button>
-          <img src={zoom.src} alt={zoom.name} />
+          <img
+            src={zoom.src}
+            alt={zoom.name}
+            draggable="false"
+            onClick={(e) => {
+              e.stopPropagation()
+              if (moved.current) { moved.current = false; return } // c'était un pan, pas un clic
+              setZoomed((v) => !v)
+            }}
+            aria-label={zoomed ? 'Zoom out' : 'Zoom in'}
+          />
         </div>
       )}
     </div>
