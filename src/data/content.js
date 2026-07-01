@@ -669,7 +669,7 @@ export const caseStudies = {
         'Then it branches **by role**, because your position decides your job on the map. Each guide is **jargon-free by default**: a `Gloss` component explains every term on first mention, backed by a full **glossary**.',
         'And it stays in its lane: for live builds and patch stats it **steps aside** for the tools that already do it best (Lolalytics, U.GG, OP.GG), and focuses on the thinking those tools never teach.',
       ],
-      insight: 'Most guides chase *what to build this patch*. Learning Leagues teaches *why*, so the knowledge survives the next patch.',
+      insight: "Most guides optimize for *this patch*, a build list that's already stale by the next update. Learning Leagues teaches the **logic underneath**, map control, wave states, the real job of each role, so the understanding outlives the meta instead of expiring with it.",
     },
 
     ideation: {
