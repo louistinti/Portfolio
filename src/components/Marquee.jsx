@@ -1,5 +1,7 @@
-export default function Marquee() {
-  const Item = () => (
+// Segment répété deux fois pour un défilement continu (module-level : pas de
+// composant redéfini à chaque rendu).
+function MarqueeItem() {
+  return (
     <span>
       <span className="o">Product Design</span> <span className="dot">◆</span> UX / UI{' '}
       <span className="dot">◆</span> <span className="o">AI Builder</span>{' '}
@@ -8,12 +10,14 @@ export default function Marquee() {
       <span className="dot">◆</span>
     </span>
   )
+}
 
+export default function Marquee() {
   return (
     <div className="marquee" aria-hidden="true">
       <div className="marquee__track">
-        <Item />
-        <Item />
+        <MarqueeItem />
+        <MarqueeItem />
       </div>
     </div>
   )

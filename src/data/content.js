@@ -247,7 +247,6 @@ export const caseStudies = {
       'wire-2': '/assets/ps/wire-2.png',
       'wire-3': '/assets/ps/wire-3.png',
       'wire-4': '/assets/ps/wire-4.png',
-      midfi: '',
       'test-1': '/assets/ps/Test-1.png',
       'test-2': '/assets/ps/Test-2.png',
       'test-3': '/assets/ps/Test-3.png',

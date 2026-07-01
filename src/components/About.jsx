@@ -2,7 +2,7 @@ import { profile } from '../data/content.js'
 
 export default function About() {
   return (
-    <section className="section" id="about" data-screen-label="About">
+    <section className="section" id="about">
       <div className="section-head">
         <h2>About</h2>
         <span className="section-idx">(02)</span>

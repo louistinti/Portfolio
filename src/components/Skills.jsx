@@ -2,7 +2,7 @@ import { skills, tools } from '../data/content.js'
 
 export default function Skills() {
   return (
-    <section className="section" id="skills" data-screen-label="Skills">
+    <section className="section" id="skills">
       <div className="section-head">
         <h2>What I do</h2>
         <span className="section-idx">(04)</span>

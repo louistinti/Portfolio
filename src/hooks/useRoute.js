@@ -12,7 +12,7 @@ import { caseStudies } from '../data/content.js'
 // ──────────────────────────────────────────────────────────────
 
 // Retourne le slug d'étude de cas si le hash vaut #/<slug-connu>, sinon 'home'.
-export function getRoute() {
+function getRoute() {
   const h = window.location.hash
   if (h.startsWith('#/')) {
     const slug = h.slice(2).split(/[/?#]/)[0]

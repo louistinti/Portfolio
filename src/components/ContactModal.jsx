@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { profile } from '../data/content.js'
+import { useScrollLock } from '../hooks/useScrollLock.js'
+import { useOnKey } from '../hooks/useOnKey.js'
 import Icon from './Icon.jsx'
 
 // Modale "Let's talk" — deux chemins de contact : un mail (mailto, avec un
@@ -13,18 +15,13 @@ export default function ContactModal({ open, onClose }) {
   const resetRef = useRef(null)
   const [copied, setCopied] = useState(false)
 
+  useScrollLock(open)
+  useOnKey('Escape', onClose, open)
+
+  // Focus posé sur le bouton fermer à l'ouverture (accessibilité).
   useEffect(() => {
-    if (!open) return
-    const onKey = (e) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', onKey)
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    closeRef.current?.focus()
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prev
-    }
-  }, [open, onClose])
+    if (open) closeRef.current?.focus()
+  }, [open])
 
   // Nettoyage du timer de feedback "Copied" si la modale se démonte.
   useEffect(() => () => clearTimeout(resetRef.current), [])

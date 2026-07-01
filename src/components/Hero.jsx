@@ -3,7 +3,7 @@ import Icon from './Icon.jsx'
 
 export default function Hero() {
   return (
-    <section className="hero" data-screen-label="Hero">
+    <section className="hero">
       <div className="hero__body">
         <div className="hero__idx">
           <span className="mono">Portfolio, 2026</span>

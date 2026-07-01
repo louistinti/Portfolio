@@ -6,7 +6,7 @@ import ContactModal from './ContactModal.jsx'
 export default function Contact() {
   const [open, setOpen] = useState(false)
   return (
-    <section className="section contact" id="contact" data-screen-label="Contact">
+    <section className="section contact" id="contact">
       <div className="section-head">
         <h2>Let's talk</h2>
         <span className="section-idx">(05)</span>

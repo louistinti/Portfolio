@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { profile } from '../data/content.js'
+import { useScrollLock } from '../hooks/useScrollLock.js'
+import { useOnKey } from '../hooks/useOnKey.js'
 import Icon from './Icon.jsx'
 
 const LINKS = [
@@ -14,20 +16,15 @@ export default function Nav() {
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
 
+  useScrollLock(open)
+  useOnKey('Escape', close, open)
+
+  // Si on repasse en desktop avec le menu ouvert, on le referme.
   useEffect(() => {
     if (!open) return
-    const onKey = (e) => { if (e.key === 'Escape') setOpen(false) }
-    // Si on repasse en desktop avec le menu ouvert, on le referme.
     const onResize = () => { if (window.innerWidth > 1040) setOpen(false) }
-    document.addEventListener('keydown', onKey)
     window.addEventListener('resize', onResize)
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      window.removeEventListener('resize', onResize)
-      document.body.style.overflow = prev
-    }
+    return () => window.removeEventListener('resize', onResize)
   }, [open])
 
   return (

@@ -2,7 +2,7 @@ import { projects, caseStudies } from '../data/content.js'
 
 export default function Work() {
   return (
-    <section className="section" id="work" data-screen-label="Work">
+    <section className="section" id="work">
       <div className="section-head">
         <h2>Selected work</h2>
         <span className="section-idx">(03)</span>

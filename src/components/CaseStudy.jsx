@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef, Fragment } from 'react'
 import { useInteractions } from '../hooks/useInteractions.js'
+import { useScrollLock } from '../hooks/useScrollLock.js'
+import { useOnKey } from '../hooks/useOnKey.js'
 import { goHome } from '../hooks/useRoute.js'
 import { profile } from '../data/content.js'
 
@@ -132,17 +134,8 @@ export default function CaseStudy({ data }) {
   }, [data])
 
   // Échap pour fermer + verrou du scroll quand la lightbox est ouverte.
-  useEffect(() => {
-    if (!zoom) return
-    const onKey = (e) => { if (e.key === 'Escape') setZoom(null) }
-    document.addEventListener('keydown', onKey)
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prevOverflow
-    }
-  }, [zoom])
+  useScrollLock(!!zoom)
+  useOnKey('Escape', () => setZoom(null), !!zoom)
 
   if (!data) return null
 
