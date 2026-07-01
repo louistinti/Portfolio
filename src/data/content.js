@@ -202,7 +202,7 @@ export const caseStudies = {
       mark: '◆',
       title: 'Tying the app together with *topography*.',
       body: 'Once the architecture and hierarchy were finalised, I looked for a way to tie the whole app together into one cohesive journey. Given that Paris-Saclay is a vast campus with real variation in terrain, I drew inspiration from **topographic maps**, using contour lines and elevation to create a subtle sense of **relief** throughout the interface.',
-      shot: 'midfi',
+      shots: ['test-1', 'test-2', 'test-3', 'test-4', 'test-5', 'test-6'],
     },
 
     ui: {
@@ -225,7 +225,7 @@ export const caseStudies = {
         pills: ['Directory', 'News Feed', 'Profile'],
         tabs: [{ label: 'Home', on: true }, { label: 'Map' }, { label: 'Chat' }, { label: 'Agenda' }],
       },
-      screens: ['ui-1', 'ui-2', 'ui-3', 'ui-4'],
+      screens: ['ui-1', 'ui-2', 'ui-4', 'ui-3'],
     },
 
     prototype: {
@@ -248,10 +248,16 @@ export const caseStudies = {
       'wire-3': '/assets/ps/wire-3.png',
       'wire-4': '/assets/ps/wire-4.png',
       midfi: '',
-      'ui-1': '',
-      'ui-2': '',
-      'ui-3': '',
-      'ui-4': '',
+      'test-1': '/assets/ps/Test-1.png',
+      'test-2': '/assets/ps/Test-2.png',
+      'test-3': '/assets/ps/Test-3.png',
+      'test-4': '/assets/ps/Test-4.png',
+      'test-5': '/assets/ps/Test-5.png',
+      'test-6': '/assets/ps/Test-6.png',
+      'ui-1': '/assets/ps/ui-1.png',
+      'ui-2': '/assets/ps/ui-2.png',
+      'ui-3': '/assets/ps/ui-3.png',
+      'ui-4': '/assets/ps/ui-4.png',
     },
   },
 
@@ -395,7 +401,7 @@ export const caseStudies = {
       eyebrow: 'Prototype',
       idx: 'Live',
       note: 'Click through the full storefront, browse the collection, open a product, personalize a pair and run the matchmaking quiz.',
-      src: 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FVdtPGwGX4UdzfrZEYUyg0C%2FLa-Vraie-Charentaise%3Fnode-id%3D1572-6490%26p%3Df%26viewport%3D620%252C367%252C0.02%26t%3DpN63FAbaKW3hZBkQ-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D1572%253A6490%26show-proto-sidebar%3D1%26page-id%3D1252%253A1812',
+      src: 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FVdtPGwGX4UdzfrZEYUyg0C%2FLa-Vraie-Charentaise%3Fnode-id%3D1572-6490%26p%3Df%26viewport%3D620%252C367%252C0.02%26t%3DpN63FAbaKW3hZBkQ-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D1572%253A6490%26show-proto-sidebar%3D0%26hide-ui%3D1%26page-id%3D1252%253A1812',
     },
 
     footer: 'La Vraie Charentaise · Case study',

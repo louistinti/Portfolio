@@ -371,11 +371,17 @@ export default function CaseStudy({ data }) {
               <div className="step-eyebrow"><span className="num">{topography.mark || '◆'}</span> {topography.eyebrow}</div>
               <h3><RichText text={topography.title} /></h3>
               {topography.body && <p><RichText text={topography.body} /></p>}
-              {topography.shot && (
+              {topography.shots?.length > 0 ? (
+                <div className="cs-topo__screens reveal">
+                  {topography.shots.map((id, i) => (
+                    <Shot key={id || i} shots={data.shots} onZoom={setZoom} id={id} label={`[ Screen ${i + 1} ]`} />
+                  ))}
+                </div>
+              ) : topography.shot ? (
                 <div className="cs-topo__media reveal">
                   <Shot shots={data.shots} onZoom={setZoom} id={topography.shot} fit={topography.fit || 'cover'} label={`[ ${topography.eyebrow} ]`} />
                 </div>
-              )}
+              ) : null}
             </div>
           </section>
         )}

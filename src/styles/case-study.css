@@ -420,11 +420,24 @@
 .cs-topo__media { grid-column: 1 / -1; margin-top: clamp(var(--space-12), 6vw, var(--space-18)); }
 .cs-topo__media .ph { width: 100%; height: auto; aspect-ratio: 16 / 8; }
 .cs-page .cs-topo__media .ph { background: rgba(255,255,255,0.015); }
+/* Rangée d'écrans mobiles (375×812) — les 6 tiennent en ligne sur desktop */
+.cs-topo__screens {
+  grid-column: 1 / -1; margin-top: clamp(var(--space-12), 6vw, var(--space-18));
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: clamp(var(--space-3), 1.6vw, var(--space-6));
+}
+.cs-topo__screens .ph {
+  width: 100%; height: auto; aspect-ratio: 375 / 812;
+  border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden;
+  background: rgba(255,255,255,0.015);
+}
+@media (max-width: 1000px) { .cs-topo__screens { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .cs-topo__screens { grid-template-columns: repeat(2, 1fr); } }
 
 /* Concept : 1 colonne sous 880px (comme .cs-lede) */
 @media (max-width: 880px) {
   .cs-topo__inner { grid-template-columns: 1fr; }
-  .cs-topo .step-eyebrow, .cs-topo h3, .cs-topo p, .cs-topo__media { grid-column: auto; }
+  .cs-topo .step-eyebrow, .cs-topo h3, .cs-topo p, .cs-topo__media, .cs-topo__screens { grid-column: auto; }
   .cs-topo p { margin-top: var(--space-6); }
 }
 
