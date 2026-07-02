@@ -88,8 +88,10 @@ html.lenis, html.lenis body { height: auto; }
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  visibility: hidden;
   transition: width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s var(--ease);
 }
+.cursor.is-active { visibility: visible; }
 .cursor__label {
   font-family: var(--mono);
   font-size: 10px;

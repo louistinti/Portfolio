@@ -16,19 +16,29 @@ export default function Cursor() {
     const xTo = gsap.quickTo(dot, 'x', { duration: 0.35, ease: 'power3.out' })
     const yTo = gsap.quickTo(dot, 'y', { duration: 0.35, ease: 'power3.out' })
 
+    let hasMoved = false
     const onMove = (e) => {
+      if (!hasMoved) {
+        // Premier mouvement : on se téléporte sous le pointeur (pas de
+        // traînée depuis 0,0) et on révèle le point.
+        hasMoved = true
+        gsap.set(dot, { x: e.clientX, y: e.clientY })
+        dot.classList.add('is-active')
+      }
       xTo(e.clientX)
       yTo(e.clientY)
     }
     const onOver = (e) => {
-      dot.classList.toggle('is-view', !!e.target.closest('a.card'))
-      dot.classList.toggle('is-link', !!e.target.closest('a, button'))
+      const isView = !!e.target.closest('a.card')
+      dot.classList.toggle('is-view', isView)
+      dot.classList.toggle('is-link', !isView && !!e.target.closest('a, button'))
     }
     window.addEventListener('mousemove', onMove)
     document.addEventListener('mouseover', onOver)
     return () => {
       window.removeEventListener('mousemove', onMove)
       document.removeEventListener('mouseover', onOver)
+      dot.classList.remove('is-active')
       dot.style.display = 'none'
     }
   }, [])
