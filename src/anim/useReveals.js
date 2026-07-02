@@ -80,6 +80,7 @@ export function useReveals() {
       }
       lenis.on('scroll', onScroll)
       marqueeCleanup = () => {
+        gsap.killTweensOf(anim) // tue un éventuel tween de playbackRate en vol
         lenis?.off('scroll', onScroll)
         anim.playbackRate = 1
       }
