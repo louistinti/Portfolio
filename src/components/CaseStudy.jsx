@@ -567,6 +567,7 @@ export default function CaseStudy({ data }) {
       {zoom && (
         <div
           ref={stageRef}
+          data-lenis-prevent
           className={`cs-lightbox${zoomed ? ' is-zoomed' : ''}`}
           onClick={() => setZoom(null)}
           onPointerDown={onPanDown}
