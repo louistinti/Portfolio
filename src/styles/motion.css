@@ -73,3 +73,32 @@ html.lenis, html.lenis body { height: auto; }
   text-transform: uppercase;
   color: var(--accent);
 }
+
+/* Curseur compagnon — jamais affiché sans JS ni sur tactile. */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9500;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.cursor__label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bg);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+}
+.cursor.is-link { width: 26px; height: 26px; opacity: 0.65; }
+.cursor.is-view { width: 64px; height: 64px; opacity: 1; }
+.cursor.is-view .cursor__label { opacity: 1; }

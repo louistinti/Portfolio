@@ -4,6 +4,7 @@ import Portfolio from './components/Portfolio.jsx'
 import CaseStudy from './components/CaseStudy.jsx'
 import { useLenis } from './anim/useLenis.js'
 import { usePageTransition } from './anim/usePageTransition.js'
+import Cursor from './anim/Cursor.jsx'
 
 export default function App() {
   useLenis()
@@ -19,6 +20,7 @@ export default function App() {
       <div className="curtain" ref={curtainRef} aria-hidden="true">
         <span className="curtain__label"></span>
       </div>
+      <Cursor />
     </>
   )
 }
