@@ -168,7 +168,8 @@
   --dur-fast: 0.2s;
   --dur:      0.4s;
   --dur-slow: 0.7s;
-  --dur-reveal: 0.9s;  /* animations d'apparition au scroll */
+  /* Apparitions au scroll : pilotées en JS depuis src/anim/motion.js
+     (dur.base = 0.5s) — les tokens de motion JS font foi pour les reveals. */
 
   /* ==========================================================
      8. Z-INDEX

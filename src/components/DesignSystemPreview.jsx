@@ -51,7 +51,7 @@ const BORDERS = ['--border', '--border-subtle', '--border-strong']
 
 const SHADOWS = ['--shadow-sm', '--shadow-md', '--shadow-lg']
 
-const MOTION = ['--dur-fast', '--dur', '--dur-slow', '--dur-reveal', '--ease', '--ease-in-out']
+const MOTION = ['--dur-fast', '--dur', '--dur-slow', '--ease', '--ease-in-out']
 
 const ZINDEX = ['--z-base', '--z-card', '--z-nav', '--z-grain']
 
