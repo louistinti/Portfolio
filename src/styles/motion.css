@@ -1,0 +1,116 @@
+/* ============================================================
+   MOTION LAYER — tout est scopé .has-motion (posé par useLenis
+   quand prefers-reduced-motion n'est pas actif). Sans ce flag,
+   le site garde exactement son comportement d'origine.
+   ============================================================ */
+
+/* Lenis pilote le lissage : le smooth CSS ferait double emploi. Scopé .lenis
+   (posé par l'instance) : sans Lenis (viewport < 1024px), les ancres gardent
+   le scroll-behavior: smooth natif d'origine. */
+html.has-motion.lenis { scroll-behavior: auto; }
+
+/* Recommandations Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Lignes tracées : le border devient transparent, un pseudo-élément le
+   redessine avec un scaleX piloté par la variable --trace (0 → 1). */
+.has-motion .section-head {
+  border-top-color: transparent;
+  position: relative;
+}
+.has-motion .section-head::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(var(--trace, 0));
+  transform-origin: left;
+}
+.has-motion #about .section-head::before { content: none; } /* pas de border-top sur About */
+.has-motion .skill-row {
+  border-bottom-color: transparent;
+  position: relative;
+}
+.has-motion .skill-row::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(var(--trace, 0));
+  transform-origin: left;
+}
+
+/* Lignes de titre masquées (hero) : le wrapper coupe, l'intérieur monte. */
+.mline { display: block; overflow: hidden; }
+.mline__in { display: block; }
+
+/* Rideau de transition — au-dessus du menu mobile (8500), sous le grain (9000)
+   pour garder la texture, et sous la lightbox (9999, jamais ouverte pendant
+   une navigation). Hors flux tant qu'aucune transition ne joue. */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 8800;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border-top: 1px solid var(--accent);
+  /* PAS de transform ici : GSAP additionne un translateY CSS (converti en px)
+     avec son propre yPercent — le rideau ratait le viewport. La position
+     initiale (yPercent 100) est posée par le fromTo de usePageTransition. */
+}
+.curtain__label {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 56px);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--fg);
+  padding: 0 24px;
+  text-align: center;
+}
+
+/* Pas de I-beam sur le texte non cliquable : la flèche par défaut partout
+   (le texte reste sélectionnable). Les liens/boutons gardent leur pointer,
+   la lightbox son vocabulaire zoom/grab, via leurs règles existantes. */
+.has-motion body { cursor: default; }
+
+/* Badge « View » : étiquette collée au pointeur au survol des cartes projet.
+   Le curseur natif reste inchangé partout. Décalée sous/droite du pointeur
+   (top/left) ; le suivi x/y est posé par GSAP quickSetter — AUCUNE transition
+   sur transform, sinon le suivi prendrait du retard. */
+.view-badge {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 9500;
+  padding: 8px 14px;
+  border-radius: 100px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: var(--text-12);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+}
+.view-badge.is-on { opacity: 1; }
+
+/* Hovers existants recalés sur la personnalité « précis & snappy » :
+   mêmes effets, tempo resserré. */
+.has-motion .btn,
+.has-motion .btn .arrow { transition-duration: 0.3s; }
+.has-motion .card__media .ph { transition-duration: 0.45s; }
+.has-motion .card__tldr { transition-duration: 0.35s; }
+.has-motion .skill-row { transition-duration: 0.3s; }

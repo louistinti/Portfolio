@@ -1,18 +1,26 @@
-import { useEffect } from 'react'
 import { useRoute } from './hooks/useRoute.js'
 import { caseStudies } from './data/content.js'
 import Portfolio from './components/Portfolio.jsx'
 import CaseStudy from './components/CaseStudy.jsx'
+import { useLenis } from './anim/useLenis.js'
+import { usePageTransition } from './anim/usePageTransition.js'
+import ViewBadge from './anim/ViewBadge.jsx'
 
 export default function App() {
+  useLenis()
   const route = useRoute()
-  const study = route !== 'home' ? caseStudies[route] : null
+  // Le swap visuel est orchestré par le rideau : on affiche displayedRoute,
+  // qui suit `route` avec le temps de la transition.
+  const { displayedRoute, curtainRef } = usePageTransition(route)
+  const study = displayedRoute !== 'home' ? caseStudies[displayedRoute] : null
 
-  // En entrant dans une étude de cas, on repart du haut (le navigateur
-  // conserve sinon la position de défilement du portfolio).
-  useEffect(() => {
-    if (study) window.scrollTo(0, 0)
-  }, [route, study])
-
-  return study ? <CaseStudy data={study} /> : <Portfolio />
+  return (
+    <>
+      {study ? <CaseStudy data={study} /> : <Portfolio />}
+      <div className="curtain" ref={curtainRef} aria-hidden="true">
+        <span className="curtain__label"></span>
+      </div>
+      <ViewBadge />
+    </>
+  )
 }

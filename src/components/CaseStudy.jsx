@@ -1,8 +1,10 @@
 import { useEffect, useState, useRef, Fragment } from 'react'
 import { useInteractions } from '../hooks/useInteractions.js'
+import { useReveals } from '../anim/useReveals.js'
 import { useScrollLock } from '../hooks/useScrollLock.js'
 import { useOnKey } from '../hooks/useOnKey.js'
 import { goHome } from '../hooks/useRoute.js'
+import { scrollToTarget } from '../anim/useLenis.js'
 import { profile } from '../data/content.js'
 
 // ──────────────────────────────────────────────────────────────
@@ -96,6 +98,7 @@ function PageGrid({ shots, onZoom, items }) {
 
 export default function CaseStudy({ data }) {
   useInteractions()
+  useReveals()
 
   // Lightbox galerie : preview plein écran, calée sur la hauteur de l'écran.
   const [zoom, setZoom] = useState(null)
@@ -133,6 +136,11 @@ export default function CaseStudy({ data }) {
     }
   }, [data])
 
+  // On repart du haut à l'arrivée — immédiat, le rideau couvre l'écran.
+  useEffect(() => {
+    scrollToTarget(0, { immediate: true })
+  }, [])
+
   // Échap pour fermer + verrou du scroll quand la lightbox est ouverte.
   useScrollLock(!!zoom)
   useOnKey('Escape', () => setZoom(null), !!zoom)
@@ -141,11 +149,12 @@ export default function CaseStudy({ data }) {
 
   const scrollToId = (e, id) => {
     e.preventDefault()
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const el = document.getElementById(id)
+    if (el) scrollToTarget(el)
   }
   const toTop = (e) => {
     e.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollToTarget(0)
   }
 
   const { context, challenge, research, ideation, wireframes, topography, ui, prototype, roadmap } = data
@@ -229,8 +238,8 @@ export default function CaseStudy({ data }) {
         {/* ============================ CONTEXT ============================ */}
         {context && (
           <section className="section topo-bg" id="overview">
-            <div className="step-eyebrow"><span className="num">00</span> {context.eyebrow}</div>
-            <div className="cs-lede">
+            <div className="step-eyebrow" data-reveal=""><span className="num">00</span> {context.eyebrow}</div>
+            <div className="cs-lede" data-reveal="">
               <h3><RichText text={context.lede} /></h3>
               <div className="body">
                 {context.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
@@ -252,7 +261,7 @@ export default function CaseStudy({ data }) {
         {/* ============================ CHALLENGE ============================ */}
         {challenge && (
           <section className="section" style={{ paddingTop: 0 }}>
-            <div className="cs-quote">
+            <div className="cs-quote" data-reveal="">
               <p><RichText text={challenge.quote} /></p>
               {challenge.who && <div className="who">{challenge.who}</div>}
             </div>
@@ -266,7 +275,7 @@ export default function CaseStudy({ data }) {
               <h2>{research.eyebrow}</h2>
               {research.idx && <span className="section-idx">{research.idx}</span>}
             </div>
-            <div className="cs-lede">
+            <div className="cs-lede" data-reveal="">
               <h3><RichText text={research.lede} /></h3>
               <div className="body">
                 {research.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
@@ -304,7 +313,7 @@ export default function CaseStudy({ data }) {
               <h2>{ideation.eyebrow}</h2>
               {ideation.idx && <span className="section-idx">{ideation.idx}</span>}
             </div>
-            <div className="cs-lede">
+            <div className="cs-lede" data-reveal="">
               <h3><RichText text={ideation.lede} /></h3>
               <div className="body">
                 {ideation.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
@@ -361,7 +370,7 @@ export default function CaseStudy({ data }) {
         {topography && (
           <section className="cs-topo topo-bg">
             <div className="cs-topo__inner">
-              <div className="step-eyebrow"><span className="num">{topography.mark || '◆'}</span> {topography.eyebrow}</div>
+              <div className="step-eyebrow" data-reveal=""><span className="num">{topography.mark || '◆'}</span> {topography.eyebrow}</div>
               <h3><RichText text={topography.title} /></h3>
               {topography.body && <p><RichText text={topography.body} /></p>}
               {topography.shots?.length > 0 ? (
@@ -386,7 +395,7 @@ export default function CaseStudy({ data }) {
               <h2>{ui.eyebrow}</h2>
               {ui.idx && <span className="section-idx">{ui.idx}</span>}
             </div>
-            <div className="cs-lede">
+            <div className="cs-lede" data-reveal="">
               <h3><RichText text={ui.lede} /></h3>
               <div className="body">
                 {ui.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
@@ -494,7 +503,7 @@ export default function CaseStudy({ data }) {
               {roadmap.idx && <span className="section-idx">{roadmap.idx}</span>}
             </div>
             {(roadmap.lede || roadmap.body) && (
-              <div className="cs-lede">
+              <div className="cs-lede" data-reveal="">
                 {roadmap.lede && <h3><RichText text={roadmap.lede} /></h3>}
                 {roadmap.body && (
                   <div className="body">
@@ -565,6 +574,7 @@ export default function CaseStudy({ data }) {
       {zoom && (
         <div
           ref={stageRef}
+          data-lenis-prevent
           className={`cs-lightbox${zoomed ? ' is-zoomed' : ''}`}
           onClick={() => setZoom(null)}
           onPointerDown={onPanDown}

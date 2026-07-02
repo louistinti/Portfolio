@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import { useInteractions } from '../hooks/useInteractions.js'
+import { useReveals } from '../anim/useReveals.js'
+import { scrollToTarget } from '../anim/useLenis.js'
 import Nav from './Nav.jsx'
 import Hero from './Hero.jsx'
 import Marquee from './Marquee.jsx'
@@ -11,14 +13,16 @@ import Footer from './Footer.jsx'
 
 export default function Portfolio() {
   useInteractions()
+  useReveals()
 
   // Arrivée depuis l'étude de cas : on défile vers la section visée
-  // (#work via « All work »), sinon on repart du haut.
+  // (#work via « All work »), sinon on repart du haut. Immédiat : ce
+  // repositionnement se joue derrière le rideau de transition.
   useEffect(() => {
     const id = window.location.hash.replace('#', '')
     const el = id && document.getElementById(id)
-    if (el) requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }))
-    else window.scrollTo(0, 0)
+    if (el) requestAnimationFrame(() => scrollToTarget(el, { immediate: true }))
+    else scrollToTarget(0, { immediate: true })
   }, [])
 
   return (
