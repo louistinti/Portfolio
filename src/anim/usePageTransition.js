@@ -23,10 +23,15 @@ export function usePageTransition(route) {
   useEffect(() => {
     const curtain = curtainRef.current
     if (route === displayedRoute) {
-      // Retour arrière pendant la couverture : la timeline tuée ne jouera
-      // jamais son .set final — on normalise le rideau, sinon il resterait
-      // figé en plein écran (wedge).
-      if (curtain) gsap.set(curtain, { display: 'none', clearProps: 'transform' })
+      // Couverture interrompue avant le swap (retour arrière pendant la
+      // descente) : la timeline tuée ne jouera jamais son .set final — on
+      // normalise. Gated sur `pending` : sur une navigation réussie, la levée
+      // (layout effect) a déjà consommé le flag AVANT ce passage (les layout
+      // effects précèdent les effets passifs dans un même commit), donc on ne
+      // touche pas au rideau en train de se lever.
+      if (pending.current && curtain) {
+        gsap.set(curtain, { display: 'none', clearProps: 'transform' })
+      }
       pending.current = false
       return
     }
