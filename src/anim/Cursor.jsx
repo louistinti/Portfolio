@@ -2,9 +2,10 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { motionEnabled, finePointer } from './motion.js'
 
-// Curseur compagnon (desktop pointeur fin uniquement). Le curseur natif reste
-// visible — celui-ci suit avec un léger retard, grossit sur les liens et
-// affiche « View » sur les cartes projet.
+// Curseur custom (desktop pointeur fin uniquement). Il REMPLACE le curseur
+// natif (masqué via html.has-cursor dès le premier mouvement) : il suit avec
+// un léger retard, grossit sur les liens et affiche « View » sur les cartes
+// projet. La lightbox garde ses curseurs natifs (elle passe au-dessus).
 export default function Cursor() {
   const ref = useRef(null)
 
@@ -24,6 +25,8 @@ export default function Cursor() {
         hasMoved = true
         gsap.set(dot, { x: e.clientX, y: e.clientY })
         dot.classList.add('is-active')
+        // Le custom devient LE curseur : le natif disparaît (CSS has-cursor).
+        document.documentElement.classList.add('has-cursor')
       }
       xTo(e.clientX)
       yTo(e.clientY)
@@ -38,6 +41,7 @@ export default function Cursor() {
     return () => {
       window.removeEventListener('mousemove', onMove)
       document.removeEventListener('mouseover', onOver)
+      document.documentElement.classList.remove('has-cursor')
       dot.classList.remove('is-active')
       dot.style.display = 'none'
     }

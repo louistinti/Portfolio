@@ -74,7 +74,13 @@ html.lenis, html.lenis body { height: auto; }
   color: var(--accent);
 }
 
-/* Curseur compagnon — jamais affiché sans JS ni sur tactile. */
+/* Le curseur custom EST le curseur : dès qu'il est actif (premier mouvement),
+   le natif disparaît partout — y compris le I-beam sur le texte non cliquable.
+   Exception : la lightbox (z 9999, au-dessus du custom à 9500) garde son
+   vocabulaire natif zoom-in / zoom-out / grab. */
+html.has-cursor *:not(.cs-lightbox, .cs-lightbox *) { cursor: none !important; }
+
+/* Curseur custom — jamais affiché sans JS ni sur tactile. */
 .cursor {
   position: fixed;
   top: 0;
