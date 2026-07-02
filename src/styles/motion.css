@@ -13,3 +13,37 @@ html.has-motion.lenis { scroll-behavior: auto; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
+
+/* Lignes tracées : le border devient transparent, un pseudo-élément le
+   redessine avec un scaleX piloté par la variable --trace (0 → 1). */
+.has-motion .section-head {
+  border-top-color: transparent;
+  position: relative;
+}
+.has-motion .section-head::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(var(--trace, 0));
+  transform-origin: left;
+}
+.has-motion #about .section-head::before { content: none; } /* pas de border-top sur About */
+.has-motion .skill-row {
+  border-bottom-color: transparent;
+  position: relative;
+}
+.has-motion .skill-row::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(var(--trace, 0));
+  transform-origin: left;
+}

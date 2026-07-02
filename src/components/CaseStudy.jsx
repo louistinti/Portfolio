@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, Fragment } from 'react'
 import { useInteractions } from '../hooks/useInteractions.js'
+import { useReveals } from '../anim/useReveals.js'
 import { useScrollLock } from '../hooks/useScrollLock.js'
 import { useOnKey } from '../hooks/useOnKey.js'
 import { goHome } from '../hooks/useRoute.js'
@@ -97,6 +98,7 @@ function PageGrid({ shots, onZoom, items }) {
 
 export default function CaseStudy({ data }) {
   useInteractions()
+  useReveals()
 
   // Lightbox galerie : preview plein écran, calée sur la hauteur de l'écran.
   const [zoom, setZoom] = useState(null)

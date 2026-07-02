@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useInteractions } from '../hooks/useInteractions.js'
+import { useReveals } from '../anim/useReveals.js'
 import { scrollToTarget } from '../anim/useLenis.js'
 import Nav from './Nav.jsx'
 import Hero from './Hero.jsx'
@@ -12,6 +13,7 @@ import Footer from './Footer.jsx'
 
 export default function Portfolio() {
   useInteractions()
+  useReveals()
 
   // Arrivée depuis l'étude de cas : on défile vers la section visée
   // (#work via « All work »), sinon on repart du haut. Immédiat : ce
