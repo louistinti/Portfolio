@@ -3,8 +3,10 @@ import { useRoute } from './hooks/useRoute.js'
 import { caseStudies } from './data/content.js'
 import Portfolio from './components/Portfolio.jsx'
 import CaseStudy from './components/CaseStudy.jsx'
+import { useLenis } from './anim/useLenis.js'
 
 export default function App() {
+  useLenis()
   const route = useRoute()
   const study = route !== 'home' ? caseStudies[route] : null
 

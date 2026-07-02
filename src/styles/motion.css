@@ -1,0 +1,13 @@
+/* ============================================================
+   MOTION LAYER — tout est scopé .has-motion (posé par useLenis
+   quand prefers-reduced-motion n'est pas actif). Sans ce flag,
+   le site garde exactement son comportement d'origine.
+   ============================================================ */
+
+/* Lenis pilote le lissage : le smooth CSS ferait double emploi. */
+html.has-motion { scroll-behavior: auto; }
+
+/* Recommandations Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }

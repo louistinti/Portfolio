@@ -5,6 +5,7 @@ import DesignSystemPreview from './components/DesignSystemPreview.jsx'
 import './styles/design-system.css' // tokens (variables) — doit être importé en premier
 import './styles/index.css'
 import './styles/case-study.css' // page étude de cas (scopé .cs-page)
+import './styles/motion.css' // couche motion (scopée .has-motion)
 
 // Page de référence du design system accessible via ?ds (ex: http://localhost:5173/?ds)
 const showDesignSystem = new URLSearchParams(window.location.search).has('ds')
