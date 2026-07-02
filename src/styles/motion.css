@@ -47,3 +47,7 @@ html.lenis, html.lenis body { height: auto; }
   transform: scaleX(var(--trace, 0));
   transform-origin: left;
 }
+
+/* Lignes de titre masquées (hero) : le wrapper coupe, l'intérieur monte. */
+.mline { display: block; overflow: hidden; }
+.mline__in { display: block; }
