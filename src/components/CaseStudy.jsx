@@ -3,6 +3,7 @@ import { useInteractions } from '../hooks/useInteractions.js'
 import { useScrollLock } from '../hooks/useScrollLock.js'
 import { useOnKey } from '../hooks/useOnKey.js'
 import { goHome } from '../hooks/useRoute.js'
+import { scrollToTarget } from '../anim/useLenis.js'
 import { profile } from '../data/content.js'
 
 // ──────────────────────────────────────────────────────────────
@@ -141,11 +142,12 @@ export default function CaseStudy({ data }) {
 
   const scrollToId = (e, id) => {
     e.preventDefault()
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const el = document.getElementById(id)
+    if (el) scrollToTarget(el)
   }
   const toTop = (e) => {
     e.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollToTarget(0)
   }
 
   const { context, challenge, research, ideation, wireframes, topography, ui, prototype, roadmap } = data
