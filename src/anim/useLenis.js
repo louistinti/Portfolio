@@ -34,7 +34,12 @@ export function useLenis() {
     lenis.on('scroll', ScrollTrigger.update)
     const raf = (time) => lenis.raf(time * 1000)
     gsap.ticker.add(raf)
-    gsap.ticker.lagSmoothing(0)
+    // Lissage de latence GSAP conservé (valeurs par défaut) : avec
+    // lagSmoothing(0), un blocage du thread principal (montage d'une case
+    // study) faisait sauter le rideau directement à sa fin — swap visible
+    // sans animation. Le coût : une micro-reprise du smooth scroll après un
+    // gros blocage, imperceptible ici.
+    gsap.ticker.lagSmoothing(500, 33)
 
     // Ancres même-page (#about, #work, sommaire des case studies…) :
     // routées vers Lenis. Les routes `#/slug` ne sont PAS interceptées.

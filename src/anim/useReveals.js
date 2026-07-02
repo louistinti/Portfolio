@@ -63,10 +63,13 @@ export function useReveals() {
           .from('.hero__foot > .mono', { opacity: 0, duration: dur.fast }, 0.7)
       }
 
-      // ---- entrée d'une case study (jouée à la levée du rideau) ----
+      // ---- entrée d'une case study ----
+      // Décalée de 0.35s : le rideau commence sa levée (0.1s de tenue +
+      // début de montée) avant que la cascade du titre ne joue — elle est
+      // ainsi visible pendant la révélation au lieu de se consumer cachée.
       if (document.querySelector('.cs-title')) {
         gsap
-          .timeline({ defaults: { ease: ease.out } })
+          .timeline({ delay: 0.35, defaults: { ease: ease.out } })
           .from('.cs-title__kicker', { opacity: 0, y: 14, duration: dur.fast }, 0.1)
           .from('.cs-title h1', { opacity: 0, y: 30, duration: 0.6 }, 0.18)
           .from('.cs-meta > div', { opacity: 0, y: 14, duration: dur.fast, stagger: stagger.items }, 0.3)
