@@ -4,8 +4,10 @@
    le site garde exactement son comportement d'origine.
    ============================================================ */
 
-/* Lenis pilote le lissage : le smooth CSS ferait double emploi. */
-html.has-motion { scroll-behavior: auto; }
+/* Lenis pilote le lissage : le smooth CSS ferait double emploi. Scopé .lenis
+   (posé par l'instance) : sans Lenis (viewport < 1024px), les ancres gardent
+   le scroll-behavior: smooth natif d'origine. */
+html.has-motion.lenis { scroll-behavior: auto; }
 
 /* Recommandations Lenis */
 html.lenis, html.lenis body { height: auto; }
