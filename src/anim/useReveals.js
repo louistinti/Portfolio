@@ -54,8 +54,8 @@ export function useReveals() {
       if (document.querySelector('.hero')) {
         gsap
           .timeline({ defaults: { ease: ease.out } })
-          .from('.hero .mline__in', { yPercent: 110, duration: 0.6, stagger: stagger.lines }, 0.05)
-          .from('#nav', { yPercent: -100, duration: dur.base }, 0.15)
+          .from('.hero .mline__in', { yPercent: 110, duration: 0.6, stagger: stagger.lines, clearProps: 'transform' }, 0.05)
+          .from('#nav', { yPercent: -100, duration: dur.base, clearProps: 'transform' }, 0.15)
           .from('.hero__idx', { opacity: 0, y: 12, duration: dur.fast }, 0.2)
           .from('.hero__sub, .hero__lead .btn', { opacity: 0, y: 18, duration: dur.base, stagger: stagger.lines }, 0.35)
           .from('.hero__foot .chip', { opacity: 0, y: 10, duration: dur.fast, stagger: 0.03 }, 0.5)
