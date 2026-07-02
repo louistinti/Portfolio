@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
-import { lenisEnabled, motionEnabled } from './motion.js'
+import { lenisEnabled } from './motion.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -28,9 +28,6 @@ export function scrollToTarget(target, { immediate = false, offset = 0 } = {}) {
 
 export function useLenis() {
   useEffect(() => {
-    // Drapeau global : tout le CSS de motion est scopé `.has-motion`.
-    if (motionEnabled()) document.documentElement.classList.add('has-motion')
-
     if (!lenisEnabled()) return
 
     lenis = new Lenis({ lerp: 0.12 })
