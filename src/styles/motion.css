@@ -74,42 +74,33 @@ html.lenis, html.lenis body { height: auto; }
   color: var(--accent);
 }
 
-/* Le curseur custom EST le curseur : dès qu'il est actif (premier mouvement),
-   le natif disparaît partout — y compris le I-beam sur le texte non cliquable.
-   Exception : la lightbox (z 9999, au-dessus du custom à 9500) garde son
-   vocabulaire natif zoom-in / zoom-out / grab. */
-html.has-cursor *:not(.cs-lightbox, .cs-lightbox *) { cursor: none !important; }
+/* Pas de I-beam sur le texte non cliquable : la flèche par défaut partout
+   (le texte reste sélectionnable). Les liens/boutons gardent leur pointer,
+   la lightbox son vocabulaire zoom/grab, via leurs règles existantes. */
+.has-motion body { cursor: default; }
 
-/* Curseur custom — jamais affiché sans JS ni sur tactile. */
-.cursor {
+/* Badge « View » : étiquette collée au pointeur au survol des cartes projet.
+   Le curseur natif reste inchangé partout. Décalée sous/droite du pointeur
+   (top/left) ; le suivi x/y est posé par GSAP quickSetter — AUCUNE transition
+   sur transform, sinon le suivi prendrait du retard. */
+.view-badge {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 18px;
+  left: 18px;
   z-index: 9500;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  padding: 8px 14px;
+  border-radius: 100px;
   background: var(--accent);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  visibility: hidden;
-  transition: width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s var(--ease);
-}
-.cursor.is-active { visibility: visible; }
-.cursor__label {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: var(--bg);
+  font-family: var(--mono);
+  font-size: var(--text-12);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s var(--ease);
 }
-.cursor.is-link { width: 26px; height: 26px; opacity: 0.65; }
-.cursor.is-view { width: 64px; height: 64px; opacity: 1; }
-.cursor.is-view .cursor__label { opacity: 1; }
+.view-badge.is-on { opacity: 1; }
 
 /* Hovers existants recalés sur la personnalité « précis & snappy » :
    mêmes effets, tempo resserré. */
