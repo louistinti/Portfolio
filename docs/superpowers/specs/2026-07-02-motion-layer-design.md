@@ -122,7 +122,7 @@ d'entrée restent sous ~0.8s (hero) et ~0.6s (sections au scroll).
 | 3 | Lightbox pan-zoom : Lenis capterait la molette | `data-lenis-prevent` sur le stage + `lenis.stop()/start()` intégré à `useScrollLock` |
 | 4 | Ancres (`#work`, sommaire case study, « Scroll ↓ ») en saut sec sous Lenis | Clics d'ancres routés vers `lenis.scrollTo()` ; idem pour les `scrollTo`/`scrollIntoView` existants |
 | 5 | Le hash change instantanément (y compris bouton retour) → pas de place pour le rideau | État `displayedRoute` dans `App` : le swap visuel attend le rideau, quelle que soit l'origine du changement |
-| 6 | Rideau vs nav `mix-blend-mode` et menu mobile z 8000 | Rideau sur un layer dédié z > 8000, monté dans `<body>` via portal |
+| 6 | Rideau vs nav `mix-blend-mode` et menu mobile z 8000 | Rideau sur un layer dédié z 8800 (au-dessus du menu mobile 8500, sous le grain 9000), rendu dans l'arbre App en `position: fixed` — un portal n'est pas nécessaire |
 | 7 | Images case study sans dimensions fixes → positions ScrollTrigger fausses | `ScrollTrigger.refresh()` après le chargement des images de la page |
 | 8 | Page design system `?ds` | Hors périmètre — elle a son propre root, aucune couche motion |
 
