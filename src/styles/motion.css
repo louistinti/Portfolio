@@ -51,3 +51,25 @@ html.lenis, html.lenis body { height: auto; }
 /* Lignes de titre masquées (hero) : le wrapper coupe, l'intérieur monte. */
 .mline { display: block; overflow: hidden; }
 .mline__in { display: block; }
+
+/* Rideau de transition — au-dessus du menu mobile (8500), sous le grain (9000)
+   pour garder la texture, et sous la lightbox (9999, jamais ouverte pendant
+   une navigation). Hors flux tant qu'aucune transition ne joue. */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 8800;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border-top: 1px solid var(--accent);
+  transform: translateY(100%);
+}
+.curtain__label {
+  font-family: var(--mono);
+  font-size: var(--text-12);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}

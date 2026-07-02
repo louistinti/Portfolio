@@ -136,6 +136,11 @@ export default function CaseStudy({ data }) {
     }
   }, [data])
 
+  // On repart du haut à l'arrivée — immédiat, le rideau couvre l'écran.
+  useEffect(() => {
+    scrollToTarget(0, { immediate: true })
+  }, [])
+
   // Échap pour fermer + verrou du scroll quand la lightbox est ouverte.
   useScrollLock(!!zoom)
   useOnKey('Escape', () => setZoom(null), !!zoom)
