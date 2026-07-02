@@ -2,6 +2,7 @@ import { useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ease, dur, stagger, motionEnabled } from './motion.js'
+import { lenis } from './useLenis.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -63,6 +64,27 @@ export function useReveals() {
       }
     })
 
+    // ---- marquee réactif : sa vitesse suit la vélocité du scroll ----
+    // L'animation reste en CSS ; on module son playbackRate via WAAPI.
+    // Différé d'une frame : useReveals (layout effect enfant) s'exécute
+    // AVANT le useEffect de useLenis dans App — `lenis` n'existe pas encore
+    // au moment où ce code tourne. Une frame plus tard, il est là.
+    let marqueeCleanup
+    const marqueeRaf = requestAnimationFrame(() => {
+      const track = document.querySelector('.marquee__track')
+      const anim = track?.getAnimations?.()[0]
+      if (!lenis || !anim) return
+      const onScroll = ({ velocity }) => {
+        const rate = gsap.utils.clamp(1, 3, 1 + Math.abs(velocity) * 0.05)
+        gsap.to(anim, { playbackRate: rate, duration: 0.2, overwrite: true })
+      }
+      lenis.on('scroll', onScroll)
+      marqueeCleanup = () => {
+        lenis?.off('scroll', onScroll)
+        anim.playbackRate = 1
+      }
+    })
+
     // Les images chargées tard décalent les positions ScrollTrigger.
     // Débouncé : une rafale de chargements ne déclenche qu'un seul refresh.
     let refreshCall
@@ -74,6 +96,8 @@ export function useReveals() {
     document.addEventListener('load', onImgLoad, true)
 
     return () => {
+      cancelAnimationFrame(marqueeRaf)
+      marqueeCleanup?.()
       document.removeEventListener('load', onImgLoad, true)
       refreshCall?.kill()
       ctx.revert()
