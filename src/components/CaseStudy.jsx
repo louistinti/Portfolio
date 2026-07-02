@@ -238,8 +238,8 @@ export default function CaseStudy({ data }) {
         {/* ============================ CONTEXT ============================ */}
         {context && (
           <section className="section topo-bg" id="overview">
-            <div className="step-eyebrow"><span className="num">00</span> {context.eyebrow}</div>
-            <div className="cs-lede">
+            <div className="step-eyebrow" data-reveal=""><span className="num">00</span> {context.eyebrow}</div>
+            <div className="cs-lede" data-reveal="">
               <h3><RichText text={context.lede} /></h3>
               <div className="body">
                 {context.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
@@ -261,7 +261,7 @@ export default function CaseStudy({ data }) {
         {/* ============================ CHALLENGE ============================ */}
         {challenge && (
           <section className="section" style={{ paddingTop: 0 }}>
-            <div className="cs-quote">
+            <div className="cs-quote" data-reveal="">
               <p><RichText text={challenge.quote} /></p>
               {challenge.who && <div className="who">{challenge.who}</div>}
             </div>
@@ -275,7 +275,7 @@ export default function CaseStudy({ data }) {
               <h2>{research.eyebrow}</h2>
               {research.idx && <span className="section-idx">{research.idx}</span>}
             </div>
-            <div className="cs-lede">
+            <div className="cs-lede" data-reveal="">
               <h3><RichText text={research.lede} /></h3>
               <div className="body">
                 {research.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
@@ -313,7 +313,7 @@ export default function CaseStudy({ data }) {
               <h2>{ideation.eyebrow}</h2>
               {ideation.idx && <span className="section-idx">{ideation.idx}</span>}
             </div>
-            <div className="cs-lede">
+            <div className="cs-lede" data-reveal="">
               <h3><RichText text={ideation.lede} /></h3>
               <div className="body">
                 {ideation.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
@@ -370,7 +370,7 @@ export default function CaseStudy({ data }) {
         {topography && (
           <section className="cs-topo topo-bg">
             <div className="cs-topo__inner">
-              <div className="step-eyebrow"><span className="num">{topography.mark || '◆'}</span> {topography.eyebrow}</div>
+              <div className="step-eyebrow" data-reveal=""><span className="num">{topography.mark || '◆'}</span> {topography.eyebrow}</div>
               <h3><RichText text={topography.title} /></h3>
               {topography.body && <p><RichText text={topography.body} /></p>}
               {topography.shots?.length > 0 ? (
@@ -395,7 +395,7 @@ export default function CaseStudy({ data }) {
               <h2>{ui.eyebrow}</h2>
               {ui.idx && <span className="section-idx">{ui.idx}</span>}
             </div>
-            <div className="cs-lede">
+            <div className="cs-lede" data-reveal="">
               <h3><RichText text={ui.lede} /></h3>
               <div className="body">
                 {ui.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
@@ -503,7 +503,7 @@ export default function CaseStudy({ data }) {
               {roadmap.idx && <span className="section-idx">{roadmap.idx}</span>}
             </div>
             {(roadmap.lede || roadmap.body) && (
-              <div className="cs-lede">
+              <div className="cs-lede" data-reveal="">
                 {roadmap.lede && <h3><RichText text={roadmap.lede} /></h3>}
                 {roadmap.body && (
                   <div className="body">

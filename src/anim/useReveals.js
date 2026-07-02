@@ -62,6 +62,31 @@ export function useReveals() {
           .from('.hero__foot .chip', { opacity: 0, y: 10, duration: dur.fast, stagger: 0.03 }, 0.5)
           .from('.hero__foot > .mono', { opacity: 0, duration: dur.fast }, 0.7)
       }
+
+      // ---- entrée d'une case study (jouée à la levée du rideau) ----
+      if (document.querySelector('.cs-title')) {
+        gsap
+          .timeline({ defaults: { ease: ease.out } })
+          .from('.cs-title__kicker', { opacity: 0, y: 14, duration: dur.fast }, 0.1)
+          .from('.cs-title h1', { opacity: 0, y: 30, duration: 0.6 }, 0.18)
+          .from('.cs-meta > div', { opacity: 0, y: 14, duration: dur.fast, stagger: stagger.items }, 0.3)
+          .from('.cs-page .nav', { opacity: 0, duration: dur.fast }, 0.1)
+      }
+
+      // ---- images de contenu : fade + léger dézoom à l'entrée ----
+      gsap.utils.toArray('.cs-page main img').forEach((img) => {
+        gsap.fromTo(
+          img,
+          { opacity: 0, scale: 1.04 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: dur.base,
+            ease: ease.out,
+            scrollTrigger: { trigger: img, start: 'top 92%', once: true },
+          },
+        )
+      })
     })
 
     // ---- marquee réactif : sa vitesse suit la vélocité du scroll ----
