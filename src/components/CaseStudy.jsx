@@ -163,13 +163,23 @@ export default function CaseStudy({ data }) {
   // { label, live } pour ajouter une pastille "vivante".
   const status = typeof data.status === 'string' ? { label: data.status } : data.status
 
-  // Liens de la nav : sections réellement présentes dans les données.
+  // Le champ `prototype` couvre deux cas : un vrai prototype embarquable
+  // (`src`/`href`), qu'on remonte tout en haut pour le montrer vite, OU une
+  // note de bilan « Outcome / In hindsight » (sans lien), qui reste en fin de
+  // page comme épilogue. Seul le premier remonte.
+  const liveProto = prototype && (prototype.src || prototype.href)
+
+  // Liens de la nav : sections réellement présentes dans les données. Le lien
+  // du prototype suit sa position réelle (haut si live, bas sinon) et reprend
+  // son eyebrow comme libellé (Prototype / Live / Outcome selon le projet).
+  const protoLink = prototype && { id: 'prototype', label: prototype.eyebrow || 'Prototype' }
   const navLinks = [
     context && { id: 'overview', label: 'Overview' },
+    liveProto && protoLink,
     research && { id: 'research', label: 'Research' },
     ideation && { id: 'ideation', label: 'Ideation' },
     ui && { id: 'design', label: 'Design' },
-    prototype && { id: 'prototype', label: 'Prototype' },
+    prototype && !liveProto && protoLink,
     roadmap && { id: 'roadmap', label: 'Roadmap' },
   ].filter(Boolean)
 
@@ -265,6 +275,34 @@ export default function CaseStudy({ data }) {
               <p><RichText text={challenge.quote} /></p>
               {challenge.who && <div className="who">{challenge.who}</div>}
             </div>
+          </section>
+        )}
+
+        {/* ===================== PROTOTYPE (live, remonté) ===================== */}
+        {/* Un vrai prototype embarquable est montré tôt (juste après le
+            challenge) pour le voir vite, puis on laisse explorer le récit. */}
+        {liveProto && (
+          <section className="section topo-bg" id="prototype">
+            <div className="section-head">
+              <h2>{prototype.eyebrow}</h2>
+              {prototype.idx && <span className="section-idx">{prototype.idx}</span>}
+            </div>
+            {prototype.note && (
+              <div className="proto-note">
+                <span className="mk">💡</span>
+                <p><RichText text={prototype.note} /></p>
+              </div>
+            )}
+            {prototype.href && (
+              <a className="btn proto-link" href={prototype.href} target="_blank" rel="noopener noreferrer">
+                {prototype.linkLabel || 'Open'} <span className="ar" aria-hidden="true">↗</span>
+              </a>
+            )}
+            {prototype.src && (
+              <div className="proto-frame reveal">
+                <iframe title={`${data.name} preview`} src={prototype.src} allowFullScreen></iframe>
+              </div>
+            )}
           </section>
         )}
 
@@ -469,8 +507,10 @@ export default function CaseStudy({ data }) {
           </section>
         )}
 
-        {/* ============================ PROTOTYPE ============================ */}
-        {prototype && (
+        {/* ===================== OUTCOME (bilan, reste en bas) ===================== */}
+        {/* Sans lien embarquable, le champ `prototype` sert de note de clôture
+            « Outcome / In hindsight » : elle garde sa place en fin de récit. */}
+        {prototype && !liveProto && (
           <section className="section topo-bg" id="prototype">
             <div className="section-head">
               <h2>{prototype.eyebrow}</h2>
@@ -480,16 +520,6 @@ export default function CaseStudy({ data }) {
               <div className="proto-note">
                 <span className="mk">💡</span>
                 <p><RichText text={prototype.note} /></p>
-              </div>
-            )}
-            {prototype.href && (
-              <a className="btn proto-link" href={prototype.href} target="_blank" rel="noopener noreferrer">
-                {prototype.linkLabel || 'Open'} <span className="ar" aria-hidden="true">↗</span>
-              </a>
-            )}
-            {prototype.src && (
-              <div className="proto-frame reveal">
-                <iframe title={`${data.name} preview`} src={prototype.src} allowFullScreen></iframe>
               </div>
             )}
           </section>
