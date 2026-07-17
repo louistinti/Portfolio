@@ -21,12 +21,9 @@ export const stagger = {
 }
 
 // Le motion est coupé net pour qui préfère le calme.
-export const motionEnabled = () =>
-  !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+export const motionEnabled = () => !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-export const finePointer = () =>
-  window.matchMedia('(hover: hover) and (pointer: fine)').matches
+export const finePointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches
 
 // Lenis : desktop précis uniquement — le scroll tactile reste natif.
-export const lenisEnabled = () =>
-  motionEnabled() && finePointer() && window.innerWidth >= 1024
+export const lenisEnabled = () => motionEnabled() && finePointer() && window.innerWidth >= 1024

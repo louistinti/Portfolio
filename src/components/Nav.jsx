@@ -22,7 +22,9 @@ export default function Nav() {
   // Si on repasse en desktop avec le menu ouvert, on le referme.
   useEffect(() => {
     if (!open) return
-    const onResize = () => { if (window.innerWidth > 1040) setOpen(false) }
+    const onResize = () => {
+      if (window.innerWidth > 1040) setOpen(false)
+    }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [open])
@@ -37,7 +39,9 @@ export default function Nav() {
       </a>
       <nav className="nav-links">
         {LINKS.map((l) => (
-          <a href={l.href} key={l.href}>{l.label}</a>
+          <a href={l.href} key={l.href}>
+            {l.label}
+          </a>
         ))}
       </nav>
       <a className="nav-cta" href="#contact">
@@ -61,7 +65,9 @@ export default function Nav() {
           <div className="nav-mobile" role="dialog" aria-modal="true" aria-label="Menu">
             <nav className="nav-mobile__links">
               {LINKS.map((l) => (
-                <a href={l.href} key={l.href} onClick={close}>{l.label}</a>
+                <a href={l.href} key={l.href} onClick={close}>
+                  {l.label}
+                </a>
               ))}
             </nav>
           </div>,

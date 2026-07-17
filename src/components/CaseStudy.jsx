@@ -21,7 +21,12 @@ function RichText({ text }) {
   const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g)
   return parts.map((p, i) => {
     if (p.startsWith('**') && p.endsWith('**')) return <strong key={i}>{p.slice(2, -2)}</strong>
-    if (p.startsWith('*') && p.endsWith('*')) return <span className="serif-it" key={i}>{p.slice(1, -1)}</span>
+    if (p.startsWith('*') && p.endsWith('*'))
+      return (
+        <span className="serif-it" key={i}>
+          {p.slice(1, -1)}
+        </span>
+      )
     if (p.startsWith('`') && p.endsWith('`')) return <kbd key={i}>{p.slice(1, -1)}</kbd>
     return p
   })
@@ -80,15 +85,22 @@ function PageGrid({ shots, onZoom, items }) {
   return (
     <div className="cs-pages">
       {items.map((p, i) => {
-        const full = shots?.[p.shot]                 // image ouverte dans la lightbox
-        const thumb = shots?.[p.preview] || full     // vignette (clean si `preview` fourni)
-        const z = zoomable(full, p.cap, onZoom)       // clic → ouvre l'image complète
+        const full = shots?.[p.shot] // image ouverte dans la lightbox
+        const thumb = shots?.[p.preview] || full // vignette (clean si `preview` fourni)
+        const z = zoomable(full, p.cap, onZoom) // clic → ouvre l'image complète
         return (
           <figure className="reveal" data-d={i % 2 || undefined} key={p.shot || i}>
             <div {...z} className={`cs-pagecard${full ? ' is-zoomable' : ''}`}>
-              {thumb ? <img src={thumb} alt={p.cap} loading="lazy" /> : <span className="ph-label">[ {p.cap} ]</span>}
+              {thumb ? (
+                <img src={thumb} alt={p.cap} loading="lazy" />
+              ) : (
+                <span className="ph-label">[ {p.cap} ]</span>
+              )}
             </div>
-            <figcaption><span className="v">{String(i + 1).padStart(2, '0')}</span><span className="t">{p.cap}</span></figcaption>
+            <figcaption>
+              <span className="v">{String(i + 1).padStart(2, '0')}</span>
+              <span className="t">{p.cap}</span>
+            </figcaption>
           </figure>
         )
       })}
@@ -120,7 +132,12 @@ export default function CaseStudy({ data }) {
   const moved = useRef(false)
   const onPanDown = (e) => {
     if (!zoomed || e.pointerType === 'touch' || !stageRef.current) return
-    pan.current = { x: e.clientX, y: e.clientY, top: stageRef.current.scrollTop, left: stageRef.current.scrollLeft }
+    pan.current = {
+      x: e.clientX,
+      y: e.clientY,
+      top: stageRef.current.scrollTop,
+      left: stageRef.current.scrollLeft,
+    }
     moved.current = false
   }
   const onPanMove = (e) => {
@@ -131,7 +148,9 @@ export default function CaseStudy({ data }) {
     stageRef.current.scrollTop = pan.current.top - dy
     stageRef.current.scrollLeft = pan.current.left - dx
   }
-  const onPanEnd = () => { pan.current = null }
+  const onPanEnd = () => {
+    pan.current = null
+  }
 
   useEffect(() => {
     if (!data) return
@@ -163,7 +182,8 @@ export default function CaseStudy({ data }) {
     scrollToTarget(0)
   }
 
-  const { context, challenge, research, ideation, wireframes, topography, ui, prototype, roadmap } = data
+  const { context, challenge, research, ideation, wireframes, topography, ui, prototype, roadmap } =
+    data
 
   // Badge de statut optionnel (ex. projet en cours) : string courte, ou
   // { label, live } pour ajouter une pastille "vivante".
@@ -193,7 +213,9 @@ export default function CaseStudy({ data }) {
   // dérivée des teintes --topo-* du thème.
   const paletteSrc = ui?.palette
     ? ui.palette.map((p) => (typeof p === 'string' ? { hex: p } : p))
-    : ['--topo-1', '--topo-2', '--topo-3', '--topo-4', '--topo-5', '--topo-6'].map((v) => ({ hex: data.theme?.[v] }))
+    : ['--topo-1', '--topo-2', '--topo-3', '--topo-4', '--topo-5', '--topo-6'].map((v) => ({
+        hex: data.theme?.[v],
+      }))
   const reliefSteps = paletteSrc
     .filter((p) => p.hex)
     .map((p) => ({ hex: p.hex.toUpperCase(), lite: luminance(p.hex) > 0.18 }))
@@ -216,7 +238,10 @@ export default function CaseStudy({ data }) {
           ))}
         </nav>
         <a className="cs-back" href="#work" onClick={(e) => goHome(e, 'work')}>
-          <span className="ar" aria-hidden="true">←</span> All work
+          <span className="ar" aria-hidden="true">
+            ←
+          </span>{' '}
+          All work
         </a>
       </header>
 
@@ -240,11 +265,16 @@ export default function CaseStudy({ data }) {
             </div>
           )}
           <div className="cs-title__row">
-            <h1><RichText text={data.title} /></h1>
+            <h1>
+              <RichText text={data.title} />
+            </h1>
             {data.meta?.length > 0 && (
               <dl className="cs-meta">
                 {data.meta.map((m) => (
-                  <div key={m.k}><dt>{m.k}</dt><dd>{m.v}</dd></div>
+                  <div key={m.k}>
+                    <dt>{m.k}</dt>
+                    <dd>{m.v}</dd>
+                  </div>
                 ))}
               </dl>
             )}
@@ -254,18 +284,29 @@ export default function CaseStudy({ data }) {
         {/* ============================ CONTEXT ============================ */}
         {context && (
           <section className="section topo-bg" id="overview">
-            <div className="step-eyebrow" data-reveal=""><span className="num">00</span> {context.eyebrow}</div>
+            <div className="step-eyebrow" data-reveal="">
+              <span className="num">00</span> {context.eyebrow}
+            </div>
             <div className="cs-lede" data-reveal="">
-              <h3><RichText text={context.lede} /></h3>
+              <h3>
+                <RichText text={context.lede} />
+              </h3>
               <div className="body">
-                {context.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
+                {context.body?.map((p, i) => (
+                  <p key={i}>
+                    <RichText text={p} />
+                  </p>
+                ))}
               </div>
             </div>
             {context.stats?.length > 0 && (
               <div className="cs-stats">
                 {context.stats.map((s, i) => (
                   <div className="stat reveal" data-d={i || undefined} key={i}>
-                    <div className="v">{s.v}{s.u && <span className="u">{s.u}</span>}</div>
+                    <div className="v">
+                      {s.v}
+                      {s.u && <span className="u">{s.u}</span>}
+                    </div>
                     <div className="k">{s.k}</div>
                   </div>
                 ))}
@@ -278,7 +319,9 @@ export default function CaseStudy({ data }) {
         {challenge && (
           <section className="section" style={{ paddingTop: 0 }}>
             <div className="cs-quote" data-reveal="">
-              <p><RichText text={challenge.quote} /></p>
+              <p>
+                <RichText text={challenge.quote} />
+              </p>
               {challenge.who && <div className="who">{challenge.who}</div>}
             </div>
           </section>
@@ -296,12 +339,22 @@ export default function CaseStudy({ data }) {
             {prototype.note && (
               <div className="proto-note">
                 <span className="mk">💡</span>
-                <p><RichText text={prototype.note} /></p>
+                <p>
+                  <RichText text={prototype.note} />
+                </p>
               </div>
             )}
             {prototype.href && (
-              <a className="btn proto-link" href={prototype.href} target="_blank" rel="noopener noreferrer">
-                {prototype.linkLabel || 'Open'} <span className="ar" aria-hidden="true">↗</span>
+              <a
+                className="btn proto-link"
+                href={prototype.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {prototype.linkLabel || 'Open'}{' '}
+                <span className="ar" aria-hidden="true">
+                  ↗
+                </span>
               </a>
             )}
             {prototype.src && (
@@ -320,9 +373,15 @@ export default function CaseStudy({ data }) {
               {research.idx && <span className="section-idx">{research.idx}</span>}
             </div>
             <div className="cs-lede" data-reveal="">
-              <h3><RichText text={research.lede} /></h3>
+              <h3>
+                <RichText text={research.lede} />
+              </h3>
               <div className="body">
-                {research.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
+                {research.body?.map((p, i) => (
+                  <p key={i}>
+                    <RichText text={p} />
+                  </p>
+                ))}
               </div>
             </div>
             {research.personas?.length > 0 && (
@@ -330,12 +389,23 @@ export default function CaseStudy({ data }) {
                 {research.personas.map((p, i) => (
                   <article className="persona reveal" data-d={i || undefined} key={p.id || i}>
                     <div className="persona__media">
-                      <Shot shots={data.shots} onZoom={setZoom} id={p.shot} label={`[ ${p.name} ]`} />
+                      <Shot
+                        shots={data.shots}
+                        onZoom={setZoom}
+                        id={p.shot}
+                        label={`[ ${p.name} ]`}
+                      />
                     </div>
                     <div className="persona__body">
-                      <div className="persona__name"><h4>{p.name}</h4><span className="id">{p.id}</span></div>
+                      <div className="persona__name">
+                        <h4>{p.name}</h4>
+                        <span className="id">{p.id}</span>
+                      </div>
                       <p className="persona__goal">{p.goal}</p>
-                      <p className="persona__pain"><b>Pain</b><RichText text={p.pain} /></p>
+                      <p className="persona__pain">
+                        <b>Pain</b>
+                        <RichText text={p.pain} />
+                      </p>
                     </div>
                   </article>
                 ))}
@@ -344,7 +414,9 @@ export default function CaseStudy({ data }) {
             {research.insight && (
               <div className="cs-insight reveal">
                 <div className="mk">Key insight</div>
-                <p><RichText text={research.insight} /></p>
+                <p>
+                  <RichText text={research.insight} />
+                </p>
               </div>
             )}
           </section>
@@ -358,9 +430,15 @@ export default function CaseStudy({ data }) {
               {ideation.idx && <span className="section-idx">{ideation.idx}</span>}
             </div>
             <div className="cs-lede" data-reveal="">
-              <h3><RichText text={ideation.lede} /></h3>
+              <h3>
+                <RichText text={ideation.lede} />
+              </h3>
               <div className="body">
-                {ideation.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
+                {ideation.body?.map((p, i) => (
+                  <p key={i}>
+                    <RichText text={p} />
+                  </p>
+                ))}
               </div>
             </div>
             {ideation.features?.length > 0 && (
@@ -376,8 +454,18 @@ export default function CaseStudy({ data }) {
             )}
             {ideation.media?.map((m, i) => (
               <div className={`cs-media reveal${m.framed ? ' is-framed' : ''}`} key={i}>
-                <div className="cs-media__cap"><h4>{m.cap}</h4>{m.sub && <span>{m.sub}</span>}</div>
-                <Shot shots={data.shots} onZoom={setZoom} id={m.shot} fit="contain" label={`[ ${m.cap} ]`} style={!m.framed && m.aspect ? { aspectRatio: m.aspect } : undefined} />
+                <div className="cs-media__cap">
+                  <h4>{m.cap}</h4>
+                  {m.sub && <span>{m.sub}</span>}
+                </div>
+                <Shot
+                  shots={data.shots}
+                  onZoom={setZoom}
+                  id={m.shot}
+                  fit="contain"
+                  label={`[ ${m.cap} ]`}
+                  style={!m.framed && m.aspect ? { aspectRatio: m.aspect } : undefined}
+                />
               </div>
             ))}
           </section>
@@ -400,9 +488,21 @@ export default function CaseStudy({ data }) {
             ) : wireframes.items?.length > 0 ? (
               <div className="wire-row">
                 {wireframes.items.map((w, i) => (
-                  <div className={`wire reveal${w.final ? ' is-final' : ''}`} data-d={i || undefined} key={w.shot || i}>
-                    <Shot shots={data.shots} onZoom={setZoom} id={w.shot} label={`[ Wireframe ${w.v} ]`} />
-                    <div className="lab"><span className="v">{w.v}</span><span className="t">{w.t}</span></div>
+                  <div
+                    className={`wire reveal${w.final ? ' is-final' : ''}`}
+                    data-d={i || undefined}
+                    key={w.shot || i}
+                  >
+                    <Shot
+                      shots={data.shots}
+                      onZoom={setZoom}
+                      id={w.shot}
+                      label={`[ Wireframe ${w.v} ]`}
+                    />
+                    <div className="lab">
+                      <span className="v">{w.v}</span>
+                      <span className="t">{w.t}</span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -414,18 +514,38 @@ export default function CaseStudy({ data }) {
         {topography && (
           <section className="cs-topo topo-bg">
             <div className="cs-topo__inner">
-              <div className="step-eyebrow" data-reveal=""><span className="num">{topography.mark || '◆'}</span> {topography.eyebrow}</div>
-              <h3><RichText text={topography.title} /></h3>
-              {topography.body && <p><RichText text={topography.body} /></p>}
+              <div className="step-eyebrow" data-reveal="">
+                <span className="num">{topography.mark || '◆'}</span> {topography.eyebrow}
+              </div>
+              <h3>
+                <RichText text={topography.title} />
+              </h3>
+              {topography.body && (
+                <p>
+                  <RichText text={topography.body} />
+                </p>
+              )}
               {topography.shots?.length > 0 ? (
                 <div className="cs-topo__screens reveal">
                   {topography.shots.map((id, i) => (
-                    <Shot key={id || i} shots={data.shots} onZoom={setZoom} id={id} label={`[ Screen ${i + 1} ]`} />
+                    <Shot
+                      key={id || i}
+                      shots={data.shots}
+                      onZoom={setZoom}
+                      id={id}
+                      label={`[ Screen ${i + 1} ]`}
+                    />
                   ))}
                 </div>
               ) : topography.shot ? (
                 <div className="cs-topo__media reveal">
-                  <Shot shots={data.shots} onZoom={setZoom} id={topography.shot} fit={topography.fit || 'cover'} label={`[ ${topography.eyebrow} ]`} />
+                  <Shot
+                    shots={data.shots}
+                    onZoom={setZoom}
+                    id={topography.shot}
+                    fit={topography.fit || 'cover'}
+                    label={`[ ${topography.eyebrow} ]`}
+                  />
                 </div>
               ) : null}
             </div>
@@ -440,9 +560,15 @@ export default function CaseStudy({ data }) {
               {ui.idx && <span className="section-idx">{ui.idx}</span>}
             </div>
             <div className="cs-lede" data-reveal="">
-              <h3><RichText text={ui.lede} /></h3>
+              <h3>
+                <RichText text={ui.lede} />
+              </h3>
               <div className="body">
-                {ui.body?.map((p, i) => <p key={i}><RichText text={p} /></p>)}
+                {ui.body?.map((p, i) => (
+                  <p key={i}>
+                    <RichText text={p} />
+                  </p>
+                ))}
               </div>
             </div>
 
@@ -451,16 +577,27 @@ export default function CaseStudy({ data }) {
                 {reliefSteps.length > 0 && (
                   <div className="guide-card reveal">
                     {ui.paletteLabel && <h4>{ui.paletteLabel}</h4>}
-                    <div className="relief" style={{ gridTemplateColumns: `repeat(${reliefSteps.length}, 1fr)` }}>
+                    <div
+                      className="relief"
+                      style={{ gridTemplateColumns: `repeat(${reliefSteps.length}, 1fr)` }}
+                    >
                       {reliefSteps.map((s, i) => (
-                        <span key={i} className={s.lite ? 'lite' : undefined} style={{ background: s.hex }} data-h={s.hex}></span>
+                        <span
+                          key={i}
+                          className={s.lite ? 'lite' : undefined}
+                          style={{ background: s.hex }}
+                          data-h={s.hex}
+                        ></span>
                       ))}
                     </div>
                     {ui.paletteNote && <p className="note">{ui.paletteNote}</p>}
                     {ui.fonts?.length > 0 && (
                       <dl className="guide-type">
                         {ui.fonts.map((f) => (
-                          <div key={f.k}><dt>{f.k}</dt><dd>{f.v}</dd></div>
+                          <div key={f.k}>
+                            <dt>{f.k}</dt>
+                            <dd>{f.v}</dd>
+                          </div>
                         ))}
                       </dl>
                     )}
@@ -474,24 +611,36 @@ export default function CaseStudy({ data }) {
                       {ui.components.buttons?.length > 0 && (
                         <div className="row">
                           {ui.components.buttons.map((b, i) => (
-                            <span className={`comp-btn${b.alt ? ' alt' : ''}`} key={i}>{b.label}</span>
+                            <span className={`comp-btn${b.alt ? ' alt' : ''}`} key={i}>
+                              {b.label}
+                            </span>
                           ))}
                         </div>
                       )}
                       {ui.components.chips?.length > 0 && (
                         <div className="row">
-                          {ui.components.chips.map((c, i) => <span className="comp-chip" key={i}>{c}</span>)}
+                          {ui.components.chips.map((c, i) => (
+                            <span className="comp-chip" key={i}>
+                              {c}
+                            </span>
+                          ))}
                         </div>
                       )}
                       {ui.components.pills?.length > 0 && (
                         <div className="row">
-                          {ui.components.pills.map((c, i) => <span className="comp-pill" key={i}>{c}</span>)}
+                          {ui.components.pills.map((c, i) => (
+                            <span className="comp-pill" key={i}>
+                              {c}
+                            </span>
+                          ))}
                         </div>
                       )}
                       {ui.components.tabs?.length > 0 && (
                         <div className="comp-tab">
                           {ui.components.tabs.map((t, i) => (
-                            <span className={t.on ? 'on' : undefined} key={i}>{t.label}</span>
+                            <span className={t.on ? 'on' : undefined} key={i}>
+                              {t.label}
+                            </span>
                           ))}
                         </div>
                       )}
@@ -506,7 +655,13 @@ export default function CaseStudy({ data }) {
             ) : ui.screens?.length > 0 ? (
               <div className="screens-grid">
                 {ui.screens.map((id, i) => (
-                  <Shot shots={data.shots} onZoom={setZoom} id={id} label={`[ Screen ${i + 1} ]`} key={id} />
+                  <Shot
+                    shots={data.shots}
+                    onZoom={setZoom}
+                    id={id}
+                    label={`[ Screen ${i + 1} ]`}
+                    key={id}
+                  />
                 ))}
               </div>
             ) : null}
@@ -525,7 +680,9 @@ export default function CaseStudy({ data }) {
             {prototype.note && (
               <div className="proto-note">
                 <span className="mk">💡</span>
-                <p><RichText text={prototype.note} /></p>
+                <p>
+                  <RichText text={prototype.note} />
+                </p>
               </div>
             )}
           </section>
@@ -540,10 +697,18 @@ export default function CaseStudy({ data }) {
             </div>
             {(roadmap.lede || roadmap.body) && (
               <div className="cs-lede" data-reveal="">
-                {roadmap.lede && <h3><RichText text={roadmap.lede} /></h3>}
+                {roadmap.lede && (
+                  <h3>
+                    <RichText text={roadmap.lede} />
+                  </h3>
+                )}
                 {roadmap.body && (
                   <div className="body">
-                    {roadmap.body.map((p, i) => <p key={i}><RichText text={p} /></p>)}
+                    {roadmap.body.map((p, i) => (
+                      <p key={i}>
+                        <RichText text={p} />
+                      </p>
+                    ))}
                   </div>
                 )}
               </div>
@@ -553,10 +718,17 @@ export default function CaseStudy({ data }) {
                 {roadmap.items.map((it, i) => {
                   const state = it.state || 'planned'
                   const mark = state === 'done' ? '✓' : state === 'building' ? '◐' : '○'
-                  const lab = state === 'done' ? 'Shipped' : state === 'building' ? 'Building' : 'Planned'
+                  const lab =
+                    state === 'done' ? 'Shipped' : state === 'building' ? 'Building' : 'Planned'
                   return (
-                    <li className={`roadmap-row reveal is-${state}`} data-d={i % 3 || undefined} key={i}>
-                      <span className="roadmap-mark" aria-hidden="true">{mark}</span>
+                    <li
+                      className={`roadmap-row reveal is-${state}`}
+                      data-d={i % 3 || undefined}
+                      key={i}
+                    >
+                      <span className="roadmap-mark" aria-hidden="true">
+                        {mark}
+                      </span>
                       <div className="roadmap-text">
                         <h4>{it.name}</h4>
                         {it.desc && <p>{it.desc}</p>}
@@ -575,11 +747,23 @@ export default function CaseStudy({ data }) {
           <section className="section" id="gallery">
             <div className="cs-gallery">
               {data.gallery.map((g, i) => (
-                <figure className="cs-gallery__item reveal" data-d={i % 2 || undefined} key={g.src || i}>
-                  <button type="button" className="cs-gallery__open" onClick={() => setZoom(g)} aria-label={`Open ${g.name} preview`}>
+                <figure
+                  className="cs-gallery__item reveal"
+                  data-d={i % 2 || undefined}
+                  key={g.src || i}
+                >
+                  <button
+                    type="button"
+                    className="cs-gallery__open"
+                    onClick={() => setZoom(g)}
+                    aria-label={`Open ${g.name} preview`}
+                  >
                     <img src={g.src} alt={g.name} loading="lazy" />
                   </button>
-                  <figcaption><span className="n">{g.name}</span>{g.sub && <span className="s">{g.sub}</span>}</figcaption>
+                  <figcaption>
+                    <span className="n">{g.name}</span>
+                    {g.sub && <span className="s">{g.sub}</span>}
+                  </figcaption>
                 </figure>
               ))}
             </div>
@@ -591,13 +775,18 @@ export default function CaseStudy({ data }) {
       <section className="cs-next">
         <span className="lab">Next up</span>
         <a className="big" href="#work" onClick={(e) => goHome(e, 'work')}>
-          Back to all work <span className="ar" aria-hidden="true">↗</span>
+          Back to all work{' '}
+          <span className="ar" aria-hidden="true">
+            ↗
+          </span>
         </a>
       </section>
 
       {/* ============================ FOOTER ============================ */}
       <footer className="footer">
-        <p>© 2026 {profile.name}, {profile.role}</p>
+        <p>
+          © 2026 {profile.name}, {profile.role}
+        </p>
         {data.footer && <p>{data.footer}</p>}
         <a className="to-top" href="#top" onClick={toTop}>
           Back to top <span aria-hidden="true">↑</span>
@@ -621,14 +810,23 @@ export default function CaseStudy({ data }) {
           aria-modal="true"
           aria-label={`${zoom.name} preview`}
         >
-          <button className="cs-lightbox__close" onClick={() => setZoom(null)} aria-label="Close preview">✕</button>
+          <button
+            className="cs-lightbox__close"
+            onClick={() => setZoom(null)}
+            aria-label="Close preview"
+          >
+            ✕
+          </button>
           <img
             src={zoom.src}
             alt={zoom.name}
             draggable="false"
             onClick={(e) => {
               e.stopPropagation()
-              if (moved.current) { moved.current = false; return } // c'était un pan, pas un clic
+              if (moved.current) {
+                moved.current = false
+                return
+              } // c'était un pan, pas un clic
               setZoomed((v) => !v)
             }}
             aria-label={zoomed ? 'Zoom out' : 'Zoom in'}

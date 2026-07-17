@@ -21,7 +21,11 @@ export default function Contact() {
           {contactLinks.map((l) => {
             const ext = l.href.startsWith('http')
             return (
-              <a href={l.href} key={l.label} {...(ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+              <a
+                href={l.href}
+                key={l.label}
+                {...(ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
                 <span className="mono">{l.mono}</span>
                 <span className="lbl">{l.label}</span>
               </a>

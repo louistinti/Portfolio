@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { caseStudies } from '../data/content.js'
 import { ease, dur, motionEnabled } from './motion.js'
 
-const labelFor = (route) => (route === 'home' ? 'Home' : caseStudies[route]?.name ?? route)
+const labelFor = (route) => (route === 'home' ? 'Home' : (caseStudies[route]?.name ?? route))
 
 // Rideau home ↔ case study. La route affichée (displayedRoute) est découplée
 // du hash : le swap de composant attend que le rideau couvre l'écran, puis le
@@ -45,11 +45,7 @@ export function usePageTransition(route) {
     const tl = gsap
       .timeline()
       .set(curtain, { display: 'flex' })
-      .fromTo(
-        curtain,
-        { yPercent: 100 },
-        { yPercent: 0, duration: dur.page, ease: ease.inOut },
-      )
+      .fromTo(curtain, { yPercent: 100 }, { yPercent: 0, duration: dur.page, ease: ease.inOut })
       .add(() => setDisplayedRoute(route))
     return () => tl.kill()
   }, [route, displayedRoute])

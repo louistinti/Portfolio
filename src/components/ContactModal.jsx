@@ -37,7 +37,11 @@ export default function ContactModal({ open, onClose }) {
       ta.style.opacity = '0'
       document.body.appendChild(ta)
       ta.select()
-      try { document.execCommand('copy') } catch { /* noop */ }
+      try {
+        document.execCommand('copy')
+      } catch {
+        /* noop */
+      }
       ta.remove()
     }
     setCopied(true)
@@ -70,7 +74,9 @@ export default function ContactModal({ open, onClose }) {
               "Copy" copie l'adresse sans déclencher la navigation. */}
           <div className="modal__opt modal__opt--split">
             <a className="modal__opt-hit" href={`mailto:${profile.email}`}>
-              <span className="modal__opt-ic"><Icon name="mail" /></span>
+              <span className="modal__opt-ic">
+                <Icon name="mail" />
+              </span>
               <span className="modal__opt-txt">
                 <b>Send a message</b>
                 <span className="modal__opt-sub">{profile.email}</span>
@@ -92,7 +98,9 @@ export default function ContactModal({ open, onClose }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="modal__opt-ic"><Icon name="calendar" /></span>
+            <span className="modal__opt-ic">
+              <Icon name="calendar" />
+            </span>
             <span className="modal__opt-txt">
               <b>Book a call</b>
               <span className="modal__opt-sub">15 min phone, 30 min or 1h on Meet</span>

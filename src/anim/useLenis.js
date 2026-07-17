@@ -46,7 +46,8 @@ export function useLenis() {
     const onClick = (e) => {
       // Cède la main : handlers React déjà passés (defaultPrevented) et
       // clics modifiés (nouvel onglet, sélection…) restent natifs.
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
+        return
       const a = e.target.closest('a[href^="#"]')
       if (!a) return
       const href = a.getAttribute('href')

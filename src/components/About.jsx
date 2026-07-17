@@ -25,8 +25,8 @@ export default function About() {
           <div className="reveal" data-d="2">
             <h4>// Now</h4>
             <p>
-              Freelance, available for B2B &amp; SaaS work. Full‑remote or hybrid. Comfortable owning
-              a feature from problem framing to a working build.
+              Freelance, available for B2B &amp; SaaS work. Full‑remote or hybrid. Comfortable
+              owning a feature from problem framing to a working build.
             </p>
           </div>
           <div className="reveal" data-d="3">

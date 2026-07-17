@@ -3,10 +3,16 @@ import '../styles/design-system-preview.css'
 
 // ── Listes des tokens à afficher (noms = ceux de design-system.css) ──
 const COLORS = [
-  '--color-bg', '--color-bg-1', '--color-bg-2',
-  '--color-fg', '--color-muted', '--color-muted-2',
-  '--color-accent', '--color-accent-ink',
-  '--color-line', '--color-line-2',
+  '--color-bg',
+  '--color-bg-1',
+  '--color-bg-2',
+  '--color-fg',
+  '--color-muted',
+  '--color-muted-2',
+  '--color-accent',
+  '--color-accent-ink',
+  '--color-line',
+  '--color-line-2',
 ]
 
 const FONTS = [
@@ -25,22 +31,52 @@ const WEIGHTS = [
 ]
 
 const TYPE_SCALE = [
-  '--text-hero', '--text-display', '--text-h2', '--text-statement', '--text-title', '--text-marquee',
-  '--text-96', '--text-80', '--text-72', '--text-64', '--text-56', '--text-48',
-  '--text-40', '--text-32', '--text-24', '--text-16', '--text-14', '--text-12',
+  '--text-hero',
+  '--text-display',
+  '--text-h2',
+  '--text-statement',
+  '--text-title',
+  '--text-marquee',
+  '--text-96',
+  '--text-80',
+  '--text-72',
+  '--text-64',
+  '--text-56',
+  '--text-48',
+  '--text-40',
+  '--text-32',
+  '--text-24',
+  '--text-16',
+  '--text-14',
+  '--text-12',
 ]
 
 const TRACKING = [
-  '--tracking-tighter', '--tracking-tight', '--tracking-normal',
-  '--tracking-wide', '--tracking-wider', '--tracking-widest',
+  '--tracking-tighter',
+  '--tracking-tight',
+  '--tracking-normal',
+  '--tracking-wide',
+  '--tracking-wider',
+  '--tracking-widest',
 ]
 
 const LEADING = ['--leading-tight', '--leading-snug', '--leading-normal', '--leading-relaxed']
 
 const SPACING = [
-  '--space-1', '--space-2', '--space-3', '--space-4', '--space-6',
-  '--space-8', '--space-10', '--space-12', '--space-14', '--space-16',
-  '--space-18', '--space-20', '--space-24', '--space-32',
+  '--space-1',
+  '--space-2',
+  '--space-3',
+  '--space-4',
+  '--space-6',
+  '--space-8',
+  '--space-10',
+  '--space-12',
+  '--space-14',
+  '--space-16',
+  '--space-18',
+  '--space-20',
+  '--space-24',
+  '--space-32',
 ]
 
 const LAYOUT_SPACE = ['--pad', '--section-py', '--gap-grid']
@@ -62,9 +98,19 @@ function useTokens() {
     const rs = getComputedStyle(document.documentElement)
     const read = () => {
       const all = [
-        ...COLORS, ...FONTS.map((f) => f.token), ...WEIGHTS.map((w) => w.token),
-        ...TYPE_SCALE, ...TRACKING, ...LEADING, ...SPACING, ...LAYOUT_SPACE,
-        ...RADII, ...BORDERS, ...SHADOWS, ...MOTION, ...ZINDEX,
+        ...COLORS,
+        ...FONTS.map((f) => f.token),
+        ...WEIGHTS.map((w) => w.token),
+        ...TYPE_SCALE,
+        ...TRACKING,
+        ...LEADING,
+        ...SPACING,
+        ...LAYOUT_SPACE,
+        ...RADII,
+        ...BORDERS,
+        ...SHADOWS,
+        ...MOTION,
+        ...ZINDEX,
       ]
       const out = {}
       all.forEach((t) => (out[t] = rs.getPropertyValue(t).trim()))
@@ -138,7 +184,9 @@ export default function DesignSystemPreview() {
           {WEIGHTS.map((w) => (
             <div className="ds-weight" key={w.token} style={{ fontWeight: `var(${w.token})` }}>
               <span>{w.n}</span>
-              <code className="ds-token">{w.token} · {t[w.token]}</code>
+              <code className="ds-token">
+                {w.token} · {t[w.token]}
+              </code>
             </div>
           ))}
         </div>
@@ -164,7 +212,9 @@ export default function DesignSystemPreview() {
             {TRACKING.map((s) => (
               <div className="ds-line" key={s} style={{ letterSpacing: `var(${s})` }}>
                 <span className="ds-mono-up">TRACKING</span>
-                <code className="ds-token">{s} · {t[s]}</code>
+                <code className="ds-token">
+                  {s} · {t[s]}
+                </code>
               </div>
             ))}
           </div>
@@ -175,7 +225,9 @@ export default function DesignSystemPreview() {
                 <p style={{ lineHeight: `var(${s})` }}>
                   Texte sur deux lignes pour visualiser l'interligne appliqué ici.
                 </p>
-                <code className="ds-token">{s} · {t[s]}</code>
+                <code className="ds-token">
+                  {s} · {t[s]}
+                </code>
               </div>
             ))}
           </div>

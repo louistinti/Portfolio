@@ -7,12 +7,21 @@
 /* Lenis pilote le lissage : le smooth CSS ferait double emploi. Scopé .lenis
    (posé par l'instance) : sans Lenis (viewport < 1024px), les ancres gardent
    le scroll-behavior: smooth natif d'origine. */
-html.has-motion.lenis { scroll-behavior: auto; }
+html.has-motion.lenis {
+  scroll-behavior: auto;
+}
 
 /* Recommandations Lenis */
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis.lenis-stopped { overflow: hidden; }
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
 
 /* Lignes tracées : le border devient transparent, un pseudo-élément le
    redessine avec un scaleX piloté par la variable --trace (0 → 1). */
@@ -31,7 +40,9 @@ html.lenis, html.lenis body { height: auto; }
   transform: scaleX(var(--trace, 0));
   transform-origin: left;
 }
-.has-motion #about .section-head::before { content: none; } /* pas de border-top sur About */
+.has-motion #about .section-head::before {
+  content: none;
+} /* pas de border-top sur About */
 .has-motion .skill-row {
   border-bottom-color: transparent;
   position: relative;
@@ -49,8 +60,13 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* Lignes de titre masquées (hero) : le wrapper coupe, l'intérieur monte. */
-.mline { display: block; overflow: hidden; }
-.mline__in { display: block; }
+.mline {
+  display: block;
+  overflow: hidden;
+}
+.mline__in {
+  display: block;
+}
 
 /* Rideau de transition — au-dessus du menu mobile (8500), sous le grain (9000)
    pour garder la texture, et sous la lightbox (9999, jamais ouverte pendant
@@ -82,7 +98,9 @@ html.lenis, html.lenis body { height: auto; }
 /* Pas de I-beam sur le texte non cliquable : la flèche par défaut partout
    (le texte reste sélectionnable). Les liens/boutons gardent leur pointer,
    la lightbox son vocabulaire zoom/grab, via leurs règles existantes. */
-.has-motion body { cursor: default; }
+.has-motion body {
+  cursor: default;
+}
 
 /* Badge « View » : étiquette collée au pointeur au survol des cartes projet.
    Le curseur natif reste inchangé partout. Décalée sous/droite du pointeur
@@ -105,12 +123,22 @@ html.lenis, html.lenis body { height: auto; }
   opacity: 0;
   transition: opacity 0.2s var(--ease);
 }
-.view-badge.is-on { opacity: 1; }
+.view-badge.is-on {
+  opacity: 1;
+}
 
 /* Hovers existants recalés sur la personnalité « précis & snappy » :
    mêmes effets, tempo resserré. */
 .has-motion .btn,
-.has-motion .btn .arrow { transition-duration: 0.3s; }
-.has-motion .card__media .ph { transition-duration: 0.45s; }
-.has-motion .card__tldr { transition-duration: 0.35s; }
-.has-motion .skill-row { transition-duration: 0.3s; }
+.has-motion .btn .arrow {
+  transition-duration: 0.3s;
+}
+.has-motion .card__media .ph {
+  transition-duration: 0.45s;
+}
+.has-motion .card__tldr {
+  transition-duration: 0.35s;
+}
+.has-motion .skill-row {
+  transition-duration: 0.3s;
+}
