@@ -26,7 +26,7 @@ export const contactLinks = [
 ]
 
 // Chips affichés en bas du hero
-export const heroChips = ['UX / UI', 'SaaS', 'AI Builder']
+export const heroChips = ['Freelance', 'Research / UX', 'Design system / UI', 'SaaS', 'AI Builder']
 
 // Section "What I do" — compétences
 export const skills = [
