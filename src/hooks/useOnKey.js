@@ -5,7 +5,10 @@ import { useEffect, useRef } from 'react'
 // dans une ref pour ne pas ré-abonner l'écouteur à chaque rendu.
 export function useOnKey(key, handler, active = true) {
   const handlerRef = useRef(handler)
-  handlerRef.current = handler
+  // Garde la ref à jour après chaque rendu (sans ré-abonner l'écouteur).
+  useEffect(() => {
+    handlerRef.current = handler
+  })
 
   useEffect(() => {
     if (!active) return

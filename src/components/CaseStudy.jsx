@@ -105,7 +105,13 @@ export default function CaseStudy({ data }) {
   // Loupe interne : true = image agrandie (plus grande que l'écran), qu'on
   // déplace verticalement au drag/scroll. Remise à zéro à chaque ouverture.
   const [zoomed, setZoomed] = useState(false)
-  useEffect(() => { setZoomed(false) }, [zoom])
+  // Remise à zéro à chaque changement de cible (ouverture/fermeture) — ajustée
+  // pendant le rendu plutôt que dans un effet, pour éviter un re-render en cascade.
+  const [prevZoom, setPrevZoom] = useState(zoom)
+  if (zoom !== prevZoom) {
+    setPrevZoom(zoom)
+    setZoomed(false)
+  }
 
   // Drag-to-pan sur l'image zoomée (souris). Le scroll natif (molette/tactile)
   // fonctionne en parallèle. `moved` sert à ne PAS dézoomer si on a glissé.
