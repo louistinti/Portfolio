@@ -12,9 +12,16 @@ const LINKS = [
   { href: '#contact', label: 'Contact' },
 ]
 
-export default function Nav() {
+export default function Nav({ onContact }) {
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
+
+  // Le lien Contact du header ouvre la modale « Let's talk » directement,
+  // au lieu de faire défiler jusqu'à la section tout en bas.
+  const handleContact = (e) => {
+    e.preventDefault()
+    onContact()
+  }
 
   useScrollLock(open)
   useOnKey('Escape', close, open)
@@ -38,13 +45,19 @@ export default function Nav() {
         <b>{profile.brand}</b>
       </a>
       <nav className="nav-links">
-        {LINKS.map((l) => (
-          <a href={l.href} key={l.href}>
-            {l.label}
-          </a>
-        ))}
+        {LINKS.map((l) =>
+          l.href === '#contact' ? (
+            <a href="#contact" key={l.href} onClick={handleContact}>
+              {l.label}
+            </a>
+          ) : (
+            <a href={l.href} key={l.href}>
+              {l.label}
+            </a>
+          ),
+        )}
       </nav>
-      <a className="nav-cta" href="#contact">
+      <a className="nav-cta" href="#contact" onClick={handleContact}>
         Get in touch <Icon name="arrow-right" className="arrow" />
       </a>
       <button
@@ -64,11 +77,24 @@ export default function Nav() {
         createPortal(
           <div className="nav-mobile" role="dialog" aria-modal="true" aria-label="Menu">
             <nav className="nav-mobile__links">
-              {LINKS.map((l) => (
-                <a href={l.href} key={l.href} onClick={close}>
-                  {l.label}
-                </a>
-              ))}
+              {LINKS.map((l) =>
+                l.href === '#contact' ? (
+                  <a
+                    href="#contact"
+                    key={l.href}
+                    onClick={(e) => {
+                      close()
+                      handleContact(e)
+                    }}
+                  >
+                    {l.label}
+                  </a>
+                ) : (
+                  <a href={l.href} key={l.href} onClick={close}>
+                    {l.label}
+                  </a>
+                ),
+              )}
             </nav>
           </div>,
           document.body,

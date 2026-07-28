@@ -1,10 +1,7 @@
-import { useState } from 'react'
 import { contactLinks, profile } from '../data/content.js'
 import Icon from './Icon.jsx'
-import ContactModal from './ContactModal.jsx'
 
-export default function Contact() {
-  const [open, setOpen] = useState(false)
+export default function Contact({ onContact }) {
   return (
     <section className="section contact" id="contact">
       <div className="section-head">
@@ -33,7 +30,7 @@ export default function Contact() {
           })}
         </div>
         <div className="contact__actions reveal" data-d="2">
-          <button type="button" className="btn" onClick={() => setOpen(true)}>
+          <button type="button" className="btn" onClick={onContact}>
             Let's talk <Icon name="arrow-right" className="arrow" />
           </button>
           <a className="btn-ghost btn" href={profile.cv} download>
@@ -41,8 +38,6 @@ export default function Contact() {
           </a>
         </div>
       </div>
-
-      <ContactModal open={open} onClose={() => setOpen(false)} />
     </section>
   )
 }
