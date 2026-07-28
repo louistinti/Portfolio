@@ -13,6 +13,9 @@ export const profile = {
   location: 'Nantes, France',
   email: 'louistdesign@gmail.com',
   cv: '/Louis-Tintillier-CV.pdf', // fichier dans public/
+  // Portrait détouré (fond transparent) affiché dans la section About.
+  // Vide = placeholder rayé. Dépose un PNG transparent dans public/assets/.
+  photo: '/assets/louis.png',
   // Lien Calendly (modale "Let's talk"). Lien profil = montre tous les events.
   // Pour ouvrir direct le créneau 30 min, ajoute le slug : '.../louistdesign/30min'
   calendly: 'https://calendly.com/louistdesign',

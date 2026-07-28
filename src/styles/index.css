@@ -537,6 +537,52 @@ a {
    ============================================================ */
 .about-grid {
   display: block;
+  /* Largeur de la colonne de droite, partagée par la rangée haute (photo) et
+     la rangée basse (bloc « Details »), pour que Details tombe pile sous la
+     photo. Calée sur ~hauteur-du-texte × ratio du portrait (0.77). */
+  --about-aside: clamp(150px, 15vw, 190px);
+}
+/* Ligne haute : accroche à gauche, portrait détouré à droite. Le portrait
+   est étiré à la MÊME HAUTEUR que l'accroche (align-items: stretch) ; sa
+   largeur suit le ratio via object-fit: contain (fond transparent, pas de
+   bord visible). Il pose directement sur la page, sans cadre. */
+.about-top {
+  display: grid;
+  grid-template-columns: 1fr var(--about-aside);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: stretch;
+}
+.about-portrait {
+  margin: 0;
+  justify-self: end;
+  align-self: stretch;
+  position: relative;
+  width: 100%;
+  min-height: 0;
+}
+.about-portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  /* Détouré : pas de bordure ni fond. Ombre douce pour décoller de la page. */
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
+}
+.about-portrait__ph {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: var(--text-12);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 .about-statement {
   font-size: var(--text-statement);
@@ -556,9 +602,16 @@ a {
   display: grid;
   gap: clamp(28px, 4vw, 56px);
   margin-top: var(--space-6);
-  grid-template-columns: repeat(3, 1fr);
+  /* Même géométrie que .about-top : Approach/Now à gauche, Details dans la
+     colonne de droite (largeur photo) pour tomber pile sous le portrait. */
+  grid-template-columns: 1fr var(--about-aside);
   border-top: 1px solid var(--line);
   padding-top: var(--space-8);
+}
+.about-cols__main {
+  display: grid;
+  gap: clamp(28px, 4vw, 56px);
+  grid-template-columns: repeat(2, 1fr);
 }
 .about-cols p {
   color: var(--body);
@@ -582,10 +635,36 @@ a {
   text-transform: uppercase;
   color: var(--muted) !important;
 }
+/* « Details » aligné à gauche, sa colonne démarrant sous le bord gauche du
+   portrait (même colonne de droite que .about-top). */
+.about-details {
+  text-align: left;
+}
+.about-details .about-meta {
+  align-items: flex-start;
+}
 
 @media (max-width: 900px) {
+  /* Tout empilé sur mobile. */
   .about-cols {
     grid-template-columns: 1fr;
+  }
+  .about-cols__main {
+    grid-template-columns: 1fr;
+  }
+  /* Portrait au-dessus de l'accroche, centré, sur mobile. */
+  .about-top {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: clamp(20px, 6vw, 40px);
+  }
+  .about-portrait {
+    justify-self: center;
+    order: -1;
+    width: min(240px, 62vw);
+    /* Plus de rangée à égaliser : la hauteur revient du ratio du portrait. */
+    align-self: auto;
+    aspect-ratio: 951 / 1232;
   }
 }
 
