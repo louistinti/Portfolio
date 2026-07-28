@@ -53,19 +53,19 @@ export const projects = [
     cover: '/assets/ps/cover.jpg',
   },
   {
-    idx: '02', name: 'La Vraie Charentaise', year: '2022', cat: 'Branding · E-commerce', slug: 'charentaise',
-    tldr: 'Reframed the humble made-in-France slipper as an icon of slow life, a full rebrand and e-commerce concept with a matchmaking quiz and made-to-order personalization.',
-    cover: '/assets/lvc/cover.png',
-  },
-  {
-    idx: '03', name: 'Actual - Guarantee management tool', year: '2025', cat: 'B2B SaaS · Enterprise', slug: 'garence',
+    idx: '02', name: 'Actual - Guarantee management tool', year: '2025', cat: 'B2B SaaS · Enterprise', slug: 'garence',
     tldr: 'Led end to end the guarantee-management tool for Actual Group, three user types, millions of euros at stake; automated 90.5% of decisions and cut decision time by 83%. Detailed mockups shared in interview.',
     cover: '/assets/garence/cover.svg',
   },
   {
-    idx: '04', name: 'Actual — Candidate List', year: '2025', cat: 'B2B SaaS · UX/UI', slug: 'candidate-list',
+    idx: '03', name: 'Actual — Candidate List', year: '2025', cat: 'B2B SaaS · UX/UI', slug: 'candidate-list',
     tldr: 'Turned a heavy, fragmented recruiter list into a scannable, actionable view, key info and quick actions on the row; 2-3 min saved per candidate readiness check. Detailed mockups shared in interview.',
     cover: '/assets/candidate-list/cover.svg',
+  },
+  {
+    idx: '04', name: 'La Vraie Charentaise', year: '2022', cat: 'Branding · E-commerce', slug: 'charentaise',
+    tldr: 'Reframed the humble made-in-France slipper as an icon of slow life, a full rebrand and e-commerce concept with a matchmaking quiz and made-to-order personalization.',
+    cover: '/assets/lvc/cover.png',
   },
   {
     idx: '05', name: 'Learning Leagues', year: '2025 — ongoing', cat: 'Personal · Product & Design System', slug: 'learning-leagues',
