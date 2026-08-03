@@ -85,7 +85,59 @@ export const garence = {
     eyebrow: 'Automation',
     mark: '◆',
     title: 'Letting the system decide, *when it should*.',
-    body: "The signature move came after launch: when every parameter is green, thresholds, scoring, client history, data consistency, **the system decides on its own** and notifies everyone. It stays fully **auditable and explainable**, the rules are visible, the justification is shown, and a human **override** is always one click away. Between the February 2025 national rollout and September 2025, automated decisions climbed from **739 to 1,243 (+68.2%)**, the automated share rose from **76.7% to 90.5% (+13.8 pts)**, and the average auto decision dropped from **125 s to 21 s (-83%)**. By September, **9 decisions in 10** ran automatically, leaving human effort exactly where it earns its keep, on the hardest files. It met several framing targets, agency response time and Customer Service decision actions both down, though ENG didn't fall as hoped: some agencies still confuse an ENG request with a guarantee increase, a flow-clarity and training gap to close next.",
+    body: "The signature move came after launch: when every parameter is green, thresholds, scoring, client history, data consistency, **the system decides on its own** and notifies everyone. It stays fully **auditable and explainable**, the rules are visible, the justification is shown, and a human **override** is always one click away. The point was never to remove people from the loop, but to leave human effort exactly where it earns its keep, on the **hardest files**.",
+  },
+
+  results: {
+    eyebrow: 'Results',
+    idx: 'Feb → Sep 2025',
+    lede: 'Seven months after the national rollout, *nine decisions in ten* run on their own.',
+    body: [
+      'The tool went national in **February 2025**. I followed the automation curve through to **September 2025**, and it climbed steadily as the rules were tuned against real files.',
+      'The gain is not only speed, it is **where the humans go**: Customer Service stopped reviewing the obvious files by hand and spent that time on the genuinely difficult ones.',
+    ],
+    metrics: [
+      {
+        k: 'Automated decisions',
+        from: '739',
+        to: '1,243',
+        delta: '+68.2%',
+        note: 'Decisions handled end to end without a human review.',
+      },
+      {
+        k: 'Share fully automated',
+        from: '76.7%',
+        to: '90.5%',
+        delta: '+13.8 pts',
+        note: 'By September, 9 files in 10 never needed a manual pass.',
+      },
+      {
+        k: 'Average automated decision',
+        from: '125 s',
+        to: '21 s',
+        delta: '-83%',
+        note: 'Time from request to decision once the system takes it on.',
+      },
+    ],
+    targetsLabel: '// Framing targets vs. reality',
+    targets: [
+      { name: 'Agency response time', goal: '-75%', state: 'hit' },
+      { name: 'Customer Service decision actions', goal: '-50%', state: 'hit' },
+      {
+        name: 'Non-guaranteed exposure (ENG)',
+        goal: '-25%',
+        state: 'missed',
+        note: 'Some agencies still file an ENG request when they mean a guarantee increase, a flow-clarity and training gap rather than a modelling one.',
+      },
+      {
+        name: 'Total cover held with the insurer',
+        goal: '-20%',
+        state: 'nodata',
+        note: 'No figure I can stand behind on this one.',
+      },
+    ],
+    noteLabel: 'How it was measured',
+    note: "Every figure above comes straight from the tools' own **management dashboards**, month by month, not from a survey. Two framing targets landed, one clearly did not, and one I never got a reliable measure of. The *ENG miss* is the useful one: it points at the flow and the wording, not at the scoring, and that is a fixable design problem.",
   },
 
   prototype: {

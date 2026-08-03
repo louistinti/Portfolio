@@ -4,7 +4,7 @@ import { useReveals } from '../anim/useReveals.js'
 import { useScrollLock } from '../hooks/useScrollLock.js'
 import { useOnKey } from '../hooks/useOnKey.js'
 import { goHome } from '../hooks/useRoute.js'
-import { scrollToTarget } from '../anim/useLenis.js'
+import { scrollToTarget, scrollToSection } from '../anim/useLenis.js'
 import { profile } from '../data/content.js'
 
 // ──────────────────────────────────────────────────────────────
@@ -172,18 +172,28 @@ export default function CaseStudy({ data }) {
 
   if (!data) return null
 
+  // Décalage sous la nav fixe : logique partagée avec la home (scrollToSection).
   const scrollToId = (e, id) => {
     e.preventDefault()
-    const el = document.getElementById(id)
-    if (el) scrollToTarget(el)
+    scrollToSection(document.getElementById(id))
   }
   const toTop = (e) => {
     e.preventDefault()
     scrollToTarget(0)
   }
 
-  const { context, challenge, research, ideation, wireframes, topography, ui, prototype, roadmap } =
-    data
+  const {
+    context,
+    challenge,
+    research,
+    ideation,
+    wireframes,
+    topography,
+    ui,
+    results,
+    prototype,
+    roadmap,
+  } = data
 
   // Badge de statut optionnel (ex. projet en cours) : string courte, ou
   // { label, live } pour ajouter une pastille "vivante".
@@ -205,6 +215,7 @@ export default function CaseStudy({ data }) {
     research && { id: 'research', label: 'Research' },
     ideation && { id: 'ideation', label: 'Ideation' },
     ui && { id: 'design', label: 'Design' },
+    results && { id: 'results', label: results.eyebrow || 'Results' },
     prototype && !liveProto && protoLink,
     roadmap && { id: 'roadmap', label: 'Roadmap' },
   ].filter(Boolean)
@@ -665,6 +676,108 @@ export default function CaseStudy({ data }) {
                 ))}
               </div>
             ) : null}
+          </section>
+        )}
+
+        {/* ============================ RESULTS / IMPACT ============================ */}
+        {/* Ordre voulu : les CHIFFRES d'abord (juste sous le titre), le récit
+            ensuite, puis les `targets` de cadrage confrontées au réel et la
+            `note` de lecture honnête.
+            Les métriques passent avant le chapô pour une raison concrète : en
+            arrivant par la nav, le scroll s'arrête sur le filet de la section,
+            et un chapô de 3 à 4 lignes repoussait les cartes sous la ligne de
+            flottaison sur les écrans peu hauts. Dans une section « Results »,
+            les chiffres sont de toute façon l'information principale. */}
+        {results && (
+          <section className="section" id="results">
+            <div className="section-head">
+              <h2>{results.eyebrow}</h2>
+              {results.idx && <span className="section-idx">{results.idx}</span>}
+            </div>
+
+            {results.metrics?.length > 0 && (
+              <div className="cs-metrics is-lead">
+                {results.metrics.map((m, i) => (
+                  <div className="metric reveal" data-d={i % 3 || undefined} key={i}>
+                    <div className="metric__k">{m.k}</div>
+                    <div className="metric__flow">
+                      {m.from && (
+                        <>
+                          <span className="metric__from">{m.from}</span>
+                          <span className="metric__ar" aria-hidden="true">
+                            →
+                          </span>
+                        </>
+                      )}
+                      <span className="metric__to">{m.to}</span>
+                    </div>
+                    {m.delta && <span className="metric__delta">{m.delta}</span>}
+                    {m.note && <p className="metric__note">{m.note}</p>}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {(results.lede || results.body) && (
+              <div className="cs-lede is-after" data-reveal="">
+                {results.lede && (
+                  <h3>
+                    <RichText text={results.lede} />
+                  </h3>
+                )}
+                {results.body && (
+                  <div className="body">
+                    {results.body.map((p, i) => (
+                      <p key={i}>
+                        <RichText text={p} />
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {results.targets?.length > 0 && (
+              <div className="cs-targets">
+                <h4 className="cs-targets__lab">
+                  {results.targetsLabel || '// Framing targets vs. reality'}
+                </h4>
+                <ul className="cs-targets__list">
+                  {results.targets.map((t, i) => {
+                    const state = t.state || 'nodata'
+                    const mark = state === 'hit' ? '✓' : state === 'missed' ? '✕' : '–'
+                    const lab = state === 'hit' ? 'Hit' : state === 'missed' ? 'Missed' : 'No data'
+                    return (
+                      <li
+                        className={`target-row reveal is-${state}`}
+                        data-d={i % 3 || undefined}
+                        key={i}
+                      >
+                        <span className="target-mark" aria-hidden="true">
+                          {mark}
+                        </span>
+                        <div className="target-text">
+                          <h5>
+                            {t.name} {t.goal && <span className="target-goal">{t.goal}</span>}
+                          </h5>
+                          {t.note && <p>{t.note}</p>}
+                        </div>
+                        <span className="target-state mono">{lab}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )}
+
+            {results.note && (
+              <div className="cs-insight reveal">
+                <div className="mk">{results.noteLabel || 'How it was measured'}</div>
+                <p>
+                  <RichText text={results.note} />
+                </p>
+              </div>
+            )}
           </section>
         )}
 

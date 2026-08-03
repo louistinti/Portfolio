@@ -32,10 +32,12 @@ export const candidateList = {
       'On top of that, the UI was **dated and barely responsive**, and the cognitive load was high, too much noise in some places, missing essentials in others.',
       "And nothing helped **steer the talent pool**: no operational KPIs on the list itself, availability, last action, urgencies, so recruiters couldn't **prioritize** urgent files, follow-ups or replacements without opening each card.",
     ],
+    // Résumé des résultats (repris en détail dans `results`), même parti pris
+    // que sur le projet Guarantee : accroche chiffrée en haut, preuve en bas.
     stats: [
       { v: '2-3', u: 'min', k: 'saved per candidate to judge "ready to work or not".' },
+      { v: '20', u: '+', k: 'filters cut from the interface, on research evidence.' },
       { v: '141', k: "recruiters surveyed on the row's must-see info and actions." },
-      { v: '8', k: 'agencies visited to observe real routines and workarounds.' },
     ],
   },
 
@@ -82,10 +84,34 @@ export const candidateList = {
     body: 'Adoption was good, but management wanted more, so I designed two new pages. A **sourcing list** that hides candidates already tied to your agency and adds **AI matching** (location, target jobs, prior experience) plus a live feed of new sign-ups in your area, fresh profiles you\'ve never worked with. And a **talent-pools** page where managers group related trades into pools, ranked by shortage, demand or urgency, each opening on a "next actions" shortlist (candidates to replace, documents to validate) and a per-candidate **matching** button, with personal favourite lists underneath.',
   },
 
+  results: {
+    eyebrow: 'Results',
+    idx: 'Pilot · Nov 2025',
+    lede: 'The row now does the reading, so the *profile stays closed*.',
+    body: [
+      'In pilot since **November 2025**, the new list won real adoption: recruiters **save 2 to 3 minutes per candidate** on the one judgement they make dozens of times a day, is this person ready to work?',
+      'Downstream, fewer files slip through the cracks and prioritization got sharper, expiring documents and urgent replacements are now visible **before** someone opens a profile, not after.',
+    ],
+    metrics: [
+      {
+        k: 'Saved per candidate',
+        to: '2-3 min',
+        note: 'On judging readiness, without opening a single profile.',
+      },
+      {
+        k: 'Filters cut before the pilot',
+        to: '20+',
+        note: 'Dropped on Hotjar and Analytics evidence, not on opinion.',
+      },
+    ],
+    noteLabel: 'How it was measured',
+    note: 'The 2 to 3 minutes come from **user interviews** with the recruiters running the pilot, not from instrumentation, and they cover **one specific judgement**, is this candidate ready to work, rather than the whole hiring flow. It is a first read rather than a settled figure: before claiming more I would want a full quarter of usage behind it.',
+  },
+
   prototype: {
     eyebrow: 'Outcome',
-    idx: 'Pilot · Nov 2025',
-    note: 'In pilot since **November 2025**, the new list won real adoption, recruiters **save 2-3 minutes** just judging whether a candidate is ready to work, with fewer dropped files and sharper prioritization. The second solution was **validated by management right before I left Actual**, so I never got to test it with users, the one honest gap in an otherwise solid run.',
+    idx: 'In hindsight',
+    note: 'The second solution, the sourcing list and talent pools, was **validated by management right before I left Actual**, so I never got to test it with users. That is the one honest gap in an otherwise solid run, and the part I would want back: a design validated by stakeholders is not the same thing as a design validated by the people who use it.',
   },
 
   footer: 'Candidate list · Actual Group · Case study',

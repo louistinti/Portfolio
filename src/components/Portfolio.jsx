@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useInteractions } from '../hooks/useInteractions.js'
 import { useReveals } from '../anim/useReveals.js'
-import { scrollToTarget } from '../anim/useLenis.js'
+import { scrollToTarget, scrollToSection } from '../anim/useLenis.js'
 import Nav from './Nav.jsx'
 import Hero from './Hero.jsx'
 import Marquee from './Marquee.jsx'
@@ -28,7 +28,7 @@ export default function Portfolio() {
   useEffect(() => {
     const id = window.location.hash.replace('#', '')
     const el = id && document.getElementById(id)
-    if (el) requestAnimationFrame(() => scrollToTarget(el, { immediate: true }))
+    if (el) requestAnimationFrame(() => scrollToSection(el, { immediate: true }))
     else scrollToTarget(0, { immediate: true })
   }, [])
 
