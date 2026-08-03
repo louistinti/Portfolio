@@ -46,7 +46,7 @@ export const tools = [
   'Cursor',
 ]
 
-// Projets (6). 'cover' optionnel : mets '/assets/nexus.jpg' pour une vraie image.
+// Projets (7). 'cover' optionnel : mets '/assets/nexus.jpg' pour une vraie image.
 // 'slug' relie la carte à une étude de cas (voir `case-studies/`) : si une
 // entrée existe pour ce slug, la carte devient cliquable vers #/<slug>.
 export const projects = [
@@ -61,23 +61,28 @@ export const projects = [
     cover: '/assets/garence/cover.svg',
   },
   {
-    idx: '03', name: 'Actual — Candidate List', year: '2025', cat: 'B2B SaaS · UX/UI', slug: 'candidate-list',
+    idx: '03', name: 'Renault Group — Quality intranet', year: '2020 — 2022', cat: 'UX Research · Intranet', slug: 'renault',
+    tldr: "Designed the SharePoint umbrella site unifying Renault Group's 7 quality processes for ~10,000 people — ~15 min saved per document search, ~3 min per key-contact lookup. Screens rebuilt from memory (NDA).",
+    cover: '/assets/renault/cover.webp',
+  },
+  {
+    idx: '04', name: 'Actual — Candidate List', year: '2025', cat: 'B2B SaaS · UX/UI', slug: 'candidate-list',
     tldr: 'Turned a heavy, fragmented recruiter list into a scannable, actionable view, key info and quick actions on the row; 2-3 min saved per candidate readiness check. Detailed mockups shared in interview.',
     cover: '/assets/candidate-list/cover.svg',
   },
   {
-    idx: '04', name: 'La Vraie Charentaise', year: '2022', cat: 'Branding · E-commerce', slug: 'charentaise',
+    idx: '05', name: 'La Vraie Charentaise', year: '2022', cat: 'Branding · E-commerce', slug: 'charentaise',
     tldr: 'Reframed the humble made-in-France slipper as an icon of slow life, a full rebrand and e-commerce concept with a matchmaking quiz and made-to-order personalization.',
     cover: '/assets/lvc/cover.png',
   },
   {
-    idx: '05', name: 'Learning Leagues', year: '2025 — ongoing', cat: 'Personal · Product & Design System', slug: 'learning-leagues',
+    idx: '06', name: 'Learning Leagues', year: '2025 — ongoing', cat: 'Personal · Product & Design System', slug: 'learning-leagues',
     status: 'In progress',
     tldr: 'A personal site to learn League of Legends properly, structured by role, jargon-free, on a token-driven Hextech design system. Designed and built solo with AI as my pair — a data-driven role engine, all five roles live. Still growing.',
     cover: '/assets/cover_ll.png',
   },
   {
-    idx: '06', name: 'Concepts', year: '2026', cat: 'UI exploration · Self-initiated', slug: 'concepts',
+    idx: '07', name: 'Concepts', year: '2026', cat: 'UI exploration · Self-initiated', slug: 'concepts',
     tldr: 'Self-initiated UI explorations across product types, a project OS, an AI writing copilot, a product-analytics suite, where I push pure interface craft.',
     cover: '/assets/UI/Atlas.webp',
   },
