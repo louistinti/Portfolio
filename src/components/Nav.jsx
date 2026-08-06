@@ -19,7 +19,7 @@ export default function Nav({ onContact }) {
   useEffect(() => {
     if (!open) return
     const onResize = () => {
-      if (window.innerWidth > 1040) setOpen(false)
+      if (window.innerWidth > 1240) setOpen(false)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)

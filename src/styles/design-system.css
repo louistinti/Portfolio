@@ -73,9 +73,13 @@
   --fw-heavy: 900;
 
   /* Échelle typographique (paliers discrets, même logique que les espacements) */
-  --text-12: 12px; /* minimum : labels mono, chips, captions */
-  --text-14: 14px;
-  --text-16: 16px; /* corps / body */
+  /* Relevé de 2px (12→14, 14→16, 16→18) après audit lisibilité 2026-08 :
+     ~60 éléments/page étaient à 12px (souvent uppercase mono espacé), et le
+     corps à 16px était le strict minimum pour de la lecture longue. Les noms
+     de variables gardent leur échelle d'origine (slots sémantiques). */
+  --text-12: 14px; /* minimum : labels mono, chips, captions */
+  --text-14: 16px;
+  --text-16: 18px; /* corps / body */
   --text-24: 24px;
   --text-32: 32px;
   --text-40: 40px;
@@ -203,9 +207,9 @@
    ========================================================== */
 @media (min-width: 2000px) {
   :root {
-    --text-12: 13px;
-    --text-14: 15px;
-    --text-16: 17px;
+    --text-12: 16px;
+    --text-14: 18px;
+    --text-16: 20px;
     --text-24: 26px;
     --text-32: 34px;
     --text-40: 44px;

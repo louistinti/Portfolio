@@ -51,6 +51,20 @@
 /* ============================================================
    NAV (variante étude de cas — pleine, sans blend)
    ============================================================ */
+/* La nav d'étude de cas porte jusqu'à 6 liens (Renault FR) : avec la typo
+   relevée à 14px, le gap standard (40px) faisait chevaucher les liens centrés
+   et la bascule de langue à 1280px. Gap resserré → ~80px récupérés. */
+.cs-page .cs-nav .nav-links {
+  gap: var(--space-6);
+}
+/* Sous 1240px la place manque quand même (6 liens FR centrés vs bascule +
+   bouton retour ancrés à droite) : cette table des matières secondaire
+   disparaît, le retour et la bascule restent. */
+@media (max-width: 1240px) {
+  .cs-page .cs-nav .nav-links {
+    display: none;
+  }
+}
 .cs-page .cs-nav {
   mix-blend-mode: normal;
 }

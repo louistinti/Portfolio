@@ -256,16 +256,13 @@ a {
   line-height: 0.95;
 }
 
-@media (max-width: 1040px) {
+/* 1040 → 1240 après le relèvement typo (12→14px) : les liens centrés + la
+   bascule de langue + le CTA ne tiennent plus entre 1040 et 1240 en FR. */
+@media (max-width: 1240px) {
   .nav-links {
     display: none;
   }
   .nav-cta {
-    display: none;
-  }
-  /* Dans la barre, le toggle serait collé à la marque : on le déplace dans
-     le menu mobile (celui de .nav-mobile__links reste visible). */
-  .nav-actions .nav-lang {
     display: none;
   }
   .nav-mobile__links .nav-lang {
@@ -297,7 +294,16 @@ a {
   }
 }
 
-@media (min-width: 1041px) {
+/* Sur les très petits écrans, le toggle de la barre serait collé à la marque :
+   il se replie dans le menu burger (celui de .nav-mobile__links). Entre 640 et
+   1240px, la barre a la place de le garder à côté du burger. */
+@media (max-width: 640px) {
+  .nav-actions .nav-lang {
+    display: none;
+  }
+}
+
+@media (min-width: 1241px) {
   .nav-mobile {
     display: none;
   }
