@@ -42,14 +42,19 @@ export default function About() {
             )}
           </figure>
         </div>
+        {/* Grille attendue par le CSS : .about-cols = [1fr | colonne photo].
+            Approche + Actuellement vivent côte à côte dans __main (colonne
+            large), Détails dans la colonne de droite, sous le portrait. */}
         <div className="about-cols">
-          <div className="reveal" data-d="1">
-            <h4>{a.approach.h}</h4>
-            <p>{a.approach.p}</p>
-          </div>
-          <div className="reveal" data-d="2">
-            <h4>{a.now.h}</h4>
-            <p>{a.now.p}</p>
+          <div className="about-cols__main">
+            <div className="reveal" data-d="1">
+              <h4>{a.approach.h}</h4>
+              <p>{a.approach.p}</p>
+            </div>
+            <div className="reveal" data-d="2">
+              <h4>{a.now.h}</h4>
+              <p>{a.now.p}</p>
+            </div>
           </div>
           <div className="reveal about-details" data-d="3">
             <h4>{a.details}</h4>
