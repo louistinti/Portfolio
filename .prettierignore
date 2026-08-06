@@ -6,3 +6,6 @@ package-lock.json
 # Contenu éditorial : lignes de données volontairement compactes
 # (une persona / feature par ligne). On laisse Prettier tranquille ici.
 src/data
+
+# Maquette Renault : bundle HTML autonome généré, à ne pas reformater.
+public/assets/renault/accueil.html

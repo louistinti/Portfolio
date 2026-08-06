@@ -2,12 +2,12 @@
 // Écrans = reconstitution personnelle (l'original est sous NDA — voir
 // docs/renault-case-study-brief.md pour le cadrage complet et les limites).
 export const renault = {
-  name: 'Renault Group — Quality intranet',
+  name: 'Renault Group - Quality intranet',
   title: "Designing Renault Group's *quality* intranet",
   kicker: ['Case Study', 'UX Research · Intranet · SharePoint'],
   meta: [
     { k: 'Role', v: 'UX/UI Designer (apprenticeship)' },
-    { k: 'Client', v: 'Renault Group — Quality' },
+    { k: 'Client', v: 'Renault Group, Quality' },
     { k: 'Duration', v: '2 years · 2020-2022' },
     { k: 'Screens', v: 'Rebuilt from memory (NDA)' },
   ],
@@ -64,7 +64,7 @@ export const renault = {
       'I interviewed **~30 people** across the whole quality chain, plant operators, engineering, sales, dealerships, aftersales, all remote. The pain was the same everywhere: **nobody searched in the same place**, and the fallback was always a mail to someone who might know.',
       'Then I ran **7 workshops, one per pôle**, with the leaders of each process. Format: **card sorting**, to prioritize content and shape an information architecture that matched how people actually think about quality, not how the org chart is drawn.',
     ],
-    insight: 'The seven processes are *verbs*, not departments — the internal nomenclature describes activities. The site had to be organized by what people are **doing** (define, build, sell, support), because that is how they look for things.',
+    insight: 'The seven processes are *verbs*, not departments: the internal nomenclature describes activities. The site had to be organized by what people are **doing** (define, build, sell, support), because that is how they look for things.',
   },
 
   ideation: {
@@ -89,7 +89,7 @@ export const renault = {
     eyebrow: 'Design constraint',
     mark: '◆',
     title: 'Three columns, *no way around it*.',
-    body: 'SharePoint was **imposed by the IT department**, and with it a hard layout constraint: **three columns maximum**. The real design work was holding content and clarity on that compact grid — tile mosaics of 3, 2+1 and 1+2, a search bar that stays in reach, and a hierarchy that survives the template. The reconstruction shows the constraint instead of hiding it: an intranet that looked like a free-form website would miss what this job actually was.',
+    body: 'SharePoint was **imposed by the IT department**, and with it a hard layout constraint: **three columns maximum**. The real design work was holding content and clarity on that compact grid: tile mosaics of 3, 2+1 and 1+2, a search bar that stays in reach, and a hierarchy that survives the template. The reconstruction shows the constraint instead of hiding it: an intranet that looked like a free-form website would miss what this job actually was.',
   },
 
   ui: {
@@ -115,7 +115,7 @@ export const renault = {
       { hex: '#F5F2E9', name: 'Off-white' },
     ],
     pages: [
-      { shot: 'accueil', cap: 'Home — the 7-process mosaic' },
+      { shot: 'accueil', cap: 'Home, the 7-process mosaic' },
       { shot: 'processus', cap: 'Process page' },
       { shot: 'recherche', cap: 'Search results' },
       { shot: 'annuaire', cap: 'Key-contact directory' },
@@ -135,7 +135,7 @@ export const renault = {
       { k: 'Finding a key contact', to: '−3 min', note: 'Average time saved when looking for the right person in another service.' },
     ],
     noteLabel: 'How it was measured',
-    note: 'Questionnaires after each ~200-person presentation, plus **shadowing of ~15 users**. Declarative data, honestly labelled as such. What I cannot report: adoption after my departure — I have **no data** on the site’s current state, and I would rather say so than guess.',
+    note: 'Questionnaires after each ~200-person presentation, plus **shadowing of ~15 users**. Declarative data, honestly labelled as such. What I cannot report: adoption after my departure. I have **no data** on the site’s current state, and I would rather say so than guess.',
   },
 
   footer: 'Quality intranet · Renault Group · Case study',

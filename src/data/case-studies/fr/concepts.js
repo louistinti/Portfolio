@@ -15,7 +15,7 @@ export const concepts = {
     eyebrow: 'Concept work',
     lede: 'Des produits fictifs, *un vrai craft d’interface*.',
     body: [
-      "Une série d'explorations UI auto-initiées — pas de client, pas de vraies métriques, juste la partie du métier que je préfère : hiérarchie, densité et retenue. Chacune est un produit différent, avec un langage visuel différent.",
+      "Une série d'explorations UI auto-initiées, sans client ni vraies métriques, juste la partie du métier que je préfère : hiérarchie, densité et retenue. Chacune est un produit différent, avec un langage visuel différent.",
       "Un **OS de projet** pour équipes logicielles, un **copilote d'écriture IA** et une suite d'**analytics produit**, pensés pour être regardés de près.",
     ],
   },

@@ -45,7 +45,7 @@ export const parisSaclay = {
       { name: 'Romain', id: 'P-02', shot: 'persona-2', goal: "Aimerait faire des activités avec les étudiants d'autres écoles.", pain: "L'information circule difficilement, et les déplacements entre écoles sont vraiment compliqués." },
       { name: 'Veronica', id: 'P-03', shot: 'persona-3', goal: 'Arrivée récemment en France, cherche à rencontrer du monde et à s’intégrer vite.', pain: 'Les étudiants se mélangent peu : s’intégrer est quasiment impossible pour elle.' },
     ],
-    insight: "Les étudiants ont besoin d'aide pour *communiquer*, avec les professeurs, l'administration et entre eux. Et le campus étant très étendu, s'y *repérer* est une difficulté quotidienne — d'autant que les étudiants changent souvent de salle entre les cours.",
+    insight: "Les étudiants ont besoin d'aide pour *communiquer*, avec les professeurs, l'administration et entre eux. Et le campus étant très étendu, s'y *repérer* est une difficulté quotidienne, d'autant que les étudiants changent souvent de salle entre les cours.",
   },
 
   ideation: {
@@ -53,7 +53,7 @@ export const parisSaclay = {
     idx: 'Étape 02',
     lede: 'Des pain points à un *set de features* resserré.',
     body: [
-      "J'ai benchmarké outils et rubriques au regard de la recherche, et resserré sur les six qui répondaient le plus directement aux besoins des étudiants — communication et navigation d'abord.",
+      "J'ai benchmarké outils et rubriques au regard de la recherche, et resserré sur les six qui répondaient le plus directement aux besoins des étudiants : communication et navigation d'abord.",
       "J'ai tracé un **user flow** simple pour visualiser comment les rubriques se connectent, puis mené des benchmarks ciblés sur les plus délicates : la map, l'agenda, le chat et le fil actus & événements.",
       "J'ai ensuite mené des exercices de **6-to-1**, principalement sur la home, pour agencer le tout de la façon la plus ergonomique possible.",
     ],

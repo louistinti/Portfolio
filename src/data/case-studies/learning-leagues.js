@@ -5,7 +5,7 @@ export const learningLeagues = {
   kicker: ['Case Study', 'Built solo with AI', 'Product · Design System'],
   status: { label: 'In progress', live: true },
   meta: [
-    { k: 'Role', v: 'Solo — design + build' },
+    { k: 'Role', v: 'Solo, design + build' },
     { k: 'Built with', v: 'AI as my pair' },
     { k: 'Stack', v: 'React · no build step' },
   ],
@@ -31,7 +31,7 @@ export const learningLeagues = {
     body: [
       'League of Legends is a 15-year-old game that quietly assumes you already know how to play it. New players get dropped into a 5v5 with hundreds of champions, dense systems and a wall of community jargon, and most quit before it ever clicks.',
       '**Learning Leagues** is my answer: a personal project I design and build solo, **with AI as my pair**, laying out a **structured path by role** from MOBA-savvy beginner to confident low-elo (Iron → Platinum).',
-      "It's **live and still growing** — all five role guides are up, running on an engine I can keep extending. Two rules keep it honest: **no jargon** without explaining it, and **no chasing the meta**, I teach the game's logic, not this patch's build.",
+      "It's **live and still growing**: all five role guides are up, running on an engine I can keep extending. Two rules keep it honest: **no jargon** without explaining it, and **no chasing the meta**, I teach the game's logic, not this patch's build.",
     ],
     stats: [
       { v: '5', k: 'roles live, each a full guide; Support goes deepest as the reference build.' },

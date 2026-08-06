@@ -1,6 +1,6 @@
 // Case study — candidate-list (route #/candidate-list).
 export const candidateList = {
-  name: 'Actual — Candidate List',
+  name: 'Actual - Candidate List',
   title: 'Turning a heavy list into a *scannable* candidate view',
   kicker: ['Case Study', 'UX Research · UX/UI · Desktop'],
   meta: [

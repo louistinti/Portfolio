@@ -33,12 +33,12 @@ export const projects = [
     cover: '/assets/garence/cover.svg',
   },
   {
-    idx: '03', name: 'Renault Group — Intranet Qualité', year: '2020 — 2022', cat: 'UX Research · Intranet', slug: 'renault',
-    tldr: 'Le site chapeau SharePoint qui réunit les 7 processus qualité de Renault Group pour ~10 000 personnes — ~15 min gagnées par recherche de document, ~3 min par recherche de contact. Écrans reconstitués de mémoire (NDA).',
+    idx: '03', name: 'Renault Group - Intranet Qualité', year: '2020-2022', cat: 'UX Research · Intranet', slug: 'renault',
+    tldr: 'Le site chapeau SharePoint qui réunit les 7 processus qualité de Renault Group pour ~10 000 personnes : ~15 min gagnées par recherche de document, ~3 min par recherche de contact. Écrans reconstitués de mémoire (NDA).',
     cover: '/assets/renault/cover.webp',
   },
   {
-    idx: '04', name: 'Actual — Liste candidats', year: '2025', cat: 'B2B SaaS · UX/UI', slug: 'candidate-list',
+    idx: '04', name: 'Actual - Liste candidats', year: '2025', cat: 'B2B SaaS · UX/UI', slug: 'candidate-list',
     tldr: 'Une liste recruteur lourde et fragmentée devenue une vue scannable et actionnable : infos clés et actions rapides sur la ligne ; 2-3 min gagnées par vérification de disponibilité candidat. Maquettes détaillées présentées en entretien.',
     cover: '/assets/candidate-list/cover.svg',
   },
@@ -48,14 +48,14 @@ export const projects = [
     cover: '/assets/lvc/cover.png',
   },
   {
-    idx: '06', name: 'Learning Leagues', year: '2025 — en cours', cat: 'Perso · Produit & Design System', slug: 'learning-leagues',
+    idx: '06', name: 'Learning Leagues', year: '2025, en cours', cat: 'Perso · Produit & Design System', slug: 'learning-leagues',
     status: 'En cours',
-    tldr: 'Un site perso pour apprendre League of Legends proprement : structuré par rôle, sans jargon, sur un design system Hextech piloté par tokens. Conçu et développé en solo avec l’IA en binôme — un moteur de rôles data-driven, les cinq rôles en ligne. Et ça continue.',
+    tldr: 'Un site perso pour apprendre League of Legends proprement : structuré par rôle, sans jargon, sur un design system Hextech piloté par tokens. Conçu et développé en solo avec l’IA en binôme : un moteur de rôles data-driven, les cinq rôles en ligne. Et ça continue.',
     cover: '/assets/cover_ll.png',
   },
   {
     idx: '07', name: 'Concepts', year: '2026', cat: 'Explorations UI · Auto-initié', slug: 'concepts',
-    tldr: 'Des explorations UI auto-initiées sur plusieurs types de produits — un OS de projet, un copilote d’écriture IA, une suite d’analytics produit — où je pousse le pur craft d’interface.',
+    tldr: 'Des explorations UI auto-initiées sur plusieurs types de produits (un OS de projet, un copilote d’écriture IA, une suite d’analytics produit) où je pousse le pur craft d’interface.',
     cover: '/assets/UI/Atlas.webp',
   },
 ]
