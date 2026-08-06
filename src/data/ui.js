@@ -1,4 +1,4 @@
-// Libellés d'interface (chrome du site) — version anglaise.
+// Libellés d'interface (chrome du site), version anglaise.
 // Tout texte visible qui ne vit pas déjà dans site.js / case-studies/ doit
 // passer par ici, pour que la bascule FR/EN couvre l'intégralité du site.
 // Miroir français : ui.fr.js (mêmes clés, obligatoirement).

@@ -17,7 +17,7 @@ export default function Portfolio() {
   useReveals()
 
   // État de la modale "Let's talk" remonté ici pour que le Nav (bouton Contact
-  // du header) et la section Contact partagent la même modale — le bouton du
+  // du header) et la section Contact partagent la même modale, le bouton du
   // haut l'ouvre directement, sans faire défiler jusqu'en bas.
   const [contactOpen, setContactOpen] = useState(false)
   const openContact = () => setContactOpen(true)

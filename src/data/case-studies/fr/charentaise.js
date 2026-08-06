@@ -1,4 +1,4 @@
-// Étude de cas — charentaise, version FR. Texte repris du portfolio Notion
+// Étude de cas : charentaise, version FR. Texte repris du portfolio Notion
 // d'origine (FR) ; thème, images et URL de prototype partagés avec l'EN.
 import { charentaise as en } from '../charentaise.js'
 

@@ -1,4 +1,4 @@
-// Étude de cas — concepts, version FR (traduite de l'EN, galerie pure UI).
+// Étude de cas : concepts, version FR (traduite de l'EN, galerie pure UI).
 import { concepts as en } from '../concepts.js'
 
 export const concepts = {

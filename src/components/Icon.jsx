@@ -1,4 +1,4 @@
-// Icônes FontAwesome (Free Solid, 6.x) intégrées en SVG inline — aucune
+// Icônes FontAwesome (Free Solid, 6.x) intégrées en SVG inline : aucune
 // dépendance, aucune requête réseau. Les tracés sont les icônes officielles
 // FontAwesome (licence CC BY 4.0). L'icône hérite de currentColor.
 const ICONS = {

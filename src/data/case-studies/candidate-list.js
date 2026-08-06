@@ -1,4 +1,4 @@
-// Case study — candidate-list (route #/candidate-list).
+// Case study: candidate-list (route #/candidate-list).
 export const candidateList = {
   name: 'Actual - Candidate List',
   title: 'Turning a heavy list into a *scannable* candidate view',

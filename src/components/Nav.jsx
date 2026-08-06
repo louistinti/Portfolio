@@ -47,7 +47,7 @@ export default function Nav({ onContact }) {
         )}
       </nav>
       {/* Groupe droit : le toggle reste à 24px du CTA, tous deux ancrés à
-          droite — la largeur des liens (plus longs en FR) ne les déplace plus. */}
+          droite, la largeur des liens (plus longs en FR) ne les déplace plus. */}
       <div className="nav-actions">
         <LangToggle />
         <a className="nav-cta" href="#contact" onClick={handleContact}>
@@ -64,7 +64,7 @@ export default function Nav({ onContact }) {
         </button>
       </div>
 
-      {/* Menu mobile plein écran — porté dans <body> pour échapper au
+      {/* Menu mobile plein écran, porté dans <body> pour échapper au
           mix-blend-mode de la nav. La barre (z 8000) reste au-dessus pour
           garder le burger (devenu croix) accessible et refermer le menu. */}
       {open &&

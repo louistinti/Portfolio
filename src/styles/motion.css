@@ -1,5 +1,5 @@
 /* ============================================================
-   MOTION LAYER — tout est scopé .has-motion (posé par useLenis
+   MOTION LAYER · tout est scopé .has-motion (posé par useLenis
    quand prefers-reduced-motion n'est pas actif). Sans ce flag,
    le site garde exactement son comportement d'origine.
    ============================================================ */
@@ -68,7 +68,7 @@ html.lenis body {
   display: block;
 }
 
-/* Rideau de transition — au-dessus du menu mobile (8500), sous le grain (9000)
+/* Rideau de transition, au-dessus du menu mobile (8500), sous le grain (9000)
    pour garder la texture, et sous la lightbox (9999, jamais ouverte pendant
    une navigation). Hors flux tant qu'aucune transition ne joue. */
 .curtain {
@@ -81,7 +81,7 @@ html.lenis body {
   background: var(--bg);
   border-top: 1px solid var(--accent);
   /* PAS de transform ici : GSAP additionne un translateY CSS (converti en px)
-     avec son propre yPercent — le rideau ratait le viewport. La position
+     avec son propre yPercent, le rideau ratait le viewport. La position
      initiale (yPercent 100) est posée par le fromTo de usePageTransition. */
 }
 .curtain__label {
@@ -104,7 +104,7 @@ html.lenis body {
 
 /* Badge « View » : étiquette collée au pointeur au survol des cartes projet.
    Le curseur natif reste inchangé partout. Décalée sous/droite du pointeur
-   (top/left) ; le suivi x/y est posé par GSAP quickSetter — AUCUNE transition
+   (top/left) ; le suivi x/y est posé par GSAP quickSetter, AUCUNE transition
    sur transform, sinon le suivi prendrait du retard. */
 .view-badge {
   position: fixed;

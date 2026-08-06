@@ -1,5 +1,5 @@
 /* ============================================================
-   DESIGN SYSTEM — Portfolio
+   DESIGN SYSTEM · Portfolio
    ------------------------------------------------------------
    Source de vérité de tous les tokens du site (couleurs, typo,
    espacements, rayons, ombres, motion, z-index, layout).
@@ -15,26 +15,26 @@
      1. COULEURS
      ========================================================== */
 
-  /* — Fonds (du plus sombre au plus clair) — */
+  /* Fonds (du plus sombre au plus clair) */
   --color-bg: #0c0c0d; /* fond principal de la page */
   --color-bg-1: #111113; /* surfaces (cartes…) */
   --color-bg-2: #161618; /* surfaces surélevées / hover */
 
-  /* — Texte — */
+  /* Texte */
   --color-fg: #f3f1ec; /* texte principal (off-white) */
-  --color-body: #c2c0ba; /* corps de texte long — plus clair que muted, lisible (~9:1 sur --bg) */
+  --color-body: #c2c0ba; /* corps de texte long, plus clair que muted, lisible (~9:1 sur --bg) */
   --color-muted: #8c8c89; /* texte secondaire */
-  --color-muted-2: #7e7e7b; /* texte tertiaire / placeholders — AA (>=4.5:1 sur --bg) */
+  --color-muted-2: #7e7e7b; /* texte tertiaire / placeholders, AA (>=4.5:1 sur --bg) */
 
-  /* — Accent — */
+  /* Accent */
   --color-accent: #5b8cff; /* bleu d'accent */
   --color-accent-ink: #0a0c14; /* texte posé SUR l'accent */
 
-  /* — Lignes / bordures — */
+  /* Lignes / bordures */
   --color-line: rgba(243, 241, 236, 0.12); /* séparateurs visibles */
   --color-line-2: rgba(243, 241, 236, 0.06); /* séparateurs discrets */
 
-  /* — Alias rétro-compatibles (noms historiques utilisés dans index.css) — */
+  /* Alias rétro-compatibles (noms historiques utilisés dans index.css) */
   --bg: var(--color-bg);
   --bg-1: var(--color-bg-1);
   --bg-2: var(--color-bg-2);
@@ -51,12 +51,12 @@
      2. TYPOGRAPHIE
      ========================================================== */
 
-  /* — Familles — */
+  /* Familles */
   --font-display: 'Space Grotesk', 'Archivo', sans-serif; /* TITRES (display) */
   --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* corps & UI */
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; /* labels, index */
   --font-serif:
-    'Instrument Serif', Georgia, serif; /* RÉSERVE — accent serif désactivé pour le moment */
+    'Instrument Serif', Georgia, serif; /* RÉSERVE : accent serif désactivé pour le moment */
 
   /* Alias historiques */
   --display: var(--font-display);
@@ -64,7 +64,7 @@
   --sans: var(--font-sans);
   --mono: var(--font-mono);
 
-  /* — Graisses — */
+  /* Graisses */
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
@@ -101,13 +101,13 @@
   --text-title: clamp(var(--text-24), 2.4vw, var(--text-32)); /* titres de carte / skills */
   --text-marquee: clamp(var(--text-12), 1.2vw, var(--text-16)); /* bandeau défilant */
 
-  /* — Hauteurs de ligne — */
+  /* Hauteurs de ligne */
   --leading-tight: 0.9; /* gros titres serrés */
   --leading-snug: 1.18; /* phrase About */
   --leading-normal: 1.5; /* corps de texte */
   --leading-relaxed: 1.7; /* caption mono */
 
-  /* — Interlettrage (letter-spacing) — */
+  /* Interlettrage (letter-spacing) */
   --tracking-tighter: -0.025em; /* hero / display */
   --tracking-tight: -0.02em; /* titres H2 */
   --tracking-normal: 0;
@@ -134,7 +134,7 @@
   --space-24: 96px;
   --space-32: 128px;
 
-  /* — Espacements de mise en page (fluides) — */
+  /* Espacements de mise en page (fluides) */
   --pad: clamp(20px, 4.5vw, 84px); /* gouttière horizontale globale */
   --section-py: clamp(80px, 11vw, 180px); /* padding vertical des sections */
   --gap-grid: clamp(18px, 2.4vw, 40px); /* écart des grilles de cartes */
@@ -174,7 +174,7 @@
   --dur: 0.4s;
   --dur-slow: 0.7s;
   /* Apparitions au scroll : pilotées en JS depuis src/anim/motion.js
-     (dur.base = 0.5s) — les tokens de motion JS font foi pour les reveals. */
+     (dur.base = 0.5s), les tokens de motion JS font foi pour les reveals. */
 
   /* ==========================================================
      8. Z-INDEX
@@ -190,7 +190,7 @@
   --maxw: 1600px; /* largeur max du contenu */
   --nav-h: 74px; /* hauteur de la nav non-scrollée (2×--space-6 + ligne de texte) */
 
-  /* Points de rupture — POUR RÉFÉRENCE (les @media ne peuvent pas
+  /* Points de rupture, POUR RÉFÉRENCE (les @media ne peuvent pas
      utiliser de var()). Garde ces valeurs en phase avec le CSS :
        --bp-sm:  820px   (cartes en 1 colonne)
        --bp-md:  900px   (grilles à colonnes -> 1 colonne)
@@ -198,7 +198,7 @@
 }
 
 /* ==========================================================
-   10. GRANDS ÉCRANS — montée en taille par paliers
+   10. GRANDS ÉCRANS · montée en taille par paliers
    ----------------------------------------------------------
    Tout le site étant piloté par les tokens ci-dessus, on les
    redéfinit au-delà de 1920px : la typo, les gros titres (via

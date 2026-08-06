@@ -1,5 +1,5 @@
 // ──────────────────────────────────────────────────────────────
-//  CONTENU DU PORTFOLIO — bundle FRANÇAIS (miroir de content.js)
+//  CONTENU DU PORTFOLIO, bundle FRANÇAIS (miroir de content.js)
 //  Mêmes exports que content.js + `ui` : le fournisseur de langue
 //  (useLang) choisit l'un ou l'autre bundle.
 // ──────────────────────────────────────────────────────────────

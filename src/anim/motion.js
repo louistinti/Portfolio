@@ -1,5 +1,5 @@
 // ──────────────────────────────────────────────────────────────
-//  Tokens de motion — personnalité « précis & snappy ».
+//  Tokens de motion : personnalité « précis & snappy ».
 //  Une seule source de vérité pour durées, easings et staggers,
 //  au même titre que les design tokens CSS de design-system.css.
 // ──────────────────────────────────────────────────────────────
@@ -25,5 +25,5 @@ export const motionEnabled = () => !window.matchMedia('(prefers-reduced-motion: 
 
 export const finePointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches
 
-// Lenis : desktop précis uniquement — le scroll tactile reste natif.
+// Lenis : desktop précis uniquement, le scroll tactile reste natif.
 export const lenisEnabled = () => motionEnabled() && finePointer() && window.innerWidth >= 1024

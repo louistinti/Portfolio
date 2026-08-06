@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { caseStudies } from '../data/content.js'
 
 // ──────────────────────────────────────────────────────────────
-//  Routeur minimal basé sur le hash — zéro dépendance.
+//  Routeur minimal basé sur le hash, zéro dépendance.
 //  Une page d'étude de cas vit sur `#/<slug>` (slug = clé dans
 //  `caseStudies`). Tout le reste (vide, #work, #about…) = Portfolio.
 //  On route sur le PRÉFIXE `#/` pour ne pas entrer en conflit avec

@@ -1,4 +1,4 @@
-// Étude de cas — paris-saclay, version FR. Texte repris du portfolio Notion
+// Étude de cas : paris-saclay, version FR. Texte repris du portfolio Notion
 // d'origine (FR) ; thème, images et URL de prototype partagés avec l'EN.
 import { parisSaclay as en } from '../paris-saclay.js'
 

@@ -1,4 +1,4 @@
-// Case study — learning-leagues (route #/learning-leagues).
+// Case study: learning-leagues (route #/learning-leagues).
 export const learningLeagues = {
   name: 'Learning Leagues',
   title: 'Everything you need to *learn League of Legends*',

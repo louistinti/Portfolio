@@ -17,7 +17,7 @@ import LangToggle from './LangToggle.jsx'
 //  vient des données déjà dans la bonne langue (App choisit le bundle).
 // ──────────────────────────────────────────────────────────────
 
-// Luminance relative (sRGB) — sert à choisir une étiquette claire/sombre
+// Luminance relative (sRGB) : sert à choisir une étiquette claire/sombre
 // sur chaque teinte de la rampe du style guide.
 function luminance(hex) {
   const m = (hex || '').replace('#', '').match(/.{2}/g)
@@ -50,7 +50,7 @@ function zoomable(src, name, onZoom) {
 
 // Image-slot : placeholder rayé (.ph) + image réelle si fournie (shots[id]).
 // NB : défini au niveau module (pas dans CaseStudy) pour ne PAS remonter à
-// chaque re-render — sinon les images perdent leur classe `.in` (reveal) à
+// chaque re-render, sinon les images perdent leur classe `.in` (reveal) à
 // l'ouverture de la lightbox et disparaissent.
 function Shot({ shots, onZoom, id, label, className = '', fit = 'cover', style }) {
   const src = shots?.[id]
@@ -107,7 +107,7 @@ export default function CaseStudy({ data }) {
   // Loupe interne : true = image agrandie (plus grande que l'écran), qu'on
   // déplace verticalement au drag/scroll. Remise à zéro à chaque ouverture.
   const [zoomed, setZoomed] = useState(false)
-  // Remise à zéro à chaque changement de cible (ouverture/fermeture) — ajustée
+  // Remise à zéro à chaque changement de cible (ouverture/fermeture), ajustée
   // pendant le rendu plutôt que dans un effet, pour éviter un re-render en cascade.
   const [prevZoom, setPrevZoom] = useState(zoom)
   if (zoom !== prevZoom) {
@@ -151,7 +151,7 @@ export default function CaseStudy({ data }) {
     }
   }, [data, cs.docTitle])
 
-  // On repart du haut à l'arrivée — immédiat, le rideau couvre l'écran.
+  // On repart du haut à l'arrivée, immédiat, le rideau couvre l'écran.
   useEffect(() => {
     scrollToTarget(0, { immediate: true })
   }, [])

@@ -1,4 +1,4 @@
-// Étude de cas — garence (Actual, garanties), version FR. Texte repris du
+// Étude de cas : garence (Actual, garanties), version FR. Texte repris du
 // portfolio Notion d'origine (FR) ; thème et images partagés avec l'EN.
 import { garence as en } from '../garence.js'
 

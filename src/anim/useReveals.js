@@ -73,7 +73,7 @@ export function useReveals() {
 
       // ---- entrée d'une case study ----
       // Décalée de 0.35s : le rideau commence sa levée (0.1s de tenue +
-      // début de montée) avant que la cascade du titre ne joue — elle est
+      // début de montée) avant que la cascade du titre ne joue, elle est
       // ainsi visible pendant la révélation au lieu de se consumer cachée.
       if (document.querySelector('.cs-title')) {
         gsap
@@ -107,7 +107,7 @@ export function useReveals() {
     // ---- marquee réactif : sa vitesse suit la vélocité du scroll ----
     // L'animation reste en CSS ; on module son playbackRate via WAAPI.
     // Différé d'une frame : useReveals (layout effect enfant) s'exécute
-    // AVANT le useEffect de useLenis dans App — `lenis` n'existe pas encore
+    // AVANT le useEffect de useLenis dans App, `lenis` n'existe pas encore
     // au moment où ce code tourne. Une frame plus tard, il est là.
     let marqueeCleanup
     const marqueeRaf = requestAnimationFrame(() => {

@@ -14,7 +14,7 @@ export default function Hero() {
         </div>
 
         <div className="hero__lead">
-          {/* .mline/.mline__in : balises collées volontairement — un retour à la ligne créerait un nœud texte parasite dans le masque. */}
+          {/* .mline/.mline__in : balises collées volontairement, un retour à la ligne créerait un nœud texte parasite dans le masque. */}
           <h1>
             <span className="mline">
               <span className="mline__in">

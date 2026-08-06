@@ -1,4 +1,4 @@
-// Assemble les études de cas FR dans la map `caseStudies` — mêmes clés (slugs)
+// Assemble les études de cas FR dans la map `caseStudies`, mêmes clés (slugs)
 // que la version EN, obligatoirement : le routing s'appuie dessus.
 import { parisSaclay } from './paris-saclay.js'
 import { charentaise } from './charentaise.js'

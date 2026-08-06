@@ -6,7 +6,7 @@ import * as fr from '../data/content.fr.js'
 //  LANGUE (FR/EN)
 //  Bundle de contenu par langue : les slugs d'études de cas sont identiques
 //  dans les deux, seul le texte change. Le routing (useRoute) reste branché
-//  sur le bundle EN — clés only — et n'a pas besoin de la langue.
+//  sur le bundle EN, clés only, et n'a pas besoin de la langue.
 //  Choix initial : localStorage si déjà choisi, sinon langue du navigateur.
 // ──────────────────────────────────────────────────────────────
 

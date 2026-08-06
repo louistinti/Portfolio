@@ -1,4 +1,4 @@
-// Case study — paris-saclay (route #/paris-saclay).
+// Case study: paris-saclay (route #/paris-saclay).
 export const parisSaclay = {
   name: 'Paris-Saclay University app',
   // Titre H1 (le mot en *accent* est surligné dans la couleur du projet)

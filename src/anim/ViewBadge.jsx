@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { motionEnabled, finePointer } from './motion.js'
 
 // Badge « View » collé au pointeur au survol des cartes projet (desktop
-// pointeur fin uniquement). Le curseur natif reste LE curseur — le badge est
+// pointeur fin uniquement). Le curseur natif reste LE curseur, le badge est
 // une étiquette d'affordance. Suivi via quickSetter : instantané, zéro lag.
 export default function ViewBadge() {
   const ref = useRef(null)

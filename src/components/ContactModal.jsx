@@ -5,7 +5,7 @@ import { useScrollLock } from '../hooks/useScrollLock.js'
 import { useOnKey } from '../hooks/useOnKey.js'
 import Icon from './Icon.jsx'
 
-// Modale "Let's talk" — deux chemins de contact : un mail (mailto, avec un
+// Modale "Let's talk" : deux chemins de contact : un mail (mailto, avec un
 // bouton "Copy" en fallback si aucun client mail n'est configuré), ou un
 // rendez-vous via Calendly. Le lien Calendly se règle dans content.js
 // (profile.calendly). Accessible : Échap pour fermer, clic sur le fond,

@@ -1,5 +1,5 @@
-// Case study — renault (route #/renault).
-// Écrans = reconstitution personnelle (l'original est sous NDA — voir
+// Case study: renault (route #/renault).
+// Écrans = reconstitution personnelle (l'original est sous NDA, voir
 // docs/renault-case-study-brief.md pour le cadrage complet et les limites).
 export const renault = {
   name: 'Renault Group - Quality intranet',
@@ -13,7 +13,7 @@ export const renault = {
   ],
 
   // Couleurs du groupe : gris sombre + jaune Renault (#FFCC33), jaune réservé
-  // aux accents — le texte courant reste en blanc cassé (lisibilité).
+  // aux accents, le texte courant reste en blanc cassé (lisibilité).
   theme: {
     '--accent': '#FFCC33',
     '--accent-ink': '#221a04',
@@ -48,7 +48,7 @@ export const renault = {
   },
 
   // Reconstitution interactive (HTML autonome) : montrée tôt, avec le
-  // disclaimer NDA annoncé noir sur blanc — règle du brief.
+  // disclaimer NDA annoncé noir sur blanc, règle du brief.
   prototype: {
     eyebrow: 'Mockup',
     idx: 'Reconstruction',

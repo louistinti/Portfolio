@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-// Ported from the design's app.js — nav shrink/black on scroll, mobile
+// Ported from the design's app.js, nav shrink/black on scroll, mobile
 // burger jump, and tap-to-toggle TLDR on touch devices. Scroll reveals now
 // live in src/anim/useReveals.js (GSAP + ScrollTrigger).
 export function useInteractions() {

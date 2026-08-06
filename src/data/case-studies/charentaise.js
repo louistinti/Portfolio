@@ -1,4 +1,4 @@
-// Case study — charentaise (route #/charentaise).
+// Case study: charentaise (route #/charentaise).
 export const charentaise = {
   name: 'La Vraie Charentaise',
   title: 'Turning the *charentaise* into an icon of slow life',
@@ -13,14 +13,14 @@ export const charentaise = {
   // base ivoire / noir, primaires pop. Vert en accent, rampe de deck
   // déclinée en vert foncé. Contrastes vérifiés AA/AAA sur le fond sombre.
   theme: {
-    '--accent': '#A3DCB3',       // Vert — accent (fonds, boutons, sélection)
-    '--accent-ink': '#14211b',   // vert très foncé — texte sur l'accent (~11:1)
-    '--accent-line': '#A3DCB3',  // Vert clair — petits textes/traits (~12:1 sur fond sombre)
+    '--accent': '#A3DCB3',       // Vert, accent (fonds, boutons, sélection)
+    '--accent-ink': '#14211b',   // vert très foncé, texte sur l'accent (~11:1)
+    '--accent-line': '#A3DCB3',  // Vert clair, petits textes/traits (~12:1 sur fond sombre)
     '--topo-1': '#101713',       // deck
     '--topo-2': '#16241b',       // deck
     '--topo-3': '#1f3528',       // deck
     '--topo-4': '#2f5740',       // vert profond (deck)
-    '--topo-5': '#8FCFA6',       // vert clair — accent texte secondaire (~9:1)
+    '--topo-5': '#8FCFA6',       // vert clair, accent texte secondaire (~9:1)
     '--topo-6': '#C8E8D4',       // vert très clair
     '--topo-line': 'rgba(163, 220, 179, 0.16)',
   },

@@ -1,4 +1,4 @@
-// Étude de cas — learning-leagues, version FR (traduite de l'EN, projet perso).
+// Étude de cas : learning-leagues, version FR (traduite de l'EN, projet perso).
 import { learningLeagues as en } from '../learning-leagues.js'
 
 export const learningLeagues = {

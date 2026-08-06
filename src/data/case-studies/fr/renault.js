@@ -1,4 +1,4 @@
-// Étude de cas — renault, version FR. Rédigée depuis le brief français
+// Étude de cas : renault, version FR. Rédigée depuis le brief français
 // (docs/renault-case-study-brief.md) ; visuels et thème partagés avec l'EN.
 import { renault as en } from '../renault.js'
 

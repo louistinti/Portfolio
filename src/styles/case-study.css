@@ -1,5 +1,5 @@
 /* ============================================================
-   ÉTUDE DE CAS — Paris-Saclay app redesign
+   ÉTUDE DE CAS · Paris-Saclay app redesign
    ------------------------------------------------------------
    Étend index.css / design-system.css. Accent bleu Saclay +
    échelle topographique, le tout SCOPÉ sous .cs-page pour ne
@@ -18,14 +18,14 @@
      --accent = primaire de marque pour les FONDS (boutons, logo, sélection) ;
      --accent-line = magenta clair lisible pour les TEXTES/TRAITS sur fond sombre
      (le primaire #840051 est trop foncé pour du petit texte sur le fond #0c0c0d). */
-  --accent: #840051; /* primaire de marque — fonds */
+  --accent: #840051; /* primaire de marque, fonds */
   --accent-ink: #fbeaf3; /* texte clair posé sur l'accent */
-  --accent-line: #d8589f; /* magenta clair — textes, traits, accents (AA sur fond sombre) */
+  --accent-line: #d8589f; /* magenta clair, textes, traits, accents (AA sur fond sombre) */
   /* Échelle de relief : du foncé de marque (deck) au clair dérivé */
   --topo-1: #2e0028; /* deck */
   --topo-2: #4a0c33; /* deck */
   --topo-3: #63003c; /* deck */
-  --topo-4: #840051; /* deck — primaire */
+  --topo-4: #840051; /* deck, primaire */
   --topo-5: #c85a95; /* dérivé clair */
   --topo-6: #f0a9ce; /* dérivé très clair */
   --topo-line: rgba(216, 88, 159, 0.16);
@@ -49,7 +49,7 @@
 }
 
 /* ============================================================
-   NAV (variante étude de cas — pleine, sans blend)
+   NAV (variante étude de cas, pleine, sans blend)
    ============================================================ */
 /* La nav d'étude de cas porte jusqu'à 6 liens (Renault FR) : avec la typo
    relevée à 14px, le gap standard (40px) faisait chevaucher les liens centrés
@@ -236,7 +236,7 @@
 }
 
 /* ============================================================
-   LEAD PARAGRAPH (intro de section — réutilisé sous Wireframes)
+   LEAD PARAGRAPH (intro de section, réutilisé sous Wireframes)
    ============================================================ */
 .cs-hero__sub {
   margin-top: clamp(var(--space-6), 3vw, var(--space-10));
@@ -256,7 +256,7 @@
 }
 
 /* ============================================================
-   PLACEHOLDERS .ph (étude de cas) — fits & object-fit
+   PLACEHOLDERS .ph (étude de cas), fits & object-fit
    ============================================================ */
 .cs-page .ph[data-fit='contain'] img {
   object-fit: contain;
@@ -468,7 +468,7 @@
   }
 }
 
-/* bannière insight — label en titre au-dessus, rectangle ajusté au texte */
+/* bannière insight, label en titre au-dessus, rectangle ajusté au texte */
 .cs-insight {
   margin-top: clamp(var(--space-10), 5vw, var(--space-16));
   display: flex;
@@ -552,7 +552,7 @@
 }
 
 /* ============================================================
-   ROADMAP (what's next — projet en cours)
+   ROADMAP (what's next, projet en cours)
    ============================================================ */
 .roadmap-list {
   list-style: none;
@@ -566,7 +566,7 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: clamp(var(--space-4), 2vw, var(--space-8));
-  /* NB : --space-5 n'existe pas dans l'échelle (0,1,2,3,4,6,8,10,12…) — un var()
+  /* NB : --space-5 n'existe pas dans l'échelle (0,1,2,3,4,6,8,10,12…), un var()
      non défini invalide toute la déclaration, donc le padding retombait à 0. */
   padding: clamp(var(--space-4), 2.4vw, var(--space-8)) clamp(var(--space-6), 3vw, var(--space-10));
   border-top: 1px solid var(--line);
@@ -842,7 +842,7 @@
     repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 13px),
     linear-gradient(160deg, var(--bg-2), var(--bg));
 }
-/* média encadré (ex. 6-to-1) : même rendu que les wireframes — coins flottants à
+/* média encadré (ex. 6-to-1) : même rendu que les wireframes, coins flottants à
    8px, image avec 16px de padding (→ 8px de marge avec les coins), sans rognage. */
 .cs-media.is-framed .ph {
   display: block;
@@ -944,7 +944,7 @@
 
 /* ============================================================
    APERÇUS DE PAGES WEB (vignettes recadrées sur le haut)
-   captures de pages — wireframes & UI — 4 vignettes en grille 2×2
+   captures de pages, wireframes & UI, 4 vignettes en grille 2×2
    ============================================================ */
 .cs-pages {
   display: grid;
@@ -1081,7 +1081,7 @@
 .cs-page .cs-topo__media .ph {
   background: rgba(255, 255, 255, 0.015);
 }
-/* Rangée d'écrans mobiles (375×812) — les 6 tiennent en ligne sur desktop */
+/* Rangée d'écrans mobiles (375×812), les 6 tiennent en ligne sur desktop */
 .cs-topo__screens {
   grid-column: 1 / -1;
   margin-top: clamp(var(--space-12), 6vw, var(--space-18));
@@ -1348,7 +1348,7 @@
 }
 
 /* ============================================================
-   GALERIE UI / CONCEPTS — images pleine largeur, légendées
+   GALERIE UI / CONCEPTS · images pleine largeur, légendées
    (pas de récit case-study : juste le craft)
    ============================================================ */
 .cs-gallery {
@@ -1396,7 +1396,7 @@
 }
 
 /* ============================================================
-   LIGHTBOX — preview plein écran, calée sur la hauteur de l'écran
+   LIGHTBOX · preview plein écran, calée sur la hauteur de l'écran
    ============================================================ */
 .cs-lightbox {
   position: fixed;

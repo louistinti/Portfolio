@@ -1,4 +1,4 @@
-// Libellés d'interface — version française. Mêmes clés que ui.js.
+// Libellés d'interface, version française. Mêmes clés que ui.js.
 // Le ton reprend celui du portfolio Notion d'origine de Louis (FR).
 export const ui = {
   nav: {

@@ -31,7 +31,7 @@ export const contactLinks = [
 // Chips affichés en bas du hero
 export const heroChips = ['Freelance', 'Research / UX', 'Design system / UI', 'SaaS', 'AI Builder']
 
-// Section "What I do" — compétences
+// Section "What I do", compétences
 export const skills = [
   { n: 'Product & UX Design', d: 'Research · flows · IA · prototyping' },
   { n: 'UI & Design Systems', d: 'Components · tokens · scalable libraries' },

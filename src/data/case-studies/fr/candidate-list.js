@@ -1,4 +1,4 @@
-// Étude de cas — candidate-list (Actual, liste candidats), version FR.
+// Étude de cas : candidate-list (Actual, liste candidats), version FR.
 // Texte repris du portfolio Notion d'origine (FR) ; visuels partagés.
 import { candidateList as en } from '../candidate-list.js'
 

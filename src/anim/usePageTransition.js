@@ -13,7 +13,7 @@ const labelFor = (route) => (route === 'home' ? 'Home' : (caseStudies[route]?.na
 // Deux phases distinctes :
 //  1. Couverture (useEffect) : le rideau descend, puis setDisplayedRoute.
 //  2. Levée (useLayoutEffect sur displayedRoute) : jouée APRÈS le commit réel
-//     de la nouvelle page — pas de délai arbitraire qui ferait la course avec
+//     de la nouvelle page, pas de délai arbitraire qui ferait la course avec
 //     un montage lent (case study chargée d'images).
 export function usePageTransition(route) {
   const [displayedRoute, setDisplayedRoute] = useState(route)
@@ -24,7 +24,7 @@ export function usePageTransition(route) {
     const curtain = curtainRef.current
     if (route === displayedRoute) {
       // Couverture interrompue avant le swap (retour arrière pendant la
-      // descente) : la timeline tuée ne jouera jamais son .set final — on
+      // descente) : la timeline tuée ne jouera jamais son .set final, on
       // normalise. Gated sur `pending` : sur une navigation réussie, la levée
       // (layout effect) a déjà consommé le flag AVANT ce passage (les layout
       // effects précèdent les effets passifs dans un même commit), donc on ne
@@ -50,7 +50,7 @@ export function usePageTransition(route) {
     return () => tl.kill()
   }, [route, displayedRoute])
 
-  // Levée : displayedRoute vient de commiter — la nouvelle page est dans le
+  // Levée : displayedRoute vient de commiter, la nouvelle page est dans le
   // DOM derrière le rideau (petit délai pour laisser le premier paint se faire).
   useLayoutEffect(() => {
     if (!pending.current) return

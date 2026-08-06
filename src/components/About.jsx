@@ -1,6 +1,6 @@
 import { useContent, useLang } from '../hooks/useLang.jsx'
 
-// Accroche riche (spans stylés) par langue — gardée en JSX plutôt qu'en data
+// Accroche riche (spans stylés) par langue, gardée en JSX plutôt qu'en data
 // pour contrôler finement la mise en emphase.
 const STATEMENT = {
   en: (

@@ -1,15 +1,15 @@
-// Contenu du site — version française (miroir de site.js, mêmes clés).
+// Contenu du site, version française (miroir de site.js, mêmes clés).
 // Les champs neutres (couleurs, chemins, années, cover) restent partagés via
 // l'import du fichier EN quand c'est possible.
 import { profile as profileEn, contactLinks as contactLinksEn, tools as toolsEn } from './site.js'
 
-// Identité : identique (nom, mail, CV, Calendly) — seul le rôle est un titre,
+// Identité : identique (nom, mail, CV, Calendly), seul le rôle est un titre,
 // qu'on garde en anglais des deux côtés (terme de métier).
 export const profile = profileEn
 export const contactLinks = contactLinksEn
 export const tools = toolsEn
 
-// Chips du hero — termes de métier, lisibles tels quels en français.
+// Chips du hero, termes de métier, lisibles tels quels en français.
 export const heroChips = ['Freelance', 'Research / UX', 'Design system / UI', 'SaaS', 'AI Builder']
 
 // Section « Ce que je fais »
@@ -20,7 +20,7 @@ export const skills = [
   { n: 'B2B & SaaS Strategy', d: 'Activation · rétention · workflows complexes' },
 ]
 
-// Cartes projets — mêmes idx/year/slug/cover que la version EN.
+// Cartes projets, mêmes idx/year/slug/cover que la version EN.
 export const projects = [
   {
     idx: '01', name: 'Paris-Saclay', year: '2025', cat: 'UX/UI · App mobile', slug: 'paris-saclay',

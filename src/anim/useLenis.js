@@ -6,7 +6,7 @@ import { lenisEnabled } from './motion.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Instance partagée — importée par useScrollLock, usePageTransition, etc.
+// Instance partagée, importée par useScrollLock, usePageTransition, etc.
 // Nulle quand Lenis est inactif (mobile, reduced-motion) : toujours tester.
 export let lenis = null
 
@@ -23,7 +23,7 @@ export function scrollToTarget(target, { immediate = false, offset = 0 } = {}) {
   } else {
     const el = typeof target === 'string' ? document.querySelector(target) : target
     if (!el) return
-    // Sans Lenis (mobile, reduced-motion), scrollIntoView ignore `offset` — on
+    // Sans Lenis (mobile, reduced-motion), scrollIntoView ignore `offset`, on
     // calcule la position à la main dès qu'un décalage est demandé.
     if (offset) {
       window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY + offset, behavior })
@@ -40,7 +40,7 @@ const TUCK = 12
 
 // Défilement vers une SECTION, en tenant compte de la nav `position: fixed`.
 // Sans ça, le haut de la section (et donc son titre) se cale au ras du viewport
-// et passe sous la nav. Utilisé par la home comme par les études de cas — les
+// et passe sous la nav. Utilisé par la home comme par les études de cas, les
 // deux navs portent la classe `.nav`.
 export function scrollToSection(target, { immediate = false } = {}) {
   const el = typeof target === 'string' ? document.querySelector(target) : target
@@ -71,7 +71,7 @@ export function useLenis() {
     gsap.ticker.add(raf)
     // Lissage de latence GSAP conservé (valeurs par défaut) : avec
     // lagSmoothing(0), un blocage du thread principal (montage d'une case
-    // study) faisait sauter le rideau directement à sa fin — swap visible
+    // study) faisait sauter le rideau directement à sa fin, swap visible
     // sans animation. Le coût : une micro-reprise du smooth scroll après un
     // gros blocage, imperceptible ici.
     gsap.ticker.lagSmoothing(500, 33)

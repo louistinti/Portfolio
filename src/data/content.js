@@ -1,5 +1,5 @@
 // ──────────────────────────────────────────────────────────────
-//  CONTENU DU PORTFOLIO — point d'entrée (barrel)
+//  CONTENU DU PORTFOLIO, point d'entrée (barrel)
 //  Le contenu vit désormais dans des modules dédiés :
 //    · site.js               → identité + sections de la home
 //                              (profile, contactLinks, heroChips, skills,

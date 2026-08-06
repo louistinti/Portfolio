@@ -1,5 +1,5 @@
 /* ============================================================
-   PORTFOLIO — dark editorial (DEPTH) × serif elegance (Chativ)
+   PORTFOLIO · dark editorial (DEPTH) × serif elegance (Chativ)
    ------------------------------------------------------------
    Les tokens (couleurs, typo, espacements…) vivent dans
    src/styles/design-system.css (importé avant ce fichier).
@@ -58,7 +58,7 @@ a {
   color: var(--muted);
   font-weight: 500;
 }
-/* Police d'accent (serif italique) désactivée pour le moment — la classe reste
+/* Police d'accent (serif italique) désactivée pour le moment, la classe reste
    pour réactivation future ; les mots accentués héritent du titre + couleur .accent */
 .serif-it {
   font-style: normal;
@@ -457,7 +457,7 @@ a {
 
 /* .reveal : marqueur pur, aucun style par défaut. L'état initial masqué et
    l'animation sont posés par GSAP (src/anim/useReveals.js) uniquement quand
-   la couche motion est active — sans elle, le contenu est simplement visible. */
+   la couche motion est active, sans elle, le contenu est simplement visible. */
 
 @media (prefers-reduced-motion: reduce) {
   html {

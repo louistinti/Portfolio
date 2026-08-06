@@ -1,4 +1,4 @@
-// Case study — garence (route #/garence).
+// Case study: garence (route #/garence).
 export const garence = {
   name: 'Actual - Guarantee management tool',
   title: "Designing Actual's *guarantee management* tool",
