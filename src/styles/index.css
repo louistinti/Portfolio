@@ -181,6 +181,26 @@ a {
   border: none;
 }
 
+/* Bascule de langue (FR/EN) — pastille mono discrète, avant le CTA. */
+.nav-lang {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-12);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+.nav-lang:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
 /* Menu mobile plein écran (porté dans <body>, hors du mix-blend de la nav) */
 .nav-mobile {
   position: fixed;
@@ -205,6 +225,11 @@ a {
   font-size: clamp(var(--text-32), 11vw, var(--text-56));
   letter-spacing: -0.02em;
   line-height: 0.95;
+}
+/* Dans le menu mobile, la bascule de langue s'aligne à gauche sous les liens */
+.nav-mobile__links .nav-lang {
+  align-self: flex-start;
+  margin-top: var(--space-4);
 }
 
 @media (max-width: 1040px) {

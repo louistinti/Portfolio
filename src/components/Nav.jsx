@@ -1,18 +1,11 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { profile } from '../data/content.js'
-import { useScrollLock } from '../hooks/useScrollLock.js'
-import { useOnKey } from '../hooks/useOnKey.js'
+import { useContent, useLang } from '../hooks/useLang.jsx'
 import Icon from './Icon.jsx'
 
-const LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#work', label: 'Work' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#contact', label: 'Contact' },
-]
-
 export default function Nav({ onContact }) {
+  const { profile, ui } = useContent()
+  const { lang, toggle } = useLang()
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
 
@@ -23,10 +16,6 @@ export default function Nav({ onContact }) {
     onContact()
   }
 
-  useScrollLock(open)
-  useOnKey('Escape', close, open)
-
-  // Si on repasse en desktop avec le menu ouvert, on le referme.
   useEffect(() => {
     if (!open) return
     const onResize = () => {
@@ -38,14 +27,14 @@ export default function Nav({ onContact }) {
 
   return (
     <header className={`nav${open ? ' nav--open' : ''}`} id="nav">
-      <a className="brand" href="#top" aria-label="Home" onClick={close}>
+      <a className="brand" href="#top" aria-label={ui.nav.ariaHome} onClick={close}>
         <span className="mark">
           <span>{profile.mark}</span>
         </span>
         <b>{profile.brand}</b>
       </a>
       <nav className="nav-links">
-        {LINKS.map((l) =>
+        {ui.nav.links.map((l) =>
           l.href === '#contact' ? (
             <a href="#contact" key={l.href} onClick={handleContact}>
               {l.label}
@@ -57,12 +46,16 @@ export default function Nav({ onContact }) {
           ),
         )}
       </nav>
+      {/* Bascule de langue : affiche la langue CIBLE (EN quand on est en FR). */}
+      <button type="button" className="nav-lang mono" onClick={toggle} aria-label={ui.nav.ariaLang}>
+        {lang === 'fr' ? 'EN' : 'FR'}
+      </button>
       <a className="nav-cta" href="#contact" onClick={handleContact}>
-        Get in touch <Icon name="arrow-right" className="arrow" />
+        {ui.nav.cta} <Icon name="arrow-right" className="arrow" />
       </a>
       <button
         className="nav-burger"
-        aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-label={open ? ui.nav.ariaClose : ui.nav.ariaOpen}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
@@ -75,9 +68,9 @@ export default function Nav({ onContact }) {
           garder le burger (devenu croix) accessible et refermer le menu. */}
       {open &&
         createPortal(
-          <div className="nav-mobile" role="dialog" aria-modal="true" aria-label="Menu">
+          <div className="nav-mobile" role="dialog" aria-modal="true" aria-label={ui.nav.ariaMenu}>
             <nav className="nav-mobile__links">
-              {LINKS.map((l) =>
+              {ui.nav.links.map((l) =>
                 l.href === '#contact' ? (
                   <a
                     href="#contact"
@@ -95,6 +88,17 @@ export default function Nav({ onContact }) {
                   </a>
                 ),
               )}
+              <button
+                type="button"
+                className="nav-lang mono"
+                onClick={() => {
+                  toggle()
+                  close()
+                }}
+                aria-label={ui.nav.ariaLang}
+              >
+                {lang === 'fr' ? 'English' : 'Français'}
+              </button>
             </nav>
           </div>,
           document.body,

@@ -1,10 +1,11 @@
-import { skills, tools } from '../data/content.js'
+import { useContent } from '../hooks/useLang.jsx'
 
 export default function Skills() {
+  const { skills, tools, ui } = useContent()
   return (
     <section className="section" id="skills">
       <div className="section-head">
-        <h2>What I do</h2>
+        <h2>{ui.skills.title}</h2>
         <span className="section-idx">(04)</span>
       </div>
 
@@ -19,7 +20,7 @@ export default function Skills() {
         </div>
 
         <div className="tools-box reveal" data-d="1">
-          <h4>// Toolbox</h4>
+          <h4>{ui.skills.toolbox}</h4>
           <div className="tool-tags">
             {tools.map((t) => (
               <span key={t}>{t}</span>

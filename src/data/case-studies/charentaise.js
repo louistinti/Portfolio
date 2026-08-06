@@ -61,7 +61,7 @@ export const charentaise = {
     idx: 'Step 02',
     lede: 'From an abstract feeling to a *concrete icon*.',
     body: [
-      '"La flemme" was too abstract and too negative to attack head-on. The unlock was the idea of **slow life**, the same calm, unbothered energy as the "chill" Instagram accounts posting celebrities out in crocs and loungewear.',
+      '"La flemme" was too abstract and too negative to attack head-on. I tried playful angles first — a "what kind of idler are you?" quiz site, a mini-game to become the best idler — fun, but none of it truly served the goal. The unlock was the idea of **slow life**, the same calm, unbothered energy as the "chill" Instagram accounts posting celebrities out in crocs and loungewear.',
       'And what better icon for slowing down than a near-top pick of the 60+ crowd: **the charentaise**. I found the real *lavraiecharentaise.com*, dusty and dated, and made it the base for a full redesign, a second life for the product.',
       'The pitch: tie the **authenticity** of a genuine French slipper to its future as *an icon of slow life*. From there, two features came first, a **quiz** and a **personalization** tool, then grew into the full storefront.',
     ],

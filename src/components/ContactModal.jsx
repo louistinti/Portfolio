@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { profile } from '../data/content.js'
+import { useContent } from '../hooks/useLang.jsx'
 import { useScrollLock } from '../hooks/useScrollLock.js'
 import { useOnKey } from '../hooks/useOnKey.js'
 import Icon from './Icon.jsx'
@@ -11,6 +11,8 @@ import Icon from './Icon.jsx'
 // (profile.calendly). Accessible : Échap pour fermer, clic sur le fond,
 // focus posé à l'ouverture et scroll du body bloqué.
 export default function ContactModal({ open, onClose }) {
+  const { profile, ui } = useContent()
+  const m = ui.modal
   const closeRef = useRef(null)
   const resetRef = useRef(null)
   const [copied, setCopied] = useState(false)
@@ -60,13 +62,13 @@ export default function ContactModal({ open, onClose }) {
         aria-labelledby="modal-title"
         onClick={(e) => e.stopPropagation()}
       >
-        <button ref={closeRef} className="modal__close" onClick={onClose} aria-label="Close">
+        <button ref={closeRef} className="modal__close" onClick={onClose} aria-label={m.ariaClose}>
           <Icon name="close" />
         </button>
 
-        <span className="modal__eyebrow mono">// Let's talk</span>
+        <span className="modal__eyebrow mono">{m.eyebrow}</span>
         <h3 id="modal-title" className="modal__title">
-          How would you like to <span className="serif-it accent">connect?</span>
+          {m.titlePre} <span className="serif-it accent">{m.titleAccent}</span>
         </h3>
 
         <div className="modal__options">
@@ -78,7 +80,7 @@ export default function ContactModal({ open, onClose }) {
                 <Icon name="mail" />
               </span>
               <span className="modal__opt-txt">
-                <b>Send a message</b>
+                <b>{m.send}</b>
                 <span className="modal__opt-sub">{profile.email}</span>
               </span>
             </a>
@@ -86,9 +88,9 @@ export default function ContactModal({ open, onClose }) {
               type="button"
               className="modal__copy"
               onClick={copyEmail}
-              aria-label={copied ? 'Email address copied' : 'Copy email address'}
+              aria-label={copied ? m.ariaCopied : m.ariaCopy}
             >
-              {copied ? 'Copied ✓' : 'Copy'}
+              {copied ? m.copied : m.copy}
             </button>
           </div>
 
@@ -102,8 +104,8 @@ export default function ContactModal({ open, onClose }) {
               <Icon name="calendar" />
             </span>
             <span className="modal__opt-txt">
-              <b>Book a call</b>
-              <span className="modal__opt-sub">15 min phone, 30 min or 1h on Meet</span>
+              <b>{m.book}</b>
+              <span className="modal__opt-sub">{m.bookSub}</span>
             </span>
             <Icon name="arrow-up-right" className="arrow" />
           </a>

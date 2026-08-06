@@ -36,9 +36,11 @@ export default [
     languageOptions: { globals: { ...globals.node } },
   },
   // Entry file: it renders the app rather than exporting a component, so the
-  // Fast Refresh "only export components" guard doesn't apply.
+  // Fast Refresh "only export components" guard doesn't apply. Same for the
+  // language context, which exports provider + hooks together (pattern React
+  // standard pour un contexte).
   {
-    files: ['src/main.jsx'],
+    files: ['src/main.jsx', 'src/hooks/useLang.jsx'],
     rules: { 'react-refresh/only-export-components': 'off' },
   },
   prettier,

@@ -1,6 +1,7 @@
-import { profile } from '../data/content.js'
+import { useContent } from '../hooks/useLang.jsx'
 
 export default function Footer() {
+  const { profile, ui } = useContent()
   return (
     <footer className="footer">
       <p>
@@ -8,7 +9,7 @@ export default function Footer() {
       </p>
       <p>{profile.location}</p>
       <a className="to-top" href="#top">
-        Back to top <span aria-hidden="true">↑</span>
+        {ui.footer.top} <span aria-hidden="true">↑</span>
       </a>
     </footer>
   )

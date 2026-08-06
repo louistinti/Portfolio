@@ -1,12 +1,15 @@
-import { profile, heroChips } from '../data/content.js'
+import { useContent } from '../hooks/useLang.jsx'
+import RichText from './RichText.jsx'
 import Icon from './Icon.jsx'
 
 export default function Hero() {
+  const { heroChips, ui } = useContent()
+  const h = ui.hero
   return (
     <section className="hero">
       <div className="hero__body">
         <div className="hero__idx">
-          <span className="mono">Portfolio, 2026</span>
+          <span className="mono">{h.kicker}</span>
           <span className="mono">(01)</span>
         </div>
 
@@ -15,23 +18,22 @@ export default function Hero() {
           <h1>
             <span className="mline">
               <span className="mline__in">
-                Product&nbsp;design <span className="serif-it accent">built</span>
+                {h.l1} <span className="serif-it accent">{h.l1a}</span>
               </span>
             </span>
             <span className="mline">
               <span className="mline__in">
-                to ship &amp; scale <span className="accent">B2B</span>
+                {h.l2} <span className="accent">{h.l2a}</span>
               </span>
             </span>
           </h1>
           <div className="hero__sub">
             <p>
-              <strong>{profile.role}.</strong> I design and ship B2B &amp; SaaS products end to end,
-              from research and UX to shipped interface. Freelance · full‑remote or hybrid.
+              <RichText text={h.sub} />
             </p>
           </div>
           <a className="btn" href="#work">
-            See my work <Icon name="arrow-right" className="arrow" />
+            {h.cta} <Icon name="arrow-right" className="arrow" />
           </a>
         </div>
 
@@ -43,7 +45,7 @@ export default function Hero() {
               </span>
             ))}
           </div>
-          <span className="mono">Scroll ↓</span>
+          <span className="mono">{h.scroll}</span>
         </div>
       </div>
     </section>

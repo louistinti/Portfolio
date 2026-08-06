@@ -12,3 +12,4 @@
 
 export { profile, contactLinks, heroChips, skills, tools, projects } from './site.js'
 export { caseStudies } from './case-studies/index.js'
+export { ui } from './ui.js'

@@ -5,32 +5,16 @@ import { useScrollLock } from '../hooks/useScrollLock.js'
 import { useOnKey } from '../hooks/useOnKey.js'
 import { goHome } from '../hooks/useRoute.js'
 import { scrollToTarget, scrollToSection } from '../anim/useLenis.js'
-import { profile } from '../data/content.js'
+import { useContent, useLang } from '../hooks/useLang.jsx'
+import RichText from './RichText.jsx'
 
 // ──────────────────────────────────────────────────────────────
 //  PAGE GÉNÉRIQUE D'ÉTUDE DE CAS (template)
 //  Rend une page complète à partir d'une entrée de `caseStudies`
 //  (voir src/data/content.js). Toutes les sections sont optionnelles.
+//  Les libellés du template viennent de ui.cs (localisés) ; le contenu
+//  vient des données déjà dans la bonne langue (App choisit le bundle).
 // ──────────────────────────────────────────────────────────────
-
-// Mini rich-text : **gras** → <strong>, *accent* → surlignage couleur,
-// `touche` → <kbd>. Suffit pour le contenu éditorial des études de cas.
-function RichText({ text }) {
-  if (text == null) return null
-  if (typeof text !== 'string') return text
-  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g)
-  return parts.map((p, i) => {
-    if (p.startsWith('**') && p.endsWith('**')) return <strong key={i}>{p.slice(2, -2)}</strong>
-    if (p.startsWith('*') && p.endsWith('*'))
-      return (
-        <span className="serif-it" key={i}>
-          {p.slice(1, -1)}
-        </span>
-      )
-    if (p.startsWith('`') && p.endsWith('`')) return <kbd key={i}>{p.slice(1, -1)}</kbd>
-    return p
-  })
-}
 
 // Luminance relative (sRGB) — sert à choisir une étiquette claire/sombre
 // sur chaque teinte de la rampe du style guide.
@@ -112,6 +96,12 @@ export default function CaseStudy({ data }) {
   useInteractions()
   useReveals()
 
+  // Identité + libellés du template dans la langue courante. `t` pour ne pas
+  // entrer en collision avec la section `ui` des données d'étude de cas.
+  const { profile, ui: t } = useContent()
+  const { lang, toggle } = useLang()
+  const cs = t.cs
+
   // Lightbox galerie : preview plein écran, calée sur la hauteur de l'écran.
   const [zoom, setZoom] = useState(null)
   // Loupe interne : true = image agrandie (plus grande que l'écran), qu'on
@@ -155,11 +145,11 @@ export default function CaseStudy({ data }) {
   useEffect(() => {
     if (!data) return
     const prev = document.title
-    document.title = `${data.name}, Case Study`
+    document.title = `${data.name}, ${cs.docTitle}`
     return () => {
       document.title = prev
     }
-  }, [data])
+  }, [data, cs.docTitle])
 
   // On repart du haut à l'arrivée — immédiat, le rideau couvre l'écran.
   useEffect(() => {
@@ -208,16 +198,16 @@ export default function CaseStudy({ data }) {
   // Liens de la nav : sections réellement présentes dans les données. Le lien
   // du prototype suit sa position réelle (haut si live, bas sinon) et reprend
   // son eyebrow comme libellé (Prototype / Live / Outcome selon le projet).
-  const protoLink = prototype && { id: 'prototype', label: prototype.eyebrow || 'Prototype' }
+  const protoLink = prototype && { id: 'prototype', label: prototype.eyebrow || cs.prototype }
   const navLinks = [
-    context && { id: 'overview', label: 'Overview' },
+    context && { id: 'overview', label: cs.overview },
     liveProto && protoLink,
-    research && { id: 'research', label: 'Research' },
-    ideation && { id: 'ideation', label: 'Ideation' },
-    ui && { id: 'design', label: 'Design' },
-    results && { id: 'results', label: results.eyebrow || 'Results' },
+    research && { id: 'research', label: cs.research },
+    ideation && { id: 'ideation', label: cs.ideation },
+    ui && { id: 'design', label: cs.design },
+    results && { id: 'results', label: results.eyebrow || cs.results },
     prototype && !liveProto && protoLink,
-    roadmap && { id: 'roadmap', label: 'Roadmap' },
+    roadmap && { id: 'roadmap', label: cs.roadmap },
   ].filter(Boolean)
 
   // Rampe du style guide : palette explicite (ui.palette) si fournie, sinon
@@ -235,7 +225,7 @@ export default function CaseStudy({ data }) {
     <div className="cs-page" style={data.theme}>
       {/* ============================ NAV ============================ */}
       <header className="nav cs-nav" id="nav">
-        <a className="brand" href="#" onClick={(e) => goHome(e)} aria-label="Back to home">
+        <a className="brand" href="#" onClick={(e) => goHome(e)} aria-label={t.nav.ariaHome}>
           <span className="mark">
             <span>{profile.mark}</span>
           </span>
@@ -248,11 +238,19 @@ export default function CaseStudy({ data }) {
             </a>
           ))}
         </nav>
+        <button
+          type="button"
+          className="nav-lang mono"
+          onClick={toggle}
+          aria-label={t.nav.ariaLang}
+        >
+          {lang === 'fr' ? 'EN' : 'FR'}
+        </button>
         <a className="cs-back" href="#work" onClick={(e) => goHome(e, 'work')}>
           <span className="ar" aria-hidden="true">
             ←
           </span>{' '}
-          All work
+          {cs.allWork}
         </a>
       </header>
 
@@ -362,7 +360,7 @@ export default function CaseStudy({ data }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {prototype.linkLabel || 'Open'}{' '}
+                {prototype.linkLabel || cs.open}{' '}
                 <span className="ar" aria-hidden="true">
                   ↗
                 </span>
@@ -414,7 +412,7 @@ export default function CaseStudy({ data }) {
                       </div>
                       <p className="persona__goal">{p.goal}</p>
                       <p className="persona__pain">
-                        <b>Pain</b>
+                        <b>{cs.pain}</b>
                         <RichText text={p.pain} />
                       </p>
                     </div>
@@ -424,7 +422,7 @@ export default function CaseStudy({ data }) {
             )}
             {research.insight && (
               <div className="cs-insight reveal">
-                <div className="mk">Key insight</div>
+                <div className="mk">{cs.keyInsight}</div>
                 <p>
                   <RichText text={research.insight} />
                 </p>
@@ -739,14 +737,13 @@ export default function CaseStudy({ data }) {
 
             {results.targets?.length > 0 && (
               <div className="cs-targets">
-                <h4 className="cs-targets__lab">
-                  {results.targetsLabel || '// Framing targets vs. reality'}
-                </h4>
+                <h4 className="cs-targets__lab">{results.targetsLabel || cs.targets}</h4>
                 <ul className="cs-targets__list">
                   {results.targets.map((t, i) => {
                     const state = t.state || 'nodata'
                     const mark = state === 'hit' ? '✓' : state === 'missed' ? '✕' : '–'
-                    const lab = state === 'hit' ? 'Hit' : state === 'missed' ? 'Missed' : 'No data'
+                    const lab =
+                      state === 'hit' ? cs.stHit : state === 'missed' ? cs.stMissed : cs.stNoData
                     return (
                       <li
                         className={`target-row reveal is-${state}`}
@@ -772,7 +769,7 @@ export default function CaseStudy({ data }) {
 
             {results.note && (
               <div className="cs-insight reveal">
-                <div className="mk">{results.noteLabel || 'How it was measured'}</div>
+                <div className="mk">{results.noteLabel || cs.measured}</div>
                 <p>
                   <RichText text={results.note} />
                 </p>
@@ -832,7 +829,11 @@ export default function CaseStudy({ data }) {
                   const state = it.state || 'planned'
                   const mark = state === 'done' ? '✓' : state === 'building' ? '◐' : '○'
                   const lab =
-                    state === 'done' ? 'Shipped' : state === 'building' ? 'Building' : 'Planned'
+                    state === 'done'
+                      ? cs.stShipped
+                      : state === 'building'
+                        ? cs.stBuilding
+                        : cs.stPlanned
                   return (
                     <li
                       className={`roadmap-row reveal is-${state}`}
@@ -886,9 +887,9 @@ export default function CaseStudy({ data }) {
 
       {/* ============================ NEXT ============================ */}
       <section className="cs-next">
-        <span className="lab">Next up</span>
+        <span className="lab">{cs.nextUp}</span>
         <a className="big" href="#work" onClick={(e) => goHome(e, 'work')}>
-          Back to all work{' '}
+          {cs.backAll}{' '}
           <span className="ar" aria-hidden="true">
             ↗
           </span>
@@ -902,7 +903,7 @@ export default function CaseStudy({ data }) {
         </p>
         {data.footer && <p>{data.footer}</p>}
         <a className="to-top" href="#top" onClick={toTop}>
-          Back to top <span aria-hidden="true">↑</span>
+          {cs.backTop} <span aria-hidden="true">↑</span>
         </a>
       </footer>
 

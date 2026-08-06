@@ -1,16 +1,19 @@
-import { contactLinks, profile } from '../data/content.js'
+import { useContent } from '../hooks/useLang.jsx'
+import RichText from './RichText.jsx'
 import Icon from './Icon.jsx'
 
 export default function Contact({ onContact }) {
+  const { contactLinks, profile, ui } = useContent()
+  const c = ui.contact
   return (
     <section className="section contact" id="contact">
       <div className="section-head">
-        <h2>Let's talk</h2>
+        <h2>{c.title}</h2>
         <span className="section-idx">(05)</span>
       </div>
 
       <h2 className="contact__big reveal">
-        Have a product <span className="serif-it accent">to&nbsp;build?</span>
+        <RichText text={c.big} />
       </h2>
 
       <div className="contact__row">
@@ -31,10 +34,10 @@ export default function Contact({ onContact }) {
         </div>
         <div className="contact__actions reveal" data-d="2">
           <button type="button" className="btn" onClick={onContact}>
-            Let's talk <Icon name="arrow-right" className="arrow" />
+            {c.talk} <Icon name="arrow-right" className="arrow" />
           </button>
           <a className="btn-ghost btn" href={profile.cv} download>
-            Download CV <Icon name="arrow-down" className="arrow" />
+            {c.cv} <Icon name="arrow-down" className="arrow" />
           </a>
         </div>
       </div>

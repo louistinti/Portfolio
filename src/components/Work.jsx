@@ -1,10 +1,12 @@
-import { projects, caseStudies } from '../data/content.js'
+import { useContent } from '../hooks/useLang.jsx'
 
 export default function Work() {
+  const { projects, caseStudies, ui } = useContent()
+  const w = ui.work
   return (
     <section className="section" id="work">
       <div className="section-head">
-        <h2>Selected work</h2>
+        <h2>{w.title}</h2>
         <span className="section-idx">(03)</span>
       </div>
 
@@ -29,19 +31,19 @@ export default function Work() {
                   {p.cover ? (
                     <img src={p.cover} alt={p.name} />
                   ) : (
-                    <span className="ph-label">[ Project image, replace ]</span>
+                    <span className="ph-label">{w.ph}</span>
                   )}
                 </div>
                 <div className="card__top">
                   <span className="idx">{p.idx}</span>
                   <span className="card__tags">
                     {!soon && p.status && <span className="card__status">{p.status}</span>}
-                    <span className="cat">{soon ? 'Coming soon' : p.cat}</span>
+                    <span className="cat">{soon ? w.soon : p.cat}</span>
                   </span>
                 </div>
                 {!soon && (
                   <div className="card__tldr">
-                    <p className="tl">TL;DR</p>
+                    <p className="tl">{w.tldr}</p>
                     <p>{p.tldr}</p>
                   </div>
                 )}
