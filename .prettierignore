@@ -7,5 +7,6 @@ package-lock.json
 # (une persona / feature par ligne). On laisse Prettier tranquille ici.
 src/data
 
-# Maquette Renault : bundle HTML autonome généré, à ne pas reformater.
-public/assets/renault/accueil.html
+# Maquettes Renault : écrans extraits de l'export du projet de design.
+# On garde le markup tel quel pour qu'il reste comparable à la source.
+public/assets/renault/*.html
