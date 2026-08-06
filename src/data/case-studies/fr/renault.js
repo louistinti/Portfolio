@@ -59,6 +59,7 @@ export const renault = {
     body: [
       "À partir des ateliers, j'ai tracé les **user journeys** et dessiné les **wireframes** du site : une home construite sur les sept processus, et pour chacun une page réunissant documents, sous-rubriques et contacts clés.",
       "Le concept a été présenté et itéré lors de **3 grandes réunions** devant ~200 personnes (deux la première année, une au début de la seconde pour le lancement), chacune suivie d'un **questionnaire** pour récolter réactions et objections.",
+      "La navigation est volontairement réduite à **deux entrées**, l'accueil et l'annuaire des contacts. Les documents et les archives vivent dans la page de chaque processus plutôt que dans une rubrique transversale, pour éviter deux chemins concurrents vers un même fichier.",
     ],
     features: [
       { id: 'F-01', name: 'Home des 7 processus', desc: 'La mosaïque de tuiles : chaque processus à un clic.' },
@@ -83,7 +84,7 @@ export const renault = {
     idx: 'Design',
     lede: 'Les couleurs du groupe, un *registre corporate* : un outil de travail, pas une landing page.',
     body: [
-      "Le langage visuel suit le groupe : surfaces **gris sombre** et **jaune Renault** strictement en accent, sur les états actifs, les soulignés et les surlignages. Le texte courant reste blanc cassé : du texte jaune sur gris sombre ne tient pas en petite taille.",
+      "Le langage visuel suit le groupe : surfaces **gris sombre** et **jaune Renault** strictement en accent, sur les numéros de processus, les états actifs et les actions. Le texte courant reste blanc cassé : du texte jaune sur gris sombre ne tient pas en petite taille.",
       "Typo **Segoe UI**, angles droits, dense mais scannable : le registre d'un outil interne utilisé tous les jours, pas d'une page marketing. Trois écrans sont reconstitués : l'**accueil**, une **page processus** et l'**annuaire des contacts clés**. La recherche reste contextuelle, dans le header de chaque page, plutôt que sur un écran de résultats à part.",
     ],
     paletteLabel: '// Couleurs du groupe · jaune en accent seul',

@@ -74,6 +74,7 @@ export const renault = {
     body: [
       'From the workshops I mapped **user journeys** and drew the **wireframes** of the site: a home built on the seven processes, and for each one a page holding its documents, sub-sections and key contacts.',
       'The concept was pitched and iterated in **3 large presentations** in front of ~200 people, two the first year, one at the start of the second for the launch, each followed by a **questionnaire** to collect reactions and objections.',
+      'The navigation is deliberately down to **two entries**, the home and the contact directory. Documents and archives live inside each process page rather than in a cross-cutting section, so the same file never has two competing paths to it.',
     ],
     features: [
       { id: 'F-01', name: '7-process home', desc: 'The mosaic of tiles: every process one click away.' },
@@ -97,7 +98,7 @@ export const renault = {
     idx: 'Design',
     lede: 'Group colours, *corporate registre*: a work tool, not a landing page.',
     body: [
-      'The visual language follows the group: **dark grey** surfaces with the **Renault yellow** strictly as an accent, active states, underlines, highlights. Body text stays off-white: yellow text on dark grey does not hold at small sizes.',
+      'The visual language follows the group: **dark grey** surfaces with the **Renault yellow** strictly as an accent, process numbers, active states, underlines, actions. Body text stays off-white: yellow text on dark grey does not hold at small sizes.',
       'Typography is **Segoe UI**, straight angles, dense but scannable, the registre of an internal tool used every day, not of a marketing page. Three screens are rebuilt: the **home**, a **process page** and the **key-contact directory**. Search stays contextual, in the header of each page, rather than living on a results screen of its own.',
     ],
     paletteLabel: '// Group colours · yellow as accent only',
