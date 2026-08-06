@@ -15,7 +15,7 @@ export const ui = {
     ariaOpen: 'Open menu',
     ariaClose: 'Close menu',
     ariaMenu: 'Menu',
-    ariaLang: 'Passer en français',
+    ariaLang: 'Language',
   },
   hero: {
     kicker: 'Portfolio, 2026',

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { useContent, useLang } from '../hooks/useLang.jsx'
+import { useContent } from '../hooks/useLang.jsx'
 import Icon from './Icon.jsx'
+import LangToggle from './LangToggle.jsx'
 
 export default function Nav({ onContact }) {
   const { profile, ui } = useContent()
-  const { lang, toggle } = useLang()
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
 
@@ -46,22 +46,23 @@ export default function Nav({ onContact }) {
           ),
         )}
       </nav>
-      {/* Bascule de langue : affiche la langue CIBLE (EN quand on est en FR). */}
-      <button type="button" className="nav-lang mono" onClick={toggle} aria-label={ui.nav.ariaLang}>
-        {lang === 'fr' ? 'EN' : 'FR'}
-      </button>
-      <a className="nav-cta" href="#contact" onClick={handleContact}>
-        {ui.nav.cta} <Icon name="arrow-right" className="arrow" />
-      </a>
-      <button
-        className="nav-burger"
-        aria-label={open ? ui.nav.ariaClose : ui.nav.ariaOpen}
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-      >
-        <span></span>
-        <span></span>
-      </button>
+      {/* Groupe droit : le toggle reste à 24px du CTA, tous deux ancrés à
+          droite — la largeur des liens (plus longs en FR) ne les déplace plus. */}
+      <div className="nav-actions">
+        <LangToggle />
+        <a className="nav-cta" href="#contact" onClick={handleContact}>
+          {ui.nav.cta} <Icon name="arrow-right" className="arrow" />
+        </a>
+        <button
+          className="nav-burger"
+          aria-label={open ? ui.nav.ariaClose : ui.nav.ariaOpen}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
       {/* Menu mobile plein écran — porté dans <body> pour échapper au
           mix-blend-mode de la nav. La barre (z 8000) reste au-dessus pour
@@ -88,17 +89,9 @@ export default function Nav({ onContact }) {
                   </a>
                 ),
               )}
-              <button
-                type="button"
-                className="nav-lang mono"
-                onClick={() => {
-                  toggle()
-                  close()
-                }}
-                aria-label={ui.nav.ariaLang}
-              >
-                {lang === 'fr' ? 'English' : 'Français'}
-              </button>
+              {/* Le toggle est masqué dans la barre en mobile (place trop
+                  serrée à côté de la marque) : il vit ici. */}
+              <LangToggle />
             </nav>
           </div>,
           document.body,

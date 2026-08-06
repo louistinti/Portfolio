@@ -13,7 +13,7 @@ export const ui = {
     ariaOpen: 'Ouvrir le menu',
     ariaClose: 'Fermer le menu',
     ariaMenu: 'Menu',
-    ariaLang: 'Switch to English',
+    ariaLang: 'Langue',
   },
   hero: {
     kicker: 'Portfolio, 2026',
@@ -74,7 +74,7 @@ export const ui = {
     roadmap: 'Roadmap',
     prototype: 'Prototype',
     results: 'Résultats',
-    allWork: 'Tous les projets',
+    allWork: 'Projets',
     keyInsight: 'Insight clé',
     pain: 'Irritant',
     open: 'Ouvrir',

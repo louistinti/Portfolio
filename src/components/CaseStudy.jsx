@@ -5,8 +5,9 @@ import { useScrollLock } from '../hooks/useScrollLock.js'
 import { useOnKey } from '../hooks/useOnKey.js'
 import { goHome } from '../hooks/useRoute.js'
 import { scrollToTarget, scrollToSection } from '../anim/useLenis.js'
-import { useContent, useLang } from '../hooks/useLang.jsx'
+import { useContent } from '../hooks/useLang.jsx'
 import RichText from './RichText.jsx'
+import LangToggle from './LangToggle.jsx'
 
 // ──────────────────────────────────────────────────────────────
 //  PAGE GÉNÉRIQUE D'ÉTUDE DE CAS (template)
@@ -99,7 +100,6 @@ export default function CaseStudy({ data }) {
   // Identité + libellés du template dans la langue courante. `t` pour ne pas
   // entrer en collision avec la section `ui` des données d'étude de cas.
   const { profile, ui: t } = useContent()
-  const { lang, toggle } = useLang()
   const cs = t.cs
 
   // Lightbox galerie : preview plein écran, calée sur la hauteur de l'écran.
@@ -238,20 +238,17 @@ export default function CaseStudy({ data }) {
             </a>
           ))}
         </nav>
-        <button
-          type="button"
-          className="nav-lang mono"
-          onClick={toggle}
-          aria-label={t.nav.ariaLang}
-        >
-          {lang === 'fr' ? 'EN' : 'FR'}
-        </button>
-        <a className="cs-back" href="#work" onClick={(e) => goHome(e, 'work')}>
-          <span className="ar" aria-hidden="true">
-            ←
-          </span>{' '}
-          {cs.allWork}
-        </a>
+        {/* Même groupe ancré à droite que sur la home : le toggle garde ses
+            24px avec le lien retour, quelle que soit la langue. */}
+        <div className="nav-actions">
+          <LangToggle />
+          <a className="cs-back" href="#work" onClick={(e) => goHome(e, 'work')}>
+            <span className="ar" aria-hidden="true">
+              ←
+            </span>{' '}
+            {cs.allWork}
+          </a>
+        </div>
       </header>
 
       <main id="top">

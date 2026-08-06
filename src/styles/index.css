@@ -117,9 +117,16 @@ a {
   text-transform: uppercase;
 }
 
+/* Liens centrés HORS DU FLUX : leur largeur varie selon la langue (les
+   libellés FR sont plus longs), et on ne veut pas qu'ils poussent la marque
+   ou le groupe d'actions. Centrés en absolu, ils restent centrés sans rien
+   déplacer autour d'eux. */
 .nav-links {
   display: flex;
   gap: var(--space-10);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .nav-links a {
   font-family: var(--mono);
@@ -181,24 +188,46 @@ a {
   border: none;
 }
 
-/* Bascule de langue (FR/EN) — pastille mono discrète, avant le CTA. */
+/* Groupe droit de la nav : le toggle de langue garde toujours 24px avec le
+   CTA (ou le lien retour sur les études de cas), l'ensemble ancré à droite. */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Bascule de langue segmentée (FR | EN). Les deux options restent affichées :
+   la largeur du contrôle est identique dans les deux langues, donc rien ne
+   bouge au changement. */
 .nav-lang {
-  background: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
   border: 1px solid var(--line);
   border-radius: 100px;
-  padding: var(--space-2) var(--space-3);
+}
+.nav-lang button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--mono);
   font-size: var(--text-12);
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
-  cursor: pointer;
+  padding: var(--space-1) var(--space-3);
+  border-radius: 100px;
   transition:
     color 0.3s var(--ease),
-    border-color 0.3s var(--ease);
+    background-color 0.3s var(--ease);
 }
-.nav-lang:hover {
+.nav-lang button:hover {
   color: var(--fg);
-  border-color: var(--fg);
+}
+.nav-lang button.is-on {
+  background: var(--fg);
+  color: var(--bg);
 }
 
 /* Menu mobile plein écran (porté dans <body>, hors du mix-blend de la nav) */
@@ -226,11 +255,6 @@ a {
   letter-spacing: -0.02em;
   line-height: 0.95;
 }
-/* Dans le menu mobile, la bascule de langue s'aligne à gauche sous les liens */
-.nav-mobile__links .nav-lang {
-  align-self: flex-start;
-  margin-top: var(--space-4);
-}
 
 @media (max-width: 1040px) {
   .nav-links {
@@ -238,6 +262,15 @@ a {
   }
   .nav-cta {
     display: none;
+  }
+  /* Dans la barre, le toggle serait collé à la marque : on le déplace dans
+     le menu mobile (celui de .nav-mobile__links reste visible). */
+  .nav-actions .nav-lang {
+    display: none;
+  }
+  .nav-mobile__links .nav-lang {
+    align-self: flex-start;
+    margin-top: var(--space-4);
   }
   .nav-burger {
     display: flex;
