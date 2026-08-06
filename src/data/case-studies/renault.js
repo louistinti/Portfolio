@@ -98,7 +98,7 @@ export const renault = {
     lede: 'Group colours, *corporate registre*: a work tool, not a landing page.',
     body: [
       'The visual language follows the group: **dark grey** surfaces with the **Renault yellow** strictly as an accent, active states, underlines, highlights. Body text stays off-white: yellow text on dark grey does not hold at small sizes.',
-      'Typography is **Segoe UI**, straight angles, dense but scannable, the registre of an internal tool used every day, not of a marketing page. One home screen is rebuilt so far; the process page, search results and directory are next.',
+      'Typography is **Segoe UI**, straight angles, dense but scannable, the registre of an internal tool used every day, not of a marketing page. Three screens are rebuilt: the **home**, a **process page** and the **key-contact directory**. Search stays contextual, in the header of each page, rather than living on a results screen of its own.',
     ],
     paletteLabel: '// Group colours · yellow as accent only',
     paletteNote: 'Dark grey surfaces, off-white text, and the Renault yellow reserved for active states and accents.',
@@ -116,8 +116,7 @@ export const renault = {
     ],
     pages: [
       { shot: 'accueil', cap: 'Home, the 7-process mosaic' },
-      { shot: 'processus', cap: 'Process page' },
-      { shot: 'recherche', cap: 'Search results' },
+      { shot: 'processus', cap: 'Process page, documents and owners' },
       { shot: 'annuaire', cap: 'Key-contact directory' },
     ],
   },
@@ -144,8 +143,7 @@ export const renault = {
   // (placeholders rayés en attendant).
   shots: {
     accueil: '/assets/renault/accueil.webp',
-    processus: '',
-    recherche: '',
-    annuaire: '',
+    processus: '/assets/renault/processus.webp',
+    annuaire: '/assets/renault/annuaire.webp',
   },
 }

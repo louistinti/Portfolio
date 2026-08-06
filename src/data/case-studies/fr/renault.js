@@ -84,14 +84,13 @@ export const renault = {
     lede: 'Les couleurs du groupe, un *registre corporate* : un outil de travail, pas une landing page.',
     body: [
       "Le langage visuel suit le groupe : surfaces **gris sombre** et **jaune Renault** strictement en accent, sur les états actifs, les soulignés et les surlignages. Le texte courant reste blanc cassé : du texte jaune sur gris sombre ne tient pas en petite taille.",
-      "Typo **Segoe UI**, angles droits, dense mais scannable : le registre d'un outil interne utilisé tous les jours, pas d'une page marketing. Un écran est reconstitué à ce jour ; la page processus, la recherche et l'annuaire suivent.",
+      "Typo **Segoe UI**, angles droits, dense mais scannable : le registre d'un outil interne utilisé tous les jours, pas d'une page marketing. Trois écrans sont reconstitués : l'**accueil**, une **page processus** et l'**annuaire des contacts clés**. La recherche reste contextuelle, dans le header de chaque page, plutôt que sur un écran de résultats à part.",
     ],
     paletteLabel: '// Couleurs du groupe · jaune en accent seul',
     paletteNote: 'Surfaces gris sombre, texte blanc cassé, et le jaune Renault réservé aux états actifs et aux accents.',
     pages: [
       { shot: 'accueil', cap: 'Accueil, la mosaïque des 7 processus' },
-      { shot: 'processus', cap: 'Page processus' },
-      { shot: 'recherche', cap: 'Résultats de recherche' },
+      { shot: 'processus', cap: 'Page processus, documents et référents' },
       { shot: 'annuaire', cap: 'Annuaire des contacts clés' },
     ],
   },
