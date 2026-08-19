@@ -54,6 +54,7 @@ export const candidateList = {
       "J'ai recentré le listing sur une **ligne candidate légère mais riche** : disponibilité, dernière activité, qualification, ville et agence, l'essentiel devant, le bruit dehors.",
       "Les **documents** s'affichent en **compteurs avec tooltips** (ce qui manque, ce qui expire) : un recruteur lit l'employabilité d'un candidat **sans ouvrir la fiche**, et les **actions rapides** (contacter, documents, besoins associés) vivent directement sur la ligne.",
       "Mon rôle : cadrage UX, **architecture d'information de la ligne**, prototypage des filtres compacts, cards et badges documents, **tests en agence**, puis **spécifications Figma** (comportements, validations, cas limites et états d'erreur).",
+      "L'impact attendu a été cadré sur trois axes avant le moindre pixel : **efficiency** (du temps gagné sur le tri, la qualification et le suivi, moins de dossiers en souffrance), **growth** (un vivier plus réactif, activation et replacements) et **scale** (une interface et des colonnes qui tiennent quand les volumes montent). Les résultats plus bas ne revendiquent que ce que le pilote a réellement mesuré.",
     ],
     features: [
       { id: 'F-01', name: 'Bandeau de filtres compact', desc: 'Des filtres en chips, au plus près du regard, avec presets enregistrables.' },

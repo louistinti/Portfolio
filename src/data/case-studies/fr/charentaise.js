@@ -61,6 +61,7 @@ export const charentaise = {
       { id: '06', name: 'Communauté', desc: 'Une newsletter, « Tiens-toi au jus », et les réseaux pour garder le lien.' },
     ],
     media: [
+      { shot: 'site-avant', cap: "Le site d'origine, avant", sub: 'lavraiecharentaise.com tel que je l’ai trouvé', framed: true },
       { shot: 'perso', cap: 'Personnalisation', sub: 'Couleur · taille · motif · matière', aspect: '16 / 9' },
     ],
   },
@@ -102,6 +103,12 @@ export const charentaise = {
       { shot: 'ui-lookbook', preview: 'lookbook-preview', cap: 'Lookbook' },
     ],
   },
+
+  gallery: [
+    { src: '/assets/lvc/photo-lavomatic.webp', name: 'Lavomatic', sub: 'Éditorial shooté maison pour le lookbook' },
+    { src: '/assets/lvc/photo-magasin.webp', name: 'En boutique', sub: 'Mise en scène rétro-moderne, faite maison' },
+    { src: '/assets/lvc/photo-charentaises.webp', name: 'Le produit', sub: 'Les charentaises elles-mêmes, de près' },
+  ],
 
   prototype: {
     ...en.prototype,

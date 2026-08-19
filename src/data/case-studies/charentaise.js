@@ -74,6 +74,7 @@ export const charentaise = {
       { id: '06', name: 'Community', desc: 'A newsletter, "Tiens-toi au jus", and social to keep the crowd close.' },
     ],
     media: [
+      { shot: 'site-avant', cap: 'The original site, before', sub: 'lavraiecharentaise.com as I found it', framed: true },
       { shot: 'perso', cap: 'Personalization', sub: 'Colour · size · pattern · material', aspect: '16 / 9' },
     ],
   },
@@ -144,8 +145,15 @@ export const charentaise = {
 
   footer: 'La Vraie Charentaise · Case study',
 
+  gallery: [
+    { src: '/assets/lvc/photo-lavomatic.webp', name: 'Lavomatic', sub: 'Self-shot editorial for the lookbook' },
+    { src: '/assets/lvc/photo-magasin.webp', name: 'In the shop', sub: 'Retro-modern staging, shot at home' },
+    { src: '/assets/lvc/photo-charentaises.webp', name: 'The product', sub: 'The charentaises themselves, up close' },
+  ],
+
   shots: {
     perso: '/assets/lvc/perso.gif',
+    'site-avant': '/assets/lvc/site-avant.webp',
     logo: '/assets/lvc/logo.gif',
     'wire-home': '/assets/lvc/wire-home.png',
     'wire-collection': '/assets/lvc/wire-collection.png',

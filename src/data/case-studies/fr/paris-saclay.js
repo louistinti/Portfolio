@@ -66,6 +66,7 @@ export const parisSaclay = {
       { id: 'F-06', name: 'Événements', desc: 'Des activités inter-écoles pour connecter les étudiants.' },
     ],
     media: [
+      { shot: 'user-flow', cap: 'User flow', sub: 'Les rubriques, et tous les chemins entre elles', framed: true },
       { shot: '6to1', cap: '6-to-1 · home page', sub: 'Ergonomie & hiérarchie', framed: true },
     ],
   },
@@ -100,6 +101,15 @@ export const parisSaclay = {
     ],
     paletteLabel: '// Relief · magenta primaire, décliné',
     paletteNote: 'Une primaire, six élévations : les teintes suivent les courbes de niveau et donnent de la profondeur sans nouvelle couleur.',
+  },
+
+  results: {
+    eyebrow: 'Bilan',
+    idx: 'Concept',
+    lede: 'Un concept transmis, *pas un produit livré*.',
+    body: [
+      "Le prototype complet a été présenté aux responsables du pôle digital de Paris-Saclay, qui ont repris le concept à partir de là. Je n'ai **aucune donnée d'adoption** à revendiquer : ce projet démontre la chaîne recherche → prototype, et je préfère le dire clairement que laisser croire à un déploiement qui n'a pas eu lieu.",
+    ],
   },
 
   prototype: {

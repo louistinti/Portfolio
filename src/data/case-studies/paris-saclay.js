@@ -80,6 +80,7 @@ export const parisSaclay = {
       { id: 'F-06', name: 'Events', desc: 'Cross-school activities to connect students.' },
     ],
     media: [
+      { shot: 'user-flow', cap: 'User flow', sub: 'The sections, and every path between them', framed: true },
       { shot: '6to1', cap: '6-to-1 · home page', sub: 'Ergonomics & hierarchy', framed: true },
     ],
   },
@@ -127,6 +128,15 @@ export const parisSaclay = {
     screens: ['ui-1', 'ui-2', 'ui-4', 'ui-3'],
   },
 
+  results: {
+    eyebrow: 'Outcome',
+    idx: 'Concept',
+    lede: 'A concept handed over, *not a shipped product*.',
+    body: [
+      "The full prototype was presented to the heads of the Paris-Saclay digital team, who took the concept from there. I have **no adoption data** to claim: what this project demonstrates is the research-to-prototype chain, and I'd rather say that plainly than imply a rollout that never happened.",
+    ],
+  },
+
   prototype: {
     eyebrow: 'Prototype',
     idx: 'Live',
@@ -138,9 +148,10 @@ export const parisSaclay = {
 
   // Emplacements d'images (vides = placeholder). Clés = `shot` cité ci-dessus.
   shots: {
-    'persona-1': '',
-    'persona-2': '',
-    'persona-3': '',
+    'persona-1': '/assets/ps/persona-elsa.webp',
+    'persona-2': '/assets/ps/persona-romain.webp',
+    'persona-3': '/assets/ps/persona-vero.webp',
+    'user-flow': '/assets/ps/user-flow.webp',
     '6to1': '/assets/ps/6to1.png',
     'wire-1': '/assets/ps/wire-1.png',
     'wire-2': '/assets/ps/wire-2.png',
