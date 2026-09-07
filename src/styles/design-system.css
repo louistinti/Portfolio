@@ -23,8 +23,8 @@
   /* Texte */
   --color-fg: #f3f1ec; /* texte principal (off-white) */
   --color-body: #c2c0ba; /* corps de texte long, plus clair que muted, lisible (~9:1 sur --bg) */
-  --color-muted: #8c8c89; /* texte secondaire */
-  --color-muted-2: #7e7e7b; /* texte tertiaire / placeholders, AA (>=4.5:1 sur --bg) */
+  --color-muted: #a5a5a1; /* texte secondaire, AAA (>=7:1 sur --bg) */
+  --color-muted-2: #929290; /* texte tertiaire / placeholders (>=6:1 sur --bg) */
 
   /* Accent */
   --color-accent: #5b8cff; /* bleu d'accent */
