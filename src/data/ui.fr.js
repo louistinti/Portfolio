@@ -66,7 +66,7 @@ export const ui = {
   },
   footer: { top: 'Retour en haut' },
   cs: {
-    docTitle: 'Étude de cas',
+    docTitle: 'Projet',
     overview: 'Aperçu',
     research: 'Recherche',
     ideation: 'Idéation',

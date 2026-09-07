@@ -4,7 +4,7 @@ import { learningLeagues as en } from '../learning-leagues.js'
 export const learningLeagues = {
   ...en,
   title: 'Tout ce qu’il faut pour *apprendre League of Legends*',
-  kicker: ['Étude de cas', 'Construit en solo avec l’IA', 'Produit · Design System'],
+  kicker: ['Construit en solo avec l’IA', 'Produit · Design System'],
   status: { label: 'En cours', live: true },
   meta: [
     { k: 'Rôle', v: 'Solo, design + build' },

@@ -6,7 +6,7 @@ export const garence = {
   ...en,
   name: 'Actual - Outil de gestion des garanties',
   title: "Concevoir l'outil de *gestion des garanties* d'Actual",
-  kicker: ['Étude de cas', 'Product · UX/UI · B2B SaaS'],
+  kicker: ['Product · UX/UI · B2B SaaS'],
   meta: [
     { k: 'Rôle', v: 'Lead Product Designer' },
     { k: 'Équipe', v: '1 PM · 1 designer · 4 devs' },
@@ -108,5 +108,5 @@ export const garence = {
     note: "C'est le projet qui m'a le plus appris à **tenir un cap dans la complexité** : stakeholders multiples, contexte sous tension, utilisateurs aux besoins très différents, et des millions d'euros en jeu, mené de bout en bout en pleine autonomie. Avec le recul, je referais plusieurs ajustements (l'ergonomie, la hiérarchie de l'information, le wording de certains CTA), et cet écart est exactement la mesure du chemin parcouru.",
   },
 
-  footer: 'Outil de gestion des garanties · Actual Group · Étude de cas',
+  footer: 'Outil de gestion des garanties · Actual Group',
 }

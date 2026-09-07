@@ -5,7 +5,7 @@ import { charentaise as en } from '../charentaise.js'
 export const charentaise = {
   ...en,
   title: 'Faire de la *charentaise* une icône de la slow life',
-  kicker: ['Étude de cas', 'Branding · UX/UI · E-commerce'],
+  kicker: ['Branding · UX/UI · E-commerce'],
   meta: [
     { k: 'Rôle', v: 'Branding, UX/UI' },
     { k: 'Type', v: 'Projet libre' },
@@ -117,5 +117,5 @@ export const charentaise = {
     note: 'Parcourez la boutique complète : la collection, une fiche produit, la personnalisation d’une paire et le quiz de matchmaking.',
   },
 
-  footer: 'La Vraie Charentaise · Étude de cas',
+  footer: 'La Vraie Charentaise',
 }

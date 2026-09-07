@@ -5,7 +5,7 @@ import { parisSaclay as en } from '../paris-saclay.js'
 export const parisSaclay = {
   ...en,
   title: "Refonte de l'app de l'université *Paris-Saclay*",
-  kicker: ['Étude de cas', 'UX Research · UX/UI · Prototype'],
+  kicker: ['UX Research · UX/UI · Prototype'],
   meta: [
     { k: 'Rôle', v: 'UX Research, UX/UI' },
     { k: 'Device', v: 'iOS / Android' },
@@ -119,5 +119,5 @@ export const parisSaclay = {
     note: 'Le prototype commence comme si vous étiez un étudiant de l\'université. Pour faire le parcours d\'inscription ou accéder à la page « invité », déconnectez-vous de votre profil dans le prototype. La touche `R` fonctionne aussi.',
   },
 
-  footer: 'App de l’université Paris-Saclay · Étude de cas',
+  footer: 'App de l’université Paris-Saclay',
 }

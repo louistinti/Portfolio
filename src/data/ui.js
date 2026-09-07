@@ -70,7 +70,7 @@ export const ui = {
   // Template d'étude de cas : libellés hors données (les eyebrows viennent des
   // données, déjà localisées par langue).
   cs: {
-    docTitle: 'Case Study',
+    docTitle: 'Project',
     overview: 'Overview',
     research: 'Research',
     ideation: 'Ideation',

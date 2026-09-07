@@ -2,7 +2,7 @@
 export const candidateList = {
   name: 'Actual - Candidate List',
   title: 'Turning a heavy list into a *scannable* candidate view',
-  kicker: ['Case Study', 'UX Research · UX/UI · Desktop'],
+  kicker: ['UX Research · UX/UI · Desktop'],
   meta: [
     { k: 'Role', v: 'Product Designer' },
     { k: 'Team', v: '1 PM · 1 designer · 3 devs' },
@@ -115,7 +115,7 @@ export const candidateList = {
     note: 'The second solution, the sourcing list and talent pools, was **validated by management right before I left Actual**, so I never got to test it with users. That is the one honest gap in an otherwise solid run, and the part I would want back: a design validated by stakeholders is not the same thing as a design validated by the people who use it.',
   },
 
-  footer: 'Candidate list · Actual Group · Case study',
+  footer: 'Candidate list · Actual Group',
 
   shots: {},
 }

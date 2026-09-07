@@ -3,7 +3,7 @@ export const parisSaclay = {
   name: 'Paris-Saclay University app',
   // Titre H1 (le mot en *accent* est surligné dans la couleur du projet)
   title: 'Redesign of the University app *Paris-Saclay*',
-  kicker: ['Case Study', 'UX Research · UX/UI · Prototype'],
+  kicker: ['UX Research · UX/UI · Prototype'],
   meta: [
     { k: 'Role', v: 'UX Research, UX/UI' },
     { k: 'Device', v: 'iOS / Android' },
@@ -144,7 +144,7 @@ export const parisSaclay = {
     src: 'https://www.figma.com/embed?embed_host=notion&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FcA632zrC0wcK2StKZenVKE%2FParis-Saclay%3Fpage-id%3D246%253A2478%26node-id%3D323%253A5592%26viewport%3D1102%252C1108%252C0.27%26scaling%3Dscale-down%26starting-point-node-id%3D323%253A5592',
   },
 
-  footer: 'Paris-Saclay University app · Case study',
+  footer: 'Paris-Saclay University app',
 
   // Emplacements d'images (vides = placeholder). Clés = `shot` cité ci-dessus.
   shots: {

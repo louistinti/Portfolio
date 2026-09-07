@@ -2,7 +2,7 @@
 export const learningLeagues = {
   name: 'Learning Leagues',
   title: 'Everything you need to *learn League of Legends*',
-  kicker: ['Case Study', 'Built solo with AI', 'Product · Design System'],
+  kicker: ['Built solo with AI', 'Product · Design System'],
   status: { label: 'In progress', live: true },
   meta: [
     { k: 'Role', v: 'Solo, design + build' },

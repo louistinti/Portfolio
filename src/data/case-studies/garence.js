@@ -2,7 +2,7 @@
 export const garence = {
   name: 'Actual - Guarantee management tool',
   title: "Designing Actual's *guarantee management* tool",
-  kicker: ['Case Study', 'Product · UX/UI · B2B SaaS'],
+  kicker: ['Product · UX/UI · B2B SaaS'],
   meta: [
     { k: 'Role', v: 'Lead Product Designer' },
     { k: 'Team', v: '1 PM · 1 designer · 4 devs' },
@@ -146,7 +146,7 @@ export const garence = {
     note: "This is the project that taught me the most about **holding a course through complexity**, multiple stakeholders, a tense context, users with very different needs, and millions of euros at stake, led end to end in full autonomy. With hindsight I'd revisit a few things, the ergonomics, the information hierarchy, the wording of some CTAs, and that gap is exactly the measure of how far the project moved.",
   },
 
-  footer: 'Guarantee management tool · Actual Group · Case study',
+  footer: 'Guarantee management tool · Actual Group',
 
   // Personas = les 3 types d'utilisateurs (placeholders rayés tant qu'aucune
   // image n'est posée dans public/assets/).

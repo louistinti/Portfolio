@@ -2,7 +2,7 @@
 export const charentaise = {
   name: 'La Vraie Charentaise',
   title: 'Turning the *charentaise* into an icon of slow life',
-  kicker: ['Case Study', 'Branding · UX/UI · E-commerce'],
+  kicker: ['Branding · UX/UI · E-commerce'],
   meta: [
     { k: 'Role', v: 'Branding, UX/UI' },
     { k: 'Type', v: 'Self-directed' },
@@ -143,7 +143,7 @@ export const charentaise = {
     src: 'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FVdtPGwGX4UdzfrZEYUyg0C%2FLa-Vraie-Charentaise%3Fnode-id%3D1572-6490%26p%3Df%26viewport%3D620%252C367%252C0.02%26t%3DpN63FAbaKW3hZBkQ-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D1572%253A6490%26show-proto-sidebar%3D0%26hide-ui%3D1%26page-id%3D1252%253A1812',
   },
 
-  footer: 'La Vraie Charentaise · Case study',
+  footer: 'La Vraie Charentaise',
 
   gallery: [
     { src: '/assets/lvc/photo-lavomatic.webp', name: 'Lavomatic', sub: 'Self-shot editorial for the lookbook' },

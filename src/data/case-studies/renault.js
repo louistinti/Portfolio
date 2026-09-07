@@ -4,7 +4,7 @@
 export const renault = {
   name: 'Renault Group - Quality intranet',
   title: "Designing Renault Group's *quality* intranet",
-  kicker: ['Case Study', 'UX Research · Intranet · SharePoint'],
+  kicker: ['UX Research · Intranet · SharePoint'],
   meta: [
     { k: 'Role', v: 'UX/UI Designer (apprenticeship)' },
     { k: 'Client', v: 'Renault Group, Quality' },
@@ -138,7 +138,7 @@ export const renault = {
     note: 'Questionnaires after each ~200-person presentation, plus **shadowing of ~15 users**. Declarative data, honestly labelled as such. What I cannot report: adoption after my departure. I have **no data** on the site’s current state, and I would rather say so than guess.',
   },
 
-  footer: 'Quality intranet · Renault Group · Case study',
+  footer: 'Quality intranet · Renault Group',
 
   // Un seul écran reconstitué pour l'instant ; les 3 autres suivront
   // (placeholders rayés en attendant).

@@ -6,7 +6,7 @@ export const candidateList = {
   ...en,
   name: 'Actual - Liste candidats',
   title: "D'une liste lourde à une vue candidat *scannable*",
-  kicker: ['Étude de cas', 'UX Research · UX/UI · Desktop'],
+  kicker: ['UX Research · UX/UI · Desktop'],
   meta: [
     { k: 'Rôle', v: 'Product Designer' },
     { k: 'Équipe', v: '1 PM · 1 designer · 3 devs' },
@@ -96,5 +96,5 @@ export const candidateList = {
     note: "La seconde solution (la liste de sourcing et les viviers) a été **validée par la direction juste avant mon départ d'Actual** : je n'ai jamais pu la tester avec les utilisateurs. C'est le seul vrai manque d'un parcours autrement solide, et la partie que je voudrais rejouer : un design validé par les stakeholders n'est pas un design validé par ceux qui s'en servent.",
   },
 
-  footer: 'Liste candidats · Actual Group · Étude de cas',
+  footer: 'Liste candidats · Actual Group',
 }

@@ -6,7 +6,7 @@ export const renault = {
   ...en,
   name: 'Renault Group - Intranet Qualité',
   title: "Concevoir l'intranet *Qualité* de Renault Group",
-  kicker: ['Étude de cas', 'UX Research · Intranet · SharePoint'],
+  kicker: ['UX Research · Intranet · SharePoint'],
   meta: [
     { k: 'Rôle', v: 'Designer UX/UI (alternance)' },
     { k: 'Client', v: 'Renault Group, Qualité' },
@@ -112,5 +112,5 @@ export const renault = {
     note: "Questionnaires après chaque présentation à ~200 personnes, plus **shadowing de ~15 utilisateurs**. Du déclaratif, étiqueté comme tel. Ce que je ne peux pas rapporter : l'adoption après mon départ. Je n'ai **aucune donnée** sur l'état actuel du site, et je préfère le dire que l'inventer.",
   },
 
-  footer: 'Intranet Qualité · Renault Group · Étude de cas',
+  footer: 'Intranet Qualité · Renault Group',
 }
