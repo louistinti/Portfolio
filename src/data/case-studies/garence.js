@@ -106,9 +106,9 @@ export const garence = {
       },
       {
         k: 'Share fully automated',
-        from: '76.7%',
+        from: '0%',
         to: '90.5%',
-        delta: '+13.8 pts',
+        delta: '+90.5 pts',
         note: 'By September, 9 files in 10 never needed a manual pass.',
       },
       {

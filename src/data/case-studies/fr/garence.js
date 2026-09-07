@@ -74,7 +74,7 @@ export const garence = {
     ...en.topography,
     eyebrow: 'Automatisation',
     title: 'Laisser le système décider, *quand il le doit*.',
-    body: "Le geste signature est arrivé après le lancement : quand tous les paramètres sont au vert (seuils, scoring, antériorité, cohérence des données), **le système décide seul** et notifie les parties. Tout reste **auditable et explicable** : les règles sont visibles, la justification affichée, et un **override** humain toujours à un clic. Entre le déploiement national de février 2025 et septembre 2025, les décisions automatisées sont passées de **739 à 1 243 (+68,2 %)**, la part automatisée de **76,7 % à 90,5 % (+13,8 pts)**, et la décision auto moyenne de **125 s à 21 s (-83 %)**. En septembre, **9 décisions sur 10** tournaient seules, l'effort humain restant exactement là où il a de la valeur : les dossiers les plus durs. Plusieurs objectifs de cadrage sont atteints (délai de réponse agence et actions de décision Service Client en baisse), mais l'ENG n'a pas reculé comme espéré : certaines agences confondent encore demande d'ENG et augmentation de garantie, un déficit de clarté du flux et de formation à combler.",
+    body: "Le geste signature est arrivé après le lancement : quand tous les paramètres sont au vert (seuils, scoring, antériorité, cohérence des données), **le système décide seul** et notifie les parties. Tout reste **auditable et explicable** : les règles sont visibles, la justification affichée, et un **override** humain toujours à un clic. Entre le déploiement national de février 2025 et septembre 2025, les décisions automatisées sont passées de **739 à 1 243 (+68,2 %)**, la part automatisée de **0 % à 90,5 %**, et la décision auto moyenne de **125 s à 21 s (-83 %)**. En septembre, **9 décisions sur 10** tournaient seules, l'effort humain restant exactement là où il a de la valeur : les dossiers les plus durs. Plusieurs objectifs de cadrage sont atteints (délai de réponse agence et actions de décision Service Client en baisse), mais l'ENG n'a pas reculé comme espéré : certaines agences confondent encore demande d'ENG et augmentation de garantie, un déficit de clarté du flux et de formation à combler.",
   },
 
   results: {
@@ -87,7 +87,7 @@ export const garence = {
     ],
     metrics: [
       { k: 'Décisions automatisées', from: '739', to: '1 243', delta: '+68,2 %', note: 'Dossiers traités de bout en bout sans revue humaine.' },
-      { k: 'Part entièrement automatisée', from: '76,7 %', to: '90,5 %', delta: '+13,8 pts', note: 'En septembre, 9 dossiers sur 10 ne passent plus par une revue manuelle.' },
+      { k: 'Part entièrement automatisée', from: '0 %', to: '90,5 %', delta: '+90,5 pts', note: 'En septembre, 9 dossiers sur 10 ne passent plus par une revue manuelle.' },
       { k: 'Décision automatisée moyenne', from: '125 s', to: '21 s', delta: '-83 %', note: 'De la demande à la décision, une fois le système aux commandes.' },
     ],
     targetsLabel: '// Objectifs de cadrage vs réalité',
