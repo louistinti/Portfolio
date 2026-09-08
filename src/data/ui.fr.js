@@ -21,7 +21,7 @@ export const ui = {
     l1a: 'pensé',
     l2: 'pour livrer & scaler le',
     l2a: 'B2B',
-    sub: '**Product builder.** Je conçois et livre des produits B2B & SaaS de bout en bout, de la recherche UX à l’interface livrée. Freelance · full‑remote ou hybride.',
+    sub: '**Product Designer.** Je conçois et livre des produits B2B & SaaS de bout en bout, de la recherche UX à l’interface livrée. Freelance · full‑remote ou hybride.',
     cta: 'Voir mes projets',
     scroll: 'Scroll ↓',
   },

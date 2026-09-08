@@ -9,7 +9,7 @@ export const profile = {
   name: 'Louis Tintillier',
   brand: 'Portfolio', // texte du logo en haut à gauche
   mark: 'LT', // initiales dans le losange du logo
-  role: 'Product builder',
+  role: 'Product Designer',
   location: 'Nantes, France',
   email: 'louistdesign@gmail.com',
   cv: '/Louis-Tintillier-CV.pdf', // fichier dans public/

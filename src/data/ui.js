@@ -23,7 +23,7 @@ export const ui = {
     l1a: 'built',
     l2: 'to ship & scale',
     l2a: 'B2B',
-    sub: '**Product builder.** I design and ship B2B & SaaS products end to end, from research and UX to shipped interface. Freelance · full‑remote or hybrid.',
+    sub: '**Product Designer.** I design and ship B2B & SaaS products end to end, from research and UX to shipped interface. Freelance · full‑remote or hybrid.',
     cta: 'See my work',
     scroll: 'Scroll ↓',
   },
