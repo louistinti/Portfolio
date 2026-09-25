@@ -4,7 +4,7 @@ export const candidateList = {
   title: 'Turning a heavy list into a *scannable* candidate view',
   kicker: ['UX Research · UX/UI · Desktop'],
   meta: [
-    { k: 'Role', v: 'Product Designer' },
+    { k: 'Role', v: 'Product Designer · Design system referent' },
     { k: 'Team', v: '1 PM · 1 designer · 3 devs' },
     { k: 'Duration', v: '4 months' },
     { k: 'Mockups', v: 'Shared in interview' },
@@ -65,7 +65,7 @@ export const candidateList = {
     body: [
       'I reframed the listing around a **light but rich candidate row**: availability, last activity, qualification, city and agency, the essentials up front, the noise gone.',
       "**Documents** show as **counters with tooltips** (what's missing, what's expiring) so a recruiter reads a candidate's readiness **without opening the file**, and **quick actions** (contact, documents, linked needs) live right on the row.",
-      "My role spanned UX framing, the **row's information architecture**, prototyping the compact filters, cards and doc badges, **testing in agencies**, then the **Figma specs**, behaviours, validations, edge cases and error states.",
+      "My role spanned UX framing, the **row's information architecture**, prototyping the compact filters, cards and doc badges, **testing in agencies**, then the **Figma specs**, behaviours, validations, edge cases and error states. In parallel I was the **design system referent**: maintaining the legacy system, contributing to the **new React DS**, and onboarding developers and designers on **Figma**.",
       'The expected impact was framed on three axes before any pixel: **efficiency** (time saved on sorting, qualifying and follow-up, fewer stalled files), **growth** (a more reactive pool, activation and replacements) and **scale** (an interface and columns that hold as volumes grow). The results below claim only what the pilot actually measured.',
     ],
     features: [

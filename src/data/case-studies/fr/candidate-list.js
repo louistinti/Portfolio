@@ -8,7 +8,7 @@ export const candidateList = {
   title: "D'une liste lourde à une vue candidat *scannable*",
   kicker: ['UX Research · UX/UI · Desktop'],
   meta: [
-    { k: 'Rôle', v: 'Product Designer' },
+    { k: 'Rôle', v: 'Product Designer · Référent design system' },
     { k: 'Équipe', v: '1 PM · 1 designer · 3 devs' },
     { k: 'Durée', v: '4 mois' },
     { k: 'Maquettes', v: 'Présentées en entretien' },
@@ -53,7 +53,7 @@ export const candidateList = {
     body: [
       "J'ai recentré le listing sur une **ligne candidate légère mais riche** : disponibilité, dernière activité, qualification, ville et agence, l'essentiel devant, le bruit dehors.",
       "Les **documents** s'affichent en **compteurs avec tooltips** (ce qui manque, ce qui expire) : un recruteur lit l'employabilité d'un candidat **sans ouvrir la fiche**, et les **actions rapides** (contacter, documents, besoins associés) vivent directement sur la ligne.",
-      "Mon rôle : cadrage UX, **architecture d'information de la ligne**, prototypage des filtres compacts, cards et badges documents, **tests en agence**, puis **spécifications Figma** (comportements, validations, cas limites et états d'erreur).",
+      "Mon rôle : cadrage UX, **architecture d'information de la ligne**, prototypage des filtres compacts, cards et badges documents, **tests en agence**, puis **spécifications Figma** (comportements, validations, cas limites et états d'erreur). En parallèle, j'étais **référent du design system** : maintien du legacy, contribution au **nouveau DS React**, et onboarding **Figma** des développeurs et des designers.",
       "L'impact attendu a été cadré sur trois axes avant le moindre pixel : **efficiency** (du temps gagné sur le tri, la qualification et le suivi, moins de dossiers en souffrance), **growth** (un vivier plus réactif, activation et replacements) et **scale** (une interface et des colonnes qui tiennent quand les volumes montent). Les résultats plus bas ne revendiquent que ce que le pilote a réellement mesuré.",
     ],
     features: [

@@ -8,7 +8,7 @@ export const garence = {
   title: "Concevoir l'outil de *gestion des garanties* d'Actual",
   kicker: ['Product · UX/UI · B2B SaaS'],
   meta: [
-    { k: 'Rôle', v: 'Lead Product Designer' },
+    { k: 'Rôle', v: 'Lead Product Designer · Référent design system' },
     { k: 'Équipe', v: '1 PM · 1 designer · 4 devs' },
     { k: 'Durée', v: '1 an' },
     { k: 'Maquettes', v: 'Présentées en entretien' },
@@ -18,7 +18,7 @@ export const garence = {
     eyebrow: 'Contexte',
     lede: 'Un outil, *trois utilisateurs très différents*, et des millions d’euros en jeu.',
     body: [
-      "J'ai **mené de A à Z**, seul designer sur le projet, l'**outil de gestion des garanties** d'Actual. Il gère les **demandes de garantie** et les **encours non garantis (ENG)**, la couverture qui sécurise la mise en poste des intérimaires, avec **des millions d'euros** en jeu à chaque décision.",
+      "J'ai **mené de A à Z**, seul designer sur le projet, l'**outil de gestion des garanties** d'Actual. Il gère les **demandes de garantie** et les **encours non garantis (ENG)**, la couverture qui sécurise la mise en poste des intérimaires, avec **des millions d'euros** en jeu à chaque décision. Sur la même période, j'étais aussi **référent du design system** : maintien du DS legacy, contribution au **nouveau design system React**, et onboarding **Figma** des développeurs et des designers.",
       "Actual émet des garanties pour sécuriser un placement, et suit les **encours non garantis** dès que l'assureur se retire : montant trop élevé, encours en hausse rapide, client à risque.",
       "L'outil s'adresse à trois populations aux besoins radicalement différents : les **agences** initient et suivent les demandes, le **Service Client** instruit et décide, la **Direction** supervise l'activité et pilote les enveloppes budgétaires par périmètre et par agence.",
       "Le tout a démarré en pleine **convergence**, au moment où Leader, Ergalis, Up Skills et Ergos rejoignaient les outils communs, chaque entité voulant garder ses fonctionnalités, avec *trois Business Owners* à aligner en même temps.",

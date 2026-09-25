@@ -4,7 +4,7 @@ export const garence = {
   title: "Designing Actual's *guarantee management* tool",
   kicker: ['Product · UX/UI · B2B SaaS'],
   meta: [
-    { k: 'Role', v: 'Lead Product Designer' },
+    { k: 'Role', v: 'Lead Product Designer · Design system referent' },
     { k: 'Team', v: '1 PM · 1 designer · 4 devs' },
     { k: 'Duration', v: '1 year' },
     { k: 'Mockups', v: 'Shared in interview' },
@@ -29,7 +29,7 @@ export const garence = {
     eyebrow: 'Context',
     lede: 'One tool, *three very different users*, and millions of euros on the line.',
     body: [
-      "I **led end to end**, as the sole designer, Actual's **guarantee-management tool**. It manages **warranty requests** and **non-guaranteed exposure (ENG)**, the cover that secures the placement of temporary workers, with **millions of euros** riding on each decision.",
+      "I **led end to end**, as the sole designer, Actual's **guarantee-management tool**. It manages **warranty requests** and **non-guaranteed exposure (ENG)**, the cover that secures the placement of temporary workers, with **millions of euros** riding on each decision. Over the same period I was also the **design system referent**: maintaining the legacy DS, contributing to the **new React design system**, and running **Figma** onboarding for developers and designers.",
       'Actual issues warranties to secure a temp placement, and tracks **non-guaranteed exposure** whenever the insurer steps back, an amount too high, a fast-rising exposure, a client at risk.',
       'It serves three populations with radically different needs: **agencies** initiate and track requests, **Customer Service** investigates and decides, and **management** supervises activity and steers budget envelopes by scope and agency.',
       'It all kicked off mid-**convergence**, as Leader, Ergalis, Up Skills and Ergos folded into shared tools, every entity wanting to keep its own features, with *three Business Owners* to align at once.',
