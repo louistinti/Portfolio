@@ -46,3 +46,6 @@ Thumbs.db
 
 # Superpowers brainstorm sessions
 .superpowers/
+
+# Export PDF local (scripts/export-pdf.py)
+export/

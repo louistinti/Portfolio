@@ -30,9 +30,10 @@ export default [
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
-  // Config files run in Node, not the browser (need `process`, etc.).
+  // Config files and build scripts run in Node, not the browser (need
+  // `process`, `console`, etc.).
   {
-    files: ['**/*.config.js'],
+    files: ['**/*.config.js', 'scripts/**/*.mjs'],
     languageOptions: { globals: { ...globals.node } },
   },
   // Entry file: it renders the app rather than exporting a component, so the
