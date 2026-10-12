@@ -88,7 +88,7 @@ export const ui = {
     stBuilding: 'Building',
     stPlanned: 'Planned',
     stHit: 'Hit',
-    stMissed: 'Missed',
+    stMissed: 'Not met',
     stNoData: 'No data',
     nextUp: 'Next up',
     backAll: 'Back to all work',

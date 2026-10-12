@@ -109,7 +109,7 @@ export const renault = {
       { k: 'Trouver un contact clé', to: '−3 min', note: 'Temps moyen gagné pour identifier la bonne personne dans un autre service.' },
     ],
     noteLabel: 'Comment ça a été mesuré',
-    note: "Questionnaires après chaque présentation à ~200 personnes, plus **shadowing de ~15 utilisateurs**. Du déclaratif, étiqueté comme tel. Ce que je ne peux pas rapporter : l'adoption après mon départ. Je n'ai **aucune donnée** sur l'état actuel du site, et je préfère le dire que l'inventer.",
+    note: "Questionnaires après chaque présentation à ~200 personnes, plus **shadowing de ~15 utilisateurs**.",
   },
 
   footer: 'Intranet Qualité · Renault Group',

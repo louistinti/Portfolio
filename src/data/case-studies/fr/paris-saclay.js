@@ -108,7 +108,7 @@ export const parisSaclay = {
     idx: 'Concept',
     lede: 'Un concept transmis, *pas un produit livré*.',
     body: [
-      "Le prototype complet a été présenté aux responsables du pôle digital de Paris-Saclay, qui ont repris le concept à partir de là. Je n'ai **aucune donnée d'adoption** à revendiquer : ce projet démontre la chaîne recherche → prototype, et je préfère le dire clairement que laisser croire à un déploiement qui n'a pas eu lieu.",
+      "Le prototype complet a été présenté aux responsables du pôle digital de Paris-Saclay, qui ont repris le concept à partir de là.",
     ],
   },
 

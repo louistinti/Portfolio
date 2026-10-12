@@ -133,7 +133,7 @@ export const parisSaclay = {
     idx: 'Concept',
     lede: 'A concept handed over, *not a shipped product*.',
     body: [
-      "The full prototype was presented to the heads of the Paris-Saclay digital team, who took the concept from there. I have **no adoption data** to claim: what this project demonstrates is the research-to-prototype chain, and I'd rather say that plainly than imply a rollout that never happened.",
+      "The full prototype was presented to the heads of the Paris-Saclay digital team, who took the concept from there.",
     ],
   },
 

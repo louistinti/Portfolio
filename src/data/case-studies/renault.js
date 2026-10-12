@@ -135,7 +135,7 @@ export const renault = {
       { k: 'Finding a key contact', to: '−3 min', note: 'Average time saved when looking for the right person in another service.' },
     ],
     noteLabel: 'How it was measured',
-    note: 'Questionnaires after each ~200-person presentation, plus **shadowing of ~15 users**. Declarative data, honestly labelled as such. What I cannot report: adoption after my departure. I have **no data** on the site’s current state, and I would rather say so than guess.',
+    note: 'Questionnaires after each ~200-person presentation, plus **shadowing of ~15 users**.',
   },
 
   footer: 'Quality intranet · Renault Group',
