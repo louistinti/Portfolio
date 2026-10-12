@@ -78,7 +78,7 @@ export const projects = [
   {
     idx: '06', name: 'Learning Leagues', year: '2025, ongoing', cat: 'Personal · Product & Design System', slug: 'learning-leagues',
     status: 'In progress',
-    tldr: 'A personal site to learn League of Legends properly, structured by role, jargon-free, on a token-driven Hextech design system. Designed and built solo with AI as my pair: a data-driven role engine, all five roles live. Still growing.',
+    tldr: 'A personal site to learn League of Legends properly, structured by role, jargon-free, on a token-driven Hextech design system. Designed and built solo with AI as my pair: a data-driven role engine, all five roles live, and a separate AI-first component library feeding the site. Still growing.',
     cover: '/assets/cover_ll.png',
   },
   {

@@ -32,6 +32,7 @@ export const learningLeagues = {
       'League of Legends is a 15-year-old game that quietly assumes you already know how to play it. New players get dropped into a 5v5 with hundreds of champions, dense systems and a wall of community jargon, and most quit before it ever clicks.',
       '**Learning Leagues** is my answer: a personal project I design and build solo, **with AI as my pair**, laying out a **structured path by role** from MOBA-savvy beginner to confident low-elo (Iron → Platinum).',
       "It's **live and still growing**: all five role guides are up, running on an engine I can keep extending. Two rules keep it honest: **no jargon** without explaining it, and **no chasing the meta**, I teach the game's logic, not this patch's build.",
+      "Next to it runs a second repo: an **AI-first component library** that feeds the site, built by AI sessions under a handful of human locks. It's the part of the project where I test how far a designer can push the machine while keeping the decisions.",
     ],
     stats: [
       { v: '5', k: 'roles live, each a full guide; Support goes deepest as the reference build.' },
@@ -81,11 +82,11 @@ export const learningLeagues = {
     idx: 'Hextech',
     lede: 'A *token-driven* system, themed end to end.',
     body: [
-      'Everything runs on one set of CSS variables, a single **Hextech palette**, gold on deep blue, with accent and density swapped from a `data-` attribute on the root, so the whole site re-themes from one source of truth.',
-      "It's documented on its own reference page, foundations, components and patterns, so the look stays consistent as the site grows. EB Garamond for headings, Inter for body, JetBrains Mono for labels.",
+      'Everything runs on one set of CSS variables, a single **Hextech palette**, gold on deep blue. One **accent axis** swaps the live accent from a `data-accent` attribute on any element, five values, one per role (ambre, bleu, rouge, violet, jade), so a whole guide re-themes from one attribute.',
+      "The system started as hand-written CSS on the site. It now lives in **Figma** as variables and flows one way into the library below: 128 tokens, generated, never typed by hand. EB Garamond for headings, Inter for body, JetBrains Mono for labels, documented on the site's own reference page and on the library's.",
     ],
     paletteLabel: '// Hextech · gold on deep blue',
-    paletteNote: 'A single Hextech palette as the source of truth, with accent and density swapped by data-attr.',
+    paletteNote: 'A single Hextech palette as the source of truth; five accents, one per role, swapped by data-attribute.',
     fonts: [
       { k: 'Display', v: 'EB Garamond' },
       { k: 'Body', v: 'Inter' },
@@ -106,6 +107,46 @@ export const learningLeagues = {
     },
   },
 
+  // Section « The library » : rendue par le slot `results` du template
+  // (chiffres en tête, récit, note encadrée). Chiffres relevés dans le repo
+  // LearningLeagues-Lib (README, STATE-MANIFEST, reports/conformity.md) le
+  // 2026-09-23 : 128 tokens, 11 gates, 3 composants, 12 + 23 + 28 usages.
+  results: {
+    eyebrow: 'The library',
+    idx: 'LearningLeagues-Lib',
+    metrics: [
+      {
+        k: 'Design tokens',
+        to: '128',
+        note: 'Extracted from Figma variables into one generated stylesheet. Nobody types a token.',
+      },
+      {
+        k: 'Executable gates',
+        to: '11',
+        note: 'Every PR blocks on them in CI: token lint, contrast, axe, a real-browser smoke of every docs page.',
+      },
+      {
+        k: 'Components shipped',
+        to: '3',
+        note: 'Button, Callout, Eyebrow, each through the RFC circuit and adopted by the site before promotion.',
+      },
+      {
+        k: 'Usages migrated',
+        to: '63',
+        note: 'Hand-written CSS on the site replaced by library components, zero compensations.',
+      },
+    ],
+    lede: 'A component library *built by AI, for AI*, with a human on the locks.',
+    body: [
+      "Learning Leagues is a buildless site with a growing design system, so I opened a second repo to test a question I care about as a designer: **can a component library be run almost entirely by AI agents, and still be trusted?** The library is built by AI sessions and consumed by AI sessions writing product code. My job is not to write components, it's to design the system they work in.",
+      'Design tokens flow **one way**, Figma → extraction pipeline → one generated stylesheet; no agent and no human ever writes a token by hand. Every component goes through the same **circuit**: a usage analysis of the site, an RFC I approve, the implementation, adoption by the site, then a promotion script that flips it to *stable* only when every gate is green. Status is never edited by hand, so it means something.',
+      'The rules live in an operating contract the agents read before anything else (`AGENTS.md`), with six axioms: never hardcode a design value, never hand-edit a generated file, accessibility is a hard requirement, never fake a missing component, one writing session per repo, and a stale file is misinformation. Each session ends with a three-block report: what to understand, what to decide, what to paste.',
+      'The [documentation site](https://louistinti.github.io/LearningLeagues-Lib/) and the [repository](https://github.com/louistinti/LearningLeagues-Lib) are public. The docs are generated from the component contracts, never written on the side.',
+    ],
+    noteLabel: '// The human locks',
+    note: "The scarce resource is my attention, so the contract lists the gestures that stay mine and only mine: pressing merge, approving a review, labelling a token change as matching the real Figma export, arbitrating a component's API or any visual value, setting priority, validating a visual checkpoint. Everything else is delegated. The design decisions are still human; the machine proves they were applied.",
+  },
+
   prototype: {
     eyebrow: 'Live',
     idx: 'Try it',
@@ -120,12 +161,14 @@ export const learningLeagues = {
     idx: "What's next",
     lede: "Shipping in the open, *here's where it's headed.*",
     body: [
-      "The engine made breadth cheap, so the work now is depth and the interactive layer. A snapshot of what's shipped and what's coming.",
+      "The engine made breadth cheap, and the library is now taking the design system off the site's hands. A snapshot of what's shipped and what's coming.",
     ],
     items: [
       { state: 'done', name: 'Five role guides', desc: 'Top, Jungle, Mid, ADC and Support, all live on the shared engine.' },
       { state: 'done', name: 'Data-driven role engine', desc: 'Per-section error boundary and one source of truth for the live patch.' },
       { state: 'done', name: 'Design-system reference', desc: 'Foundations, components and patterns on their own Hextech page.' },
+      { state: 'done', name: 'AI-first component library', desc: 'Tokens from Figma, 11 CI gates, three components through the circuit and adopted by the site.' },
+      { state: 'building', name: 'Site on the library', desc: 'Migrating the remaining hand-written CSS, one usage analysis and one RFC at a time.' },
       { state: 'building', name: 'Champions layer', desc: 'Per-champion pages branching off each role guide.' },
       { state: 'building', name: 'Role quiz', desc: 'A short quiz that points new players to the role that fits them.' },
       { state: 'planned', name: 'Playable drills', desc: 'Turning the training vignette into measurable, trackable reps.' },
