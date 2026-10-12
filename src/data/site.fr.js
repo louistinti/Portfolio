@@ -3,9 +3,9 @@
 // l'import du fichier EN quand c'est possible.
 import { profile as profileEn, contactLinks as contactLinksEn, tools as toolsEn } from './site.js'
 
-// Identité : identique (nom, mail, CV, Calendly), seul le rôle est un titre,
-// qu'on garde en anglais des deux côtés (terme de métier).
-export const profile = profileEn
+// Identité : identique (nom, mail, Calendly) sauf le CV, servi en français.
+// Le rôle est un titre, gardé en anglais des deux côtés (terme de métier).
+export const profile = { ...profileEn, cv: '/Louis-Tintillier-CV-FR.pdf' }
 export const contactLinks = contactLinksEn
 export const tools = toolsEn
 
