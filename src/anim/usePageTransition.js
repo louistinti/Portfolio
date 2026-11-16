@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useIsoLayoutEffect } from './useIsoLayoutEffect.js'
 import gsap from 'gsap'
 import { caseStudies } from '../data/content.js'
 import { ease, dur, motionEnabled } from './motion.js'
@@ -52,7 +53,7 @@ export function usePageTransition(route) {
 
   // Levée : displayedRoute vient de commiter, la nouvelle page est dans le
   // DOM derrière le rideau (petit délai pour laisser le premier paint se faire).
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     if (!pending.current) return
     pending.current = false
     const curtain = curtainRef.current

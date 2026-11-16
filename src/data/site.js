@@ -48,7 +48,7 @@ export const tools = [
 
 // Projets (7). 'cover' optionnel : mets '/assets/nexus.jpg' pour une vraie image.
 // 'slug' relie la carte à une étude de cas (voir `case-studies/`) : si une
-// entrée existe pour ce slug, la carte devient cliquable vers #/<slug>.
+// entrée existe pour ce slug, la carte devient cliquable vers /work/<slug>/.
 export const projects = [
   {
     idx: '01', name: 'Paris-Saclay', year: '2025', cat: 'UX/UI · Mobile App', slug: 'paris-saclay',

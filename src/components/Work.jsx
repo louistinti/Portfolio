@@ -1,7 +1,9 @@
-import { useContent } from '../hooks/useLang.jsx'
+import { useContent, useLang } from '../hooks/useLang.jsx'
+import { pathFor } from '../hooks/useRoute.js'
 
 export default function Work() {
   const { projects, caseStudies, ui } = useContent()
+  const { lang } = useLang()
   const w = ui.work
   return (
     <section className="section" id="work">
@@ -23,7 +25,7 @@ export default function Work() {
               data-d={i % 2 === 1 ? '1' : undefined}
               tabIndex={0}
               key={p.name}
-              {...(linked ? { href: `#/${p.slug}` } : {})}
+              {...(linked ? { href: pathFor(lang, p.slug) } : {})}
               {...(soon ? { 'aria-disabled': 'true' } : {})}
             >
               <div className="card__media">

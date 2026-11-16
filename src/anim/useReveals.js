@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react'
+import { useIsoLayoutEffect } from './useIsoLayoutEffect.js'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ease, dur, stagger, motionEnabled } from './motion.js'
@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
 // useLayoutEffect : les états initiaux sont posés avant le premier paint
 // pour éviter tout flash de contenu non masqué.
 export function useReveals() {
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     if (!motionEnabled()) return
 
     const ctx = gsap.context(() => {

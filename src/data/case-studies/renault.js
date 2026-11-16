@@ -1,4 +1,4 @@
-// Case study: renault (route #/renault).
+// Case study: renault (route /work/renault/).
 // Écrans = reconstitution personnelle (l'original est sous NDA, voir
 // docs/renault-case-study-brief.md pour le cadrage complet et les limites).
 export const renault = {

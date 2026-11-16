@@ -77,7 +77,7 @@ export function useLenis() {
     gsap.ticker.lagSmoothing(500, 33)
 
     // Ancres même-page (#about, #work, sommaire des case studies…) :
-    // routées vers Lenis. Les routes `#/slug` ne sont PAS interceptées.
+    // routées vers Lenis. Les routes (/work/…) sont gérées par useRoute.
     const onClick = (e) => {
       // Cède la main : handlers React déjà passés (defaultPrevented) et
       // clics modifiés (nouvel onglet, sélection…) restent natifs.
@@ -86,7 +86,6 @@ export function useLenis() {
       const a = e.target.closest('a[href^="#"]')
       if (!a) return
       const href = a.getAttribute('href')
-      if (href.startsWith('#/')) return // route de case study
       const el = href.length > 1 && document.getElementById(href.slice(1))
       if (!el) return
       e.preventDefault()

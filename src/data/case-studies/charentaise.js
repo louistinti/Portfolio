@@ -1,4 +1,4 @@
-// Case study: charentaise (route #/charentaise).
+// Case study: charentaise (route /work/charentaise/).
 export const charentaise = {
   name: 'La Vraie Charentaise',
   title: 'Turning the *charentaise* into an icon of slow life',

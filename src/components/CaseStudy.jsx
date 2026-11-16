@@ -3,9 +3,9 @@ import { useInteractions } from '../hooks/useInteractions.js'
 import { useReveals } from '../anim/useReveals.js'
 import { useScrollLock } from '../hooks/useScrollLock.js'
 import { useOnKey } from '../hooks/useOnKey.js'
-import { goHome } from '../hooks/useRoute.js'
+import { goHome, pathFor } from '../hooks/useRoute.js'
 import { scrollToTarget, scrollToSection } from '../anim/useLenis.js'
-import { useContent } from '../hooks/useLang.jsx'
+import { useContent, useLang } from '../hooks/useLang.jsx'
 import RichText from './RichText.jsx'
 import LangToggle from './LangToggle.jsx'
 
@@ -100,7 +100,11 @@ export default function CaseStudy({ data }) {
   // Identité + libellés du template dans la langue courante. `t` pour ne pas
   // entrer en collision avec la section `ui` des données d'étude de cas.
   const { profile, ui: t } = useContent()
+  const { lang } = useLang()
   const cs = t.cs
+  // Vraies URL (lisibles sans JS) ; le clic reste intercepté par goHome.
+  const homeHref = pathFor(lang)
+  const workHref = `${homeHref}#work`
 
   // Lightbox galerie : preview plein écran, calée sur la hauteur de l'écran.
   const [zoom, setZoom] = useState(null)
@@ -141,15 +145,6 @@ export default function CaseStudy({ data }) {
   const onPanEnd = () => {
     pan.current = null
   }
-
-  useEffect(() => {
-    if (!data) return
-    const prev = document.title
-    document.title = `${data.name}, ${cs.docTitle}`
-    return () => {
-      document.title = prev
-    }
-  }, [data, cs.docTitle])
 
   // On repart du haut à l'arrivée, immédiat, le rideau couvre l'écran.
   useEffect(() => {
@@ -225,7 +220,7 @@ export default function CaseStudy({ data }) {
     <div className="cs-page" style={data.theme}>
       {/* ============================ NAV ============================ */}
       <header className="nav cs-nav" id="nav">
-        <a className="brand" href="#" onClick={(e) => goHome(e)} aria-label={t.nav.ariaHome}>
+        <a className="brand" href={homeHref} onClick={(e) => goHome(e)} aria-label={t.nav.ariaHome}>
           <span className="mark">
             <span>{profile.mark}</span>
           </span>
@@ -242,7 +237,7 @@ export default function CaseStudy({ data }) {
             24px avec le lien retour, quelle que soit la langue. */}
         <div className="nav-actions">
           <LangToggle />
-          <a className="cs-back" href="#work" onClick={(e) => goHome(e, 'work')}>
+          <a className="cs-back" href={workHref} onClick={(e) => goHome(e, 'work')}>
             <span className="ar" aria-hidden="true">
               ←
             </span>{' '}
@@ -885,7 +880,7 @@ export default function CaseStudy({ data }) {
       {/* ============================ NEXT ============================ */}
       <section className="cs-next">
         <span className="lab">{cs.nextUp}</span>
-        <a className="big" href="#work" onClick={(e) => goHome(e, 'work')}>
+        <a className="big" href={workHref} onClick={(e) => goHome(e, 'work')}>
           {cs.backAll}{' '}
           <span className="ar" aria-hidden="true">
             ↗

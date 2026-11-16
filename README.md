@@ -32,7 +32,7 @@ src/data/content.js
 
 - `profile` — nom, initiales du logo, rôle, email, localisation
 - `projects` — les 6 cartes (titre, année, catégorie, TL;DR au survol, image).
-  La carte `01` (Paris-Saclay) pointe vers la page d'étude de cas via `href: '#/paris-saclay'`.
+  Une carte dont le `slug` a une étude de cas pointe vers `/work/<slug>/`.
 - `caseStudies` — contenu des études de cas, une entrée par projet (clé = `slug`).
   Voir « Études de cas » ci-dessous
 - `skills` / `tools` — section « What I do »
@@ -41,8 +41,9 @@ src/data/content.js
 ### Études de cas (template réutilisable)
 
 Chaque projet peut avoir sa propre page d'étude de cas, toutes générées par le **même
-composant** (`CaseStudy.jsx`) à partir des données de `content.js`. Routeur basé sur le
-hash, sans dépendance : la page vit sur `#/<slug>`.
+composant** (`CaseStudy.jsx`) à partir des données de `content.js`. Routeur par chemin,
+sans dépendance : la page vit sur `/work/<slug>/` (et `/fr/work/<slug>/` en français).
+Les anciens liens `#/<slug>` sont redirigés automatiquement.
 
 **Ajouter une étude de cas pour un projet :**
 
@@ -51,7 +52,7 @@ hash, sans dépendance : la page vit sur `#/<slug>`.
    les 6 projets de `projects`.
 2. Adapte le contenu (titre, sections, personas, features…) et le `theme` (couleurs du
    projet). Dès que l'entrée existe, **la carte du portfolio devient cliquable** vers
-   `#/<slug>` — aucune autre modification nécessaire.
+   `/work/<slug>/`, et la page est ajoutée au pré-rendu, au sitemap et à `llms.txt`.
 3. Toutes les sections sont **optionnelles** : retire une clé (ex. `topography`) et la
    section disparaît.
 
@@ -82,7 +83,18 @@ npm run build    # génère dist/ prêt à déployer
 npm run preview  # prévisualise le build
 ```
 
-Le dossier `dist/` se dépose sur **Netlify**, **Vercel** ou **GitHub Pages**.
+Déployé sur **Vercel** (`vercel.json`). Le build fait trois choses :
+
+1. `vite build` : le bundle navigateur.
+2. `vite build --ssr src/entry-server.jsx` : le même site, pour Node.
+3. `scripts/prerender.mjs` : écrit un vrai fichier HTML par page (accueil + études de cas,
+   EN et FR) avec tout le texte, les liens, les métadonnées (`src/seo.js` : titre,
+   description, canonical, hreflang, Open Graph, JSON-LD), puis `sitemap.xml`,
+   `robots.txt`, `llms.txt`, `llms-full.txt` et `404.html`.
+
+Résultat : Google et les IA (qui n'exécutent pas le JavaScript) lisent le portfolio en
+entier. Dans le navigateur, React reprend la main sur ce HTML (hydratation), les animations
+sont inchangées. Le domaine des URL absolues est `SITE_URL` dans `src/seo.js`.
 
 ## Structure
 

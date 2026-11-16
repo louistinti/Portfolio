@@ -1,4 +1,4 @@
-// Case study: concepts (route #/concepts).
+// Case study: concepts (route /work/concepts/).
 export const concepts = {
   name: 'Concepts',
   title: 'Concept work, *pure UI*',
