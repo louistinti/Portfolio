@@ -10,33 +10,35 @@
     <!--head:end-->
     <script>
       // Avant le premier paint (bloquant, volontairement minuscule) :
-      // 1. Redirections : anciens liens #/<slug> → /work/<slug>/, et langue
-      //    mémorisée (ou navigateur français à la 1re visite) → /fr/…
-      //    Les robots (sans localStorage, navigateur EN) ne sont jamais redirigés.
+      // 1. Redirections : anciens liens #/<slug> → /work/<slug>/. Une URL
+      //    garde toujours sa langue (/fr/… = français, le reste = anglais),
+      //    sauf la racine nue, qui part en français (/fr/) à moins que le
+      //    visiteur ait choisi EN avec le bouton de langue. Les robots ne
+      //    sont jamais redirigés : chaque version reste indexable.
       // 2. Drapeau .has-motion (couche d'animations). Filet de sécurité : si
       //    l'app ne démarre pas (JS bloqué/planté), on le retire pour ne pas
       //    laisser le contenu pré-rendu invisible.
       ;(function () {
         var l = location, p = l.pathname, h = l.hash, s = l.search
         var fr = /^\/fr(\/|$)/.test(p)
-        var pref = null
-        try {
-          pref = localStorage.getItem('lang')
-        } catch (e) {}
-        if (pref !== 'fr' && pref !== 'en') {
-          pref = null
-          try {
-            if (!fr && (navigator.language || '').toLowerCase().indexOf('fr') === 0) pref = 'fr'
-          } catch (e) {}
-        }
-        var want = pref || (fr ? 'fr' : 'en')
+        var lang = fr ? 'fr' : 'en'
         var rest = fr ? p.slice(3) || '/' : p
         var legacy = h.match(/^#\/([\w-]+)/)
         if (legacy) {
           rest = '/work/' + legacy[1] + '/'
           h = ''
         }
-        var target = (want === 'fr' ? '/fr' : '') + rest
+        if (p === '/') {
+          var pref = null, bot = false
+          try {
+            pref = localStorage.getItem('lang')
+          } catch (e) {}
+          try {
+            bot = /bot|crawl|spider|slurp|lighthouse|preview|facebookexternalhit/i.test(navigator.userAgent)
+          } catch (e) {}
+          lang = pref === 'en' || bot ? 'en' : 'fr'
+        }
+        var target = (lang === 'fr' ? '/fr' : '') + rest
         if (target !== p && !/[?&]ds\b/.test(s)) {
           l.replace(target + s + h)
           return

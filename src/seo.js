@@ -166,7 +166,7 @@ export function headTags(meta, { noindex = false } = {}) {
   if (!noindex) {
     for (const [l, p] of Object.entries(meta.alternates))
       tags.push(`<link rel="alternate" hreflang="${l}" href="${abs(p)}" />`)
-    tags.push(`<link rel="alternate" hreflang="x-default" href="${abs(meta.alternates.en)}" />`)
+    tags.push(`<link rel="alternate" hreflang="x-default" href="${abs(meta.alternates.fr)}" />`)
   }
   tags.push(
     `<link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt" />`,

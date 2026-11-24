@@ -109,7 +109,7 @@ const urls = pages.filter(({ slug }) => isListed(slug)).map(({ lang, slug }) => 
     <loc>${abs(meta.path)}</loc>
     <lastmod>${today}</lastmod>
 ${alts}
-    <xhtml:link rel="alternate" hreflang="x-default" href="${abs(meta.alternates.en)}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${abs(meta.alternates.fr)}"/>
   </url>`
 })
 await write(

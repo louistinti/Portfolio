@@ -10,7 +10,8 @@ import { navigate, pathFor, useRoute } from './useRoute.js'
 //  La langue vient de l'URL (/fr/… = français), pour que chaque version ait
 //  sa propre adresse indexable. Le choix du visiteur est mémorisé
 //  (localStorage) et appliqué à l'arrivée par le script inline d'index.html,
-//  qui redirige aussi un navigateur français vers /fr/ à la première visite.
+//  qui n'intervient que sur la racine nue : / part vers /fr/ (français par
+//  défaut) sauf choix EN mémorisé. Les autres URL gardent leur langue.
 // ──────────────────────────────────────────────────────────────
 
 export const bundles = { en, fr }
