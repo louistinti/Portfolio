@@ -14,9 +14,12 @@ export default function Work() {
 
       <div className="work-grid">
         {projects.map((p, i) => {
-          // Carte cliquable si une étude de cas existe pour son slug ;
+          // Carte cliquable si une étude de cas existe pour son slug, ou si
+          // elle pointe vers un site externe (`href`, nouvel onglet) ;
           // sinon affichée en "Coming soon" (grisée, non cliquable).
-          const linked = p.slug && caseStudies[p.slug]
+          const internal = p.slug && caseStudies[p.slug]
+          const external = !internal && p.href
+          const linked = internal || external
           const soon = !linked
           const Tag = linked ? 'a' : 'article'
           return (
@@ -25,7 +28,10 @@ export default function Work() {
               data-d={i % 2 === 1 ? '1' : undefined}
               tabIndex={0}
               key={p.name}
-              {...(linked ? { href: pathFor(lang, p.slug) } : {})}
+              {...(internal ? { href: pathFor(lang, p.slug) } : {})}
+              {...(external
+                ? { href: p.href, target: '_blank', rel: 'noopener noreferrer' }
+                : {})}
               {...(soon ? { 'aria-disabled': 'true' } : {})}
             >
               <div className="card__media">

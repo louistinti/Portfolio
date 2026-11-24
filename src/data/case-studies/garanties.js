@@ -1,10 +1,10 @@
-// Case study: garence (route /work/garence/).
-export const garence = {
+// Case study: garanties (route /work/garanties/).
+export const garanties = {
   name: 'Actual - Guarantee management tool',
   title: "Designing Actual's *guarantee management* tool",
   kicker: ['Product · UX/UI · B2B SaaS'],
   meta: [
-    { k: 'Role', v: 'Lead Product Designer · Design system referent' },
+    { k: 'Role', v: 'Product Designer · Design system referent' },
     { k: 'Team', v: '1 PM · 1 designer · 4 devs' },
     { k: 'Duration', v: '1 year' },
     { k: 'Mockups', v: 'Shared in interview' },
@@ -36,7 +36,7 @@ export const garence = {
     ],
     stats: [
       { v: '90.5', u: '%', k: 'of Customer Service decisions now fully automated.' },
-      { v: '-83', u: '%', k: 'on automated decision time, from 125 s down to 21 s.' },
+      { v: '125 s → 21 s', k: 'on end-to-end decision time.' },
       { v: '3', k: 'user types unified around one shared standard.' },
     ],
   },
@@ -112,11 +112,10 @@ export const garence = {
         note: 'By September, 9 files in 10 never needed a manual pass.',
       },
       {
-        k: 'Average automated decision',
+        k: 'End-to-end decision time',
         from: '125 s',
         to: '21 s',
-        delta: '-83%',
-        note: 'Time from request to decision once the system takes it on.',
+        note: 'Time from request to decision.',
       },
     ],
     targetsLabel: '// Framing targets vs. reality',

@@ -9,12 +9,13 @@ export default function Contact({ onContact }) {
     <section className="section contact" id="contact">
       <div className="section-head">
         <h2>{c.title}</h2>
-        <span className="section-idx">(05)</span>
+        <span className="section-idx">(06)</span>
       </div>
 
       <h2 className="contact__big reveal">
         <RichText text={c.big} />
       </h2>
+      {c.lead && <p className="contact__lead reveal">{c.lead}</p>}
 
       <div className="contact__row">
         <div className="contact__links reveal" data-d="1">

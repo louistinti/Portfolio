@@ -35,7 +35,7 @@ export const candidateList = {
     // Résumé des résultats (repris en détail dans `results`), même parti pris
     // que sur le projet Guarantee : accroche chiffrée en haut, preuve en bas.
     stats: [
-      { v: '2-3', u: 'min', k: 'saved per candidate to judge "ready to work or not".' },
+      { v: '2 to 3', u: 'min', k: 'saved per search, across about 100 searches per agency per month.' },
       { v: '20', u: '+', k: 'filters cut from the interface, on research evidence.' },
       { v: '141', k: "recruiters surveyed on the row's must-see info and actions." },
     ],
@@ -90,13 +90,13 @@ export const candidateList = {
     idx: 'Pilot · Nov 2025',
     lede: 'The row now does the reading, so the *profile stays closed*.',
     body: [
-      'In pilot since **November 2025**, the new list won real adoption: recruiters **save 2 to 3 minutes per candidate** on the one judgement they make dozens of times a day, is this person ready to work?',
+      'In pilot since **November 2025**, the new list won real adoption: recruiters **save 2 to 3 minutes per search**, across about 100 searches per agency per month.',
       'Downstream, fewer files slip through the cracks and prioritization got sharper, expiring documents and urgent replacements are now visible **before** someone opens a profile, not after.',
     ],
     metrics: [
       {
-        k: 'Saved per candidate',
-        to: '2-3 min',
+        k: 'Saved per search',
+        to: '2 to 3 min',
         note: 'On judging readiness, without opening a single profile.',
       },
       {
@@ -112,7 +112,7 @@ export const candidateList = {
   prototype: {
     eyebrow: 'Outcome',
     idx: 'In hindsight',
-    note: 'The second solution, the sourcing list and talent pools, was **validated by management right before I left Actual**, so I never got to test it with users. That is the one honest gap in an otherwise solid run, and the part I would want back: a design validated by stakeholders is not the same thing as a design validated by the people who use it.',
+    note: 'The second solution, with AI matching, was tested in the pilot agencies. I left before the national rollout.',
   },
 
   footer: 'Candidate list · Actual Group',

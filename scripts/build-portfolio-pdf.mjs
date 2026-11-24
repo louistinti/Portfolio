@@ -51,7 +51,7 @@ const T = {
 // ne tiennent pas sur du papier).
 const PRINT_ACCENT = {
   'paris-saclay': '#840051',
-  garence: '#c8001a',
+  garanties: '#c8001a',
   'candidate-list': '#c8001a',
   renault: '#8a6a00',
   charentaise: '#2f5740',

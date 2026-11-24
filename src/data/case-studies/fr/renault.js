@@ -8,7 +8,7 @@ export const renault = {
   title: "Concevoir l'intranet *Qualité* de Renault Group",
   kicker: ['UX Research · Intranet · SharePoint'],
   meta: [
-    { k: 'Rôle', v: 'Designer UX/UI (alternance)' },
+    { k: 'Rôle', v: 'Product Designer (alternance)' },
     { k: 'Client', v: 'Renault Group, Qualité' },
     { k: 'Durée', v: '2 ans · 2020-2022' },
     { k: 'Écrans', v: 'Reconstitués de mémoire (NDA)' },
@@ -104,12 +104,8 @@ export const renault = {
       "Le site a été **lancé** avant la fin de mon alternance. Après chaque grande présentation, j'envoyais un **questionnaire**, complété par du **shadowing d'une quinzaine d'utilisateurs** sur leurs vraies recherches.",
       "Les deux chiffres ci-dessous sont **déclaratifs** (ce que les utilisateurs rapportent, recoupé par le shadowing), pas de l'instrumentation analytics. Pour un SharePoint interne en 2021, c'était la mesure défendable, et c'est la revendication que je fais : ni plus, ni moins.",
     ],
-    metrics: [
-      { k: 'Retrouver un document', to: '−15 min', note: 'Temps moyen gagné par recherche, déclaratif recoupé par shadowing.' },
-      { k: 'Trouver un contact clé', to: '−3 min', note: 'Temps moyen gagné pour identifier la bonne personne dans un autre service.' },
-    ],
     noteLabel: 'Comment ça a été mesuré',
-    note: "Questionnaires après chaque présentation à ~200 personnes, plus **shadowing de ~15 utilisateurs**.",
+    note: "Environ 5 minutes gagnées en moyenne par recherche d'information ou de contact, sur environ 2 000 recherches par mois, soit plus de 160 h économisées par mois. J'ai estimé ce gain à partir des questionnaires remplis à la fin des présentations, devant plus de 100 personnes.",
   },
 
   footer: 'Intranet Qualité · Renault Group',

@@ -1,14 +1,14 @@
-// Étude de cas : garence (Actual, garanties), version FR. Texte repris du
+// Étude de cas : garanties (Actual), version FR. Texte repris du
 // portfolio Notion d'origine (FR) ; thème et images partagés avec l'EN.
-import { garence as en } from '../garence.js'
+import { garanties as en } from '../garanties.js'
 
-export const garence = {
+export const garanties = {
   ...en,
   name: 'Actual - Outil de gestion des garanties',
   title: "Concevoir l'outil de *gestion des garanties* d'Actual",
   kicker: ['Product · UX/UI · B2B SaaS'],
   meta: [
-    { k: 'Rôle', v: 'Lead Product Designer · Référent design system' },
+    { k: 'Rôle', v: 'Product Designer · Référent design system' },
     { k: 'Équipe', v: '1 PM · 1 designer · 4 devs' },
     { k: 'Durée', v: '1 an' },
     { k: 'Maquettes', v: 'Présentées en entretien' },
@@ -25,7 +25,7 @@ export const garence = {
     ],
     stats: [
       { v: '90,5', u: '%', k: 'des décisions du Service Client aujourd’hui entièrement automatisées.' },
-      { v: '-83', u: '%', k: 'sur le temps de décision automatisée, de 125 s à 21 s.' },
+      { v: '125 s → 21 s', k: 'sur le temps de décision de bout en bout.' },
       { v: '3', k: 'types d’utilisateurs réunis autour d’un standard commun.' },
     ],
   },
@@ -74,7 +74,7 @@ export const garence = {
     ...en.topography,
     eyebrow: 'Automatisation',
     title: 'Laisser le système décider, *quand il le doit*.',
-    body: "Le geste signature est arrivé après le lancement : quand tous les paramètres sont au vert (seuils, scoring, antériorité, cohérence des données), **le système décide seul** et notifie les parties. Tout reste **auditable et explicable** : les règles sont visibles, la justification affichée, et un **override** humain toujours à un clic. Entre le déploiement national de février 2025 et septembre 2025, les décisions automatisées sont passées de **739 à 1 243 (+68,2 %)**, la part automatisée de **0 % à 90,5 %**, et la décision auto moyenne de **125 s à 21 s (-83 %)**. En septembre, **9 décisions sur 10** tournaient seules, l'effort humain restant exactement là où il a de la valeur : les dossiers les plus durs. Plusieurs objectifs de cadrage sont atteints (délai de réponse agence et actions de décision Service Client en baisse), mais l'ENG n'a pas reculé comme espéré : certaines agences confondent encore demande d'ENG et augmentation de garantie, un déficit de clarté du flux et de formation à combler.",
+    body: "Le geste signature est arrivé après le lancement : quand tous les paramètres sont au vert (seuils, scoring, antériorité, cohérence des données), **le système décide seul** et notifie les parties. Tout reste **auditable et explicable** : les règles sont visibles, la justification affichée, et un **override** humain toujours à un clic. Entre le déploiement national de février 2025 et septembre 2025, les décisions automatisées sont passées de **739 à 1 243 (+68,2 %)**, la part automatisée de **0 % à 90,5 %**, et le temps de décision de bout en bout de **125 s à 21 s**. En septembre, **9 décisions sur 10** tournaient seules, l'effort humain restant exactement là où il a de la valeur : les dossiers les plus durs. Plusieurs objectifs de cadrage sont atteints (délai de réponse agence et actions de décision Service Client en baisse), mais l'ENG n'a pas reculé comme espéré : certaines agences confondent encore demande d'ENG et augmentation de garantie, un déficit de clarté du flux et de formation à combler.",
   },
 
   results: {
@@ -88,7 +88,7 @@ export const garence = {
     metrics: [
       { k: 'Décisions automatisées', from: '739', to: '1 243', delta: '+68,2 %', note: 'Dossiers traités de bout en bout sans revue humaine.' },
       { k: 'Part entièrement automatisée', from: '0 %', to: '90,5 %', delta: '+90,5 pts', note: 'En septembre, 9 dossiers sur 10 ne passent plus par une revue manuelle.' },
-      { k: 'Décision automatisée moyenne', from: '125 s', to: '21 s', delta: '-83 %', note: 'De la demande à la décision, une fois le système aux commandes.' },
+      { k: 'Temps de décision de bout en bout', from: '125 s', to: '21 s', note: 'De la demande à la décision.' },
     ],
     targetsLabel: '// Objectifs de cadrage vs réalité',
     targets: [

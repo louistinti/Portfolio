@@ -6,7 +6,7 @@ export const renault = {
   title: "Designing Renault Group's *quality* intranet",
   kicker: ['UX Research · Intranet · SharePoint'],
   meta: [
-    { k: 'Role', v: 'UX/UI Designer (apprenticeship)' },
+    { k: 'Role', v: 'Product Designer (apprenticeship)' },
     { k: 'Client', v: 'Renault Group, Quality' },
     { k: 'Duration', v: '2 years · 2020-2022' },
     { k: 'Screens', v: 'Rebuilt from memory (NDA)' },
@@ -130,12 +130,8 @@ export const renault = {
       'The site **launched** before the end of my apprenticeship. After each large presentation I sent a **questionnaire**, and I completed the picture by **shadowing about fifteen users** on their real searches.',
       'Both figures below are **declarative**, what users reported, cross-checked by shadowing, not analytics instrumentation. For an internal SharePoint in 2021, that was the measurement we could stand behind, and it is the claim I make: no more, no less.',
     ],
-    metrics: [
-      { k: 'Finding a document', to: '−15 min', note: 'Average time saved per search, self-reported and cross-checked by shadowing.' },
-      { k: 'Finding a key contact', to: '−3 min', note: 'Average time saved when looking for the right person in another service.' },
-    ],
     noteLabel: 'How it was measured',
-    note: 'Questionnaires after each ~200-person presentation, plus **shadowing of ~15 users**.',
+    note: 'About 5 minutes saved on average per information or contact search, across about 2,000 searches per month, i.e. over 160 h saved per month. I estimated this gain from the questionnaires filled in at the end of the presentations, in front of more than 100 people.',
   },
 
   footer: 'Quality intranet · Renault Group',

@@ -17,11 +17,11 @@ export const ui = {
   },
   hero: {
     kicker: 'Portfolio, 2026',
-    l1: 'Du product design',
-    l1a: 'pensé',
-    l2: 'pour livrer & scaler le',
-    l2a: 'B2B',
-    sub: '**Product Designer.** Je conçois et livre des produits B2B & SaaS de bout en bout, de la recherche UX à l’interface livrée. Freelance · full‑remote ou hybride.',
+    l1: 'Je conçois des',
+    l1a: 'produits',
+    l2: 'B2B',
+    l2a: 'complexes',
+    sub: 'Outils métier, SaaS opérationnels et plateformes multi-utilisateurs : je les conçois et je les construis avec l’IA, de la recherche à l’interface livrée. Freelance, en régie ou au forfait.',
     cta: 'Voir mes projets',
     scroll: 'Scroll ↓',
   },
@@ -33,7 +33,7 @@ export const ui = {
     },
     now: {
       h: '// Actuellement',
-      p: 'Freelance, disponible pour des missions B2B & SaaS. Full‑remote ou hybride. À l’aise pour porter une feature du cadrage du problème jusqu’à un build fonctionnel.',
+      p: 'Freelance, en régie (remote, ou sur site à Nantes et ses alentours ou à Paris et sa région) ou au forfait pour un site produit SaaS B2B.',
     },
     details: '// Détails',
     portrait: 'Portrait',
@@ -44,10 +44,25 @@ export const ui = {
     soon: 'Bientôt là',
     ph: '[ Image projet, à remplacer ]',
   },
+  offers: {
+    title: 'Offres',
+    items: [
+      {
+        h: 'Régie',
+        p: 'J’intègre votre équipe produit, en remote, ou sur site à Nantes et ses alentours ou à Paris et sa région.',
+      },
+      {
+        h: 'Site produit SaaS B2B, au forfait',
+        p: 'On fixe ensemble le périmètre et le calendrier avant de démarrer.',
+        link: { label: 'Voir un exemple : Seuil', href: 'https://seuil.louistdesign.me' },
+      },
+    ],
+  },
   skills: { title: 'Ce que je fais', toolbox: '// Boîte à outils' },
   contact: {
     title: 'Discutons-en',
     big: 'Un produit *à construire ?*',
+    lead: 'Décrivez-moi ce qui bloque dans votre produit et on en parle lors d’un appel.',
     talk: 'Discutons-en',
     cv: 'Télécharger mon CV',
   },

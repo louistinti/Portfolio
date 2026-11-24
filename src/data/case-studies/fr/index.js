@@ -2,7 +2,7 @@
 // que la version EN, obligatoirement : le routing s'appuie dessus.
 import { parisSaclay } from './paris-saclay.js'
 import { charentaise } from './charentaise.js'
-import { garence } from './garence.js'
+import { garanties } from './garanties.js'
 import { candidateList } from './candidate-list.js'
 import { renault } from './renault.js'
 import { learningLeagues } from './learning-leagues.js'
@@ -11,7 +11,7 @@ import { concepts } from './concepts.js'
 export const caseStudies = {
   'paris-saclay': parisSaclay,
   'charentaise': charentaise,
-  'garence': garence,
+  'garanties': garanties,
   'candidate-list': candidateList,
   'renault': renault,
   'learning-leagues': learningLeagues,

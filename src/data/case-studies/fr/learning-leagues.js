@@ -71,7 +71,8 @@ export const learningLeagues = {
     lede: 'Un système *piloté par tokens*, thémé de bout en bout.',
     body: [
       "Tout tourne sur un seul jeu de variables CSS, une **palette Hextech** unique, or sur bleu profond. Un **axe d'accent** change l'accent actif depuis un attribut `data-accent` posé sur n'importe quel élément : cinq valeurs, une par rôle (ambre, bleu, rouge, violet, jade), et tout un guide se rethème depuis un seul attribut.",
-      "Le système est né en CSS écrit à la main sur le site. Il vit désormais dans **Figma** sous forme de variables et coule à sens unique vers la bibliothèque ci-dessous : 128 tokens, générés, jamais tapés à la main. EB Garamond pour les titres, Inter pour le texte, JetBrains Mono pour les labels, documentés sur la page de référence du site et sur celle de la lib.",
+      "Le système est né en CSS écrit à la main sur le site. Il vit désormais dans **Figma** sous forme de variables et coule à sens unique vers la bibliothèque ci-dessous : 130 tokens, générés, jamais tapés à la main. EB Garamond pour les titres, Inter pour le texte, JetBrains Mono pour les labels, documentés sur la page de référence du site et sur celle de la lib.",
+      "Les variables Figma sont lues via le MCP Figma, puis transformées automatiquement en une feuille de style unique. Quand un composant demande une valeur nouvelle, comme l'opacité de l'anneau du Sigil, la variable est créée dans Figma via le MCP, puis réextraite : aucune valeur n'est écrite à la main dans le code. J'ai aussi généré des écrans dans Figma via le MCP, à partir des composants de la librairie.",
     ],
     paletteLabel: '// Hextech · or sur bleu profond',
     paletteNote: 'Une seule palette Hextech comme source de vérité ; cinq accents, un par rôle, pilotés par data-attribut.',
@@ -84,7 +85,7 @@ export const learningLeagues = {
     metrics: [
       {
         k: 'Design tokens',
-        to: '128',
+        to: '130',
         note: 'Extraits des variables Figma vers une seule feuille de style générée. Personne ne tape un token.',
       },
       {
@@ -93,9 +94,9 @@ export const learningLeagues = {
         note: 'Chaque PR bloque dessus en CI : lint des tokens, contraste, axe, un smoke en vrai navigateur de chaque page de doc.',
       },
       {
-        k: 'Composants livrés',
-        to: '3',
-        note: 'Button, Callout, Eyebrow, chacun passé par le circuit RFC et adopté par le site avant sa promotion.',
+        k: 'Composants',
+        to: '7',
+        note: '4 stables (Button, Callout, Eyebrow, Sigil) et 3 en brouillon (MetaStrip, ProgressBar, SectionHead).',
       },
       {
         k: 'Usages migrés',

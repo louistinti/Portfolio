@@ -8,6 +8,7 @@ export const parisSaclay = {
     { k: 'Role', v: 'UX Research, UX/UI' },
     { k: 'Device', v: 'iOS / Android' },
     { k: 'Client', v: 'Paris-Saclay' },
+    { k: 'Year', v: '2020' },
   ],
 
   // Thème couleur du projet (appliqué en variables CSS sur .cs-page).

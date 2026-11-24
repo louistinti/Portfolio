@@ -3,5 +3,11 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/work/garence", "destination": "/work/garanties/", "permanent": true },
+    { "source": "/work/garence/", "destination": "/work/garanties/", "permanent": true },
+    { "source": "/fr/work/garence", "destination": "/fr/work/garanties/", "permanent": true },
+    { "source": "/fr/work/garence/", "destination": "/fr/work/garanties/", "permanent": true }
+  ]
 }

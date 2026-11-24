@@ -23,7 +23,7 @@ export const candidateList = {
       "Et rien pour **piloter le vivier** : aucun KPI opérationnel sur la liste (disponibilité, dernière action, urgences), impossible de **prioriser** dossiers urgents, relances ou replacements sans ouvrir chaque fiche.",
     ],
     stats: [
-      { v: '2-3', u: 'min', k: 'gagnées par candidat pour juger « prêt à l’emploi ou non ».' },
+      { v: '2 à 3', u: 'min', k: 'gagnées par recherche, sur environ 100 recherches par agence et par mois.' },
       { v: '141', k: 'recruteurs sondés sur les infos et actions indispensables de la ligne.' },
       { v: '8', k: 'agences visitées pour observer les vraies routines et les contournements.' },
     ],
@@ -54,7 +54,7 @@ export const candidateList = {
       "J'ai recentré le listing sur une **ligne candidate légère mais riche** : disponibilité, dernière activité, qualification, ville et agence, l'essentiel devant, le bruit dehors.",
       "Les **documents** s'affichent en **compteurs avec tooltips** (ce qui manque, ce qui expire) : un recruteur lit l'employabilité d'un candidat **sans ouvrir la fiche**, et les **actions rapides** (contacter, documents, besoins associés) vivent directement sur la ligne.",
       "Mon rôle : cadrage UX, **architecture d'information de la ligne**, prototypage des filtres compacts, cards et badges documents, **tests en agence**, puis **spécifications Figma** (comportements, validations, cas limites et états d'erreur). En parallèle, j'étais **référent du design system** : maintien du legacy, contribution au **nouveau DS React**, et onboarding **Figma** des développeurs et des designers.",
-      "L'impact attendu a été cadré sur trois axes avant le moindre pixel : **efficiency** (du temps gagné sur le tri, la qualification et le suivi, moins de dossiers en souffrance), **growth** (un vivier plus réactif, activation et replacements) et **scale** (une interface et des colonnes qui tiennent quand les volumes montent). Les résultats plus bas ne revendiquent que ce que le pilote a réellement mesuré.",
+      "L'impact attendu a été cadré sur trois axes avant le moindre pixel : **efficacité** (du temps gagné sur le tri, la qualification et le suivi, moins de dossiers en souffrance), **croissance** (un vivier plus réactif, activation et replacements) et **passage à l’échelle** (une interface et des colonnes qui tiennent quand les volumes montent). Les résultats plus bas ne revendiquent que ce que le pilote a réellement mesuré.",
     ],
     features: [
       { id: 'F-01', name: 'Bandeau de filtres compact', desc: 'Des filtres en chips, au plus près du regard, avec presets enregistrables.' },
@@ -78,11 +78,11 @@ export const candidateList = {
     idx: 'Pilote · nov. 2025',
     lede: 'La ligne fait désormais la lecture, la *fiche reste fermée*.',
     body: [
-      "En pilote depuis **novembre 2025**, la nouvelle liste a gagné une vraie adoption : les recruteurs **gagnent 2 à 3 minutes par candidat** sur le jugement qu'ils font des dizaines de fois par jour. Cette personne est-elle prête à travailler ?",
+      "En pilote depuis **novembre 2025**, la nouvelle liste a gagné une vraie adoption : les recruteurs **gagnent 2 à 3 minutes par recherche**, sur environ 100 recherches par agence et par mois.",
       "En aval, moins de dossiers passent entre les mailles et la priorisation s'est affûtée : documents qui expirent et remplacements urgents sont visibles **avant** d'ouvrir une fiche, pas après.",
     ],
     metrics: [
-      { k: 'Gagnées par candidat', to: '2-3 min', note: 'Sur le jugement d’employabilité, sans ouvrir une seule fiche.' },
+      { k: 'Gagnées par recherche', to: '2 à 3 min', note: 'Sur le jugement d’employabilité, sans ouvrir une seule fiche.' },
       { k: 'Filtres supprimés avant le pilote', to: '20+', note: 'Retirés sur preuves Hotjar et Analytics, pas sur des opinions.' },
     ],
     noteLabel: 'Comment ça a été mesuré',
@@ -93,7 +93,7 @@ export const candidateList = {
     ...en.prototype,
     eyebrow: 'Bilan',
     idx: 'Avec le recul',
-    note: "La seconde solution (la liste de sourcing et les viviers) a été **validée par la direction juste avant mon départ d'Actual** : je n'ai jamais pu la tester avec les utilisateurs. C'est le seul vrai manque d'un parcours autrement solide, et la partie que je voudrais rejouer : un design validé par les stakeholders n'est pas un design validé par ceux qui s'en servent.",
+    note: "La seconde solution, avec le matching IA, a été testée dans les agences pilotes. Je suis parti avant le déploiement national.",
   },
 
   footer: 'Liste candidats · Actual Group',

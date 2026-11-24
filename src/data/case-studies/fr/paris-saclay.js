@@ -10,6 +10,7 @@ export const parisSaclay = {
     { k: 'Rôle', v: 'UX Research, UX/UI' },
     { k: 'Device', v: 'iOS / Android' },
     { k: 'Client', v: 'Paris-Saclay' },
+    { k: 'Année', v: '2020' },
   ],
 
   context: {

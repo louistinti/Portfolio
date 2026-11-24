@@ -6,7 +6,7 @@ export default function Skills() {
     <section className="section" id="skills">
       <div className="section-head">
         <h2>{ui.skills.title}</h2>
-        <span className="section-idx">(04)</span>
+        <span className="section-idx">(05)</span>
       </div>
 
       <div className="skills-grid">

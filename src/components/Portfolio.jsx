@@ -7,6 +7,7 @@ import Hero from './Hero.jsx'
 import Marquee from './Marquee.jsx'
 import About from './About.jsx'
 import Work from './Work.jsx'
+import Offers from './Offers.jsx'
 import Skills from './Skills.jsx'
 import Contact from './Contact.jsx'
 import Footer from './Footer.jsx'
@@ -40,6 +41,7 @@ export default function Portfolio() {
         <Marquee />
         <About />
         <Work />
+        <Offers />
         <Skills />
         <Contact onContact={openContact} />
       </main>

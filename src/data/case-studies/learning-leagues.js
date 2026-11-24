@@ -83,7 +83,8 @@ export const learningLeagues = {
     lede: 'A *token-driven* system, themed end to end.',
     body: [
       'Everything runs on one set of CSS variables, a single **Hextech palette**, gold on deep blue. One **accent axis** swaps the live accent from a `data-accent` attribute on any element, five values, one per role (ambre, bleu, rouge, violet, jade), so a whole guide re-themes from one attribute.',
-      "The system started as hand-written CSS on the site. It now lives in **Figma** as variables and flows one way into the library below: 128 tokens, generated, never typed by hand. EB Garamond for headings, Inter for body, JetBrains Mono for labels, documented on the site's own reference page and on the library's.",
+      "The system started as hand-written CSS on the site. It now lives in **Figma** as variables and flows one way into the library below: 130 tokens, generated, never typed by hand. EB Garamond for headings, Inter for body, JetBrains Mono for labels, documented on the site's own reference page and on the library's.",
+      "Figma variables are read through the Figma MCP, then automatically transformed into a single stylesheet. When a component needs a new value, like the opacity of the Sigil's ring, the variable is created in Figma through the MCP, then re-extracted: no value is ever written by hand in the code. I also generated screens in Figma through the MCP, from the library's components.",
     ],
     paletteLabel: '// Hextech · gold on deep blue',
     paletteNote: 'A single Hextech palette as the source of truth; five accents, one per role, swapped by data-attribute.',
@@ -117,7 +118,7 @@ export const learningLeagues = {
     metrics: [
       {
         k: 'Design tokens',
-        to: '128',
+        to: '130',
         note: 'Extracted from Figma variables into one generated stylesheet. Nobody types a token.',
       },
       {
@@ -126,9 +127,9 @@ export const learningLeagues = {
         note: 'Every PR blocks on them in CI: token lint, contrast, axe, a real-browser smoke of every docs page.',
       },
       {
-        k: 'Components shipped',
-        to: '3',
-        note: 'Button, Callout, Eyebrow, each through the RFC circuit and adopted by the site before promotion.',
+        k: 'Components',
+        to: '7',
+        note: '4 stable (Button, Callout, Eyebrow, Sigil) and 3 in draft (MetaStrip, ProgressBar, SectionHead).',
       },
       {
         k: 'Usages migrated',

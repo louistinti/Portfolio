@@ -78,6 +78,11 @@ function toMarkdown(html) {
 // ── Pages ────────────────────────────────────────────────────
 const slugs = Object.keys(bundles.en.caseStudies)
 const pages = LANGS.flatMap((lang) => ['home', ...slugs].map((slug) => ({ lang, slug })))
+// Études de cas retirées de la grille (plus aucune carte n'y mène) : leur
+// page reste générée, mais on ne la signale plus aux robots (sitemap,
+// llms-full.txt).
+const listed = new Set(bundles.en.projects.map((p) => p.slug).filter(Boolean))
+const isListed = (slug) => slug === 'home' || listed.has(slug)
 const rendered = {}
 
 for (const { lang, slug } of pages) {
@@ -95,7 +100,7 @@ for (const { lang, slug } of pages) {
 
 // ── sitemap.xml ──────────────────────────────────────────────
 const today = new Date().toISOString().slice(0, 10)
-const urls = pages.map(({ lang, slug }) => {
+const urls = pages.filter(({ slug }) => isListed(slug)).map(({ lang, slug }) => {
   const meta = pageMeta(lang, slug)
   const alts = Object.entries(meta.alternates)
     .map(([l, p]) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${abs(p)}"/>`)
@@ -208,7 +213,7 @@ ${caseStudyList('fr')}
 // ── llms-full.txt : texte intégral, page par page ───────────
 for (const lang of LANGS) {
   const c = bundles[lang]
-  const sections = ['home', ...slugs].map((slug) => {
+  const sections = ['home', ...slugs].filter(isListed).map((slug) => {
     const meta = pageMeta(lang, slug)
     return `---\n\n# ${meta.title}\n\nURL: ${abs(meta.path)}\n\n${toMarkdown(rendered[`${lang}:${slug}`])}`
   })

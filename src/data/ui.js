@@ -19,11 +19,11 @@ export const ui = {
   },
   hero: {
     kicker: 'Portfolio, 2026',
-    l1: 'Product design',
-    l1a: 'built',
-    l2: 'to ship & scale',
-    l2a: 'B2B',
-    sub: '**Product Designer.** I design and ship B2B & SaaS products end to end, from research and UX to shipped interface. Freelance · full‑remote or hybrid.',
+    l1: 'I design',
+    l1a: 'complex',
+    l2: 'B2B',
+    l2a: 'products',
+    sub: 'Business tools, operational SaaS and multi-user platforms: I design them and build them with AI, from research to the shipped interface. Freelance, time and materials or fixed price.',
     cta: 'See my work',
     scroll: 'Scroll ↓',
   },
@@ -35,7 +35,7 @@ export const ui = {
     },
     now: {
       h: '// Now',
-      p: 'Freelance, available for B2B & SaaS work. Full‑remote or hybrid. Comfortable owning a feature from problem framing to a working build.',
+      p: 'Freelance, on a time-and-materials basis (remote, or on site in and around Nantes or in the Paris region) or at a fixed price for a B2B SaaS product website.',
     },
     details: '// Details',
     portrait: 'Portrait',
@@ -46,10 +46,26 @@ export const ui = {
     soon: 'Coming soon',
     ph: '[ Project image, replace ]',
   },
+  // Section « Offres », entre Projets et Compétences.
+  offers: {
+    title: 'Services',
+    items: [
+      {
+        h: 'Time and materials',
+        p: 'I join your product team, remotely, or on site in and around Nantes or in the Paris region.',
+      },
+      {
+        h: 'B2B SaaS product website, fixed price',
+        p: 'We set the scope and the timeline together before we start.',
+        link: { label: 'See an example: Seuil', href: 'https://seuil.louistdesign.me' },
+      },
+    ],
+  },
   skills: { title: 'What I do', toolbox: '// Toolbox' },
   contact: {
     title: "Let's talk",
     big: 'Have a product *to build?*',
+    lead: "Tell me what's holding your product back and we'll talk it through on a call.",
     talk: "Let's talk",
     cv: 'Download CV',
   },
