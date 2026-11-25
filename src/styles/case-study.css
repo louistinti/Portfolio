@@ -1201,7 +1201,7 @@
   line-height: 1.62;
 }
 .ui-block .ph {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   border: 1px solid var(--line);
 }
 @media (max-width: 880px) {

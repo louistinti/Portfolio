@@ -182,10 +182,9 @@ export const seuil = {
 
   footer: 'B2B SaaS product site · Seuil',
 
-  // Visuels du design system : fichiers pas encore fournis. Décommenter chaque
-  // ligne une fois l'image déposée dans public/assets/seuil/.
+  // Visuels des blocs du design system (2000×1250, 16:10).
   shots: {
-    // 'ds-themes': '/assets/seuil/ds-themes.webp',
-    // 'ds-etats': '/assets/seuil/ds-etats.webp',
+    'ds-themes': '/assets/seuil/ds-themes.webp',
+    'ds-etats': '/assets/seuil/ds-etats.webp',
   },
 }
