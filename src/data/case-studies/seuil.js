@@ -34,7 +34,7 @@ export const seuil = {
     lede: 'Seuil is a fictional B2B SaaS that helps SMEs decide, order by order, whether a customer can be delivered on credit.',
     body: [
       'I designed its marketing site end to end, from framing to launch, to show how I work on a complex product.',
-      "For three years at Groupe Actual, I designed the guarantee and non-guaranteed exposure (ENG) management tool, which went from 0 to 90.5% of decisions automated. I can't show those screens, because they are covered by a non-disclosure agreement.",
+      "During my three years at Groupe Actual, I designed, among other things, the guarantee and non-guaranteed exposure (ENG) management tool, which went from 0 to 90.5% of decisions automated. I can't show those screens, because they are covered by a non-disclosure agreement.",
       'So I chose to create Seuil, a fictional product in the same field: customer credit decisions. That way, I could publicly show my understanding of the subject without revealing anything of the work done for Actual.',
       'I also wanted to test the offer I make to B2B SaaS companies: a site that explains a complex product as well as the sales team does, and that marketing can edit on its own.',
     ],

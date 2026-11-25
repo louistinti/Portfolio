@@ -22,7 +22,7 @@ export const seuil = {
     lede: 'Seuil est un SaaS B2B fictif qui aide les PME à décider, commande par commande, si un client peut être livré à crédit.',
     body: [
       "J'ai conçu son site marketing de bout en bout, du cadrage à la mise en ligne, afin de montrer comment je travaille sur un produit complexe.",
-      "Pendant trois ans chez Groupe Actual, j'ai conçu l'outil de gestion des garanties et encours non garantis (ENG), qui est passé de 0 à 90,5 % de décisions automatisées. Je ne peux pas montrer ces écrans, car ils sont couverts par un accord de confidentialité.",
+      "Pendant mes trois ans chez Groupe Actual, j'ai notamment conçu l'outil de gestion des garanties et encours non garantis (ENG), qui est passé de 0 à 90,5 % de décisions automatisées. Je ne peux pas montrer ces écrans, car ils sont couverts par un accord de confidentialité.",
       "J'ai donc choisi de créer Seuil, un produit fictif dans le même domaine : la décision de crédit client. Ainsi, je pouvais montrer publiquement ma compréhension du sujet sans rien révéler du travail fait pour Actual.",
       "De plus, je voulais tester l'offre que je propose aux SaaS B2B : un site qui explique un produit complexe aussi bien que l'équipe commerciale, et que le marketing peut modifier seul.",
     ],
