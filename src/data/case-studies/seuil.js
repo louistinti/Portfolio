@@ -1,4 +1,5 @@
 // Case study: seuil (route /work/seuil/).
+// Texte : docs/etude-de-cas-seuil.md (traduit), chiffres de l'artefact public.
 export const seuil = {
   name: 'Seuil',
   title: 'The marketing site of *Seuil*, designed then launched end to end',
@@ -12,6 +13,22 @@ export const seuil = {
     { k: 'Stack', v: 'Astro, TypeScript, Sanity, Vercel' },
     { k: 'Code', v: '[Public repo](https://github.com/louistinti/seuil)' },
     { k: 'Date', v: 'Nov 23, 2026' },
+  ],
+
+  // Ordre du document source ; « En ligne » suit le Résultat. Les clés
+  // absentes du gabarit (context, offer, ai, hindsight) viennent de `extra`.
+  order: [
+    'overview',
+    'results',
+    'prototype',
+    'context',
+    'offer',
+    'ai',
+    'research',
+    'ideation',
+    'topography',
+    'design',
+    'hindsight',
   ],
 
   // Cyan de Seuil, relevé dans seuil/src/styles/tokens.css (--cyan-*).
@@ -29,14 +46,12 @@ export const seuil = {
     '--topo-line': 'rgba(69, 211, 245, 0.16)',
   },
 
+  // Intro (section « overview » du gabarit).
   context: {
-    eyebrow: 'Context',
-    lede: 'Seuil is a fictional B2B SaaS that helps SMEs decide, order by order, whether a customer can be delivered on credit.',
+    eyebrow: 'Overview',
+    lede: "A site that explains a complex product as well as the sales team does, and that marketing can edit on its own: that's what I offer B2B SaaS companies.",
     body: [
-      'I designed its marketing site end to end, from framing to launch, to show how I work on a complex product.',
-      "During my three years at Groupe Actual, I designed, among other things, the guarantee and non-guaranteed exposure (ENG) management tool, which went from 0 to 90.5% of decisions automated. I can't show those screens, because they are covered by a non-disclosure agreement.",
-      'So I chose to create Seuil, a fictional product in the same field: customer credit decisions. That way, I could publicly show my understanding of the subject without revealing anything of the work done for Actual.',
-      'I also wanted to test the offer I make to B2B SaaS companies: a site that explains a complex product as well as the sales team does, and that marketing can edit on its own.',
+      "Seuil is the demonstration. It's a fictional SaaS that helps SMEs decide, order by order, whether a customer can be delivered on credit, and I designed its site end to end, from framing to launch.",
     ],
     stats: [
       { v: '6', k: 'live pages, editable in a CMS.' },
@@ -45,16 +60,114 @@ export const seuil = {
     ],
   },
 
+  results: {
+    eyebrow: 'Results',
+    idx: 'Nov 18 → 22, 2026',
+    metrics: [
+      { k: 'Timeline', to: '5 days', note: 'From November 18 to November 22, 2026.' },
+      {
+        k: 'Lighthouse',
+        to: '100',
+        note: 'Performance, accessibility, best practices and SEO, on mobile and desktop, for the home and product pages.',
+      },
+      { k: 'Simulator tests', to: '89', note: 'Covering the simulator engine.' },
+      { k: 'Accessibility tests', to: '94', note: 'Keyboard, focus and contrast, in both themes.' },
+    ],
+    lede: 'I designed and launched the Seuil site in 5 days, from the first mockup in Claude Design on November 18 to the last fix on November 22, 2026.',
+    body: [
+      'Measured with Lighthouse 12.6.0 on November 22, 2026, it scores 100 in performance, accessibility, best practices and SEO, on mobile and desktop, for the home and product pages.',
+      'The simulator engine is covered by 89 tests, and 94 tests check keyboard, focus and contrast in both themes.',
+    ],
+  },
+
+  prototype: {
+    eyebrow: 'Live',
+    idx: 'Try it',
+    href: 'https://seuil.louistdesign.me',
+    linkLabel: 'Visit the site',
+    image: '/assets/seuil/home.webp',
+  },
+
+  // Sections libres, placées par `order`.
+  extra: {
+    context: {
+      eyebrow: 'Context',
+      lede: 'For three years at Groupe Actual, I designed the guarantee and non-guaranteed exposure (ENG) management tool, which went from 0 to 90.5% of decisions automated.',
+      body: [
+        "I can't show those screens, because they are covered by a non-disclosure agreement.",
+        'So I chose to create Seuil, a fictional product in the same field: customer credit decisions. That way, I could publicly show my understanding of the subject without revealing anything of the work done for Actual.',
+      ],
+    },
+    offer: {
+      eyebrow: 'What I can do for you',
+      topo: true,
+      lede: 'Seuil brings together three skills I put to work for B2B SaaS companies and project owners.',
+      body: ['Here is what each one produced here, and what it delivers for you.'],
+      cards: [
+        {
+          title: 'Design system',
+          rows: [
+            {
+              k: 'What Seuil proves',
+              v: 'Tokens as the single source of truth, two themes, every component documented with its variants and states, all in an artifact that AI can read',
+            },
+            {
+              k: 'What I do for you',
+              v: 'I create or straighten out your design system, so that design, code and AI speak the same language',
+            },
+          ],
+        },
+        {
+          title: 'AI',
+          rows: [
+            {
+              k: 'What Seuil proves',
+              v: 'Mockups in Claude Design, code with Claude Code, and a well-scoped AI feature: the AI translates a sentence into a rule, it never decides',
+            },
+            {
+              k: 'What I do for you',
+              v: 'I deliver fast without a generic look, and I design your AI features with guardrails your users understand',
+            },
+          ],
+        },
+        {
+          title: 'Complex product made clear',
+          rows: [
+            {
+              k: 'What Seuil proves',
+              v: 'A decision simulator connected to a real rules engine right on the home page, and pages split by role',
+            },
+            {
+              k: 'What I do for you',
+              v: 'Your visitors understand your product without a sales demo',
+            },
+          ],
+        },
+      ],
+    },
+    ai: {
+      eyebrow: 'A site built with AI',
+      lede: 'I built Seuil with AI from start to finish: the mockups in Claude Design, then the code with Claude Code from the design exports.',
+      body: [
+        "AI produces fast, but I'm the one who decides. For example, I removed the coloured halo planned behind the simulator after an audit: seen through the glass card, it tinted the background under the text.",
+        "The design system follows the same logic. It's a Claude artifact designed first for AI (AI first): the tokens, components, content rules and usage notes are written to be read by Claude before it creates a mockup.",
+        'That way, a new page starts from the same colours, the same components and the same rules as the site, without my having to explain them again.',
+      ],
+    },
+    hindsight: {
+      eyebrow: 'What I would do differently',
+      topo: true,
+      note: "If I did it again for a real client, I would start with what Seuil couldn't have: interviews with the founder, the sales team and a customer, so that the site starts from the questions actually asked in demos.",
+    },
+  },
+
   research: {
     eyebrow: 'Research',
     idx: 'Step 01',
     lede: 'Since Seuil is fictional, I had no customers or team to interview.',
     body: [
       'So I focused the research on the B2B credit management market, to position Seuil against real products.',
-      'I first noticed that there is no neutral ranking: most comparisons are published by the vendors themselves. So I grouped the players myself into three groups:',
-      '**Enterprise platforms**, from order to cash (HighRadius, Esker, Sidetrade, Billtrust, Serrala, Emagia);',
-      '**Mid-market tools**, closer to Seuil (Tesorio, Gaviti, Onguard, Hoopiz, the last one targeting the same roles as Seuil);',
-      '**Data providers**, such as Dun & Bradstreet or Coface, which I treated as integrations rather than competitors.',
+      'There is no neutral ranking: most comparisons are published by the vendors themselves. So I grouped the players myself into three groups: enterprise platforms, mid-market tools closer to Seuil, and data providers, which I treated as integrations rather than competitors.',
       "Then I studied pricing. Direct competitors don't publish theirs, while neighbouring collections tools mostly charge based on the customer's revenue. So I built three revenue-based plans, aligned with LeanPay's prices as recorded by La Fabrique du Net on September 28, 2026, with a €50M threshold that follows INSEE's definition of an SME. Every source is cited on the Pricing page.",
     ],
   },
@@ -77,9 +190,12 @@ export const seuil = {
     title: 'I chose a light site and dark product screens.',
     body: [
       'That way, the visitor can tell at a glance what is pitch and what shows the product: the simulator, the screenshots, the data panels and the call-to-action banner all use the dark theme.',
-      'For the rest, I went with floating frosted-glass cards with rounded corners and a cyan accent. The blurred colour halo only appears behind a card, never as a plain background, so that it serves reading rather than decoration.',
-      'For typography, I set aside editorial serif fonts in favour of easy-to-read sans-serifs: Urbanist for headings, Geist for body text and Geist Mono for figures. Spacing follows an 8-point grid, with 4 for fine adjustments.',
+      'For the rest, I went with floating frosted-glass cards with rounded corners and a cyan accent.',
+      'For typography, I set aside editorial serif fonts in favour of easy-to-read sans-serifs: Urbanist for headings, Geist for body text and for figures, aligned in columns. Spacing follows an 8-point grid, with 4 for fine adjustments.',
     ],
+    shot: 'ds-themes',
+    aspect: '16 / 10',
+    shotAlt: 'The same Seuil component in the light theme and in the dark product theme',
   },
 
   ui: {
@@ -87,44 +203,13 @@ export const seuil = {
     idx: '31 components',
     lede: 'I first defined the tokens, the single source of truth for colours, sizes, spacing, radii and shadows.',
     body: [
-      'I defined 105 of them, in two themes: light for the site, dark for everything that shows the product. Then I documented each component with its variants, its states and the tokens it uses, as well as what is not designed, so that nothing gets added on a case-by-case basis.',
+      'No value is hardcoded in the components, which lets the site evolve without reworking it page by page.',
+      'Then I documented each shared component with its variants, its states and the tokens it uses: buttons, choice chips, status badges, gauges, rule blocks, decision cards, tables, plan cards, 31 components in all. I also listed what is deliberately not designed, to avoid ad hoc additions.',
+      'Finally, each page is a sequence of typed sections (hero, problem, benefits by role, steps, feature, integrations, pricing, FAQ, call to action). Each section maps to a component and a schema in the Sanity CMS. So someone in marketing builds a page with the same building blocks as I do, and Sanity, for example, refuses to publish a price without its source line.',
+      "It all lives in a Claude Design System artifact: 59 colours across two themes, 14 text styles and one page per component. It's the reference Claude reads to generate the mockups, not just documentation for humans.",
     ],
-    stats: [
-      { v: '105', k: 'tokens' },
-      { v: '2', k: 'themes' },
-      { v: '14', k: 'type styles' },
-      { v: '11', k: 'icons' },
-      { v: '31', k: 'components' },
-    ],
-    // `shot` : clé de `shots` (emplacement légendé tant que l'image manque).
-    blocks: [
-      {
-        k: '// Two themes',
-        title: 'The site is light, the product is dark.',
-        text: 'The light theme dresses the pages. Everything that shows the product, such as the simulator, the screenshots or the data panels, switches to the dark theme: a single attribute on the container is enough, and the semantic tokens change value.',
-        shot: 'ds-themes',
-        alt: 'The same Seuil component in the light theme and in the dark product theme',
-      },
-      {
-        k: '// One token, one reason',
-        title: 'Cyan is the only accent, but it exists as two tokens.',
-        text: "`color-accent-default` is used as a background, for example for the primary button, always with dark text on top. For accent text or icons, I use `color-accent-text`: bright cyan doesn't hold up in contrast as text on a light background.",
-      },
-      {
-        k: '// Decision states',
-        title: 'A state never relies on colour alone.',
-        text: 'Accepted, Refused, Sent to the analyst: each state carries an icon and a label, in addition to its colour. Green and red differ mainly in hue, so the icon and the label are mandatory.',
-        shot: 'ds-etats',
-        alt: "Seuil's three status badges: Accepted, Refused, Sent to the analyst",
-      },
-      {
-        k: '// Content is part of the system',
-        text: [
-          "The system also sets the writing rules: verdict labels with no variants, the label \"Fictional data\" on every screenshot, and a visible placeholder in place of any figure, testimonial or logo that isn't sourced.",
-          'Finally, each page is a sequence of typed sections (hero, problem, benefits by role, steps, feature, integrations, pricing, FAQ, call to action). Each section maps to a component and a schema in the Sanity CMS. So someone in marketing builds a page with the same building blocks as I do, and Sanity, for example, refuses to publish a price without its source line.',
-        ],
-      },
-    ],
+    shot: 'ds-etats',
+    shotAlt: 'Seuil component states: primary button, field, choice chip and status badge',
     // Couverture de l'artefact « Seuil » (design system), rendue depuis ses
     // fichiers, cliquable vers l'artefact public.
     preview: {
@@ -150,39 +235,9 @@ export const seuil = {
     ],
   },
 
-  results: {
-    eyebrow: 'Results',
-    idx: 'Nov 18 → 22, 2026',
-    metrics: [
-      { k: 'Timeline', to: '5 days', note: 'From November 18 to November 22, 2026.' },
-      {
-        k: 'Lighthouse',
-        to: '100',
-        note: 'Performance, accessibility, best practices and SEO, on mobile and desktop, for the home and product pages.',
-      },
-      { k: 'Simulator tests', to: '89', note: 'Covering the simulator engine.' },
-      { k: 'Accessibility tests', to: '94', note: 'Keyboard, focus and contrast, in both themes.' },
-    ],
-    lede: 'I designed and launched the Seuil site in 5 days, from the first mockup in Claude Design on November 18 to the last fix on November 22, 2026.',
-    body: [
-      'Measured with Lighthouse 12.6.0 on November 22, 2026, it scores 100 in performance, accessibility, best practices and SEO, on mobile and desktop, for the home and product pages.',
-      'The simulator engine is covered by 89 tests, and 94 tests check keyboard, focus and contrast in both themes. A non-technical person edited and published a section of the site on their own.',
-    ],
-    noteLabel: '// If I did it again',
-    note: "If I did it again for a real client, I would start with what Seuil couldn't have: interviews with the founder, the sales team and a customer, so that the site starts from the questions actually asked in demos.",
-  },
-
-  prototype: {
-    eyebrow: 'Live',
-    idx: 'Try it',
-    href: 'https://seuil.louistdesign.me',
-    linkLabel: 'Visit the site',
-    image: '/assets/seuil/home.webp',
-  },
-
   footer: 'B2B SaaS product site · Seuil',
 
-  // Visuels des blocs du design system (2000×1250, 16:10).
+  // Visuels de Direction visuelle et du Design system (2000×1250, 16:10).
   shots: {
     'ds-themes': '/assets/seuil/ds-themes.webp',
     'ds-etats': '/assets/seuil/ds-etats.webp',

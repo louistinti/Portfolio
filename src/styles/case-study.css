@@ -1162,54 +1162,36 @@
   margin: var(--space-6) 0 0;
 }
 
-/* blocs thématiques du design system : même grille que .cs-lede, séparés
-   par un filet ; libellé mono comme .guide-card h4, titre comme .feature h4 */
-.ui-block {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: clamp(var(--space-8), 6vw, var(--space-24));
-  align-items: start;
+/* visuel pleine largeur de la section Design system */
+.ui-figure {
   margin-top: clamp(var(--space-10), 5vw, var(--space-16));
-  padding-top: clamp(var(--space-8), 4vw, var(--space-12));
-  border-top: 1px solid var(--line);
 }
-.ui-block__k {
-  display: block;
-  font-family: var(--mono);
-  font-size: var(--text-12);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.ui-block h4 {
-  margin-top: var(--space-4);
-  font-family: var(--display);
-  font-size: var(--text-24);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  text-wrap: pretty;
-}
-.ui-block__body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-.ui-block__body p {
-  color: var(--body);
-  font-size: var(--text-16);
-  line-height: 1.62;
-}
-.ui-block .ph {
+.ui-figure .ph {
   aspect-ratio: 16 / 10;
   border: 1px solid var(--line);
 }
-@media (max-width: 880px) {
-  .ui-block {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
+
+/* cartes des sections libres : grille des fonctionnalités, titre en haut,
+   lignes libellé mono + texte */
+.extra-cards .feature h4 {
+  margin-top: 0;
 }
+.extra-cards__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+.extra-cards__row p {
+  color: var(--muted);
+  font-size: var(--text-16);
+  line-height: 1.5;
+}
+/* encadré seul sous le titre de section : la marge du titre suffit */
+.cs-insight.is-lead {
+  margin-top: 0;
+}
+
 .ui-guide {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;

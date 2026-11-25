@@ -82,6 +82,80 @@ function Stats({ items }) {
   )
 }
 
+// Ordre par défaut des sections (clés de l'objet S dans CaseStudy). Une étude
+// peut fournir son propre `order`, y compris des clés de `extra`.
+const DEFAULT_ORDER = [
+  'overview',
+  'challenge',
+  'prototype',
+  'research',
+  'ideation',
+  'wireframes',
+  'topography',
+  'design',
+  'results',
+  'outcome',
+  'roadmap',
+  'gallery',
+]
+
+// Section libre (`data.extra[id]`) : titre de section, chapô deux colonnes,
+// cartes optionnelles (grille des fonctionnalités, chaque carte = un titre et
+// des lignes libellé + texte) et encadré optionnel (bannière insight).
+function ExtraSection({ id, x }) {
+  return (
+    <section className={`section${x.topo ? ' topo-bg' : ''}`} id={id}>
+      <div className="section-head">
+        <h2>{x.eyebrow}</h2>
+        {x.idx && <span className="section-idx">{x.idx}</span>}
+      </div>
+      {(x.lede || x.body) && (
+        <div className="cs-lede" data-reveal="">
+          {x.lede && (
+            <h3>
+              <RichText text={x.lede} />
+            </h3>
+          )}
+          {x.body && (
+            <div className="body">
+              {x.body.map((p, i) => (
+                <p key={i}>
+                  <RichText text={p} />
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+      {x.cards?.length > 0 && (
+        <div className="feature-grid extra-cards">
+          {x.cards.map((c, i) => (
+            <div className="feature reveal" data-d={i % 3 || undefined} key={i}>
+              <h4>{c.title}</h4>
+              {c.rows?.map((r, j) => (
+                <div className="extra-cards__row" key={j}>
+                  <span className="fi">{r.k}</span>
+                  <p>
+                    <RichText text={r.v} />
+                  </p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+      {x.note && (
+        <div className={`cs-insight reveal${x.lede || x.body ? '' : ' is-lead'}`}>
+          {x.noteLabel && <div className="mk">{x.noteLabel}</div>}
+          <p>
+            <RichText text={x.note} />
+          </p>
+        </div>
+      )}
+    </section>
+  )
+}
+
 // Aperçu de page web : vignette recadrée sur le HAUT de la capture (pas de
 // défilement). 4 vignettes tiennent dans une grille 2×2. Module-level (cf. Shot).
 function PageGrid({ shots, onZoom, items }) {
@@ -211,17 +285,21 @@ export default function CaseStudy({ data }) {
   // Liens de la nav : sections réellement présentes dans les données. Le lien
   // du prototype suit sa position réelle (haut si live, bas sinon) et reprend
   // son eyebrow comme libellé (Prototype / Live / Outcome selon le projet).
+  // Les liens suivent l'ordre des sections (`order`) ; les sections libres
+  // (`data.extra`) n'y figurent pas.
+  const order = data.order || DEFAULT_ORDER
   const protoLink = prototype && { id: 'prototype', label: prototype.eyebrow || cs.prototype }
-  const navLinks = [
-    context && { id: 'overview', label: cs.overview },
-    liveProto && protoLink,
-    research && { id: 'research', label: cs.research },
-    ideation && { id: 'ideation', label: cs.ideation },
-    ui && { id: 'design', label: cs.design },
-    results && { id: 'results', label: results.eyebrow || cs.results },
-    prototype && !liveProto && protoLink,
-    roadmap && { id: 'roadmap', label: cs.roadmap },
-  ].filter(Boolean)
+  const navFor = {
+    overview: context && { id: 'overview', label: cs.overview },
+    prototype: liveProto && protoLink,
+    research: research && { id: 'research', label: cs.research },
+    ideation: ideation && { id: 'ideation', label: cs.ideation },
+    design: ui && { id: 'design', label: cs.design },
+    results: results && { id: 'results', label: results.eyebrow || cs.results },
+    outcome: prototype && !liveProto && protoLink,
+    roadmap: roadmap && { id: 'roadmap', label: cs.roadmap },
+  }
+  const navLinks = order.map((k) => navFor[k]).filter(Boolean)
 
   // Rampe du style guide : palette explicite (ui.palette) si fournie, sinon
   // dérivée des teintes --topo-* du thème.
@@ -233,6 +311,710 @@ export default function CaseStudy({ data }) {
   const reliefSteps = paletteSrc
     .filter((p) => p.hex)
     .map((p) => ({ hex: p.hex.toUpperCase(), lite: luminance(p.hex) > 0.18 }))
+
+  // Chaque section est rangée sous sa clé, puis rendue dans l'ordre de
+  // `data.order` (ordre par défaut sinon). Une clé absente de S désigne une
+  // section libre de `data.extra` (voir ExtraSection).
+  const S = {}
+  S.overview = (
+    <>
+      {/* ============================ CONTEXT ============================ */}
+      {context && (
+        <section className="section topo-bg" id="overview">
+          <div className="step-eyebrow" data-reveal="">
+            <span className="num">00</span> {context.eyebrow}
+          </div>
+          <div className="cs-lede" data-reveal="">
+            <h3>
+              <RichText text={context.lede} />
+            </h3>
+            <div className="body">
+              {context.body?.map((p, i) => (
+                <p key={i}>
+                  <RichText text={p} />
+                </p>
+              ))}
+            </div>
+          </div>
+          {context.stats?.length > 0 && <Stats items={context.stats} />}
+        </section>
+      )}
+    </>
+  )
+  S.challenge = (
+    <>
+      {/* ============================ CHALLENGE ============================ */}
+      {challenge && (
+        <section className="section" style={{ paddingTop: 0 }}>
+          <div className="cs-quote" data-reveal="">
+            <p>
+              <RichText text={challenge.quote} />
+            </p>
+            {challenge.who && <div className="who">{challenge.who}</div>}
+          </div>
+        </section>
+      )}
+    </>
+  )
+  S.prototype = (
+    <>
+      {/* ===================== PROTOTYPE (live, remonté) ===================== */}
+      {/* Un vrai prototype embarquable est montré tôt (juste après le
+          challenge) pour le voir vite, puis on laisse explorer le récit. */}
+      {liveProto && (
+        <section className="section topo-bg" id="prototype">
+          <div className="section-head">
+            <h2>{prototype.eyebrow}</h2>
+            {prototype.idx && <span className="section-idx">{prototype.idx}</span>}
+          </div>
+          {prototype.note && (
+            <div className="proto-note">
+              <span className="mk">💡</span>
+              <p>
+                <RichText text={prototype.note} />
+              </p>
+            </div>
+          )}
+          {prototype.href && (
+            <a
+              className="btn proto-link"
+              href={prototype.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {prototype.linkLabel || cs.open}{' '}
+              <span className="ar" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          )}
+          {/* `image` : aperçu fixe, cliquable vers le site (pas de défilement
+              imbriqué dans la page). Sinon, `src` embarque le site en iframe. */}
+          {prototype.image ? (
+            <a
+              className="proto-frame proto-frame--img reveal"
+              href={prototype.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={prototype.linkLabel || cs.open}
+            >
+              <img src={prototype.image} alt={`${data.name} preview`} loading="lazy" />
+            </a>
+          ) : (
+            prototype.src && (
+              <div className="proto-frame reveal">
+                <iframe
+                  title={`${data.name} preview`}
+                  src={prototype.src}
+                  allowFullScreen
+                ></iframe>
+              </div>
+            )
+          )}
+        </section>
+      )}
+    </>
+  )
+  S.research = (
+    <>
+      {/* ============================ RESEARCH ============================ */}
+      {research && (
+        <section className="section" id="research">
+          <div className="section-head">
+            <h2>{research.eyebrow}</h2>
+            {research.idx && <span className="section-idx">{research.idx}</span>}
+          </div>
+          <div className="cs-lede" data-reveal="">
+            <h3>
+              <RichText text={research.lede} />
+            </h3>
+            <div className="body">
+              {research.body?.map((p, i) => (
+                <p key={i}>
+                  <RichText text={p} />
+                </p>
+              ))}
+            </div>
+          </div>
+          {research.personas?.length > 0 && (
+            <div className="persona-grid">
+              {research.personas.map((p, i) => (
+                <article className="persona reveal" data-d={i || undefined} key={p.id || i}>
+                  <div className="persona__media">
+                    <Shot
+                      shots={data.shots}
+                      onZoom={setZoom}
+                      id={p.shot}
+                      label={`[ ${p.name} ]`}
+                    />
+                  </div>
+                  <div className="persona__body">
+                    <div className="persona__name">
+                      <h4>{p.name}</h4>
+                      <span className="id">{p.id}</span>
+                    </div>
+                    <p className="persona__goal">{p.goal}</p>
+                    <p className="persona__pain">
+                      <b>{cs.pain}</b>
+                      <RichText text={p.pain} />
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+          {research.insight && (
+            <div className="cs-insight reveal">
+              <div className="mk">{cs.keyInsight}</div>
+              <p>
+                <RichText text={research.insight} />
+              </p>
+            </div>
+          )}
+        </section>
+      )}
+    </>
+  )
+  S.ideation = (
+    <>
+      {/* ============================ IDEATION ============================ */}
+      {ideation && (
+        <section className="section topo-bg" id="ideation">
+          <div className="section-head">
+            <h2>{ideation.eyebrow}</h2>
+            {ideation.idx && <span className="section-idx">{ideation.idx}</span>}
+          </div>
+          <div className="cs-lede" data-reveal="">
+            <h3>
+              <RichText text={ideation.lede} />
+            </h3>
+            <div className="body">
+              {ideation.body?.map((p, i) => (
+                <p key={i}>
+                  <RichText text={p} />
+                </p>
+              ))}
+            </div>
+          </div>
+          {ideation.features?.length > 0 && (
+            <div className="feature-grid">
+              {ideation.features.map((f, i) => (
+                <div className="feature reveal" data-d={i % 3 || undefined} key={f.id || i}>
+                  <span className="fi">{f.id}</span>
+                  <h4>{f.name}</h4>
+                  <p>{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          )}
+          {ideation.media?.map((m, i) => (
+            <div className={`cs-media reveal${m.framed ? ' is-framed' : ''}`} key={i}>
+              <div className="cs-media__cap">
+                <h4>{m.cap}</h4>
+                {m.sub && <span>{m.sub}</span>}
+              </div>
+              <Shot
+                shots={data.shots}
+                onZoom={setZoom}
+                id={m.shot}
+                fit="contain"
+                label={`[ ${m.cap} ]`}
+                style={!m.framed && m.aspect ? { aspectRatio: m.aspect } : undefined}
+              />
+            </div>
+          ))}
+        </section>
+      )}
+    </>
+  )
+  S.wireframes = (
+    <>
+      {/* ============================ WIREFRAMES ============================ */}
+      {wireframes && (
+        <section className="section">
+          <div className="section-head">
+            <h2>{wireframes.eyebrow}</h2>
+            {wireframes.idx && <span className="section-idx">{wireframes.idx}</span>}
+          </div>
+          {wireframes.intro && (
+            <p className="cs-hero__sub reveal" style={{ marginTop: 0, maxWidth: '54ch' }}>
+              {wireframes.intro}
+            </p>
+          )}
+          {wireframes.pages?.length > 0 ? (
+            <PageGrid shots={data.shots} onZoom={setZoom} items={wireframes.pages} />
+          ) : wireframes.items?.length > 0 ? (
+            <div className="wire-row">
+              {wireframes.items.map((w, i) => (
+                <div
+                  className={`wire reveal${w.final ? ' is-final' : ''}`}
+                  data-d={i || undefined}
+                  key={w.shot || i}
+                >
+                  <Shot
+                    shots={data.shots}
+                    onZoom={setZoom}
+                    id={w.shot}
+                    label={`[ Wireframe ${w.v} ]`}
+                  />
+                  <div className="lab">
+                    <span className="v">{w.v}</span>
+                    <span className="t">{w.t}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </section>
+      )}
+    </>
+  )
+  S.topography = (
+    <>
+      {/* ============================ TOPOGRAPHY / CONCEPT ============================ */}
+      {topography && (
+        <section className="cs-topo topo-bg">
+          <div className="cs-topo__inner">
+            <div className="step-eyebrow" data-reveal="">
+              <span className="num">{topography.mark || '◆'}</span> {topography.eyebrow}
+            </div>
+            <h3>
+              <RichText text={topography.title} />
+            </h3>
+            {/* `body` : un paragraphe (string) ou plusieurs (tableau, regroupés
+                dans une seule cellule de la grille). */}
+            {Array.isArray(topography.body) ? (
+              <div className="cs-topo__body">
+                {topography.body.map((p, i) => (
+                  <p key={i}>
+                    <RichText text={p} />
+                  </p>
+                ))}
+              </div>
+            ) : (
+              topography.body && (
+                <p>
+                  <RichText text={topography.body} />
+                </p>
+              )
+            )}
+            {topography.shots?.length > 0 ? (
+              <div className="cs-topo__screens reveal">
+                {topography.shots.map((id, i) => (
+                  <Shot
+                    key={id || i}
+                    shots={data.shots}
+                    onZoom={setZoom}
+                    id={id}
+                    label={`[ Screen ${i + 1} ]`}
+                  />
+                ))}
+              </div>
+            ) : topography.shot ? (
+              <div className="cs-topo__media reveal">
+                <Shot
+                  shots={data.shots}
+                  onZoom={setZoom}
+                  id={topography.shot}
+                  fit={topography.fit || 'cover'}
+                  label={`[ ${topography.shotAlt || topography.eyebrow} ]`}
+                  style={topography.aspect ? { aspectRatio: topography.aspect } : undefined}
+                />
+              </div>
+            ) : null}
+          </div>
+        </section>
+      )}
+    </>
+  )
+  S.design = (
+    <>
+      {/* ============================ UI / STYLE GUIDE ============================ */}
+      {ui && (
+        <section className="section" id="design">
+          <div className="section-head">
+            <h2>{ui.eyebrow}</h2>
+            {ui.idx && <span className="section-idx">{ui.idx}</span>}
+          </div>
+          <div className="cs-lede" data-reveal="">
+            <h3>
+              <RichText text={ui.lede} />
+            </h3>
+            <div className="body">
+              {ui.body?.map((p, i) => (
+                <p key={i}>
+                  <RichText text={p} />
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {ui.stats?.length > 0 && <Stats items={ui.stats} />}
+
+          {/* Visuel pleine largeur optionnel (clé de `shots`, zoomable). */}
+          {ui.shot && (
+            <div className="ui-figure reveal">
+              <Shot
+                shots={data.shots}
+                onZoom={setZoom}
+                id={ui.shot}
+                label={`[ ${ui.shotAlt || ui.eyebrow} ]`}
+                style={ui.shotAspect ? { aspectRatio: ui.shotAspect } : undefined}
+              />
+            </div>
+          )}
+
+          {(reliefSteps.length > 0 || ui.components) && (
+            <div className="ui-guide">
+              {reliefSteps.length > 0 && (
+                <div className="guide-card reveal">
+                  {ui.paletteLabel && <h4>{ui.paletteLabel}</h4>}
+                  <div
+                    className="relief"
+                    style={{ gridTemplateColumns: `repeat(${reliefSteps.length}, 1fr)` }}
+                  >
+                    {reliefSteps.map((s, i) => (
+                      <span
+                        key={i}
+                        className={s.lite ? 'lite' : undefined}
+                        style={{ background: s.hex }}
+                        data-h={s.hex}
+                      ></span>
+                    ))}
+                  </div>
+                  {ui.paletteNote && <p className="note">{ui.paletteNote}</p>}
+                  {ui.fonts?.length > 0 && (
+                    <dl className="guide-type">
+                      {ui.fonts.map((f) => (
+                        <div key={f.k}>
+                          <dt>{f.k}</dt>
+                          <dd>{f.v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+                </div>
+              )}
+
+              {ui.components && (
+                <div className="guide-card reveal" data-d="1">
+                  <h4>// Components</h4>
+                  <div className="guide-comp">
+                    {ui.components.buttons?.length > 0 && (
+                      <div className="row">
+                        {ui.components.buttons.map((b, i) => (
+                          <span className={`comp-btn${b.alt ? ' alt' : ''}`} key={i}>
+                            {b.label}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {ui.components.chips?.length > 0 && (
+                      <div className="row">
+                        {ui.components.chips.map((c, i) => (
+                          <span className="comp-chip" key={i}>
+                            {c}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {ui.components.pills?.length > 0 && (
+                      <div className="row">
+                        {ui.components.pills.map((c, i) => (
+                          <span className="comp-pill" key={i}>
+                            {c}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {ui.components.tabs?.length > 0 && (
+                      <div className="comp-tab">
+                        {ui.components.tabs.map((t, i) => (
+                          <span className={t.on ? 'on' : undefined} key={i}>
+                            {t.label}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Aperçu du design system en fin de section (ex. sa couverture).
+              Avec `href`, il devient cliquable et reçoit le même bouton que
+              « Visiter le site » de la section live. */}
+          {ui.preview && (
+            <>
+              {ui.preview.href ? (
+                <a
+                  className="ui-preview ui-preview--link reveal"
+                  href={ui.preview.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={ui.preview.src} alt={ui.preview.alt || ''} loading="lazy" />
+                </a>
+              ) : (
+                <figure className="ui-preview reveal">
+                  <img src={ui.preview.src} alt={ui.preview.alt || ''} loading="lazy" />
+                </figure>
+              )}
+              {ui.preview.href && ui.preview.linkLabel && (
+                <a
+                  className="btn proto-link ui-preview__btn"
+                  href={ui.preview.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {ui.preview.linkLabel}{' '}
+                  <span className="ar" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              )}
+            </>
+          )}
+
+          {ui.pages?.length > 0 ? (
+            <PageGrid shots={data.shots} onZoom={setZoom} items={ui.pages} />
+          ) : ui.screens?.length > 0 ? (
+            <div className="screens-grid">
+              {ui.screens.map((id, i) => (
+                <Shot
+                  shots={data.shots}
+                  onZoom={setZoom}
+                  id={id}
+                  label={`[ Screen ${i + 1} ]`}
+                  key={id}
+                />
+              ))}
+            </div>
+          ) : null}
+        </section>
+      )}
+    </>
+  )
+  S.results = (
+    <>
+      {/* ============================ RESULTS / IMPACT ============================ */}
+      {/* Ordre voulu : les CHIFFRES d'abord (juste sous le titre), le récit
+          ensuite, puis les `targets` de cadrage confrontées au réel et la
+          `note` de lecture honnête.
+          Les métriques passent avant le chapô pour une raison concrète : en
+          arrivant par la nav, le scroll s'arrête sur le filet de la section,
+          et un chapô de 3 à 4 lignes repoussait les cartes sous la ligne de
+          flottaison sur les écrans peu hauts. Dans une section « Results »,
+          les chiffres sont de toute façon l'information principale. */}
+      {results && (
+        <section className="section" id="results">
+          <div className="section-head">
+            <h2>{results.eyebrow}</h2>
+            {results.idx && <span className="section-idx">{results.idx}</span>}
+          </div>
+
+          {results.metrics?.length > 0 && (
+            <div className="cs-metrics is-lead">
+              {results.metrics.map((m, i) => (
+                <div className="metric reveal" data-d={i % 3 || undefined} key={i}>
+                  <div className="metric__k">{m.k}</div>
+                  <div className="metric__flow">
+                    {m.from && (
+                      <>
+                        <span className="metric__from">{m.from}</span>
+                        <span className="metric__ar" aria-hidden="true">
+                          →
+                        </span>
+                      </>
+                    )}
+                    <span className="metric__to">{m.to}</span>
+                  </div>
+                  {m.delta && <span className="metric__delta">{m.delta}</span>}
+                  {m.note && <p className="metric__note">{m.note}</p>}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {(results.lede || results.body) && (
+            <div className="cs-lede is-after" data-reveal="">
+              {results.lede && (
+                <h3>
+                  <RichText text={results.lede} />
+                </h3>
+              )}
+              {results.body && (
+                <div className="body">
+                  {results.body.map((p, i) => (
+                    <p key={i}>
+                      <RichText text={p} />
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {results.targets?.length > 0 && (
+            <div className="cs-targets">
+              <h4 className="cs-targets__lab">{results.targetsLabel || cs.targets}</h4>
+              <ul className="cs-targets__list">
+                {results.targets.map((t, i) => {
+                  const state = t.state || 'nodata'
+                  const mark = state === 'hit' ? '✓' : state === 'missed' ? '✕' : '–'
+                  const lab =
+                    state === 'hit' ? cs.stHit : state === 'missed' ? cs.stMissed : cs.stNoData
+                  return (
+                    <li
+                      className={`target-row reveal is-${state}`}
+                      data-d={i % 3 || undefined}
+                      key={i}
+                    >
+                      <span className="target-mark" aria-hidden="true">
+                        {mark}
+                      </span>
+                      <div className="target-text">
+                        <h5>
+                          {t.name} {t.goal && <span className="target-goal">{t.goal}</span>}
+                        </h5>
+                        {t.note && <p>{t.note}</p>}
+                      </div>
+                      <span className="target-state mono">{lab}</span>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )}
+
+          {results.note && (
+            <div className="cs-insight reveal">
+              <div className="mk">{results.noteLabel || cs.measured}</div>
+              <p>
+                <RichText text={results.note} />
+              </p>
+            </div>
+          )}
+        </section>
+      )}
+    </>
+  )
+  S.outcome = (
+    <>
+      {/* ===================== OUTCOME (bilan, reste en bas) ===================== */}
+      {/* Sans lien embarquable, le champ `prototype` sert de note de clôture
+          « Outcome / In hindsight » : elle garde sa place en fin de récit. */}
+      {prototype && !liveProto && (
+        <section className="section topo-bg" id="prototype">
+          <div className="section-head">
+            <h2>{prototype.eyebrow}</h2>
+            {prototype.idx && <span className="section-idx">{prototype.idx}</span>}
+          </div>
+          {prototype.note && (
+            <div className="proto-note">
+              <span className="mk">💡</span>
+              <p>
+                <RichText text={prototype.note} />
+              </p>
+            </div>
+          )}
+        </section>
+      )}
+    </>
+  )
+  S.roadmap = (
+    <>
+      {/* ============================ ROADMAP ============================ */}
+      {roadmap && (
+        <section className="section" id="roadmap">
+          <div className="section-head">
+            <h2>{roadmap.eyebrow}</h2>
+            {roadmap.idx && <span className="section-idx">{roadmap.idx}</span>}
+          </div>
+          {(roadmap.lede || roadmap.body) && (
+            <div className="cs-lede" data-reveal="">
+              {roadmap.lede && (
+                <h3>
+                  <RichText text={roadmap.lede} />
+                </h3>
+              )}
+              {roadmap.body && (
+                <div className="body">
+                  {roadmap.body.map((p, i) => (
+                    <p key={i}>
+                      <RichText text={p} />
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {roadmap.items?.length > 0 && (
+            <ul className="roadmap-list">
+              {roadmap.items.map((it, i) => {
+                const state = it.state || 'planned'
+                const mark = state === 'done' ? '✓' : state === 'building' ? '◐' : '○'
+                const lab =
+                  state === 'done'
+                    ? cs.stShipped
+                    : state === 'building'
+                      ? cs.stBuilding
+                      : cs.stPlanned
+                return (
+                  <li
+                    className={`roadmap-row reveal is-${state}`}
+                    data-d={i % 3 || undefined}
+                    key={i}
+                  >
+                    <span className="roadmap-mark" aria-hidden="true">
+                      {mark}
+                    </span>
+                    <div className="roadmap-text">
+                      <h4>{it.name}</h4>
+                      {it.desc && <p>{it.desc}</p>}
+                    </div>
+                    <span className="roadmap-state mono">{lab}</span>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+        </section>
+      )}
+    </>
+  )
+  S.gallery = (
+    <>
+      {/* ============================ GALLERY (concept UI) ============================ */}
+      {data.gallery?.length > 0 && (
+        <section className="section" id="gallery">
+          <div className="cs-gallery">
+            {data.gallery.map((g, i) => (
+              <figure
+                className="cs-gallery__item reveal"
+                data-d={i % 2 || undefined}
+                key={g.src || i}
+              >
+                <button
+                  type="button"
+                  className="cs-gallery__open"
+                  onClick={() => setZoom(g)}
+                  aria-label={`Open ${g.name} preview`}
+                >
+                  <img src={g.src} alt={g.name} loading="lazy" />
+                </button>
+                <figcaption>
+                  <span className="n">{g.name}</span>
+                  {g.sub && <span className="s">{g.sub}</span>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  )
 
   return (
     <div className="cs-page" style={data.theme}>
@@ -302,677 +1084,11 @@ export default function CaseStudy({ data }) {
           </div>
         </header>
 
-        {/* ============================ CONTEXT ============================ */}
-        {context && (
-          <section className="section topo-bg" id="overview">
-            <div className="step-eyebrow" data-reveal="">
-              <span className="num">00</span> {context.eyebrow}
-            </div>
-            <div className="cs-lede" data-reveal="">
-              <h3>
-                <RichText text={context.lede} />
-              </h3>
-              <div className="body">
-                {context.body?.map((p, i) => (
-                  <p key={i}>
-                    <RichText text={p} />
-                  </p>
-                ))}
-              </div>
-            </div>
-            {context.stats?.length > 0 && <Stats items={context.stats} />}
-          </section>
-        )}
-
-        {/* ============================ CHALLENGE ============================ */}
-        {challenge && (
-          <section className="section" style={{ paddingTop: 0 }}>
-            <div className="cs-quote" data-reveal="">
-              <p>
-                <RichText text={challenge.quote} />
-              </p>
-              {challenge.who && <div className="who">{challenge.who}</div>}
-            </div>
-          </section>
-        )}
-
-        {/* ===================== PROTOTYPE (live, remonté) ===================== */}
-        {/* Un vrai prototype embarquable est montré tôt (juste après le
-            challenge) pour le voir vite, puis on laisse explorer le récit. */}
-        {liveProto && (
-          <section className="section topo-bg" id="prototype">
-            <div className="section-head">
-              <h2>{prototype.eyebrow}</h2>
-              {prototype.idx && <span className="section-idx">{prototype.idx}</span>}
-            </div>
-            {prototype.note && (
-              <div className="proto-note">
-                <span className="mk">💡</span>
-                <p>
-                  <RichText text={prototype.note} />
-                </p>
-              </div>
-            )}
-            {prototype.href && (
-              <a
-                className="btn proto-link"
-                href={prototype.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {prototype.linkLabel || cs.open}{' '}
-                <span className="ar" aria-hidden="true">
-                  ↗
-                </span>
-              </a>
-            )}
-            {/* `image` : aperçu fixe, cliquable vers le site (pas de défilement
-                imbriqué dans la page). Sinon, `src` embarque le site en iframe. */}
-            {prototype.image ? (
-              <a
-                className="proto-frame proto-frame--img reveal"
-                href={prototype.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={prototype.linkLabel || cs.open}
-              >
-                <img src={prototype.image} alt={`${data.name} preview`} loading="lazy" />
-              </a>
-            ) : (
-              prototype.src && (
-                <div className="proto-frame reveal">
-                  <iframe
-                    title={`${data.name} preview`}
-                    src={prototype.src}
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              )
-            )}
-          </section>
-        )}
-
-        {/* ============================ RESEARCH ============================ */}
-        {research && (
-          <section className="section" id="research">
-            <div className="section-head">
-              <h2>{research.eyebrow}</h2>
-              {research.idx && <span className="section-idx">{research.idx}</span>}
-            </div>
-            <div className="cs-lede" data-reveal="">
-              <h3>
-                <RichText text={research.lede} />
-              </h3>
-              <div className="body">
-                {research.body?.map((p, i) => (
-                  <p key={i}>
-                    <RichText text={p} />
-                  </p>
-                ))}
-              </div>
-            </div>
-            {research.personas?.length > 0 && (
-              <div className="persona-grid">
-                {research.personas.map((p, i) => (
-                  <article className="persona reveal" data-d={i || undefined} key={p.id || i}>
-                    <div className="persona__media">
-                      <Shot
-                        shots={data.shots}
-                        onZoom={setZoom}
-                        id={p.shot}
-                        label={`[ ${p.name} ]`}
-                      />
-                    </div>
-                    <div className="persona__body">
-                      <div className="persona__name">
-                        <h4>{p.name}</h4>
-                        <span className="id">{p.id}</span>
-                      </div>
-                      <p className="persona__goal">{p.goal}</p>
-                      <p className="persona__pain">
-                        <b>{cs.pain}</b>
-                        <RichText text={p.pain} />
-                      </p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            )}
-            {research.insight && (
-              <div className="cs-insight reveal">
-                <div className="mk">{cs.keyInsight}</div>
-                <p>
-                  <RichText text={research.insight} />
-                </p>
-              </div>
-            )}
-          </section>
-        )}
-
-        {/* ============================ IDEATION ============================ */}
-        {ideation && (
-          <section className="section topo-bg" id="ideation">
-            <div className="section-head">
-              <h2>{ideation.eyebrow}</h2>
-              {ideation.idx && <span className="section-idx">{ideation.idx}</span>}
-            </div>
-            <div className="cs-lede" data-reveal="">
-              <h3>
-                <RichText text={ideation.lede} />
-              </h3>
-              <div className="body">
-                {ideation.body?.map((p, i) => (
-                  <p key={i}>
-                    <RichText text={p} />
-                  </p>
-                ))}
-              </div>
-            </div>
-            {ideation.features?.length > 0 && (
-              <div className="feature-grid">
-                {ideation.features.map((f, i) => (
-                  <div className="feature reveal" data-d={i % 3 || undefined} key={f.id || i}>
-                    <span className="fi">{f.id}</span>
-                    <h4>{f.name}</h4>
-                    <p>{f.desc}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-            {ideation.media?.map((m, i) => (
-              <div className={`cs-media reveal${m.framed ? ' is-framed' : ''}`} key={i}>
-                <div className="cs-media__cap">
-                  <h4>{m.cap}</h4>
-                  {m.sub && <span>{m.sub}</span>}
-                </div>
-                <Shot
-                  shots={data.shots}
-                  onZoom={setZoom}
-                  id={m.shot}
-                  fit="contain"
-                  label={`[ ${m.cap} ]`}
-                  style={!m.framed && m.aspect ? { aspectRatio: m.aspect } : undefined}
-                />
-              </div>
-            ))}
-          </section>
-        )}
-
-        {/* ============================ WIREFRAMES ============================ */}
-        {wireframes && (
-          <section className="section">
-            <div className="section-head">
-              <h2>{wireframes.eyebrow}</h2>
-              {wireframes.idx && <span className="section-idx">{wireframes.idx}</span>}
-            </div>
-            {wireframes.intro && (
-              <p className="cs-hero__sub reveal" style={{ marginTop: 0, maxWidth: '54ch' }}>
-                {wireframes.intro}
-              </p>
-            )}
-            {wireframes.pages?.length > 0 ? (
-              <PageGrid shots={data.shots} onZoom={setZoom} items={wireframes.pages} />
-            ) : wireframes.items?.length > 0 ? (
-              <div className="wire-row">
-                {wireframes.items.map((w, i) => (
-                  <div
-                    className={`wire reveal${w.final ? ' is-final' : ''}`}
-                    data-d={i || undefined}
-                    key={w.shot || i}
-                  >
-                    <Shot
-                      shots={data.shots}
-                      onZoom={setZoom}
-                      id={w.shot}
-                      label={`[ Wireframe ${w.v} ]`}
-                    />
-                    <div className="lab">
-                      <span className="v">{w.v}</span>
-                      <span className="t">{w.t}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : null}
-          </section>
-        )}
-
-        {/* ============================ TOPOGRAPHY / CONCEPT ============================ */}
-        {topography && (
-          <section className="cs-topo topo-bg">
-            <div className="cs-topo__inner">
-              <div className="step-eyebrow" data-reveal="">
-                <span className="num">{topography.mark || '◆'}</span> {topography.eyebrow}
-              </div>
-              <h3>
-                <RichText text={topography.title} />
-              </h3>
-              {/* `body` : un paragraphe (string) ou plusieurs (tableau, regroupés
-                  dans une seule cellule de la grille). */}
-              {Array.isArray(topography.body) ? (
-                <div className="cs-topo__body">
-                  {topography.body.map((p, i) => (
-                    <p key={i}>
-                      <RichText text={p} />
-                    </p>
-                  ))}
-                </div>
-              ) : (
-                topography.body && (
-                  <p>
-                    <RichText text={topography.body} />
-                  </p>
-                )
-              )}
-              {topography.shots?.length > 0 ? (
-                <div className="cs-topo__screens reveal">
-                  {topography.shots.map((id, i) => (
-                    <Shot
-                      key={id || i}
-                      shots={data.shots}
-                      onZoom={setZoom}
-                      id={id}
-                      label={`[ Screen ${i + 1} ]`}
-                    />
-                  ))}
-                </div>
-              ) : topography.shot ? (
-                <div className="cs-topo__media reveal">
-                  <Shot
-                    shots={data.shots}
-                    onZoom={setZoom}
-                    id={topography.shot}
-                    fit={topography.fit || 'cover'}
-                    label={`[ ${topography.eyebrow} ]`}
-                  />
-                </div>
-              ) : null}
-            </div>
-          </section>
-        )}
-
-        {/* ============================ UI / STYLE GUIDE ============================ */}
-        {ui && (
-          <section className="section" id="design">
-            <div className="section-head">
-              <h2>{ui.eyebrow}</h2>
-              {ui.idx && <span className="section-idx">{ui.idx}</span>}
-            </div>
-            <div className="cs-lede" data-reveal="">
-              <h3>
-                <RichText text={ui.lede} />
-              </h3>
-              <div className="body">
-                {ui.body?.map((p, i) => (
-                  <p key={i}>
-                    <RichText text={p} />
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            {ui.stats?.length > 0 && <Stats items={ui.stats} />}
-
-            {/* Blocs thématiques : libellé + sous-titre à gauche, texte (un ou
-                plusieurs paragraphes) et visuel optionnel à droite. Le visuel
-                passe par `shots` : tant que l'image manque, un emplacement
-                légendé s'affiche à sa place. */}
-            {ui.blocks?.map((b, i) => (
-              <div className="ui-block reveal" key={i}>
-                <div className="ui-block__head">
-                  {b.k && <span className="ui-block__k">{b.k}</span>}
-                  {b.title && <h4>{b.title}</h4>}
-                </div>
-                <div className="ui-block__body">
-                  {[].concat(b.text || []).map((p, j) => (
-                    <p key={j}>
-                      <RichText text={p} />
-                    </p>
-                  ))}
-                  {b.shot && (
-                    <Shot shots={data.shots} onZoom={setZoom} id={b.shot} label={`[ ${b.alt} ]`} />
-                  )}
-                </div>
-              </div>
-            ))}
-
-            {(reliefSteps.length > 0 || ui.components) && (
-              <div className="ui-guide">
-                {reliefSteps.length > 0 && (
-                  <div className="guide-card reveal">
-                    {ui.paletteLabel && <h4>{ui.paletteLabel}</h4>}
-                    <div
-                      className="relief"
-                      style={{ gridTemplateColumns: `repeat(${reliefSteps.length}, 1fr)` }}
-                    >
-                      {reliefSteps.map((s, i) => (
-                        <span
-                          key={i}
-                          className={s.lite ? 'lite' : undefined}
-                          style={{ background: s.hex }}
-                          data-h={s.hex}
-                        ></span>
-                      ))}
-                    </div>
-                    {ui.paletteNote && <p className="note">{ui.paletteNote}</p>}
-                    {ui.fonts?.length > 0 && (
-                      <dl className="guide-type">
-                        {ui.fonts.map((f) => (
-                          <div key={f.k}>
-                            <dt>{f.k}</dt>
-                            <dd>{f.v}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    )}
-                  </div>
-                )}
-
-                {ui.components && (
-                  <div className="guide-card reveal" data-d="1">
-                    <h4>// Components</h4>
-                    <div className="guide-comp">
-                      {ui.components.buttons?.length > 0 && (
-                        <div className="row">
-                          {ui.components.buttons.map((b, i) => (
-                            <span className={`comp-btn${b.alt ? ' alt' : ''}`} key={i}>
-                              {b.label}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      {ui.components.chips?.length > 0 && (
-                        <div className="row">
-                          {ui.components.chips.map((c, i) => (
-                            <span className="comp-chip" key={i}>
-                              {c}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      {ui.components.pills?.length > 0 && (
-                        <div className="row">
-                          {ui.components.pills.map((c, i) => (
-                            <span className="comp-pill" key={i}>
-                              {c}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      {ui.components.tabs?.length > 0 && (
-                        <div className="comp-tab">
-                          {ui.components.tabs.map((t, i) => (
-                            <span className={t.on ? 'on' : undefined} key={i}>
-                              {t.label}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Aperçu du design system en fin de section (ex. sa couverture).
-                Avec `href`, il devient cliquable et reçoit le même bouton que
-                « Visiter le site » de la section live. */}
-            {ui.preview && (
-              <>
-                {ui.preview.href ? (
-                  <a
-                    className="ui-preview ui-preview--link reveal"
-                    href={ui.preview.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={ui.preview.src} alt={ui.preview.alt || ''} loading="lazy" />
-                  </a>
-                ) : (
-                  <figure className="ui-preview reveal">
-                    <img src={ui.preview.src} alt={ui.preview.alt || ''} loading="lazy" />
-                  </figure>
-                )}
-                {ui.preview.href && ui.preview.linkLabel && (
-                  <a
-                    className="btn proto-link ui-preview__btn"
-                    href={ui.preview.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {ui.preview.linkLabel}{' '}
-                    <span className="ar" aria-hidden="true">
-                      ↗
-                    </span>
-                  </a>
-                )}
-              </>
-            )}
-
-            {ui.pages?.length > 0 ? (
-              <PageGrid shots={data.shots} onZoom={setZoom} items={ui.pages} />
-            ) : ui.screens?.length > 0 ? (
-              <div className="screens-grid">
-                {ui.screens.map((id, i) => (
-                  <Shot
-                    shots={data.shots}
-                    onZoom={setZoom}
-                    id={id}
-                    label={`[ Screen ${i + 1} ]`}
-                    key={id}
-                  />
-                ))}
-              </div>
-            ) : null}
-          </section>
-        )}
-
-        {/* ============================ RESULTS / IMPACT ============================ */}
-        {/* Ordre voulu : les CHIFFRES d'abord (juste sous le titre), le récit
-            ensuite, puis les `targets` de cadrage confrontées au réel et la
-            `note` de lecture honnête.
-            Les métriques passent avant le chapô pour une raison concrète : en
-            arrivant par la nav, le scroll s'arrête sur le filet de la section,
-            et un chapô de 3 à 4 lignes repoussait les cartes sous la ligne de
-            flottaison sur les écrans peu hauts. Dans une section « Results »,
-            les chiffres sont de toute façon l'information principale. */}
-        {results && (
-          <section className="section" id="results">
-            <div className="section-head">
-              <h2>{results.eyebrow}</h2>
-              {results.idx && <span className="section-idx">{results.idx}</span>}
-            </div>
-
-            {results.metrics?.length > 0 && (
-              <div className="cs-metrics is-lead">
-                {results.metrics.map((m, i) => (
-                  <div className="metric reveal" data-d={i % 3 || undefined} key={i}>
-                    <div className="metric__k">{m.k}</div>
-                    <div className="metric__flow">
-                      {m.from && (
-                        <>
-                          <span className="metric__from">{m.from}</span>
-                          <span className="metric__ar" aria-hidden="true">
-                            →
-                          </span>
-                        </>
-                      )}
-                      <span className="metric__to">{m.to}</span>
-                    </div>
-                    {m.delta && <span className="metric__delta">{m.delta}</span>}
-                    {m.note && <p className="metric__note">{m.note}</p>}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {(results.lede || results.body) && (
-              <div className="cs-lede is-after" data-reveal="">
-                {results.lede && (
-                  <h3>
-                    <RichText text={results.lede} />
-                  </h3>
-                )}
-                {results.body && (
-                  <div className="body">
-                    {results.body.map((p, i) => (
-                      <p key={i}>
-                        <RichText text={p} />
-                      </p>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {results.targets?.length > 0 && (
-              <div className="cs-targets">
-                <h4 className="cs-targets__lab">{results.targetsLabel || cs.targets}</h4>
-                <ul className="cs-targets__list">
-                  {results.targets.map((t, i) => {
-                    const state = t.state || 'nodata'
-                    const mark = state === 'hit' ? '✓' : state === 'missed' ? '✕' : '–'
-                    const lab =
-                      state === 'hit' ? cs.stHit : state === 'missed' ? cs.stMissed : cs.stNoData
-                    return (
-                      <li
-                        className={`target-row reveal is-${state}`}
-                        data-d={i % 3 || undefined}
-                        key={i}
-                      >
-                        <span className="target-mark" aria-hidden="true">
-                          {mark}
-                        </span>
-                        <div className="target-text">
-                          <h5>
-                            {t.name} {t.goal && <span className="target-goal">{t.goal}</span>}
-                          </h5>
-                          {t.note && <p>{t.note}</p>}
-                        </div>
-                        <span className="target-state mono">{lab}</span>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            )}
-
-            {results.note && (
-              <div className="cs-insight reveal">
-                <div className="mk">{results.noteLabel || cs.measured}</div>
-                <p>
-                  <RichText text={results.note} />
-                </p>
-              </div>
-            )}
-          </section>
-        )}
-
-        {/* ===================== OUTCOME (bilan, reste en bas) ===================== */}
-        {/* Sans lien embarquable, le champ `prototype` sert de note de clôture
-            « Outcome / In hindsight » : elle garde sa place en fin de récit. */}
-        {prototype && !liveProto && (
-          <section className="section topo-bg" id="prototype">
-            <div className="section-head">
-              <h2>{prototype.eyebrow}</h2>
-              {prototype.idx && <span className="section-idx">{prototype.idx}</span>}
-            </div>
-            {prototype.note && (
-              <div className="proto-note">
-                <span className="mk">💡</span>
-                <p>
-                  <RichText text={prototype.note} />
-                </p>
-              </div>
-            )}
-          </section>
-        )}
-
-        {/* ============================ ROADMAP ============================ */}
-        {roadmap && (
-          <section className="section" id="roadmap">
-            <div className="section-head">
-              <h2>{roadmap.eyebrow}</h2>
-              {roadmap.idx && <span className="section-idx">{roadmap.idx}</span>}
-            </div>
-            {(roadmap.lede || roadmap.body) && (
-              <div className="cs-lede" data-reveal="">
-                {roadmap.lede && (
-                  <h3>
-                    <RichText text={roadmap.lede} />
-                  </h3>
-                )}
-                {roadmap.body && (
-                  <div className="body">
-                    {roadmap.body.map((p, i) => (
-                      <p key={i}>
-                        <RichText text={p} />
-                      </p>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-            {roadmap.items?.length > 0 && (
-              <ul className="roadmap-list">
-                {roadmap.items.map((it, i) => {
-                  const state = it.state || 'planned'
-                  const mark = state === 'done' ? '✓' : state === 'building' ? '◐' : '○'
-                  const lab =
-                    state === 'done'
-                      ? cs.stShipped
-                      : state === 'building'
-                        ? cs.stBuilding
-                        : cs.stPlanned
-                  return (
-                    <li
-                      className={`roadmap-row reveal is-${state}`}
-                      data-d={i % 3 || undefined}
-                      key={i}
-                    >
-                      <span className="roadmap-mark" aria-hidden="true">
-                        {mark}
-                      </span>
-                      <div className="roadmap-text">
-                        <h4>{it.name}</h4>
-                        {it.desc && <p>{it.desc}</p>}
-                      </div>
-                      <span className="roadmap-state mono">{lab}</span>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-          </section>
-        )}
-
-        {/* ============================ GALLERY (concept UI) ============================ */}
-        {data.gallery?.length > 0 && (
-          <section className="section" id="gallery">
-            <div className="cs-gallery">
-              {data.gallery.map((g, i) => (
-                <figure
-                  className="cs-gallery__item reveal"
-                  data-d={i % 2 || undefined}
-                  key={g.src || i}
-                >
-                  <button
-                    type="button"
-                    className="cs-gallery__open"
-                    onClick={() => setZoom(g)}
-                    aria-label={`Open ${g.name} preview`}
-                  >
-                    <img src={g.src} alt={g.name} loading="lazy" />
-                  </button>
-                  <figcaption>
-                    <span className="n">{g.name}</span>
-                    {g.sub && <span className="s">{g.sub}</span>}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
-        )}
+        {order.map((k) => (
+          <Fragment key={k}>
+            {k in S ? S[k] : data.extra?.[k] && <ExtraSection id={k} x={data.extra[k]} />}
+          </Fragment>
+        ))}
       </main>
 
       {/* ============================ NEXT ============================ */}
