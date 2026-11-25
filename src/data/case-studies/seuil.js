@@ -80,7 +80,7 @@ export const seuil = {
       'For the rest, I went with floating frosted-glass cards with rounded corners and a cyan accent. The blurred colour halo only appears behind a card, never as a plain background, so that it serves reading rather than decoration.',
       'For typography, I set aside editorial serif fonts in favour of easy-to-read sans-serifs: Urbanist for headings, Geist for body text and Geist Mono for figures. Spacing follows an 8-point grid, with 4 for fine adjustments.',
     ],
-    shot: 'home',
+    shot: 'visual',
   },
 
   ui: {
@@ -142,6 +142,7 @@ export const seuil = {
   footer: 'B2B SaaS product site · Seuil',
 
   shots: {
-    home: '/assets/seuil/home.webp',
+    // Section « Alertes » de la page Produit : titre clair, panneau sombre.
+    visual: '/assets/seuil/visual.webp',
   },
 }
