@@ -29,7 +29,7 @@ export const projects = [
     cover: '/assets/garanties/cover.svg',
   },
   {
-    idx: '02', name: 'Seuil', year: '2026', cat: 'Site produit SaaS B2B · Projet de démonstration', href: 'https://seuil.louistdesign.me',
+    idx: '02', name: 'Seuil', year: '2026', cat: 'Site produit SaaS B2B · Projet de démonstration', slug: 'seuil',
     tldr: 'Le site marketing d’un SaaS B2B fictif de décision de crédit client, conçu puis mis en ligne de bout en bout. 6 pages en desktop et mobile · Contenu modifiable dans Sanity sans toucher au code · Simulateur de décision interactif · Accessibilité WCAG AA testée.',
     cover: '/assets/seuil/cover.webp',
   },

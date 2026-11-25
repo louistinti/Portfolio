@@ -1065,6 +1065,12 @@
   font-size: var(--text-16);
   line-height: 1.62;
 }
+.cs-topo__body {
+  grid-column: 2;
+}
+.cs-topo__body p + p {
+  margin-top: var(--space-4);
+}
 .cs-topo p strong {
   color: var(--fg);
   font-weight: 600;
@@ -1117,6 +1123,7 @@
   .cs-topo .step-eyebrow,
   .cs-topo h3,
   .cs-topo p,
+  .cs-topo__body,
   .cs-topo__media,
   .cs-topo__screens {
     grid-column: auto;

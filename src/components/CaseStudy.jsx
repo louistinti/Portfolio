@@ -274,7 +274,9 @@ export default function CaseStudy({ data }) {
                 {data.meta.map((m) => (
                   <div key={m.k}>
                     <dt>{m.k}</dt>
-                    <dd>{m.v}</dd>
+                    <dd>
+                      <RichText text={m.v} />
+                    </dd>
                   </div>
                 ))}
               </dl>
@@ -521,10 +523,22 @@ export default function CaseStudy({ data }) {
               <h3>
                 <RichText text={topography.title} />
               </h3>
-              {topography.body && (
-                <p>
-                  <RichText text={topography.body} />
-                </p>
+              {/* `body` : un paragraphe (string) ou plusieurs (tableau, regroupés
+                  dans une seule cellule de la grille). */}
+              {Array.isArray(topography.body) ? (
+                <div className="cs-topo__body">
+                  {topography.body.map((p, i) => (
+                    <p key={i}>
+                      <RichText text={p} />
+                    </p>
+                  ))}
+                </div>
+              ) : (
+                topography.body && (
+                  <p>
+                    <RichText text={topography.body} />
+                  </p>
+                )
               )}
               {topography.shots?.length > 0 ? (
                 <div className="cs-topo__screens reveal">
