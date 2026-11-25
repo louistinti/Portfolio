@@ -605,6 +605,13 @@ export default function CaseStudy({ data }) {
               </div>
             </div>
 
+            {/* Aperçu optionnel du design system (image fixe, ex. sa couverture). */}
+            {ui.preview && (
+              <figure className="ui-preview reveal">
+                <img src={ui.preview.src} alt={ui.preview.alt || ''} loading="lazy" />
+              </figure>
+            )}
+
             {(reliefSteps.length > 0 || ui.components) && (
               <div className="ui-guide">
                 {reliefSteps.length > 0 && (

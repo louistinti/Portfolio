@@ -80,6 +80,7 @@ export const seuil = {
       "Ensuite, j'ai documenté chaque composant partagé avec ses variantes, ses états et les tokens qu'il utilise : boutons, chips de choix, badges d'état, jauges, blocs règle, cartes de décision, tableaux, cartes de formule, soit 28 composants en tout. J'ai aussi listé ce qui n'est volontairement pas dessiné, pour éviter les ajouts au fil de l'eau.",
       "Enfin, chaque page est une suite de sections typées (hero, problème, bénéfices par rôle, étapes, fonctionnalité, intégrations, tarifs, FAQ, appel à l'action). Chaque section correspond à un composant et à un schéma dans le CMS Sanity. Une personne du marketing assemble donc une page avec les mêmes briques que moi, et Sanity refuse par exemple la publication d'un prix sans sa ligne de source.",
     ],
+    preview: { ...en.ui.preview, alt: 'Couverture du design system de Seuil' },
     paletteLabel: '// Tokens de couleur',
     fonts: [
       { k: 'Titres', v: 'Urbanist' },

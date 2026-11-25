@@ -1136,6 +1136,16 @@
 /* ============================================================
    UI / STYLE GUIDE
    ============================================================ */
+.ui-preview {
+  margin: clamp(var(--space-10), 5vw, var(--space-16)) 0 0;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.ui-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .ui-guide {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;

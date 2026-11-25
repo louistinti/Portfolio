@@ -80,7 +80,6 @@ export const seuil = {
       'For the rest, I went with floating frosted-glass cards with rounded corners and a cyan accent. The blurred colour halo only appears behind a card, never as a plain background, so that it serves reading rather than decoration.',
       'For typography, I set aside editorial serif fonts in favour of easy-to-read sans-serifs: Urbanist for headings, Geist for body text and Geist Mono for figures. Spacing follows an 8-point grid, with 4 for fine adjustments.',
     ],
-    shot: 'visual',
   },
 
   ui: {
@@ -92,6 +91,8 @@ export const seuil = {
       'Then I documented each shared component with its variants, its states and the tokens it uses: buttons, choice chips, status badges, gauges, rule blocks, decision cards, tables, plan cards, 28 components in all. I also listed what is deliberately not designed, to avoid ad hoc additions.',
       'Finally, each page is a sequence of typed sections (hero, problem, benefits by role, steps, feature, integrations, pricing, FAQ, call to action). Each section maps to a component and a schema in the Sanity CMS. So someone in marketing builds a page with the same building blocks as I do, and Sanity, for example, refuses to publish a price without its source line.',
     ],
+    // Couverture de l'artefact « Seuil » (design system), rendue depuis ses fichiers.
+    preview: { src: '/assets/seuil/design-system.webp', alt: 'Seuil design system cover' },
     paletteLabel: '// Colour tokens',
     // Valeurs relevées dans seuil/src/styles/tokens.css.
     palette: [
@@ -142,7 +143,5 @@ export const seuil = {
   footer: 'B2B SaaS product site · Seuil',
 
   shots: {
-    // Section « Alertes » de la page Produit : titre clair, panneau sombre.
-    visual: '/assets/seuil/visual.webp',
   },
 }
