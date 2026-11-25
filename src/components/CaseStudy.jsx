@@ -64,6 +64,24 @@ function Shot({ shots, onZoom, id, label, className = '', fit = 'cover', style }
   )
 }
 
+// Ligne de chiffres (Contexte, Design system). Le nombre de colonnes suit le
+// nombre de chiffres ; sous 760px, la grille repasse sur une colonne.
+function Stats({ items }) {
+  return (
+    <div className="cs-stats" style={{ '--cols': items.length }}>
+      {items.map((s, i) => (
+        <div className="stat reveal" data-d={i || undefined} key={i}>
+          <div className="v">
+            {s.v}
+            {s.u && <span className="u">{s.u}</span>}
+          </div>
+          <div className="k">{s.k}</div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 // Aperçu de page web : vignette recadrée sur le HAUT de la capture (pas de
 // défilement). 4 vignettes tiennent dans une grille 2×2. Module-level (cf. Shot).
 function PageGrid({ shots, onZoom, items }) {
@@ -302,19 +320,7 @@ export default function CaseStudy({ data }) {
                 ))}
               </div>
             </div>
-            {context.stats?.length > 0 && (
-              <div className="cs-stats">
-                {context.stats.map((s, i) => (
-                  <div className="stat reveal" data-d={i || undefined} key={i}>
-                    <div className="v">
-                      {s.v}
-                      {s.u && <span className="u">{s.u}</span>}
-                    </div>
-                    <div className="k">{s.k}</div>
-                  </div>
-                ))}
-              </div>
-            )}
+            {context.stats?.length > 0 && <Stats items={context.stats} />}
           </section>
         )}
 
@@ -605,12 +611,30 @@ export default function CaseStudy({ data }) {
               </div>
             </div>
 
-            {/* Aperçu optionnel du design system (image fixe, ex. sa couverture). */}
-            {ui.preview && (
-              <figure className="ui-preview reveal">
-                <img src={ui.preview.src} alt={ui.preview.alt || ''} loading="lazy" />
-              </figure>
-            )}
+            {ui.stats?.length > 0 && <Stats items={ui.stats} />}
+
+            {/* Blocs thématiques : libellé + sous-titre à gauche, texte (un ou
+                plusieurs paragraphes) et visuel optionnel à droite. Le visuel
+                passe par `shots` : tant que l'image manque, un emplacement
+                légendé s'affiche à sa place. */}
+            {ui.blocks?.map((b, i) => (
+              <div className="ui-block reveal" key={i}>
+                <div className="ui-block__head">
+                  {b.k && <span className="ui-block__k">{b.k}</span>}
+                  {b.title && <h4>{b.title}</h4>}
+                </div>
+                <div className="ui-block__body">
+                  {[].concat(b.text || []).map((p, j) => (
+                    <p key={j}>
+                      <RichText text={p} />
+                    </p>
+                  ))}
+                  {b.shot && (
+                    <Shot shots={data.shots} onZoom={setZoom} id={b.shot} label={`[ ${b.alt} ]`} />
+                  )}
+                </div>
+              </div>
+            ))}
 
             {(reliefSteps.length > 0 || ui.components) && (
               <div className="ui-guide">
@@ -688,6 +712,41 @@ export default function CaseStudy({ data }) {
                   </div>
                 )}
               </div>
+            )}
+
+            {/* Aperçu du design system en fin de section (ex. sa couverture).
+                Avec `href`, il devient cliquable et reçoit le même bouton que
+                « Visiter le site » de la section live. */}
+            {ui.preview && (
+              <>
+                {ui.preview.href ? (
+                  <a
+                    className="ui-preview ui-preview--link reveal"
+                    href={ui.preview.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={ui.preview.src} alt={ui.preview.alt || ''} loading="lazy" />
+                  </a>
+                ) : (
+                  <figure className="ui-preview reveal">
+                    <img src={ui.preview.src} alt={ui.preview.alt || ''} loading="lazy" />
+                  </figure>
+                )}
+                {ui.preview.href && ui.preview.linkLabel && (
+                  <a
+                    className="btn proto-link ui-preview__btn"
+                    href={ui.preview.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {ui.preview.linkLabel}{' '}
+                    <span className="ar" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                )}
+              </>
             )}
 
             {ui.pages?.length > 0 ? (

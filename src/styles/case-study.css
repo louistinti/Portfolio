@@ -324,7 +324,8 @@
 /* encadrés statistiques */
 .cs-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* --cols : nombre de chiffres, posé par le composant (3 par défaut). */
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
@@ -1145,6 +1146,69 @@
   display: block;
   width: 100%;
   height: auto;
+}
+/* couverture cliquable (même survol que l'aperçu du site live) */
+.ui-preview--link {
+  display: block;
+}
+.ui-preview--link img {
+  transition: transform 0.7s var(--ease);
+}
+.ui-preview--link:hover img {
+  transform: scale(1.02);
+}
+/* bouton sous la couverture : même bouton que « Visiter le site », marge en haut */
+.proto-link.ui-preview__btn {
+  margin: var(--space-6) 0 0;
+}
+
+/* blocs thématiques du design system : même grille que .cs-lede, séparés
+   par un filet ; libellé mono comme .guide-card h4, titre comme .feature h4 */
+.ui-block {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(var(--space-8), 6vw, var(--space-24));
+  align-items: start;
+  margin-top: clamp(var(--space-10), 5vw, var(--space-16));
+  padding-top: clamp(var(--space-8), 4vw, var(--space-12));
+  border-top: 1px solid var(--line);
+}
+.ui-block__k {
+  display: block;
+  font-family: var(--mono);
+  font-size: var(--text-12);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ui-block h4 {
+  margin-top: var(--space-4);
+  font-family: var(--display);
+  font-size: var(--text-24);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-wrap: pretty;
+}
+.ui-block__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+.ui-block__body p {
+  color: var(--body);
+  font-size: var(--text-16);
+  line-height: 1.62;
+}
+.ui-block .ph {
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+}
+@media (max-width: 880px) {
+  .ui-block {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
 }
 .ui-guide {
   display: grid;

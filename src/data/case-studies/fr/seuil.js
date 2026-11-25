@@ -29,7 +29,7 @@ export const seuil = {
     stats: [
       { v: '6', k: 'pages en ligne, modifiables dans un CMS.' },
       { v: '5', u: 'jours', k: 'de la première maquette à la dernière correction.' },
-      { v: '28', k: 'composants documentés dans le design system.' },
+      { v: '31', k: 'composants documentés dans le design system.' },
     ],
   },
 
@@ -73,19 +73,58 @@ export const seuil = {
   ui: {
     ...en.ui,
     eyebrow: 'Design system',
-    idx: '28 composants',
-    lede: "J'ai d'abord défini les tokens, qui sont la seule source de vérité pour les couleurs, les tailles, les espacements, les rayons et les ombres.",
+    idx: '31 composants',
+    lede: "J'ai d'abord défini les tokens, la seule source de vérité pour les couleurs, les tailles, les espacements, les rayons et les ombres.",
     body: [
-      "Aucune valeur n'est écrite en dur dans les composants, ce qui permet de faire évoluer le site sans le reprendre page par page.",
-      "Ensuite, j'ai documenté chaque composant partagé avec ses variantes, ses états et les tokens qu'il utilise : boutons, chips de choix, badges d'état, jauges, blocs règle, cartes de décision, tableaux, cartes de formule, soit 28 composants en tout. J'ai aussi listé ce qui n'est volontairement pas dessiné, pour éviter les ajouts au fil de l'eau.",
-      "Enfin, chaque page est une suite de sections typées (hero, problème, bénéfices par rôle, étapes, fonctionnalité, intégrations, tarifs, FAQ, appel à l'action). Chaque section correspond à un composant et à un schéma dans le CMS Sanity. Une personne du marketing assemble donc une page avec les mêmes briques que moi, et Sanity refuse par exemple la publication d'un prix sans sa ligne de source.",
+      "J'en ai défini 105, déclinés en deux thèmes : clair pour le site, sombre pour tout ce qui montre le produit. J'ai ensuite documenté chaque composant avec ses variantes, ses états et les tokens qu'il utilise, ainsi que ce qui n'est pas dessiné, afin qu'aucun ajout ne se fasse au cas par cas.",
     ],
-    preview: { ...en.ui.preview, alt: 'Couverture du design system de Seuil' },
+    stats: [
+      { v: '105', k: 'tokens' },
+      { v: '2', k: 'thèmes' },
+      { v: '14', k: 'styles typographiques' },
+      { v: '11', k: 'icônes' },
+      { v: '31', k: 'composants' },
+    ],
+    blocks: [
+      {
+        ...en.ui.blocks[0],
+        k: '// Deux thèmes',
+        title: 'Le site est clair, le produit est sombre.',
+        text: "Le thème clair habille les pages. Tout ce qui montre le produit, comme le simulateur, les captures ou les panneaux de données, passe en thème sombre : il suffit d'un attribut sur le conteneur, et les tokens sémantiques changent de valeur.",
+        alt: 'Le même composant de Seuil en thème clair et en thème produit sombre',
+      },
+      {
+        ...en.ui.blocks[1],
+        k: '// Un token, une raison',
+        title: 'Le cyan est le seul accent, mais il existe en deux tokens.',
+        text: "`color-accent-default` sert de fond, par exemple pour le bouton principal, toujours avec un texte foncé par-dessus. Pour un texte ou une icône en accent, j'utilise `color-accent-text` : le cyan vif ne tient pas le contraste en texte sur fond clair.",
+      },
+      {
+        ...en.ui.blocks[2],
+        k: '// États de décision',
+        title: 'Un état ne tient jamais à la couleur seule.',
+        text: "Acceptée, Refusée, Envoyée à l'analyste : chaque état porte une icône et un libellé, en plus de sa couleur. Le vert et le rouge se distinguent surtout par la teinte, l'icône et le libellé sont donc obligatoires.",
+        alt: "Les trois badges d'état de Seuil : Acceptée, Refusée, Envoyée à l'analyste",
+      },
+      {
+        ...en.ui.blocks[3],
+        k: '// Le contenu fait partie du système',
+        text: [
+          "Le système fixe aussi les règles d'écriture : des libellés de verdict sans variante, la mention « Données fictives » sur chaque capture, et un emplacement visible à la place de tout chiffre, témoignage ou logo qui n'est pas sourcé.",
+          "Enfin, chaque page est une suite de sections typées (hero, problème, bénéfices par rôle, étapes, fonctionnalité, intégrations, tarifs, FAQ, appel à l'action). Chaque section correspond à un composant et à un schéma dans le CMS Sanity. Une personne du marketing assemble donc une page avec les mêmes briques que moi, et Sanity refuse par exemple la publication d'un prix sans sa ligne de source.",
+        ],
+      },
+    ],
+    preview: {
+      ...en.ui.preview,
+      alt: 'Couverture du design system de Seuil',
+      linkLabel: 'Explorer le design system',
+    },
     paletteLabel: '// Tokens de couleur',
     fonts: [
       { k: 'Titres', v: 'Urbanist' },
       { k: 'Texte', v: 'Geist' },
-      { k: 'Chiffres', v: 'Geist Mono' },
+      { k: 'Chiffres', v: 'Geist, chiffres tabulaires' },
     ],
   },
 

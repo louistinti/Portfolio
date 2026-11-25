@@ -41,7 +41,7 @@ export const seuil = {
     stats: [
       { v: '6', k: 'live pages, editable in a CMS.' },
       { v: '5', u: 'days', k: 'from the first mockup to the last fix.' },
-      { v: '28', k: 'components documented in the design system.' },
+      { v: '31', k: 'components documented in the design system.' },
     ],
   },
 
@@ -84,15 +84,55 @@ export const seuil = {
 
   ui: {
     eyebrow: 'Design system',
-    idx: '28 components',
+    idx: '31 components',
     lede: 'I first defined the tokens, the single source of truth for colours, sizes, spacing, radii and shadows.',
     body: [
-      'No value is hardcoded in the components, which lets the site evolve without reworking it page by page.',
-      'Then I documented each shared component with its variants, its states and the tokens it uses: buttons, choice chips, status badges, gauges, rule blocks, decision cards, tables, plan cards, 28 components in all. I also listed what is deliberately not designed, to avoid ad hoc additions.',
-      'Finally, each page is a sequence of typed sections (hero, problem, benefits by role, steps, feature, integrations, pricing, FAQ, call to action). Each section maps to a component and a schema in the Sanity CMS. So someone in marketing builds a page with the same building blocks as I do, and Sanity, for example, refuses to publish a price without its source line.',
+      'I defined 105 of them, in two themes: light for the site, dark for everything that shows the product. Then I documented each component with its variants, its states and the tokens it uses, as well as what is not designed, so that nothing gets added on a case-by-case basis.',
     ],
-    // Couverture de l'artefact « Seuil » (design system), rendue depuis ses fichiers.
-    preview: { src: '/assets/seuil/design-system.webp', alt: 'Seuil design system cover' },
+    stats: [
+      { v: '105', k: 'tokens' },
+      { v: '2', k: 'themes' },
+      { v: '14', k: 'type styles' },
+      { v: '11', k: 'icons' },
+      { v: '31', k: 'components' },
+    ],
+    // `shot` : clé de `shots` (emplacement légendé tant que l'image manque).
+    blocks: [
+      {
+        k: '// Two themes',
+        title: 'The site is light, the product is dark.',
+        text: 'The light theme dresses the pages. Everything that shows the product, such as the simulator, the screenshots or the data panels, switches to the dark theme: a single attribute on the container is enough, and the semantic tokens change value.',
+        shot: 'ds-themes',
+        alt: 'The same Seuil component in the light theme and in the dark product theme',
+      },
+      {
+        k: '// One token, one reason',
+        title: 'Cyan is the only accent, but it exists as two tokens.',
+        text: "`color-accent-default` is used as a background, for example for the primary button, always with dark text on top. For accent text or icons, I use `color-accent-text`: bright cyan doesn't hold up in contrast as text on a light background.",
+      },
+      {
+        k: '// Decision states',
+        title: 'A state never relies on colour alone.',
+        text: 'Accepted, Refused, Sent to the analyst: each state carries an icon and a label, in addition to its colour. Green and red differ mainly in hue, so the icon and the label are mandatory.',
+        shot: 'ds-etats',
+        alt: "Seuil's three status badges: Accepted, Refused, Sent to the analyst",
+      },
+      {
+        k: '// Content is part of the system',
+        text: [
+          "The system also sets the writing rules: verdict labels with no variants, the label \"Fictional data\" on every screenshot, and a visible placeholder in place of any figure, testimonial or logo that isn't sourced.",
+          'Finally, each page is a sequence of typed sections (hero, problem, benefits by role, steps, feature, integrations, pricing, FAQ, call to action). Each section maps to a component and a schema in the Sanity CMS. So someone in marketing builds a page with the same building blocks as I do, and Sanity, for example, refuses to publish a price without its source line.',
+        ],
+      },
+    ],
+    // Couverture de l'artefact « Seuil » (design system), rendue depuis ses
+    // fichiers, cliquable vers l'artefact public.
+    preview: {
+      src: '/assets/seuil/design-system.webp',
+      alt: 'Seuil design system cover',
+      href: 'https://claude.ai/artifact/95V724XGmbNmjqXFbmWThr',
+      linkLabel: 'Explore the design system',
+    },
     paletteLabel: '// Colour tokens',
     // Valeurs relevées dans seuil/src/styles/tokens.css.
     palette: [
@@ -106,7 +146,7 @@ export const seuil = {
     fonts: [
       { k: 'Headings', v: 'Urbanist' },
       { k: 'Body', v: 'Geist' },
-      { k: 'Figures', v: 'Geist Mono' },
+      { k: 'Figures', v: 'Geist, tabular figures' },
     ],
   },
 
@@ -142,6 +182,10 @@ export const seuil = {
 
   footer: 'B2B SaaS product site · Seuil',
 
+  // Visuels du design system : fichiers pas encore fournis. Décommenter chaque
+  // ligne une fois l'image déposée dans public/assets/seuil/.
   shots: {
+    // 'ds-themes': '/assets/seuil/ds-themes.webp',
+    // 'ds-etats': '/assets/seuil/ds-etats.webp',
   },
 }
