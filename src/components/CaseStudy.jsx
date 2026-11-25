@@ -360,10 +360,28 @@ export default function CaseStudy({ data }) {
                 </span>
               </a>
             )}
-            {prototype.src && (
-              <div className="proto-frame reveal">
-                <iframe title={`${data.name} preview`} src={prototype.src} allowFullScreen></iframe>
-              </div>
+            {/* `image` : aperçu fixe, cliquable vers le site (pas de défilement
+                imbriqué dans la page). Sinon, `src` embarque le site en iframe. */}
+            {prototype.image ? (
+              <a
+                className="proto-frame proto-frame--img reveal"
+                href={prototype.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={prototype.linkLabel || cs.open}
+              >
+                <img src={prototype.image} alt={`${data.name} preview`} loading="lazy" />
+              </a>
+            ) : (
+              prototype.src && (
+                <div className="proto-frame reveal">
+                  <iframe
+                    title={`${data.name} preview`}
+                    src={prototype.src}
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              )
             )}
           </section>
         )}

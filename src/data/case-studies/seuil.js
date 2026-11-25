@@ -136,12 +136,12 @@ export const seuil = {
     idx: 'Try it',
     href: 'https://seuil.louistdesign.me',
     linkLabel: 'Visit the site',
-    src: 'https://seuil.louistdesign.me',
+    image: '/assets/seuil/home.webp',
   },
 
   footer: 'B2B SaaS product site · Seuil',
 
   shots: {
-    home: '/assets/seuil/cover.webp',
+    home: '/assets/seuil/home.webp',
   },
 }
